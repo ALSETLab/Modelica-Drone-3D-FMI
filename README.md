@@ -20,6 +20,7 @@ How to simulate it?
 ![Alt text](/D_Pics/sim.png "Simulation Results")
 
 6. Within Dymola, run the script ``drone_anymation_setup.mos``, and then click on the ``Play`` button to see the animation. The red arrows indicate the force of the propellers.
+
 ![Alt text](/D_Pics/anim.gif "Animation")
 
 ## B. FMU
