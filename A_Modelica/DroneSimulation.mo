@@ -2104,6 +2104,8 @@ Passes a Real signal through without modification.  Enables signals to be read o
         annotation (Placement(transformation(extent={{-92,36},{-72,56}})));
       Blocks.Sources.circlePath circlePath
         annotation (Placement(transformation(extent={{-92,10},{-72,30}})));
+      Modelica.Blocks.Sources.Constant const1(k=0)
+        annotation (Placement(transformation(extent={{10,-36},{-10,-16}})));
     equation
       connect(propellerRev.frame_a, droneChassis1.frame_a1) annotation (Line(
           points={{28,46},{36,46},{36,22},{44,22}},
@@ -2153,6 +2155,8 @@ Passes a Real signal through without modification.  Enables signals to be read o
         annotation (Line(points={{-71,24},{-58,24}}, color={0,0,127}));
       connect(circlePath.y1, realExtendMultiple.u1) annotation (Line(points={{
               -71,16},{-66,16},{-66,18},{-58,18}}, color={0,0,127}));
+      connect(controlModule.Height, const1.y) annotation (Line(points={{-14,6},
+              {-14,-26},{-11,-26}}, color={0,0,127}));
       annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
             coordinateSystem(preserveAspectRatio=false)),
         __Dymola_Commands(file="drone_animation_setup.mos"
@@ -2202,6 +2206,10 @@ Passes a Real signal through without modification.  Enables signals to be read o
         annotation (Placement(transformation(extent={{100,-10},{120,10}})));
       Modelica.Blocks.Interfaces.RealOutput zgps
         annotation (Placement(transformation(extent={{100,-90},{120,-70}})));
+      Modelica.Blocks.Sources.Constant const1(k=0)
+        annotation (Placement(transformation(extent={{10,-10},{-10,10}},
+            rotation=0,
+            origin={2,-42})));
     equation
       gPS.y[1] = xgps;
       gPS.y[2] = ygps;
@@ -2252,6 +2260,8 @@ Passes a Real signal through without modification.  Enables signals to be read o
           points={{28,30},{42,30},{42,4},{44,4}},
           color={95,95,95},
           thickness=0.5));
+      connect(const1.y, controlModule.Height) annotation (Line(points={{-9,-42},
+              {-13.5,-42},{-13.5,-12},{-14,-12}}, color={0,0,127}));
       annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
               Rectangle(
               extent={{-100,100},{100,-100}},
