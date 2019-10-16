@@ -1921,6 +1921,10 @@ Passes a Real signal through without modification.  Enables signals to be read o
         annotation (Placement(transformation(extent={{100,-10},{120,10}})));
       Modelica.Blocks.Interfaces.RealOutput zgps
         annotation (Placement(transformation(extent={{100,-90},{120,-70}})));
+      Modelica.Blocks.Sources.Constant const1(k=0)
+        annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+            rotation=180,
+            origin={0,-40})));
     equation
       gPS.y[1] = xgps;
       gPS.y[2] = ygps;
@@ -1971,6 +1975,8 @@ Passes a Real signal through without modification.  Enables signals to be read o
           points={{28,30},{42,30},{42,4},{44,4}},
           color={95,95,95},
           thickness=0.5));
+      connect(controlModule.Height, const1.y) annotation (Line(points={{-14,-12},
+              {-12,-12},{-12,-40},{-11,-40}}, color={0,0,127}));
       annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
               Rectangle(
               extent={{-100,100},{100,-100}},
