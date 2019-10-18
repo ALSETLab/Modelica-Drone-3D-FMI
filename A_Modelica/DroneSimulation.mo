@@ -541,7 +541,7 @@ Passes a Real signal through without modification.  Enables signals to be read o
   end Sensors;
 
   package Electrical
-    model DCmotor
+    model SimpleDCmotor
       type motorK = Real(quantity = "Torque constant", unit = "Nm/A", min=0);
       type aeroFriction = Real(quantity = "Propeller friction", unit = "Nms", min=0);
       type propellerK = Real(quantity = "Propeller constant", unit = "Ns", min=0);
@@ -583,7 +583,7 @@ Passes a Real signal through without modification.  Enables signals to be read o
               lineColor={28,108,200},
               textString="motor")}),                                 Diagram(
             coordinateSystem(preserveAspectRatio=false)));
-    end DCmotor;
+    end SimpleDCmotor;
 
     model propeller
       Modelica.Mechanics.MultiBody.Forces.Torque torque(resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_a)
@@ -617,7 +617,7 @@ Passes a Real signal through without modification.  Enables signals to be read o
         annotation (Placement(transformation(extent={{84,-16},{116,16}})));
       Modelica.Blocks.Interfaces.RealInput position
         annotation (Placement(transformation(extent={{-142,-20},{-102,20}})));
-      Electrical.DCmotor dCmotor
+      SimpleDCmotor dCmotor
         annotation (Placement(transformation(extent={{-72,-10},{-52,10}})));
       Blocks.Routing.RealExtend realExtend1
         annotation (Placement(transformation(extent={{38,-78},{58,-58}})));
@@ -705,7 +705,7 @@ Passes a Real signal through without modification.  Enables signals to be read o
       connect(dCmotor.force, gain1.u) annotation (Line(points={{-51,-4},{-44,-4},
               {-44,-68},{-32,-68}},      color={0,0,127}));
       connect(realExtend1.y, torque.torque) annotation (Line(points={{59,-68},{
-              80,-68},{80,76},{8,76},{8,34}}, color={0,0,127}));
+              80,-68},{80,72},{8,72},{8,34}}, color={0,0,127}));
       connect(realExtend.y, force.force) annotation (Line(points={{-17.5,-37},{
               -14,-37},{-14,-22}}, color={0,0,127}));
       connect(dCmotor.torque, realExtend.u) annotation (Line(points={{-51,4},{
@@ -1076,6 +1076,34 @@ Passes a Real signal through without modification.  Enables signals to be read o
               textString="droneChassis")}), Diagram(coordinateSystem(
               preserveAspectRatio=false)));
     end droneChassis;
+
+    model Blades
+      Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape5(
+        m=0.010,
+        r={-0.154,0,0},
+        I_33=0.001)
+        annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+            rotation=270,
+            origin={66,-10})));
+      Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape4(
+        m=0.01,
+        r={0.154,0,0},
+        I_33=0.001,
+        shapeType="cylinder")
+        annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+            rotation=90,
+            origin={66,10})));
+      Modelica.Mechanics.MultiBody.Interfaces.Frame_a Input
+        "Input from motor connecting the propeller blades to the motor"
+        annotation (Placement(transformation(extent={{-118,-16},{-86,16}})));
+    equation
+      connect(bodyShape4.frame_a, Input) annotation (Line(
+          points={{66,0},{-102,0}},
+          color={95,95,95},
+          thickness=0.5));
+      annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+            coordinateSystem(preserveAspectRatio=false)));
+    end Blades;
     annotation (Icon(graphics={
           Rectangle(
             lineColor={200,200,200},
@@ -1118,7 +1146,7 @@ Passes a Real signal through without modification.  Enables signals to be read o
 
    package Tests
     model motorTest
-      Electrical.DCmotor dCmotor
+      Electrical.SimpleDCmotor dCmotor
         annotation (Placement(transformation(extent={{-10,-2},{10,18}})));
       Modelica.Blocks.Sources.Step step(startTime=1)
         annotation (Placement(transformation(extent={{-86,-2},{-66,18}})));
@@ -1138,17 +1166,13 @@ Passes a Real signal through without modification.  Enables signals to be read o
             extent={{-10,-10},{10,10}},
             rotation=180,
             origin={54,-66})));
+      Electrical.propeller propellerRev2
+        annotation (Placement(transformation(extent={{-10,-44},{10,-24}})));
     equation
-      connect(propeller1.frame_a, fixed.frame_b) annotation (Line(
-          points={{10,-34},{44,-34}},
-          color={95,95,95},
-          thickness=0.5));
       connect(step.y, feedback.u1)
         annotation (Line(points={{-65,8},{-56,8}}, color={0,0,127}));
       connect(feedback.y, dCmotor.current)
         annotation (Line(points={{-39,8},{-12,8}}, color={0,0,127}));
-      connect(propeller1.current, feedback.y) annotation (Line(points={{-12,-34},
-              {-24,-34},{-24,8},{-39,8}}, color={0,0,127}));
       connect(step1.y, feedback.u2) annotation (Line(points={{-55,-36},{-48,-36},
               {-48,0}}, color={0,0,127}));
       connect(propellerRev1.position, dCmotor.current) annotation (Line(points=
@@ -1157,6 +1181,12 @@ Passes a Real signal through without modification.  Enables signals to be read o
           points={{10,-66},{44,-66}},
           color={95,95,95},
           thickness=0.5));
+      connect(fixed.frame_b, propellerRev2.frame_a) annotation (Line(
+          points={{44,-34},{10,-34}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(propellerRev2.position, dCmotor.current) annotation (Line(points=
+              {{-12.2,-34},{-24,-34},{-24,8},{-12,8}}, color={0,0,127}));
       annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
             coordinateSystem(preserveAspectRatio=false)));
     end motorTest;
@@ -1677,13 +1707,13 @@ Passes a Real signal through without modification.  Enables signals to be read o
             coordinateSystem(preserveAspectRatio=false)));
     end discreteTest;
 
-    model discteteControlTest
+    model discreteControlTest
       Mechanical.droneChassis droneChassis1
         annotation (Placement(transformation(extent={{30,10},{80,30}})));
       inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
           -1})
         annotation (Placement(transformation(extent={{-100,-80},{-80,-60}})));
-      Electrical.propeller propellerRev1
+      Electrical.propeller propellerRev1(k=1)
         annotation (Placement(transformation(extent={{-20,30},{0,50}})));
       Electrical.propeller propellerRev2
         annotation (Placement(transformation(extent={{-20,-50},{0,-30}})));
@@ -1710,15 +1740,11 @@ Passes a Real signal through without modification.  Enables signals to be read o
         kp=1.5,
         samplePeriod=0.01)
         annotation (Placement(transformation(extent={{-86,8},{-66,28}})));
+      Electrical.propeller propellerRev3(k=1)
+        annotation (Placement(transformation(extent={{-18,-10},{2,10}})));
+      Electrical.propeller propellerRev4
+        annotation (Placement(transformation(extent={{-20,60},{0,80}})));
     equation
-      connect(propeller1.frame_a, droneChassis1.frame_a1) annotation (Line(
-          points={{0,70},{16,70},{16,26},{30,26}},
-          color={95,95,95},
-          thickness=0.5));
-      connect(propeller3.frame_a, droneChassis1.frame_a2) annotation (Line(
-          points={{0,0},{12,0},{12,18},{30,18}},
-          color={95,95,95},
-          thickness=0.5));
       connect(propellerRev2.frame_a, droneChassis1.frame_a3) annotation (Line(
           points={{0,-40},{16,-40},{16,14},{30,14}},
           color={95,95,95},
@@ -1727,10 +1753,6 @@ Passes a Real signal through without modification.  Enables signals to be read o
           points={{0,40},{12,40},{12,22},{30,22}},
           color={95,95,95},
           thickness=0.5));
-      connect(propellerRev1.position, propeller1.current) annotation (Line(
-            points={{-22.2,40},{-42,40},{-42,70},{-22,70}}, color={0,0,127}));
-      connect(propellerRev1.position, propeller3.current) annotation (Line(
-            points={{-22.2,40},{-42,40},{-42,0},{-22,0}}, color={0,0,127}));
       connect(relativePosition.frame_b, droneChassis1.frame_a3) annotation (
           Line(
           points={{28,-8},{26,-8},{26,14},{30,14}},
@@ -1746,15 +1768,28 @@ Passes a Real signal through without modification.  Enables signals to be read o
         annotation (Line(points={{-109,18},{-86,18}}, color={0,0,127}));
       connect(realExtract.y, discretePID.u1)
         annotation (Line(points={{-76,-9},{-76,8}},    color={0,0,127}));
-      connect(discretePID.y, propeller3.current) annotation (Line(points={{-65,18},
-              {-42,18},{-42,0},{-22,0}},         color={0,0,127}));
       connect(propellerRev2.position, discretePID.y) annotation (Line(points={{
               -22.2,-40},{-42,-40},{-42,18},{-65,18}}, color={0,0,127}));
+      connect(propellerRev3.frame_a, droneChassis1.frame_a2) annotation (Line(
+          points={{2,0},{14,0},{14,18},{30,18}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(propellerRev3.position, discretePID.y) annotation (Line(points={{-20.2,
+              0},{-42,0},{-42,18},{-65,18}}, color={0,0,127}));
+      connect(propellerRev4.frame_a, droneChassis1.frame_a1) annotation (Line(
+          points={{0,70},{16,70},{16,26},{30,26}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(propellerRev4.position, discretePID.y) annotation (Line(points={{-22.2,
+              70},{-42,70},{-42,18},{-65,18}},
+            color={0,0,127}));
+      connect(propellerRev1.position, discretePID.y) annotation (Line(points={{
+              -22.2,40},{-42,40},{-42,18},{-65,18}}, color={0,0,127}));
       annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
                 -140,-100},{100,100}})),                             Diagram(
             coordinateSystem(preserveAspectRatio=false, extent={{-140,-100},{
                 100,100}})));
-    end discteteControlTest;
+    end discreteControlTest;
 
     model discretePIDTest
       Blocks.Control.discretePID discretePID(
@@ -1998,19 +2033,30 @@ Passes a Real signal through without modification.  Enables signals to be read o
       Modelica.Blocks.Sources.Ramp ramp(duration=5, height=5)
         annotation (Placement(transformation(extent={{-10,-10},{10,10}},
             rotation=0,
-            origin={-56,-10})));
+            origin={-70,0})));
       Modelica.Blocks.Sources.Constant const(k=0)
         annotation (Placement(transformation(extent={{-66,18},{-46,38}})));
       controlModuleTest_fmu_inputs controlModuleTest_fmu_inputs1
         annotation (Placement(transformation(extent={{-18,-16},{32,34}})));
+      Modelica.Blocks.Noise.UniformNoise uniformNoise(
+        samplePeriod=0.1,
+        y_min=-0.5,
+        y_max=0.5)
+        annotation (Placement(transformation(extent={{-80,-40},{-60,-20}})));
+      Modelica.Blocks.Math.Add add
+        annotation (Placement(transformation(extent={{-48,-18},{-38,-8}})));
     equation
       connect(const.y, controlModuleTest_fmu_inputs1.xcoord) annotation (Line(
             points={{-45,28},{-28,28},{-28,29},{-23,29}}, color={0,0,127}));
-      connect(ramp.y, controlModuleTest_fmu_inputs1.zcoord) annotation (Line(
-            points={{-45,-10},{-28,-10},{-28,-11},{-23,-11}}, color={0,0,127}));
       connect(controlModuleTest_fmu_inputs1.ycoord,
         controlModuleTest_fmu_inputs1.xcoord) annotation (Line(points={{-23,9},
               {-36,9},{-36,28},{-28,28},{-28,29},{-23,29}}, color={0,0,127}));
+      connect(controlModuleTest_fmu_inputs1.zcoord, add.y) annotation (Line(
+            points={{-23,-11},{-22,-11},{-22,-13},{-37.5,-13}}, color={0,0,127}));
+      connect(ramp.y, add.u1) annotation (Line(points={{-59,0},{-54,0},{-54,-10},
+              {-49,-10}}, color={0,0,127}));
+      connect(add.u2, uniformNoise.y) annotation (Line(points={{-49,-16},{-49,
+              -30},{-59,-30}}, color={0,0,127}));
       annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-80,
                 -40},{40,60}})), Diagram(coordinateSystem(preserveAspectRatio=
                 false, extent={{-80,-40},{40,60}})),
