@@ -1095,15 +1095,202 @@ Passes a Real signal through without modification.  Enables signals to be read o
             origin={66,10})));
       Modelica.Mechanics.MultiBody.Interfaces.Frame_a Input
         "Input from motor connecting the propeller blades to the motor"
-        annotation (Placement(transformation(extent={{-118,-16},{-86,16}})));
+        annotation (Placement(transformation(extent={{-120,-16},{-88,16}}),
+            iconTransformation(extent={{-120,-16},{-88,16}})));
     equation
       connect(bodyShape4.frame_a, Input) annotation (Line(
-          points={{66,0},{-102,0}},
+          points={{66,0},{-104,0}},
           color={95,95,95},
           thickness=0.5));
       annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
             coordinateSystem(preserveAspectRatio=false)));
     end Blades;
+
+    model DCMotor
+      Modelica.Mechanics.MultiBody.Forces.WorldForce force(
+        color={244,0,4},
+        resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b,
+        N_to_m=10)
+        annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+            rotation=0,
+            origin={64,0})));
+
+      Modelica.Mechanics.MultiBody.Interfaces.Frame_a force_out
+        annotation (Placement(transformation(extent={{86,-16},{118,16}})));
+      Modelica.Blocks.Interfaces.RealInput position
+        annotation (Placement(transformation(extent={{-142,-20},{-102,20}})));
+      Electrical.SimpleDCmotor dCmotor
+        annotation (Placement(transformation(extent={{-70,-14},{-50,6}})));
+      Blocks.Routing.RealExtend realExtend1
+        annotation (Placement(transformation(extent={{38,-78},{58,-58}})));
+      Modelica.Blocks.Math.Gain gain1(k=k)
+        annotation (Placement(transformation(extent={{-30,-78},{-10,-58}})));
+      Blocks.Routing.RealExtend realExtend
+        annotation (Placement(transformation(extent={{-10,-4},{-2,4}})));
+      parameter Real k=-1
+        "Propeller gain. Set to 1 for clockwise, -1 for counterclockwise";
+      Modelica.Blocks.Nonlinear.Limiter limiter(uMax=1e8, uMin=0)
+        annotation (Placement(transformation(extent={{-94,-4},{-86,4}})));
+      Modelica.Blocks.Interfaces.RealOutput torque[3]
+        annotation (Placement(transformation(extent={{100,-78},{120,-58}})));
+    equation
+      connect(gain1.y, realExtend1.u)
+        annotation (Line(points={{-9,-68},{36,-68}}, color={0,0,127}));
+      connect(dCmotor.force, gain1.u) annotation (Line(points={{-49,-8},{-44,-8},
+              {-44,-68},{-32,-68}},      color={0,0,127}));
+      connect(realExtend.y, force.force) annotation (Line(points={{-1.6,0},{52,
+              0}},                 color={0,0,127}));
+      connect(dCmotor.torque, realExtend.u) annotation (Line(points={{-49,0},{
+              -10.8,0}},                      color={0,0,127}));
+      connect(dCmotor.current, limiter.y)
+        annotation (Line(points={{-72,-4},{-80,-4},{-80,0},{-85.6,0}},
+                                                     color={0,0,127}));
+      connect(position, limiter.u)
+        annotation (Line(points={{-122,0},{-94.8,0}}, color={0,0,127}));
+      connect(force_out, force.frame_b) annotation (Line(
+          points={{102,0},{74,0}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(realExtend1.y, torque)
+        annotation (Line(points={{59,-68},{110,-68}}, color={0,0,127}));
+      annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+              Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
+              Text(
+              extent={{-72,22},{76,-20}},
+              lineColor={28,108,200},
+              textString="Motor")}),      Diagram(coordinateSystem(
+              preserveAspectRatio=false)));
+    end DCMotor;
+
+    model Propeller
+      DCMotor dCMotor
+        annotation (Placement(transformation(extent={{-66,-10},{-46,10}})));
+      Modelica.Blocks.Interfaces.RealInput position
+        annotation (Placement(transformation(extent={{-142,-20},{-102,20}})));
+      rotor rotor1
+        annotation (Placement(transformation(extent={{-8,10},{12,-10}})));
+      Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
+        annotation (Placement(transformation(extent={{86,-20},{118,12}})));
+      Blades blades
+        annotation (Placement(transformation(extent={{68,28},{88,48}})));
+    equation
+      connect(dCMotor.position, position)
+        annotation (Line(points={{-68.2,0},{-122,0}}, color={0,0,127}));
+      connect(dCMotor.torque, rotor1.torque2) annotation (Line(points={{-45,
+              -6.8},{-34,-6.8},{-34,-6},{-10,-6}}, color={0,0,127}));
+      connect(rotor1.force, dCMotor.force_out) annotation (Line(
+          points={{-8.2,0},{-45.8,0}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(rotor1.Airframe, Airframe) annotation (Line(
+          points={{12.2,-5.2},{102,-5.2},{102,-4}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(rotor1.Blade, blades.Input) annotation (Line(
+          points={{12.2,4},{40,4},{40,38},{67.8,38}},
+          color={95,95,95},
+          thickness=0.5));
+      annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
+            coordinateSystem(preserveAspectRatio=false)));
+    end Propeller;
+
+    model rotor
+      Modelica.Mechanics.MultiBody.Forces.Torque torque(resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_a)
+        annotation (Placement(transformation(extent={{4,12},{24,32}})));
+      Modelica.Mechanics.MultiBody.Joints.Revolute revolute
+        annotation (Placement(transformation(extent={{4,-10},{24,10}})));
+
+      Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
+        annotation (Placement(transformation(extent={{86,36},{118,68}})));
+      Modelica.Mechanics.MultiBody.Sensors.RelativeAngularVelocity
+        relativeAngularVelocity
+        annotation (Placement(transformation(extent={{30,74},{50,94}})));
+      Modelica.Mechanics.MultiBody.Forces.Torque torque1
+        annotation (Placement(transformation(extent={{8,-88},{28,-68}})));
+      Modelica.Blocks.Math.Gain gain(k=-0.004) annotation (Placement(
+            transformation(
+            extent={{-6,-6},{6,6}},
+            rotation=270,
+            origin={40,10})));
+      Blocks.Routing.RealExtract realExtract annotation (Placement(
+            transformation(
+            extent={{-6,-6},{6,6}},
+            rotation=270,
+            origin={40,40})));
+      Blocks.Routing.RealExtend realExtend2 annotation (Placement(
+            transformation(
+            extent={{-6,-6},{6,6}},
+            rotation=270,
+            origin={40,-22})));
+      parameter Real k=-1
+        "Propeller gain. Set to 1 for clockwise, -1 for counterclockwise";
+      Modelica.Mechanics.MultiBody.Interfaces.Frame_a force
+        "Coordinate system fixed to the joint with one cut-force and cut-torque"
+        annotation (Placement(transformation(extent={{-118,-16},{-86,16}})));
+      Modelica.Blocks.Interfaces.RealInput torque2[3]
+        "x-, y-, z-coordinates of torque resolved in frame defined by resolveInFrame"
+        annotation (Placement(transformation(extent={{-140,40},{-100,80}})));
+      Modelica.Mechanics.MultiBody.Interfaces.Frame_a Blade
+        annotation (Placement(transformation(extent={{86,-56},{118,-24}})));
+    equation
+      connect(relativeAngularVelocity.w_rel, realExtract.u)
+        annotation (Line(points={{40,73},{40,46}}, color={0,0,127}));
+      connect(realExtract.y, gain.u)
+        annotation (Line(points={{40,33.4},{40,17.2}}, color={0,0,127}));
+      connect(gain.y, realExtend2.u)
+        annotation (Line(points={{40,3.4},{40,-14.8}},
+                                                    color={0,0,127}));
+      connect(realExtend2.y, torque1.torque) annotation (Line(points={{40,-28.6},
+              {40,-40},{12,-40},{12,-66}},
+                                  color={0,0,127}));
+      connect(relativeAngularVelocity.frame_a, torque1.frame_a) annotation (
+          Line(
+          points={{30,84},{-14,84},{-14,-78},{8,-78}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute.frame_a, torque1.frame_a) annotation (Line(
+          points={{4,0},{-14,0},{-14,-78},{8,-78}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque.frame_a, torque1.frame_a) annotation (Line(
+          points={{4,22},{-14,22},{-14,-78},{8,-78}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute.frame_a, force) annotation (Line(
+          points={{4,0},{-102,0}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque.torque, torque2)
+        annotation (Line(points={{8,34},{8,60},{-120,60}}, color={0,0,127}));
+      connect(Airframe, torque1.frame_a) annotation (Line(
+          points={{102,52},{84,52},{84,92},{-14,92},{-14,-78},{8,-78}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(Blade, torque1.frame_b) annotation (Line(
+          points={{102,-40},{62,-40},{62,-78},{28,-78}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(revolute.frame_b, torque1.frame_b) annotation (Line(
+          points={{24,0},{62,0},{62,-78},{28,-78}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(torque.frame_b, torque1.frame_b) annotation (Line(
+          points={{24,22},{62,22},{62,-78},{28,-78}},
+          color={95,95,95},
+          thickness=0.5));
+      connect(relativeAngularVelocity.frame_b, torque1.frame_b) annotation (
+          Line(
+          points={{50,84},{62,84},{62,-78},{28,-78}},
+          color={95,95,95},
+          thickness=0.5));
+      annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+              Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
+              Text(
+              extent={{-72,22},{76,-20}},
+              lineColor={28,108,200},
+              textString="Rotor")}),      Diagram(coordinateSystem(
+              preserveAspectRatio=false)));
+    end rotor;
     annotation (Icon(graphics={
           Rectangle(
             lineColor={200,200,200},

@@ -1,0 +1,3 @@
+within DroneSimulation.Mechanical;
+class DroneChassis
+end DroneChassis;
