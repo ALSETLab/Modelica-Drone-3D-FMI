@@ -1,0 +1,436 @@
+within DroneSimulation;
+package Electrical
+  model SimpleDCmotor
+    type motorK = Real(quantity = "Torque constant", unit = "Nm/A", min=0);
+    type aeroFriction = Real(quantity = "Propeller friction", unit = "Nms", min=0);
+    type propellerK = Real(quantity = "Propeller constant", unit = "Ns", min=0);
+
+    parameter Modelica.SIunits.Inertia Jp = 0.002 "Propeller inertia";
+    parameter motorK Kt = 2 "Motor current to torque constant";
+    parameter aeroFriction bp = 0.004 "Propeller friction force";
+    parameter propellerK Kf= 0.01 "Propeller constant";
+
+    Modelica.SIunits.Torque tout "Output torque";
+    Modelica.SIunits.Force fout "Output force";
+    Modelica.SIunits.AngularVelocity w "Angular speed of motor";
+
+    Modelica.Blocks.Interfaces.RealInput current
+      annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
+    Modelica.Blocks.Interfaces.RealOutput torque
+      annotation (Placement(transformation(extent={{100,30},{120,50}})));
+    Modelica.Blocks.Interfaces.RealOutput force
+      annotation (Placement(transformation(extent={{100,-50},{120,-30}})));
+  equation
+    tout=Kt*current;
+    Jp*der(w)= tout-bp*w;
+    fout=w*Kf;
+    force = fout;
+    torque = tout;
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+          Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
+          Text(
+            extent={{60,46},{100,20}},
+            lineColor={28,108,200},
+            textString="Lift
+
+"),       Text(
+            extent={{64,-34},{96,-50}},
+            lineColor={28,108,200},
+            textString="T"),
+          Text(
+            extent={{-62,28},{74,-20}},
+            lineColor={28,108,200},
+            textString="motor")}),                                 Diagram(
+          coordinateSystem(preserveAspectRatio=false)));
+  end SimpleDCmotor;
+
+  model propeller
+    Modelica.Mechanics.MultiBody.Forces.Torque torque(resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_a)
+      annotation (Placement(transformation(extent={{4,12},{24,32}})));
+    Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape4(
+      m=0.01,
+      r={0.154,0,0},
+      I_33=0.001,
+      shapeType="cylinder")
+      annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+          rotation=90,
+          origin={66,10})));
+    Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape5(
+      m=0.010,
+      r={-0.154,0,0},
+      I_33=0.001)
+      annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+          rotation=270,
+          origin={66,-10})));
+    Modelica.Mechanics.MultiBody.Joints.Revolute revolute
+      annotation (Placement(transformation(extent={{4,-10},{24,10}})));
+    Modelica.Mechanics.MultiBody.Forces.WorldForce force(
+      color={244,0,4},
+      resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b,
+      N_to_m=10)
+      annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+          rotation=90,
+          origin={-14,-10})));
+
+    Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a
+      annotation (Placement(transformation(extent={{84,-16},{116,16}})));
+    Modelica.Blocks.Interfaces.RealInput position
+      annotation (Placement(transformation(extent={{-142,-20},{-102,20}})));
+    SimpleDCmotor dCmotor
+      annotation (Placement(transformation(extent={{-72,-10},{-52,10}})));
+    DroneSimulation.Blocks.Routing.RealExtend realExtend1
+      annotation (Placement(transformation(extent={{38,-78},{58,-58}})));
+    Modelica.Mechanics.MultiBody.Sensors.RelativeAngularVelocity
+      relativeAngularVelocity
+      annotation (Placement(transformation(extent={{30,74},{50,94}})));
+    Modelica.Mechanics.MultiBody.Forces.Torque torque1
+      annotation (Placement(transformation(extent={{4,-50},{24,-30}})));
+    Modelica.Blocks.Math.Gain gain(k=-0.004) annotation (Placement(
+          transformation(
+          extent={{-6,-6},{6,6}},
+          rotation=270,
+          origin={40,10})));
+    DroneSimulation.Blocks.Routing.RealExtract realExtract annotation (
+        Placement(transformation(
+          extent={{-6,-6},{6,6}},
+          rotation=270,
+          origin={40,40})));
+    DroneSimulation.Blocks.Routing.RealExtend realExtend2 annotation (Placement(
+          transformation(
+          extent={{-6,-6},{6,6}},
+          rotation=270,
+          origin={40,-10})));
+    Modelica.Blocks.Math.Gain gain1(k=k)
+      annotation (Placement(transformation(extent={{-30,-78},{-10,-58}})));
+    DroneSimulation.Blocks.Routing.RealExtend realExtend
+      annotation (Placement(transformation(extent={{-28,-42},{-18,-32}})));
+    parameter Real k=-1
+      "Propeller gain. Set to 1 for clockwise, -1 for counterclockwise";
+    Modelica.Blocks.Nonlinear.Limiter limiter(uMax=1e8, uMin=0)
+      annotation (Placement(transformation(extent={{-94,-4},{-86,4}})));
+  equation
+    connect(revolute.frame_b,bodyShape4. frame_a) annotation (Line(
+        points={{24,0},{66,0}},
+        color={95,95,95},
+        thickness=0.5));
+    connect(bodyShape4.frame_a, bodyShape5.frame_a) annotation (Line(
+        points={{66,0},{66,0}},
+        color={95,95,95},
+        thickness=0.5));
+    connect(revolute.frame_a, force.frame_b) annotation (Line(
+        points={{4,0},{-14,0}},
+        color={95,95,95},
+        thickness=0.5));
+    connect(torque.frame_a, force.frame_b) annotation (Line(
+        points={{4,22},{-2,22},{-2,0},{-14,0}},
+        color={95,95,95},
+        thickness=0.5));
+    connect(torque.frame_b, bodyShape4.frame_a) annotation (Line(
+        points={{24,22},{50,22},{50,0},{66,0}},
+        color={95,95,95},
+        thickness=0.5));
+    connect(force.frame_b, frame_a) annotation (Line(
+        points={{-14,0},{-38,0},{-38,58},{86,58},{86,0},{100,0}},
+        color={95,95,95},
+        thickness=0.5));
+    connect(relativeAngularVelocity.frame_a, force.frame_b) annotation (Line(
+        points={{30,84},{-38,84},{-38,0},{-14,0},{-14,8.88178e-16}},
+        color={95,95,95},
+        thickness=0.5));
+    connect(relativeAngularVelocity.frame_b, bodyShape4.frame_a) annotation (
+        Line(
+        points={{50,84},{50,0},{66,0}},
+        color={95,95,95},
+        thickness=0.5));
+    connect(torque1.frame_a, force.frame_b) annotation (Line(
+        points={{4,-40},{-2,-40},{-2,0},{-14,0},{-14,8.88178e-16}},
+        color={95,95,95},
+        thickness=0.5));
+    connect(torque1.frame_b, bodyShape4.frame_a) annotation (Line(
+        points={{24,-40},{50,-40},{50,0},{66,0},{66,-8.88178e-16}},
+        color={95,95,95},
+        thickness=0.5));
+    connect(relativeAngularVelocity.w_rel, realExtract.u)
+      annotation (Line(points={{40,73},{40,46}}, color={0,0,127}));
+    connect(realExtract.y, gain.u)
+      annotation (Line(points={{40,33.4},{40,17.2}}, color={0,0,127}));
+    connect(gain.y, realExtend2.u)
+      annotation (Line(points={{40,3.4},{40,-2.8}},
+                                                  color={0,0,127}));
+    connect(realExtend2.y, torque1.torque) annotation (Line(points={{40,-16.6},
+            {8,-16.6},{8,-28}}, color={0,0,127}));
+    connect(gain1.y, realExtend1.u)
+      annotation (Line(points={{-9,-68},{36,-68}}, color={0,0,127}));
+    connect(dCmotor.force, gain1.u) annotation (Line(points={{-51,-4},{-44,-4},
+            {-44,-68},{-32,-68}},      color={0,0,127}));
+    connect(realExtend1.y, torque.torque) annotation (Line(points={{59,-68},{
+            80,-68},{80,72},{8,72},{8,34}}, color={0,0,127}));
+    connect(realExtend.y, force.force) annotation (Line(points={{-17.5,-37},{
+            -14,-37},{-14,-22}}, color={0,0,127}));
+    connect(dCmotor.torque, realExtend.u) annotation (Line(points={{-51,4},{
+            -40,4},{-40,-37},{-29,-37}},    color={0,0,127}));
+    connect(dCmotor.current, limiter.y)
+      annotation (Line(points={{-74,0},{-85.6,0}}, color={0,0,127}));
+    connect(position, limiter.u)
+      annotation (Line(points={{-122,0},{-94.8,0}}, color={0,0,127}));
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+            Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
+            Text(
+            extent={{-72,22},{76,-20}},
+            lineColor={28,108,200},
+            textString="propellerR")}), Diagram(coordinateSystem(
+            preserveAspectRatio=false)));
+  end propeller;
+
+  model controlModule
+    parameter Modelica.SIunits.Time samplePeriod=0.01;
+    Modelica.Blocks.Interfaces.RealOutput y annotation (Placement(transformation(
+            extent={{100,10},{120,30}}), iconTransformation(extent={{100,10},{120,
+              30}})));
+    Modelica.Blocks.Interfaces.RealOutput y1 annotation (Placement(transformation(
+            extent={{100,50},{120,70}}), iconTransformation(extent={{100,50},{120,
+              70}})));
+    Modelica.Blocks.Interfaces.RealOutput y2 annotation (Placement(transformation(
+            extent={{100,-30},{120,-10}}), iconTransformation(extent={{100,-30},{120,
+              -10}})));
+    Modelica.Blocks.Interfaces.RealOutput y3 annotation (Placement(transformation(
+            extent={{100,-70},{120,-50}}), iconTransformation(extent={{100,-70},{120,
+              -50}})));
+    Modelica.Blocks.Interfaces.RealInput GPS[3] annotation (Placement(
+          transformation(
+          extent={{-20,-20},{20,20}},
+          rotation=90,
+          origin={-60,-100}), iconTransformation(
+          extent={{-20,-20},{20,20}},
+          rotation=90,
+          origin={-60,-120})));
+    Modelica.Blocks.Interfaces.RealInput Gyero[3] annotation (Placement(
+          transformation(
+          extent={{-20,-20},{20,20}},
+          rotation=90,
+          origin={0,-100}), iconTransformation(
+          extent={{-20,-20},{20,20}},
+          rotation=90,
+          origin={0,-120})));
+    Modelica.Blocks.Interfaces.RealInput Height annotation (Placement(
+          transformation(
+          extent={{-20,-20},{20,20}},
+          rotation=90,
+          origin={60,-120}), iconTransformation(
+          extent={{-20,-20},{20,20}},
+          rotation=90,
+          origin={60,-120})));
+    DroneSimulation.Blocks.Control.discretePID discretePID(
+      ki=1,
+      kd=0.8,
+      kp=1.5,
+      samplePeriod=samplePeriod)
+      annotation (Placement(transformation(extent={{-38,-40},{-18,-20}})));
+    DroneSimulation.Blocks.Routing.RealExtract realExtract(index=1)
+      annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
+    Modelica.Blocks.Interfaces.RealInput position[3]
+      annotation (Placement(transformation(extent={{-140,-20},{-100,20}}),
+          iconTransformation(extent={{-140,-20},{-100,20}})));
+    DroneSimulation.Blocks.Routing.RealExtract realExtract1(index=2)
+      annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));
+    DroneSimulation.Blocks.Routing.RealExtract realExtract2(index=3)
+      annotation (Placement(transformation(extent={{-80,-40},{-60,-20}})));
+    DroneSimulation.Blocks.Control.discretePID discretePID1(
+      kp=0.1,
+      kd=0.1,
+      samplePeriod=samplePeriod,
+      ki=0.03)
+      annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
+    DroneSimulation.Blocks.Control.discretePID discretePID2(
+      kd=1,
+      kp=1,
+      samplePeriod=samplePeriod,
+      ki=0.3) annotation (Placement(transformation(extent={{44,20},{64,40}})));
+    DroneSimulation.Blocks.Routing.RealExtract realExtract3(index=2)
+      annotation (Placement(transformation(
+          extent={{-4,-4},{4,4}},
+          rotation=0,
+          origin={14,-72})));
+    DroneSimulation.Blocks.Routing.RealExtract realExtract4(index=2)
+      annotation (Placement(transformation(extent={{-52,-68},{-44,-60}})));
+    parameter Real maxTilt=2 "Upper limits of input signals";
+    Modelica.Blocks.Math.Add add(k1=+1)
+      annotation (Placement(transformation(extent={{76,16},{84,24}})));
+    Modelica.Blocks.Math.Add add1(k1=+1)
+      annotation (Placement(transformation(extent={{76,-64},{84,-56}})));
+    DroneSimulation.Blocks.Routing.RealExtract realExtract5
+      annotation (Placement(transformation(extent={{-44,-76},{-36,-68}})));
+    DroneSimulation.Blocks.Control.discretePID discretePID3(
+      kd=0.1,
+      kp=0.1,
+      samplePeriod=samplePeriod,
+      ki=0.03)
+      annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
+    Modelica.Blocks.Nonlinear.Limiter limiter(uMax=0.523)
+      annotation (Placement(transformation(extent={{0,20},{20,40}})));
+    DroneSimulation.Blocks.Routing.RealExtract realExtract6(index=1)
+      annotation (Placement(transformation(extent={{-60,-60},{-52,-52}})));
+    Modelica.Blocks.Math.Add add2(k1=-1)
+      annotation (Placement(transformation(extent={{76,56},{84,64}})));
+    Modelica.Blocks.Math.Add add3(k1=-1)
+      annotation (Placement(transformation(extent={{76,-24},{84,-16}})));
+    Modelica.Blocks.Nonlinear.Limiter limiter1(uMax=0.523)
+      annotation (Placement(transformation(extent={{0,-10},{20,10}})));
+    DroneSimulation.Blocks.Control.discretePID discretePID4(
+      kd=1,
+      kp=1,
+      samplePeriod=samplePeriod,
+      ki=0.1) annotation (Placement(transformation(extent={{32,-10},{52,10}})));
+    DroneSimulation.Blocks.Routing.RealExtract realExtract7(index=1)
+      annotation (Placement(transformation(
+          extent={{-4,-4},{4,4}},
+          rotation=0,
+          origin={14,-60})));
+    DroneSimulation.Blocks.Routing.RealExtract realExtract8(index=3)
+      annotation (Placement(transformation(
+          extent={{-4,-4},{4,4}},
+          rotation=90,
+          origin={-28,58})));
+    DroneSimulation.Blocks.Control.discretePID discretePID5(
+      kd=0.08,
+      kp=0.04,
+      ki=0,
+      samplePeriod=samplePeriod)
+      annotation (Placement(transformation(extent={{-38,70},{-18,90}})));
+    Modelica.Blocks.Nonlinear.Limiter limiter2(uMax=0.1)
+      annotation (Placement(transformation(extent={{-2,70},{18,90}})));
+    Modelica.Blocks.Interfaces.RealInput yaw
+      annotation (Placement(transformation(extent={{-140,60},{-100,100}}),
+          iconTransformation(extent={{-140,60},{-100,100}})));
+    Modelica.Blocks.Math.Add add4(k2=-1)
+      annotation (Placement(transformation(extent={{88,46},{96,54}})));
+    Modelica.Blocks.Math.Add add5
+      annotation (Placement(transformation(extent={{88,6},{96,14}})));
+    Modelica.Blocks.Math.Add add6(k2=+1)
+      annotation (Placement(transformation(extent={{88,-34},{96,-26}})));
+    Modelica.Blocks.Math.Add add7(k2=-1)
+      annotation (Placement(transformation(extent={{88,-74},{96,-66}})));
+    Modelica.Blocks.Math.Gain gain(k=-1)
+      annotation (Placement(transformation(extent={{-10,10},{-4,16}})));
+  equation
+    connect(position, realExtract.u) annotation (Line(points={{-120,0},{-90,0},
+            {-90,30},{-80,30}}, color={0,0,127}));
+    connect(position, realExtract1.u)
+      annotation (Line(points={{-120,0},{-80,0}}, color={0,0,127}));
+    connect(position, realExtract2.u) annotation (Line(points={{-120,0},{-90,0},
+            {-90,-30},{-80,-30}},    color={0,0,127}));
+    connect(realExtract2.y, discretePID.u)
+      annotation (Line(points={{-59,-30},{-38,-30}}, color={0,0,127}));
+    connect(realExtract1.y, discretePID1.u)
+      annotation (Line(points={{-59,0},{-40,0}}, color={0,0,127}));
+    connect(GPS, realExtract4.u) annotation (Line(points={{-60,-100},{-60,-64},
+            {-52,-64}}, color={0,0,127}));
+    connect(realExtract3.y, discretePID2.u1) annotation (Line(points={{18.4,
+            -72},{54,-72},{54,20}}, color={0,0,127}));
+    connect(realExtract4.y, discretePID1.u1) annotation (Line(points={{-43.6,
+            -64},{-4,-64},{-4,-16},{-30,-16},{-30,-10}}, color={0,0,127}));
+    connect(discretePID.y, add.u2) annotation (Line(points={{-17,-30},{26,-30},
+            {26,17.6},{75.2,17.6}}, color={0,0,127}));
+    connect(discretePID.y, add1.u2) annotation (Line(points={{-17,-30},{26,
+            -30},{26,-62.4},{75.2,-62.4}}, color={0,0,127}));
+    connect(GPS, realExtract5.u) annotation (Line(points={{-60,-100},{-60,-72},
+            {-44,-72}}, color={0,0,127}));
+    connect(realExtract5.y, discretePID.u1) annotation (Line(points={{-35.6,
+            -72},{-28,-72},{-28,-40}}, color={0,0,127}));
+    connect(Gyero, realExtract3.u)
+      annotation (Line(points={{0,-100},{0,-72},{10,-72}}, color={0,0,127}));
+    connect(discretePID2.u, limiter.y)
+      annotation (Line(points={{44,30},{21,30}}, color={0,0,127}));
+    connect(realExtract.y, discretePID3.u)
+      annotation (Line(points={{-59,30},{-40,30}}, color={0,0,127}));
+    connect(realExtract6.u, GPS)
+      annotation (Line(points={{-60,-56},{-60,-100}}, color={0,0,127}));
+    connect(realExtract6.y, discretePID3.u1) annotation (Line(points={{-51.6,
+            -56},{-46,-56},{-46,20},{-30,20}}, color={0,0,127}));
+    connect(discretePID3.y, limiter.u)
+      annotation (Line(points={{-19,30},{-2,30}}, color={0,0,127}));
+    connect(add2.u2, add.u2) annotation (Line(points={{75.2,57.6},{26,57.6},{
+            26,17.6},{75.2,17.6}}, color={0,0,127}));
+    connect(add3.u2, add.u2) annotation (Line(points={{75.2,-22.4},{48,-22.4},
+            {48,-30},{26,-30},{26,17.6},{75.2,17.6}}, color={0,0,127}));
+    connect(limiter1.y, discretePID4.u)
+      annotation (Line(points={{21,0},{32,0}}, color={0,0,127}));
+    connect(realExtract7.u, Gyero)
+      annotation (Line(points={{10,-60},{0,-60},{0,-100}}, color={0,0,127}));
+    connect(realExtract7.y, discretePID4.u1) annotation (Line(points={{18.4,
+            -60},{42,-60},{42,-10}}, color={0,0,127}));
+    connect(realExtract8.u, Gyero) annotation (Line(points={{-28,54},{-14,54},
+            {-14,-100},{0,-100}}, color={0,0,127}));
+    connect(discretePID5.y, limiter2.u)
+      annotation (Line(points={{-17,80},{-4,80}}, color={0,0,127}));
+    connect(limiter2.y, add1.u1) annotation (Line(points={{19,80},{72,80},{72,
+            -57.6},{75.2,-57.6}}, color={0,0,127}));
+    connect(add3.u1, add1.u1) annotation (Line(points={{75.2,-17.6},{72,-17.6},
+            {72,-57.6},{75.2,-57.6}}, color={0,0,127}));
+    connect(add.u1, add1.u1) annotation (Line(points={{75.2,22.4},{72,22.4},{
+            72,-57.6},{75.2,-57.6}}, color={0,0,127}));
+    connect(add2.u1, add1.u1) annotation (Line(points={{75.2,62.4},{72,62.4},
+            {72,-57.6},{75.2,-57.6}}, color={0,0,127}));
+    connect(discretePID5.u1, realExtract8.y)
+      annotation (Line(points={{-28,70},{-28,62.4}}, color={0,0,127}));
+    connect(yaw, discretePID5.u)
+      annotation (Line(points={{-120,80},{-80,80},{-80,80},{-38,80}},
+                                                    color={0,0,127}));
+    connect(add2.y, add4.u1) annotation (Line(points={{84.4,60},{86,60},{86,
+            52.4},{87.2,52.4}}, color={0,0,127}));
+    connect(add.y, add5.u1) annotation (Line(points={{84.4,20},{87.2,20},{
+            87.2,12.4}}, color={0,0,127}));
+    connect(add3.y, add6.u1) annotation (Line(points={{84.4,-20},{86,-20},{86,
+            -27.6},{87.2,-27.6}}, color={0,0,127}));
+    connect(add1.y, add7.u1) annotation (Line(points={{84.4,-60},{86,-60},{86,
+            -67.6},{87.2,-67.6}}, color={0,0,127}));
+    connect(add4.y, y1) annotation (Line(points={{96.4,50},{98,50},{98,60},{
+            110,60}}, color={0,0,127}));
+    connect(add5.y, y) annotation (Line(points={{96.4,10},{98,10},{98,20},{
+            110,20}}, color={0,0,127}));
+    connect(add6.y, y2) annotation (Line(points={{96.4,-30},{98,-30},{98,-20},
+            {110,-20}}, color={0,0,127}));
+    connect(add7.y, y3) annotation (Line(points={{96.4,-70},{98,-70},{98,-60},
+            {110,-60}}, color={0,0,127}));
+    connect(discretePID2.y, add5.u2) annotation (Line(points={{65,30},{68,30},
+            {68,8},{87.2,8},{87.2,7.6}}, color={0,0,127}));
+    connect(discretePID2.y, add7.u2) annotation (Line(points={{65,30},{68,30},
+            {68,-72},{87.2,-72},{87.2,-72.4}}, color={0,0,127}));
+    connect(discretePID4.y, add6.u2) annotation (Line(points={{53,0},{70,0},{
+            70,-32.4},{87.2,-32.4}}, color={0,0,127}));
+    connect(discretePID4.y, add4.u2) annotation (Line(points={{53,0},{70,0},{
+            70,47.6},{87.2,47.6}}, color={0,0,127}));
+    connect(discretePID1.y, gain.u) annotation (Line(points={{-19,0},{-18,0},
+            {-18,13},{-10.6,13}}, color={0,0,127}));
+    connect(limiter1.u, gain.y)
+      annotation (Line(points={{-2,0},{-2,13},{-3.7,13}}, color={0,0,127}));
+    annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={Text(
+            extent={{-64,74},{66,12}},
+            lineColor={0,0,0},
+            fillColor={0,0,0},
+            fillPattern=FillPattern.None,
+            textString="MCU"), Rectangle(
+            extent={{-100,100},{100,-100}},
+            lineColor={0,0,0},
+            fillColor={0,0,0},
+            fillPattern=FillPattern.None)}), Diagram(coordinateSystem(
+            preserveAspectRatio=false)));
+  end controlModule;
+  annotation (Icon(graphics={
+        Rectangle(
+          lineColor={200,200,200},
+          fillColor={248,248,248},
+          fillPattern=FillPattern.HorizontalCylinder,
+          extent={{-100.0,-100.0},{100.0,100.0}},
+          radius=25.0),
+        Rectangle(
+          lineColor={128,128,128},
+          extent={{-100.0,-100.0},{100.0,100.0}},
+          radius=25.0),
+        Line(
+          points={{12,60},{12,-60}}),
+        Line(
+          points={{-12,60},{-12,-60}}),
+        Line(points={{-80,0},{-12,0}}),
+        Line(points={{12,0},{80,0}})}), uses(Modelica(version="3.2.3")));
+end Electrical;
