@@ -38,9 +38,9 @@ model controlModule
         rotation=90,
         origin={60,-120})));
   DroneSimulation.Blocks.Control.discretePID discretePID(
-    ki=1,
-    kd=0.8,
-    kp=1.5,
+    ki=z_ki,
+    kd=z_kd,
+    kp=z_kp,
     samplePeriod=samplePeriod)
     annotation (Placement(transformation(extent={{-38,-40},{-18,-20}})));
   DroneSimulation.Blocks.Routing.RealExtract realExtract(index=1)
@@ -53,16 +53,17 @@ model controlModule
   DroneSimulation.Blocks.Routing.RealExtract realExtract2(index=3)
     annotation (Placement(transformation(extent={{-80,-40},{-60,-20}})));
   DroneSimulation.Blocks.Control.discretePID discretePID1(
-    kp=0.1,
-    kd=0.1,
+    kp=y_kp,
+    kd=y_kd,
     samplePeriod=samplePeriod,
-    ki=0.03)
+    ki=y_ki)
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
   DroneSimulation.Blocks.Control.discretePID discretePID2(
-    kd=1,
-    kp=1,
+    kd=gyro_x_kd,
+    kp=gyro_x_kp,
     samplePeriod=samplePeriod,
-    ki=0.3) annotation (Placement(transformation(extent={{44,20},{64,40}})));
+    ki=gyro_x_ki)
+            annotation (Placement(transformation(extent={{44,20},{64,40}})));
   DroneSimulation.Blocks.Routing.RealExtract realExtract3(index=2)
     annotation (Placement(transformation(
         extent={{-4,-4},{4,4}},
@@ -78,10 +79,10 @@ model controlModule
   DroneSimulation.Blocks.Routing.RealExtract realExtract5
     annotation (Placement(transformation(extent={{-44,-76},{-36,-68}})));
   DroneSimulation.Blocks.Control.discretePID discretePID3(
-    kd=0.1,
-    kp=0.1,
+    kd=x_kd,
+    kp=x_kp,
     samplePeriod=samplePeriod,
-    ki=0.03)
+    ki=x_ki)
     annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
   Modelica.Blocks.Nonlinear.Limiter limiter(uMax=0.523)
     annotation (Placement(transformation(extent={{0,20},{20,40}})));
@@ -94,10 +95,11 @@ model controlModule
   Modelica.Blocks.Nonlinear.Limiter limiter1(uMax=0.523)
     annotation (Placement(transformation(extent={{0,-10},{20,10}})));
   DroneSimulation.Blocks.Control.discretePID discretePID4(
-    kd=1,
-    kp=1,
+    kd=gyro_y_kd,
+    kp=gyro_y_kp,
     samplePeriod=samplePeriod,
-    ki=0.1) annotation (Placement(transformation(extent={{32,-10},{52,10}})));
+    ki=gyro_y_ki)
+            annotation (Placement(transformation(extent={{32,-10},{52,10}})));
   DroneSimulation.Blocks.Routing.RealExtract realExtract7(index=1)
     annotation (Placement(transformation(
         extent={{-4,-4},{4,4}},
@@ -109,9 +111,9 @@ model controlModule
         rotation=90,
         origin={-28,58})));
   DroneSimulation.Blocks.Control.discretePID discretePID5(
-    kd=0.08,
-    kp=0.04,
-    ki=0,
+    kd=Yaw_kd,
+    kp=Yaw_kp,
+    ki=Yaw_ki,
     samplePeriod=samplePeriod)
     annotation (Placement(transformation(extent={{-38,70},{-18,90}})));
   Modelica.Blocks.Nonlinear.Limiter limiter2(uMax=0.1)
@@ -129,6 +131,30 @@ model controlModule
     annotation (Placement(transformation(extent={{88,-74},{96,-66}})));
   Modelica.Blocks.Math.Gain gain(k=-1)
     annotation (Placement(transformation(extent={{-10,10},{-4,16}})));
+  parameter Real Yaw_ki=0 "I gain for yaw" annotation (Dialog(group="Yaw PID"));
+  parameter Real Yaw_kd=0.08 "D gain for yaw" annotation (Dialog(group="Yaw PID"));
+  parameter Real Yaw_kp=0.04 "P gain for yaw" annotation (Dialog(group="Yaw PID"));
+  parameter Real x_ki=0.03 "I gain for x position" annotation (Dialog(group="X position PID"));
+  parameter Real x_kd=0.1 "D gain for x position" annotation (Dialog(group="X position PID"));
+  parameter Real x_kp=0.1 "P gainfor x position" annotation (Dialog(group="X position PID"));
+  parameter Real y_ki=0.03 "I gain for y position" annotation (Dialog(group="Y position PID"));
+  parameter Real y_kd=0.1 "D gain for y position" annotation (Dialog(group="Y position PID"));
+  parameter Real y_kp=0.1 "P gain for y position" annotation (Dialog(group="Y position PID"));
+  parameter Real z_ki=1 "I gain for z position" annotation (Dialog(group="Z position PID"));
+  parameter Real z_kd=0.8 "D gain for z position" annotation (Dialog(group="Z position PID"));
+  parameter Real z_kp=1.5 "P gain for z position" annotation (Dialog(group="Z position PID"));
+  parameter Real gyro_x_ki=0.3
+    "I gain for gyroscope measurements in the x direction" annotation (Dialog(group="Gyroscope PID"));
+  parameter Real gyro_x_kd=1
+    "D gain for the gyroscope measurements in the x direction" annotation (Dialog(group="Gyroscope PID"));
+  parameter Real gyro_x_kp=1
+    "P gain for the gyroscope measurements in the x dire3ction" annotation (Dialog(group="Gyroscope PID"));
+  parameter Real gyro_y_ki=0.1
+    "I gain for the gyroscope measurements in the y direction" annotation (Dialog(group="Gyroscope PID"));
+  parameter Real gyro_y_kd=1
+    "D gain for the gyroscope measurements in the y direction" annotation (Dialog(group="Gyroscope PID"));
+  parameter Real gyro_y_kp=1
+    "P gain for the gyroscope measurements in the y direction" annotation (Dialog(group="Gyroscope PID"));
 equation
   connect(position, realExtract.u) annotation (Line(points={{-120,0},{-90,0},
           {-90,30},{-80,30}}, color={0,0,127}));

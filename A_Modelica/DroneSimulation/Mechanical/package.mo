@@ -4,24 +4,30 @@ package Mechanical
     Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape(
       r={0,0.25,0},
       r_CM={0,0.175,0},
-      m=m)
+      m=m,
+    useQuaternions=false)
       annotation (Placement(transformation(extent={{-22,36},{-2,56}})));
     Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape1(
       r={0.25,0,0},
       r_CM={0.175,0,0},
-      m=0.5)            annotation (Placement(transformation(
+      m=0.5,
+    useQuaternions=false)
+                        annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={-12,14})));
     Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape2(
       m=0.5,
       r={0,-0.25,0},
-      r_CM={0,-0.175,0})
+      r_CM={0,-0.175,0},
+    useQuaternions=false)
       annotation (Placement(transformation(extent={{-22,-24},{-2,-4}})));
     Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape3(
       m=0.5,
       r={-0.25,0,0},
-      r_CM={-0.175,0,0}) annotation (Placement(transformation(
+      r_CM={-0.175,0,0},
+    useQuaternions=false)
+                         annotation (Placement(transformation(
           extent={{-10,-10},{10,10}},
           rotation=0,
           origin={-12,-48})));
@@ -30,7 +36,8 @@ package Mechanical
       r_shape={0,0,0},
       diameter=0.01,
       r={0,0,-length},
-      length=length)
+      length=length,
+    useQuaternions=false)
       annotation (Placement(transformation(extent={{32,-10},{52,10}})));
     Modelica.Mechanics.MultiBody.Parts.PointMass pointMass(m=0.50,
         sphereColor={255,0,255})
@@ -100,8 +107,6 @@ package Mechanical
   end droneChassis;
 
   model rotor
-    Modelica.Mechanics.MultiBody.Forces.Torque torque(resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameAB.frame_a)
-      annotation (Placement(transformation(extent={{4,12},{24,32}})));
     Modelica.Mechanics.MultiBody.Joints.Revolute revolute
       annotation (Placement(transformation(extent={{4,-10},{24,10}})));
 
@@ -131,12 +136,18 @@ package Mechanical
       "Propeller gain. Set to 1 for clockwise, -1 for counterclockwise";
     Modelica.Mechanics.MultiBody.Interfaces.Frame_a force
       "Coordinate system fixed to the joint with one cut-force and cut-torque"
-      annotation (Placement(transformation(extent={{-118,-16},{-86,16}})));
-    Modelica.Blocks.Interfaces.RealInput torque2[3]
-      "x-, y-, z-coordinates of torque resolved in frame defined by resolveInFrame"
-      annotation (Placement(transformation(extent={{-140,40},{-100,80}})));
+      annotation (Placement(transformation(extent={{-116,-78},{-84,-46}}),
+        iconTransformation(extent={{-116,-78},{-84,-46}})));
     Modelica.Mechanics.MultiBody.Interfaces.Frame_a Blade
       annotation (Placement(transformation(extent={{86,-56},{118,-24}})));
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_a torque_1
+      "Coordinate system a fixed to the component with one cut-force and cut-torque"
+    annotation (Placement(transformation(extent={{-118,44},{-86,76}}),
+        iconTransformation(extent={{-118,44},{-86,76}})));
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_b torque_2
+      "Coordinate system b fixed to the component with one cut-force and cut-torque"
+    annotation (Placement(transformation(extent={{-118,-16},{-86,16}}),
+        iconTransformation(extent={{-118,-16},{-86,16}})));
   equation
     connect(relativeAngularVelocity.w_rel, realExtract.u)
       annotation (Line(points={{40,73},{40,46}}, color={0,0,127}));
@@ -157,16 +168,10 @@ package Mechanical
         points={{4,0},{-14,0},{-14,-78},{8,-78}},
         color={95,95,95},
         thickness=0.5));
-    connect(torque.frame_a, torque1.frame_a) annotation (Line(
-        points={{4,22},{-14,22},{-14,-78},{8,-78}},
-        color={95,95,95},
-        thickness=0.5));
     connect(revolute.frame_a, force) annotation (Line(
-        points={{4,0},{-102,0}},
+        points={{4,0},{-48,0},{-48,-62},{-100,-62}},
         color={95,95,95},
         thickness=0.5));
-    connect(torque.torque, torque2)
-      annotation (Line(points={{8,34},{8,60},{-120,60}}, color={0,0,127}));
     connect(Airframe, torque1.frame_a) annotation (Line(
         points={{102,52},{84,52},{84,92},{-14,92},{-14,-78},{8,-78}},
         color={95,95,95},
@@ -179,15 +184,19 @@ package Mechanical
         points={{24,0},{62,0},{62,-78},{28,-78}},
         color={95,95,95},
         thickness=0.5));
-    connect(torque.frame_b, torque1.frame_b) annotation (Line(
-        points={{24,22},{62,22},{62,-78},{28,-78}},
-        color={95,95,95},
-        thickness=0.5));
     connect(relativeAngularVelocity.frame_b, torque1.frame_b) annotation (
         Line(
         points={{50,84},{62,84},{62,-78},{28,-78}},
         color={95,95,95},
         thickness=0.5));
+  connect(torque_2, torque1.frame_b) annotation (Line(
+      points={{-102,0},{62,0},{62,-78},{28,-78}},
+      color={95,95,95},
+      thickness=0.5));
+  connect(torque_1, torque1.frame_a) annotation (Line(
+      points={{-102,60},{-14,60},{-14,-78},{8,-78}},
+      color={95,95,95},
+      thickness=0.5));
     annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
             Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
             Text(
