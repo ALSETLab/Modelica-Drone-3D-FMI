@@ -898,6 +898,8 @@ package Tests
      annotation (Placement(transformation(extent={{-80,-40},{-60,-20}})));
    Modelica.Blocks.Math.Add add
      annotation (Placement(transformation(extent={{-48,-18},{-38,-8}})));
+    inner Modelica.Blocks.Noise.GlobalSeed globalSeed
+      annotation (Placement(transformation(extent={{-36,-36},{-26,-26}})));
  equation
     connect(const.y, controlModuleTest_fmu_inputs2_1.xcoord) annotation (Line(
           points={{-45,28},{-28,28},{-28,29},{-23,29}}, color={0,0,127}));
