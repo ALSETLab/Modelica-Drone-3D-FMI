@@ -76,6 +76,6 @@ Alternatively, issue the following command under the ``Commands`` window of Dymo
 - Via pull requests.
 
 ## Copyright
-(c) Hao Chang and Luigi Vanfretti, Rensselaer Polytechnic Institute, Troy, NY.
+(c) Meagan Podlaski, Hao Chang and Luigi Vanfretti, Rensselaer Polytechnic Institute, Troy, NY.
 
 Licensed under the BSD 3-Clause License.
