@@ -31,5 +31,5 @@ equation
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-80,
             -40},{40,60}})), Diagram(coordinateSystem(preserveAspectRatio=
             false, extent={{-80,-40},{40,60}})),
-    experiment(StopTime=10));
+    experiment(StopTime=10, Tolerance=0.01));
 end controlModuleTest_fmu_main;

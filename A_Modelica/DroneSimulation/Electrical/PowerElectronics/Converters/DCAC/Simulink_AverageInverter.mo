@@ -24,7 +24,7 @@ model Simulink_AverageInverter
   Modelica.Electrical.MultiPhase.Interfaces.PositivePlug positivePlug
     annotation (Placement(transformation(extent={{140,-74},{160,-54}}),
         iconTransformation(extent={{140,-74},{160,-54}})));
-  .AircraftPowerSystem.Interfaces.multiphtoabc multiphtoabc annotation (
+  Blocks.Routing.multiphtoabc                  multiphtoabc annotation (
      Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,

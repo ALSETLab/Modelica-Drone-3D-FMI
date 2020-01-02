@@ -166,7 +166,7 @@ model controlModule_Power
     annotation (Placement(transformation(extent={{-110,-120},{-90,-100}})));
   parameter Modelica.SIunits.Resistance R=R
     "Internal resistance of power supply";
-  parameter Modelica.SIunits.Voltage V=V
+  parameter Modelica.SIunits.Voltage V=V/2
     "Fuel cell voltage";
 equation
   y1 = (pin.i*add4.y)/(V/R);
