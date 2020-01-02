@@ -6,14 +6,14 @@ model DCMotor
     N_to_m=10)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={50,0})));
+        origin={36,0})));
 
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a force_out
     annotation (Placement(transformation(extent={{84,46},{116,78}}),
         iconTransformation(extent={{84,46},{116,78}})));
   Modelica.Blocks.Interfaces.RealInput position
     annotation (Placement(transformation(extent={{-142,-20},{-102,20}})));
-  Electrical.SimpleDCmotor dCmotor
+  Electrical.Machines.SimpleDCmotor dCmotor
     annotation (Placement(transformation(extent={{-70,-14},{-50,6}})));
   Blocks.Routing.RealExtend realExtend1
     annotation (Placement(transformation(extent={{16,-78},{36,-58}})));
@@ -43,7 +43,7 @@ equation
     annotation (Line(points={{-9,-68},{14,-68}}, color={0,0,127}));
   connect(dCmotor.force, gain1.u) annotation (Line(points={{-49,-8},{-44,-8},
           {-44,-68},{-32,-68}},      color={0,0,127}));
-  connect(realExtend.y, force.force) annotation (Line(points={{-1.6,0},{38,0}},
+  connect(realExtend.y, force.force) annotation (Line(points={{-1.6,0},{24,0}},
                                color={0,0,127}));
   connect(dCmotor.torque, realExtend.u) annotation (Line(points={{-49,0},{
           -10.8,0}},                      color={0,0,127}));
@@ -53,7 +53,7 @@ equation
   connect(position, limiter.u)
     annotation (Line(points={{-122,0},{-94.8,0}}, color={0,0,127}));
   connect(force_out, force.frame_b) annotation (Line(
-      points={{100,62},{80,62},{80,0},{60,0}},
+      points={{100,62},{60,62},{60,0},{46,0}},
       color={95,95,95},
       thickness=0.5));
   connect(realExtend1.y, torque.torque)

@@ -1,0 +1,274 @@
+within DroneSimulation.Electrical;
+model controlModule_Power
+  parameter Modelica.SIunits.Time samplePeriod=0.01;
+  Modelica.Blocks.Interfaces.RealOutput y annotation (Placement(transformation(
+          extent={{100,10},{120,30}}), iconTransformation(extent={{100,10},{120,
+            30}})));
+  Modelica.Blocks.Interfaces.RealOutput y1 annotation (Placement(transformation(
+          extent={{100,50},{120,70}}), iconTransformation(extent={{100,50},{120,
+            70}})));
+  Modelica.Blocks.Interfaces.RealOutput y2 annotation (Placement(transformation(
+          extent={{100,-30},{120,-10}}), iconTransformation(extent={{100,-30},{120,
+            -10}})));
+  Modelica.Blocks.Interfaces.RealOutput y3 annotation (Placement(transformation(
+          extent={{100,-70},{120,-50}}), iconTransformation(extent={{100,-70},{120,
+            -50}})));
+  Modelica.Blocks.Interfaces.RealInput GPS[3] annotation (Placement(
+        transformation(
+        extent={{-20,-20},{20,20}},
+        rotation=90,
+        origin={-60,-100}), iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=90,
+        origin={-60,-120})));
+  Modelica.Blocks.Interfaces.RealInput Gyero[3] annotation (Placement(
+        transformation(
+        extent={{-20,-20},{20,20}},
+        rotation=90,
+        origin={0,-100}), iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=90,
+        origin={0,-120})));
+  Modelica.Blocks.Interfaces.RealInput Height annotation (Placement(
+        transformation(
+        extent={{-20,-20},{20,20}},
+        rotation=90,
+        origin={60,-120}), iconTransformation(
+        extent={{-20,-20},{20,20}},
+        rotation=90,
+        origin={60,-120})));
+  DroneSimulation.Blocks.Control.discretePID discretePID(
+    ki=z_ki,
+    kd=z_kd,
+    kp=z_kp,
+    samplePeriod=samplePeriod)
+    annotation (Placement(transformation(extent={{-38,-40},{-18,-20}})));
+  DroneSimulation.Blocks.Routing.RealExtract realExtract(index=1)
+    annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
+  Modelica.Blocks.Interfaces.RealInput position[3]
+    annotation (Placement(transformation(extent={{-140,-20},{-100,20}}),
+        iconTransformation(extent={{-140,-20},{-100,20}})));
+  DroneSimulation.Blocks.Routing.RealExtract realExtract1(index=2)
+    annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));
+  DroneSimulation.Blocks.Routing.RealExtract realExtract2(index=3)
+    annotation (Placement(transformation(extent={{-80,-40},{-60,-20}})));
+  DroneSimulation.Blocks.Control.discretePID discretePID1(
+    kp=y_kp,
+    kd=y_kd,
+    samplePeriod=samplePeriod,
+    ki=y_ki)
+    annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
+  DroneSimulation.Blocks.Control.discretePID discretePID2(
+    kd=gyro_x_kd,
+    kp=gyro_x_kp,
+    samplePeriod=samplePeriod,
+    ki=gyro_x_ki)
+            annotation (Placement(transformation(extent={{44,20},{64,40}})));
+  DroneSimulation.Blocks.Routing.RealExtract realExtract3(index=2)
+    annotation (Placement(transformation(
+        extent={{-4,-4},{4,4}},
+        rotation=0,
+        origin={14,-72})));
+  DroneSimulation.Blocks.Routing.RealExtract realExtract4(index=2)
+    annotation (Placement(transformation(extent={{-52,-68},{-44,-60}})));
+  parameter Real maxTilt=2 "Upper limits of input signals";
+  Modelica.Blocks.Math.Add add(k1=+1)
+    annotation (Placement(transformation(extent={{76,16},{84,24}})));
+  Modelica.Blocks.Math.Add add1(k1=+1)
+    annotation (Placement(transformation(extent={{76,-64},{84,-56}})));
+  DroneSimulation.Blocks.Routing.RealExtract realExtract5
+    annotation (Placement(transformation(extent={{-44,-76},{-36,-68}})));
+  DroneSimulation.Blocks.Control.discretePID discretePID3(
+    kd=x_kd,
+    kp=x_kp,
+    samplePeriod=samplePeriod,
+    ki=x_ki)
+    annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
+  Modelica.Blocks.Nonlinear.Limiter limiter(uMax=0.523)
+    annotation (Placement(transformation(extent={{0,20},{20,40}})));
+  DroneSimulation.Blocks.Routing.RealExtract realExtract6(index=1)
+    annotation (Placement(transformation(extent={{-60,-60},{-52,-52}})));
+  Modelica.Blocks.Math.Add add2(k1=-1)
+    annotation (Placement(transformation(extent={{76,56},{84,64}})));
+  Modelica.Blocks.Math.Add add3(k1=-1)
+    annotation (Placement(transformation(extent={{76,-24},{84,-16}})));
+  Modelica.Blocks.Nonlinear.Limiter limiter1(uMax=0.523)
+    annotation (Placement(transformation(extent={{0,-10},{20,10}})));
+  DroneSimulation.Blocks.Control.discretePID discretePID4(
+    kd=gyro_y_kd,
+    kp=gyro_y_kp,
+    samplePeriod=samplePeriod,
+    ki=gyro_y_ki)
+            annotation (Placement(transformation(extent={{32,-10},{52,10}})));
+  DroneSimulation.Blocks.Routing.RealExtract realExtract7(index=1)
+    annotation (Placement(transformation(
+        extent={{-4,-4},{4,4}},
+        rotation=0,
+        origin={14,-60})));
+  DroneSimulation.Blocks.Routing.RealExtract realExtract8(index=3)
+    annotation (Placement(transformation(
+        extent={{-4,-4},{4,4}},
+        rotation=90,
+        origin={-28,58})));
+  DroneSimulation.Blocks.Control.discretePID discretePID5(
+    kd=Yaw_kd,
+    kp=Yaw_kp,
+    ki=Yaw_ki,
+    samplePeriod=samplePeriod)
+    annotation (Placement(transformation(extent={{-38,70},{-18,90}})));
+  Modelica.Blocks.Nonlinear.Limiter limiter2(uMax=0.1)
+    annotation (Placement(transformation(extent={{-2,70},{18,90}})));
+  Modelica.Blocks.Interfaces.RealInput yaw
+    annotation (Placement(transformation(extent={{-140,60},{-100,100}}),
+        iconTransformation(extent={{-140,60},{-100,100}})));
+  Modelica.Blocks.Math.Add add4(k2=-1)
+    annotation (Placement(transformation(extent={{88,46},{96,54}})));
+  Modelica.Blocks.Math.Add add5
+    annotation (Placement(transformation(extent={{88,6},{96,14}})));
+  Modelica.Blocks.Math.Add add6(k2=+1)
+    annotation (Placement(transformation(extent={{88,-34},{96,-26}})));
+  Modelica.Blocks.Math.Add add7(k2=-1)
+    annotation (Placement(transformation(extent={{88,-74},{96,-66}})));
+  Modelica.Blocks.Math.Gain gain(k=-1)
+    annotation (Placement(transformation(extent={{-10,10},{-4,16}})));
+  parameter Real Yaw_ki=0 "I gain for yaw" annotation (Dialog(group="Yaw PID"));
+  parameter Real Yaw_kd=0.08 "D gain for yaw" annotation (Dialog(group="Yaw PID"));
+  parameter Real Yaw_kp=0.04 "P gain for yaw" annotation (Dialog(group="Yaw PID"));
+  parameter Real x_ki=0.03 "I gain for x position" annotation (Dialog(group="X position PID"));
+  parameter Real x_kd=0.1 "D gain for x position" annotation (Dialog(group="X position PID"));
+  parameter Real x_kp=0.1 "P gainfor x position" annotation (Dialog(group="X position PID"));
+  parameter Real y_ki=0.03 "I gain for y position" annotation (Dialog(group="Y position PID"));
+  parameter Real y_kd=0.1 "D gain for y position" annotation (Dialog(group="Y position PID"));
+  parameter Real y_kp=0.1 "P gain for y position" annotation (Dialog(group="Y position PID"));
+  parameter Real z_ki=1 "I gain for z position" annotation (Dialog(group="Z position PID"));
+  parameter Real z_kd=0.8 "D gain for z position" annotation (Dialog(group="Z position PID"));
+  parameter Real z_kp=1.5 "P gain for z position" annotation (Dialog(group="Z position PID"));
+  parameter Real gyro_x_ki=0.3
+    "I gain for gyroscope measurements in the x direction" annotation (Dialog(group="Gyroscope PID"));
+  parameter Real gyro_x_kd=1
+    "D gain for the gyroscope measurements in the x direction" annotation (Dialog(group="Gyroscope PID"));
+  parameter Real gyro_x_kp=1
+    "P gain for the gyroscope measurements in the x dire3ction" annotation (Dialog(group="Gyroscope PID"));
+  parameter Real gyro_y_ki=0.1
+    "I gain for the gyroscope measurements in the y direction" annotation (Dialog(group="Gyroscope PID"));
+  parameter Real gyro_y_kd=1
+    "D gain for the gyroscope measurements in the y direction" annotation (Dialog(group="Gyroscope PID"));
+  parameter Real gyro_y_kp=1
+    "P gain for the gyroscope measurements in the y direction" annotation (Dialog(group="Gyroscope PID"));
+  Modelica.Electrical.Analog.Interfaces.Pin pin
+    annotation (Placement(transformation(extent={{-110,-70},{-90,-50}})));
+  Modelica.Electrical.Analog.Basic.Resistor resistor(R=R) annotation (Placement(
+        transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={-100,-82})));
+  Modelica.Electrical.Analog.Basic.Ground ground
+    annotation (Placement(transformation(extent={{-110,-120},{-90,-100}})));
+  parameter Modelica.SIunits.Resistance R=R
+    "Internal resistance of power supply";
+  parameter Modelica.SIunits.Voltage V=V
+    "Fuel cell voltage";
+equation
+  y1 = (pin.i*add4.y)/(V/R);
+  y = (pin.i*add5.y)/(V/R);
+  y2 = (pin.i*add6.y)/(V/R);
+  y3 = (pin.i*add7.y)/(V/R);
+  connect(position, realExtract.u) annotation (Line(points={{-120,0},{-90,0},
+          {-90,30},{-80,30}}, color={0,0,127}));
+  connect(position, realExtract1.u)
+    annotation (Line(points={{-120,0},{-80,0}}, color={0,0,127}));
+  connect(position, realExtract2.u) annotation (Line(points={{-120,0},{-90,0},
+          {-90,-30},{-80,-30}},    color={0,0,127}));
+  connect(realExtract2.y, discretePID.u)
+    annotation (Line(points={{-59,-30},{-38,-30}}, color={0,0,127}));
+  connect(realExtract1.y, discretePID1.u)
+    annotation (Line(points={{-59,0},{-40,0}}, color={0,0,127}));
+  connect(GPS, realExtract4.u) annotation (Line(points={{-60,-100},{-60,-64},
+          {-52,-64}}, color={0,0,127}));
+  connect(realExtract3.y, discretePID2.u1) annotation (Line(points={{18.4,
+          -72},{54,-72},{54,20}}, color={0,0,127}));
+  connect(realExtract4.y, discretePID1.u1) annotation (Line(points={{-43.6,
+          -64},{-4,-64},{-4,-16},{-30,-16},{-30,-10}}, color={0,0,127}));
+  connect(discretePID.y, add.u2) annotation (Line(points={{-17,-30},{26,-30},
+          {26,17.6},{75.2,17.6}}, color={0,0,127}));
+  connect(discretePID.y, add1.u2) annotation (Line(points={{-17,-30},{26,
+          -30},{26,-62.4},{75.2,-62.4}}, color={0,0,127}));
+  connect(GPS, realExtract5.u) annotation (Line(points={{-60,-100},{-60,-72},
+          {-44,-72}}, color={0,0,127}));
+  connect(realExtract5.y, discretePID.u1) annotation (Line(points={{-35.6,
+          -72},{-28,-72},{-28,-40}}, color={0,0,127}));
+  connect(Gyero, realExtract3.u)
+    annotation (Line(points={{0,-100},{0,-72},{10,-72}}, color={0,0,127}));
+  connect(discretePID2.u, limiter.y)
+    annotation (Line(points={{44,30},{21,30}}, color={0,0,127}));
+  connect(realExtract.y, discretePID3.u)
+    annotation (Line(points={{-59,30},{-40,30}}, color={0,0,127}));
+  connect(realExtract6.u, GPS)
+    annotation (Line(points={{-60,-56},{-60,-100}}, color={0,0,127}));
+  connect(realExtract6.y, discretePID3.u1) annotation (Line(points={{-51.6,
+          -56},{-46,-56},{-46,20},{-30,20}}, color={0,0,127}));
+  connect(discretePID3.y, limiter.u)
+    annotation (Line(points={{-19,30},{-2,30}}, color={0,0,127}));
+  connect(add2.u2, add.u2) annotation (Line(points={{75.2,57.6},{26,57.6},{
+          26,17.6},{75.2,17.6}}, color={0,0,127}));
+  connect(add3.u2, add.u2) annotation (Line(points={{75.2,-22.4},{48,-22.4},
+          {48,-30},{26,-30},{26,17.6},{75.2,17.6}}, color={0,0,127}));
+  connect(limiter1.y, discretePID4.u)
+    annotation (Line(points={{21,0},{32,0}}, color={0,0,127}));
+  connect(realExtract7.u, Gyero)
+    annotation (Line(points={{10,-60},{0,-60},{0,-100}}, color={0,0,127}));
+  connect(realExtract7.y, discretePID4.u1) annotation (Line(points={{18.4,
+          -60},{42,-60},{42,-10}}, color={0,0,127}));
+  connect(realExtract8.u, Gyero) annotation (Line(points={{-28,54},{-14,54},
+          {-14,-100},{0,-100}}, color={0,0,127}));
+  connect(discretePID5.y, limiter2.u)
+    annotation (Line(points={{-17,80},{-4,80}}, color={0,0,127}));
+  connect(limiter2.y, add1.u1) annotation (Line(points={{19,80},{72,80},{72,
+          -57.6},{75.2,-57.6}}, color={0,0,127}));
+  connect(add3.u1, add1.u1) annotation (Line(points={{75.2,-17.6},{72,-17.6},
+          {72,-57.6},{75.2,-57.6}}, color={0,0,127}));
+  connect(add.u1, add1.u1) annotation (Line(points={{75.2,22.4},{72,22.4},{
+          72,-57.6},{75.2,-57.6}}, color={0,0,127}));
+  connect(add2.u1, add1.u1) annotation (Line(points={{75.2,62.4},{72,62.4},
+          {72,-57.6},{75.2,-57.6}}, color={0,0,127}));
+  connect(discretePID5.u1, realExtract8.y)
+    annotation (Line(points={{-28,70},{-28,62.4}}, color={0,0,127}));
+  connect(yaw, discretePID5.u)
+    annotation (Line(points={{-120,80},{-80,80},{-80,80},{-38,80}},
+                                                  color={0,0,127}));
+  connect(add2.y, add4.u1) annotation (Line(points={{84.4,60},{86,60},{86,
+          52.4},{87.2,52.4}}, color={0,0,127}));
+  connect(add.y, add5.u1) annotation (Line(points={{84.4,20},{87.2,20},{
+          87.2,12.4}}, color={0,0,127}));
+  connect(add3.y, add6.u1) annotation (Line(points={{84.4,-20},{86,-20},{86,
+          -27.6},{87.2,-27.6}}, color={0,0,127}));
+  connect(add1.y, add7.u1) annotation (Line(points={{84.4,-60},{86,-60},{86,
+          -67.6},{87.2,-67.6}}, color={0,0,127}));
+  connect(discretePID2.y, add5.u2) annotation (Line(points={{65,30},{68,30},
+          {68,8},{87.2,8},{87.2,7.6}}, color={0,0,127}));
+  connect(discretePID2.y, add7.u2) annotation (Line(points={{65,30},{68,30},
+          {68,-72},{87.2,-72},{87.2,-72.4}}, color={0,0,127}));
+  connect(discretePID4.y, add6.u2) annotation (Line(points={{53,0},{70,0},{
+          70,-32.4},{87.2,-32.4}}, color={0,0,127}));
+  connect(discretePID4.y, add4.u2) annotation (Line(points={{53,0},{70,0},{
+          70,47.6},{87.2,47.6}}, color={0,0,127}));
+  connect(discretePID1.y, gain.u) annotation (Line(points={{-19,0},{-18,0},
+          {-18,13},{-10.6,13}}, color={0,0,127}));
+  connect(limiter1.u, gain.y)
+    annotation (Line(points={{-2,0},{-2,13},{-3.7,13}}, color={0,0,127}));
+  connect(pin, resistor.p)
+    annotation (Line(points={{-100,-60},{-100,-72}}, color={0,0,255}));
+  connect(resistor.n, ground.p)
+    annotation (Line(points={{-100,-92},{-100,-100}}, color={0,0,255}));
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={Text(
+          extent={{-64,74},{66,12}},
+          lineColor={0,0,0},
+          fillColor={0,0,0},
+          fillPattern=FillPattern.None,
+          textString="MCU"), Rectangle(
+          extent={{-100,100},{100,-100}},
+          lineColor={0,0,0},
+          fillColor={0,0,0},
+          fillPattern=FillPattern.None)}), Diagram(coordinateSystem(
+          preserveAspectRatio=false)));
+end controlModule_Power;

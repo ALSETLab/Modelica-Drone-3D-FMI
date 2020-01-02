@@ -32,8 +32,8 @@ package Electrical
       annotation (Placement(transformation(extent={{84,-16},{116,16}})));
     Modelica.Blocks.Interfaces.RealInput position
       annotation (Placement(transformation(extent={{-142,-20},{-102,20}})));
-    SimpleDCmotor dCmotor
-      annotation (Placement(transformation(extent={{-72,-10},{-52,10}})));
+  Machines.SimpleDCmotor dCmotor
+    annotation (Placement(transformation(extent={{-72,-10},{-52,10}})));
     Blocks.Routing.RealExtend realExtend1
       annotation (Placement(transformation(extent={{38,-78},{58,-58}})));
     Modelica.Mechanics.MultiBody.Sensors.RelativeAngularVelocity

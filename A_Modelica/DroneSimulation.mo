@@ -853,7 +853,7 @@ Passes a Real signal through without modification.  Enables signals to be read o
       Modelica.Blocks.Math.Add add7(k2=-1)
         annotation (Placement(transformation(extent={{88,-74},{96,-66}})));
       Modelica.Blocks.Math.Gain gain(k=-1)
-        annotation (Placement(transformation(extent={{-10,10},{-4,16}})));
+        annotation (Placement(transformation(extent={{-12,-2},{-6,4}})));
     equation
       connect(position, realExtract.u) annotation (Line(points={{-120,0},{-90,0},
               {-90,30},{-80,30}}, color={0,0,127}));
@@ -943,9 +943,9 @@ Passes a Real signal through without modification.  Enables signals to be read o
       connect(discretePID4.y, add4.u2) annotation (Line(points={{53,0},{70,0},{
               70,47.6},{87.2,47.6}}, color={0,0,127}));
       connect(discretePID1.y, gain.u) annotation (Line(points={{-19,0},{-18,0},
-              {-18,13},{-10.6,13}}, color={0,0,127}));
+              {-18,1},{-12.6,1}},   color={0,0,127}));
       connect(limiter1.u, gain.y)
-        annotation (Line(points={{-2,0},{-2,13},{-3.7,13}}, color={0,0,127}));
+        annotation (Line(points={{-2,0},{-2,1},{-5.7,1}},   color={0,0,127}));
       annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={Text(
               extent={{-64,74},{66,12}},
               lineColor={0,0,0},
