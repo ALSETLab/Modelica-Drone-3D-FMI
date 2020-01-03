@@ -84,14 +84,10 @@ equation
        points={{30.2,-5.6},{36.1,-5.6},{36.1,-4},{44,-4}},
        color={95,95,95},
        thickness=0.5));
-  connect(propellerRev2.position, controlModule_Power.y2) annotation (Line(
-        points={{7.8,-4.8},{-9.16667,-4.8},{-9.16667,-2}}, color={0,0,127}));
    connect(propellerRev3.Airframe,droneChassis1. frame_a3) annotation (Line(
        points={{30.2,-15.6},{36,-15.6},{36,-8},{44,-8}},
        color={95,95,95},
        thickness=0.5));
-  connect(propellerRev3.position, controlModule_Power.y3) annotation (Line(
-        points={{7.8,-14.8},{-9.16667,-14.8},{-9.16667,-6}}, color={0,0,127}));
   connect(controlModule_Power.yaw, const.y)
     annotation (Line(points={{-31.6667,8},{-39.6,8}}, color={0,0,127}));
   connect(realExtendMultiple.u, xcoord) annotation (Line(points={{-74,6},{-90,6},
@@ -102,6 +98,10 @@ equation
           -6},{-92,-80},{-120,-80}}, color={0,0,127}));
   connect(controlModule_Power.pin, auxiliaryPowerSystem.ac1)
     annotation (Line(points={{-30,-6},{-44,-6},{-44,-18}}, color={0,0,255}));
+  connect(controlModule_Power.y2, propellerRev2.position) annotation (Line(
+        points={{-9.16667,-2},{0,-2},{0,-4.8},{7.8,-4.8}}, color={0,0,127}));
+  connect(controlModule_Power.y3, propellerRev3.position) annotation (Line(
+        points={{-9.16667,-6},{0,-6},{0,-14.8},{7.8,-14.8}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},
