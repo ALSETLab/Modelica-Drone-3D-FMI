@@ -1,5 +1,8 @@
 within DroneSimulation.Examples.DroneWithoutIdealPower;
-model DroneTest_FMU
+model DroneTest_constant_voltage
+  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
+      -1})
+    annotation (Placement(transformation(extent={{60,60},{80,80}})));
   Modelica.Blocks.Interfaces.RealInput xcoord
     annotation (Placement(transformation(extent={{-140,60},{-100,100}})));
   Modelica.Blocks.Interfaces.RealInput zcoord
@@ -44,10 +47,13 @@ model DroneTest_FMU
     annotation (Placement(transformation(extent={{-4,-4},{4,4}},
         rotation=0,
         origin={-44,8})));
-  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,-1})
-    annotation (Placement(transformation(extent={{60,60},{80,80}})));
-  Electrical.Sources.AuxiliaryPowerSystem auxiliaryPowerSystem(V=V)
-    annotation (Placement(transformation(extent={{-54,-38},{-34,-18}})));
+  Modelica.Electrical.Analog.Basic.Ground ground
+    annotation (Placement(transformation(extent={{-52,-56},{-32,-36}})));
+  Modelica.Electrical.Analog.Sources.ConstantVoltage constantVoltage(V=V)
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={-42,-16})));
 equation
   gPS.y[1] = xgps;
   gPS.y[2] = ygps;
@@ -100,8 +106,10 @@ equation
           0},{-92,0},{-120,0}}, color={0,0,127}));
   connect(realExtendMultiple.u2, zcoord) annotation (Line(points={{-74,-6},{-92,
           -6},{-92,-80},{-120,-80}}, color={0,0,127}));
-  connect(controlModule_Power.pin, auxiliaryPowerSystem.ac1)
-    annotation (Line(points={{-30,-6},{-44,-6},{-44,-18}}, color={0,0,255}));
+  connect(ground.p, constantVoltage.n)
+    annotation (Line(points={{-42,-36},{-42,-26}}, color={0,0,255}));
+  connect(controlModule_Power.pin, constantVoltage.p)
+    annotation (Line(points={{-30,-6},{-42,-6}}, color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},
@@ -118,4 +126,4 @@ equation
         coordinateSystem(preserveAspectRatio=false)),
     __Dymola_Commands(file="drone_animation_setup.mos" "drone_animation_setup"),
      experiment(StopTime=10));
-end DroneTest_FMU;
+end DroneTest_constant_voltage;

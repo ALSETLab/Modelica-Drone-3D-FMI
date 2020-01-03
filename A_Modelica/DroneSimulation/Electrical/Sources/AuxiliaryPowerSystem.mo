@@ -19,11 +19,13 @@ model AuxiliaryPowerSystem "Auxiliary power system for drone"
   Modelica.Electrical.Analog.Basic.Inductor inductor1(L=1e-6)
     annotation (Placement(transformation(extent={{-24,-16},{-4,4}})));
   CHEETA.Aircraft.Electrical.FuelCell.SimplifiedFuelCell simplifiedFuelCell(R=100, L=
-        0.001) annotation (Placement(transformation(extent={{-86,-6},{-74,6}})));
+        0.001,
+    V=V)       annotation (Placement(transformation(extent={{-86,-6},{-74,6}})));
   Modelica.Electrical.Analog.Interfaces.PositivePin ac1
                                                        "AC output" annotation (
       Placement(transformation(extent={{-10,90},{10,110}}), iconTransformation(
           extent={{-10,90},{10,110}})));
+  parameter Modelica.SIunits.Voltage V=1000 "Fuel cell voltage";
 equation
   connect(dcdc.dc_p2, inductor.p)
     annotation (Line(points={{-40,6},{-24,6}}, color={0,0,255}));
