@@ -58,8 +58,8 @@ equation
   gPS.y[1] = xgps;
   gPS.y[2] = ygps;
   gPS.y[3] = zgps;
-  connect(propellerRev.position, controlModule_Power.y) annotation (Line(points
-        ={{7.8,15.2},{-2,15.2},{-2,6},{-9.16667,6}}, color={0,0,127}));
+  connect(propellerRev.position, controlModule_Power.y) annotation (Line(points=
+         {{7.8,15.2},{-2,15.2},{-2,6},{-9.16667,6}}, color={0,0,127}));
   connect(controlModule_Power.position, realExtendMultiple.y)
     annotation (Line(points={{-31.6667,0},{-53,0}}, color={0,0,127}));
   connect(gPS.frame_a,droneChassis1. frame_a3) annotation (Line(
