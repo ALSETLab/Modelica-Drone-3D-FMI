@@ -1,6 +1,9 @@
 within DroneSimulation.Mechanical;
 model Propeller_DCMachine
-  DCMotor_DCMachine dCMotor2_1(k=PropellerGain)
+  DCMotor_DCMachine dCMotor2_1(
+    k=PropellerGain,
+    VaNominal=VaNominal,
+    IaNominal=IaNominal)
     annotation (Placement(transformation(extent={{-80,-20},{-40,20}})));
   rotor rotor1
     annotation (Placement(transformation(extent={{-16,20},{26,-20}})));
@@ -8,10 +11,19 @@ model Propeller_DCMachine
     annotation (Placement(transformation(extent={{86,-26},{118,6}})));
   Blades blades
     annotation (Placement(transformation(extent={{50,6},{92,46}})));
+
   parameter Real PropellerGain=-1
     "Propeller gain. Set to 1 for clockwise, -1 for counterclockwise";
   Modelica.Blocks.Interfaces.RealInput position
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
+
+  parameter Modelica.SIunits.Voltage VaNominal=5
+    "Nominal armature voltage for motor"
+    annotation (Dialog(group="Motor Parameters"));
+  parameter Modelica.SIunits.Current IaNominal=0.1
+    "Nominal armature current (>0..Motor, <0..Generator) for motor"
+    annotation (Dialog(group="Motor Parameters"));
+
 equation
   connect(rotor1.Airframe, Airframe) annotation (Line(
       points={{26.42,-10.4},{102,-10.4},{102,-10}},

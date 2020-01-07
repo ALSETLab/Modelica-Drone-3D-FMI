@@ -43,7 +43,10 @@ model DCMotor_DCMachine "DC motor using DC machine from MSL"
         origin={-40,-48})));
   Modelica.Mechanics.Rotational.Components.Fixed fixed
     annotation (Placement(transformation(extent={{-46,-68},{-34,-56}})));
-  Modelica.Electrical.Machines.BasicMachines.DCMachines.DC_PermanentMagnet dcpm
+  Modelica.Electrical.Machines.BasicMachines.DCMachines.DC_PermanentMagnet dcpm(
+    TaOperational=293.15,
+    VaNominal=VaNominal,
+    IaNominal=IaNominal)
     annotation (Placement(transformation(extent={{-72,-34},{-52,-14}})));
   Modelica.Electrical.Analog.Sources.SignalVoltage signalVoltage
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
@@ -54,6 +57,11 @@ model DCMotor_DCMachine "DC motor using DC machine from MSL"
         origin={-77,-19},
         extent={{-5,-5},{5,5}},
         rotation=0)));
+  parameter Modelica.SIunits.Voltage VaNominal=5
+    "Nominal armature voltage for motor";
+  parameter Modelica.SIunits.Current IaNominal=0.1
+    "Nominal armature current (>0..Motor, <0..Generator) for motor";
+
 equation
   connect(gain1.y, realExtend1.u)
     annotation (Line(points={{5,-68},{14,-68}},  color={0,0,127}));

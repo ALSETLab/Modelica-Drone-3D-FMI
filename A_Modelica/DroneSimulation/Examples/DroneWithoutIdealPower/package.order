@@ -2,5 +2,6 @@ PropellerTest
 PropellerTestwithBody
 DroneTest_constant_voltage
 DroneTest_FMU
+DroneTest_FMU_DCmotor
 controlModuleTest
 controlModuleTest_fmu_main
