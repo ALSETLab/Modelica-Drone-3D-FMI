@@ -1,6 +1,6 @@
 within DroneSimulation.Examples.DroneWithoutIdealPower;
 model PropellerTest
-  Mechanical.Propeller_DCMachine propeller_DCMachine(PropellerGain=1)
+  Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine(PropellerGain=1)
     annotation (Placement(transformation(extent={{-8,-4},{12,6}})));
   Modelica.Blocks.Sources.Ramp ramp(height=2, duration=1)
     annotation (Placement(transformation(extent={{-68,-10},{-48,10}})));

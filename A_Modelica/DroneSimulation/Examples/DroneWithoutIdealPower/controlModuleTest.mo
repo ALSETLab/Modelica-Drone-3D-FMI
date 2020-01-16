@@ -4,9 +4,10 @@ model controlModuleTest
     maxTilt=0.05,
     samplePeriod=0.01,
     R=100) annotation (Placement(transformation(extent={{-30,8},{-10,28}})));
-  Mechanical.droneChassis droneChassis1(length=0.25, m=0.5)
+  Mechanical.Chassis.droneChassis droneChassis1(length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{44,6},{94,26}})));
-  Mechanical.Propeller propellerRev(PropellerGain=1)
+  Mechanical.Propeller.Propeller
+                       propellerRev(PropellerGain=1)
     annotation (Placement(transformation(extent={{8,34},{28,42}})));
   inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
       -1})
@@ -36,11 +37,14 @@ model controlModuleTest
     annotation (Placement(transformation(extent={{-92,10},{-72,30}})));
   Modelica.Blocks.Sources.Constant const1(k=0)
     annotation (Placement(transformation(extent={{2,-28},{-10,-16}})));
-  Mechanical.Propeller propellerRev1
+  Mechanical.Propeller.Propeller
+                       propellerRev1
     annotation (Placement(transformation(extent={{8,24},{28,32}})));
-  Mechanical.Propeller propellerRev2(PropellerGain=1)
+  Mechanical.Propeller.Propeller
+                       propellerRev2(PropellerGain=1)
     annotation (Placement(transformation(extent={{8,14},{28,22}})));
-  Mechanical.Propeller propellerRev3
+  Mechanical.Propeller.Propeller
+                       propellerRev3
     annotation (Placement(transformation(extent={{8,4},{28,12}})));
   PowerSystem.PowerSystem powerSystem
     annotation (Placement(transformation(extent={{-50,-26},{-30,-6}})));

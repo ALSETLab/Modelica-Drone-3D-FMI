@@ -17,9 +17,10 @@ model DroneTest_FMU
     annotation (Placement(transformation(extent={{100,-90},{120,-70}})));
   Electrical.controlModule controlModule(maxTilt=0.05, samplePeriod=0.01)
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
-  Mechanical.droneChassis droneChassis1(length=0.25, m=0.5)
+  Mechanical.Chassis.droneChassis droneChassis1(length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{44,-12},{94,8}})));
-  Mechanical.Propeller propellerRev(PropellerGain=1)
+  Mechanical.Propeller.Propeller
+                       propellerRev(PropellerGain=1)
     annotation (Placement(transformation(extent={{10,12},{30,20}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple
     annotation (Placement(transformation(extent={{-74,-10},{-54,10}})));
@@ -31,11 +32,14 @@ model DroneTest_FMU
     annotation (Placement(transformation(extent={{10,-80},{30,-60}})));
   Modelica.Blocks.Sources.Constant const1(k=0)
     annotation (Placement(transformation(extent={{2,-42},{-10,-30}})));
-  Mechanical.Propeller propellerRev1
+  Mechanical.Propeller.Propeller
+                       propellerRev1
     annotation (Placement(transformation(extent={{10,2},{30,10}})));
-  Mechanical.Propeller propellerRev2(PropellerGain=1)
+  Mechanical.Propeller.Propeller
+                       propellerRev2(PropellerGain=1)
     annotation (Placement(transformation(extent={{10,-8},{30,0}})));
-  Mechanical.Propeller propellerRev3
+  Mechanical.Propeller.Propeller
+                       propellerRev3
     annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-4,-4},{4,4}},
