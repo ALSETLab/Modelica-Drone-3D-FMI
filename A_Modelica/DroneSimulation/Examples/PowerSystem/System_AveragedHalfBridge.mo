@@ -39,8 +39,8 @@ model System_AveragedHalfBridge
     phase=0,
     startTime=0.07)
     annotation (Placement(transformation(extent={{-56,-38},{-40,-22}})));
-  CHEETA.Aircraft.Electrical.PowerElectronics.Converters.DCAC.DCAC_HalfBridgeAverage
-    dCAC_HalfBridgeAverage
+  Electrical.PowerElectronics.Converters.DCAC.DCAC_HalfBridgeAverage
+    dCAC_HalfBridgeAverage(Vd=100)
     annotation (Placement(transformation(extent={{26,-10},{46,10}})));
 equation
   connect(dcdc.dc_p2, inductor.p)

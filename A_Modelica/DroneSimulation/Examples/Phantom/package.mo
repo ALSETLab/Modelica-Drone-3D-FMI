@@ -97,8 +97,8 @@ package Phantom
         points={{5.8,2.4},{-2.1,2.4},{-2.1,12},{-9.16667,12}}, color={0,0,127}));
   connect(propeller_1_3.position, controlModuleSpeed.y2) annotation (Line(
         points={{5.8,12.4},{-1.1,12.4},{-1.1,16},{-9.16667,16}}, color={0,0,127}));
-  connect(controlModuleSpeed.y, propeller_1_2.position) annotation (Line(points
-        ={{-9.16667,20},{-2,20},{-2,22.4},{5.8,22.4}}, color={0,0,127}));
+  connect(controlModuleSpeed.y, propeller_1_2.position) annotation (Line(points=
+         {{-9.16667,20},{-2,20},{-2,22.4},{5.8,22.4}}, color={0,0,127}));
   connect(propeller_1_2.Airframe, droneChassis_1_1.frame_a) annotation (Line(
       points={{28.2,21.8},{35.1,21.8},{35.1,18},{42,18}},
       color={95,95,95},

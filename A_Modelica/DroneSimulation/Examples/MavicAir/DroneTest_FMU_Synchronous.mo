@@ -97,6 +97,15 @@ equation
       points={{44,4},{38,4},{38,14.4},{30.2,14.4}},
       color={95,95,95},
       thickness=0.5));
+  connect(gPS.frame_a, mavicAir_droneChassis.frame_a3) annotation (Line(
+      points={{30,-50},{34,-50},{34,-14},{37.1,-14},{37.1,-8},{44,-8}},
+      color={95,95,95},
+      thickness=0.5));
+  connect(accelerometer.frame_a, mavicAir_droneChassis.frame_a3) annotation (
+      Line(
+      points={{30,-70},{34,-70},{34,-14},{37.1,-14},{37.1,-8},{44,-8}},
+      color={95,95,95},
+      thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},

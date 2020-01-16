@@ -18,9 +18,9 @@ model DCAC_HalfBridgeAverage
         rotation=90,
         origin={50,-90})));
 
-  Switches.SwitchCellAverP switch1(Ron=plant.ron)
+  Switches.SwitchCellAverP switch1(Ron=Ron)
     annotation (Placement(transformation(extent={{-52,14},{-36,28}})));
-  Switches.SwitchCellAverN switch4(Ron=plant.ron)
+  Switches.SwitchCellAverN switch4(Ron=Ron)
     annotation (Placement(transformation(extent={{-52,-38},{-36,-24}})));
 
   Modelica.Blocks.Interfaces.RealInput DutyCycle annotation (Placement(
@@ -44,7 +44,7 @@ model DCAC_HalfBridgeAverage
     annotation (Placement(transformation(extent={{4,-4},{-4,4}},
         rotation=90,
         origin={64,24})));
-  Modelica.Blocks.Sources.Constant const5(k=plant.Vd/2)
+  Modelica.Blocks.Sources.Constant const5(k=Vd/2)
     annotation (Placement(transformation(extent={{94,34},{84,44}})));
   Modelica.Blocks.Math.Add add(k2=-1)
     annotation (Placement(transformation(extent={{4,-4},{-4,4}},
@@ -66,8 +66,9 @@ model DCAC_HalfBridgeAverage
         iconTransformation(extent={{-100,-70},{-80,-50}})));
   Modelica.Electrical.Analog.Basic.Ground ground1
     annotation (Placement(transformation(extent={{0,-24},{20,-4}})));
-  CHEETA.Records.NotionalPowerSystem.Plant plant
-    annotation (Placement(transformation(extent={{54,54},{74,74}})));
+  parameter Modelica.SIunits.Resistance Ron=0.1
+    "Forward state-on differential resistance (closed resistance)";
+    parameter Real Vd "DC voltage";
 equation
   connect(switch1.pin_n, signalVoltage.n)
     annotation (Line(points={{-48,13},{-48,0},{54,0}},   color={0,0,255}));

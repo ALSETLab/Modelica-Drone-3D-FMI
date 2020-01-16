@@ -18,7 +18,7 @@ model PowerSystem
     annotation (Placement(transformation(extent={{26,-42},{46,-22}})));
   Modelica.Electrical.Analog.Basic.Inductor inductor1(L=1e-6)
     annotation (Placement(transformation(extent={{-24,-16},{-4,4}})));
-  CHEETA.Aircraft.Electrical.FuelCell.SimplifiedFuelCell simplifiedFuelCell(R=100, L=
+  Electrical.Sources.FuelCell.SimplifiedFuelCell         simplifiedFuelCell(R=100, L=
         0.001,
     V=V)       annotation (Placement(transformation(extent={{-86,-6},{-74,6}})));
   Modelica.Electrical.Analog.Interfaces.PositivePin ac1
