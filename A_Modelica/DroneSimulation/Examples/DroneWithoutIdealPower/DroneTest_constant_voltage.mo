@@ -23,9 +23,10 @@ model DroneTest_constant_voltage
     R=1000,
     V=V)
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
-  Mechanical.droneChassis droneChassis1(length=0.25, m=0.5)
+  Mechanical.Chassis.droneChassis droneChassis1(length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{44,-12},{94,8}})));
-  Mechanical.Propeller propellerRev(PropellerGain=1)
+  Mechanical.Propeller.Propeller
+                       propellerRev(PropellerGain=1)
     annotation (Placement(transformation(extent={{10,12},{30,20}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple
     annotation (Placement(transformation(extent={{-74,-10},{-54,10}})));
@@ -37,11 +38,14 @@ model DroneTest_constant_voltage
     annotation (Placement(transformation(extent={{10,-80},{30,-60}})));
   Modelica.Blocks.Sources.Constant const1(k=0)
     annotation (Placement(transformation(extent={{2,-42},{-10,-30}})));
-  Mechanical.Propeller propellerRev1
+  Mechanical.Propeller.Propeller
+                       propellerRev1
     annotation (Placement(transformation(extent={{10,2},{30,10}})));
-  Mechanical.Propeller propellerRev2(PropellerGain=1)
+  Mechanical.Propeller.Propeller
+                       propellerRev2(PropellerGain=1)
     annotation (Placement(transformation(extent={{10,-8},{30,0}})));
-  Mechanical.Propeller propellerRev3
+  Mechanical.Propeller.Propeller
+                       propellerRev3
     annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-4,-4},{4,4}},
@@ -72,8 +76,8 @@ equation
       points={{30,-70},{36,-70},{36,-8},{44,-8}},
       color={95,95,95},
       thickness=0.5));
-  connect(accelerometer.y, controlModule_Power.Gyero) annotation (Line(points={
-          {9,-70},{-21.6667,-70},{-21.6667,-12}}, color={0,0,127}));
+  connect(accelerometer.y, controlModule_Power.Gyero) annotation (Line(points={{9,-70},
+          {-21.6667,-70},{-21.6667,-12}},         color={0,0,127}));
   connect(controlModule_Power.Height, const1.y) annotation (Line(points={{
           -16.6667,-12},{-16.6667,-36},{-10.6,-36}}, color={0,0,127}));
   connect(propellerRev1.position, controlModule_Power.y1) annotation (Line(

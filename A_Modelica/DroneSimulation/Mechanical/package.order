@@ -1,9 +1,5 @@
-droneChassis
 Blades
-DCMotor
 Propeller
-rotor
-DCMotor_EMF
-Propeller_EMF
-DCMotor_DCMachine
-Propeller_DCMachine
+Chassis
+Rotor
+Motor

@@ -1,16 +1,16 @@
 within DroneSimulation.Examples.DroneWithoutIdealPower;
 model PropellerTestwithBody
-  Mechanical.Propeller_DCMachine propeller_DCMachine(PropellerGain=1)
+  Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine(PropellerGain=1)
     annotation (Placement(transformation(extent={{-10,16},{10,26}})));
   Modelica.Blocks.Sources.Ramp ramp(height=2, duration=1)
     annotation (Placement(transformation(extent={{-62,10},{-42,30}})));
-  Mechanical.Propeller_DCMachine propeller_DCMachine1
+  Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine1
     annotation (Placement(transformation(extent={{-10,-2},{10,8}})));
-  Mechanical.Propeller_DCMachine propeller_DCMachine2(PropellerGain=1)
+  Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine2(PropellerGain=1)
     annotation (Placement(transformation(extent={{-10,-18},{10,-8}})));
-  Mechanical.Propeller_DCMachine propeller_DCMachine3
+  Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine3
     annotation (Placement(transformation(extent={{-10,-34},{10,-24}})));
-  Mechanical.droneChassis droneChassis1(length=0.25, m=0.5)
+  Mechanical.Chassis.droneChassis droneChassis1(length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{44,-12},{94,8}})));
 equation
   connect(propeller_DCMachine.position, ramp.y)

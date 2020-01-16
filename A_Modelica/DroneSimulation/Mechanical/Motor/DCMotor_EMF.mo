@@ -1,5 +1,5 @@
-within DroneSimulation.Mechanical;
-model DCMotor
+within DroneSimulation.Mechanical.Motor;
+model DCMotor_EMF
   Modelica.Mechanics.MultiBody.Forces.WorldForce force(
     color={244,0,4},
     resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b,
@@ -13,8 +13,6 @@ model DCMotor
         iconTransformation(extent={{84,46},{116,78}})));
   Modelica.Blocks.Interfaces.RealInput position
     annotation (Placement(transformation(extent={{-142,-20},{-102,20}})));
-  Electrical.Machines.SimpleDCmotor dCmotor
-    annotation (Placement(transformation(extent={{-70,-14},{-50,6}})));
   Blocks.Routing.RealExtend realExtend1
     annotation (Placement(transformation(extent={{16,-78},{36,-58}})));
   Modelica.Blocks.Math.Gain gain1(k=k)
@@ -38,18 +36,23 @@ model DCMotor
     "Coordinate system a fixed to the component with one cut-force and cut-torque"
     annotation (Placement(transformation(extent={{84,-76},{116,-44}}),
         iconTransformation(extent={{84,-76},{116,-44}})));
+  Electrical.Machines.SimpleMotor_EMF simpleMotor_EMF(
+    R_trs=0.1,
+    X_s=0,
+    R_hyst=1)
+    annotation (Placement(transformation(extent={{-74,-10},{-54,10}})));
+  Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor annotation (
+      Placement(transformation(
+        extent={{-10,10},{10,-10}},
+        rotation=270,
+        origin={-40,-16})));
+  Modelica.Mechanics.Rotational.Components.Fixed fixed
+    annotation (Placement(transformation(extent={{-78,-62},{-58,-42}})));
 equation
   connect(gain1.y, realExtend1.u)
     annotation (Line(points={{-9,-68},{14,-68}}, color={0,0,127}));
-  connect(dCmotor.force, gain1.u) annotation (Line(points={{-49,-8},{-44,-8},
-          {-44,-68},{-32,-68}},      color={0,0,127}));
   connect(realExtend.y, force.force) annotation (Line(points={{-1.6,0},{24,0}},
                                color={0,0,127}));
-  connect(dCmotor.torque, realExtend.u) annotation (Line(points={{-49,0},{
-          -10.8,0}},                      color={0,0,127}));
-  connect(dCmotor.current, limiter.y)
-    annotation (Line(points={{-72,-4},{-80,-4},{-80,0},{-85.6,0}},
-                                                 color={0,0,127}));
   connect(position, limiter.u)
     annotation (Line(points={{-122,0},{-94.8,0}}, color={0,0,127}));
   connect(force_out, force.frame_b) annotation (Line(
@@ -66,6 +69,16 @@ equation
       points={{70,-72},{70,-60},{100,-60}},
       color={95,95,95},
       thickness=0.5));
+  connect(limiter.y, simpleMotor_EMF.Current)
+    annotation (Line(points={{-85.6,0},{-76,0}}, color={0,0,127}));
+  connect(simpleMotor_EMF.flange1, torqueSensor.flange_a)
+    annotation (Line(points={{-53.6,0},{-40,0},{-40,-6}}, color={0,0,0}));
+  connect(gain1.u, realExtend.u) annotation (Line(points={{-32,-68},{-42,-68},{
+          -42,-34},{-20,-34},{-20,0},{-10.8,0}}, color={0,0,127}));
+  connect(torqueSensor.flange_b, fixed.flange) annotation (Line(points={{-40,
+          -26},{-54,-26},{-54,-52},{-68,-52}}, color={0,0,0}));
+  connect(torqueSensor.tau, realExtend.u) annotation (Line(points={{-29,-8},{
+          -20,-8},{-20,0},{-10.8,0}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
             -100,-100},{100,100}}),                             graphics={
           Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
@@ -74,4 +87,4 @@ equation
           lineColor={28,108,200},
           textString="Motor")}),      Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}})));
-end DCMotor;
+end DCMotor_EMF;
