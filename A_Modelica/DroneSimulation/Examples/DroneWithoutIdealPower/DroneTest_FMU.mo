@@ -46,8 +46,11 @@ model DroneTest_FMU
         origin={-44,8})));
   inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,-1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
-  Electrical.Sources.AuxiliaryPowerSystem auxiliaryPowerSystem(V=V)
+  Electrical.Sources.AuxiliaryPowerSystem_Battery
+                                          auxiliaryPowerSystem(V=V)
     annotation (Placement(transformation(extent={{-54,-38},{-34,-18}})));
+  Modelica.Electrical.Analog.Basic.Ground ground
+    annotation (Placement(transformation(extent={{-80,-38},{-60,-18}})));
 equation
   gPS.y[1] = xgps;
   gPS.y[2] = ygps;
@@ -100,12 +103,14 @@ equation
           0},{-92,0},{-120,0}}, color={0,0,127}));
   connect(realExtendMultiple.u2, zcoord) annotation (Line(points={{-74,-6},{-92,
           -6},{-92,-80},{-120,-80}}, color={0,0,127}));
-  connect(controlModule_Power.pin, auxiliaryPowerSystem.ac1)
-    annotation (Line(points={{-30,-6},{-44,-6},{-44,-18}}, color={0,0,255}));
   connect(controlModule_Power.y2, propeller_DCMachine2.position) annotation (
       Line(points={{-9.16667,-2},{0,-2},{0,-4.8},{8,-4.8}}, color={0,0,127}));
   connect(controlModule_Power.y3, propeller_DCMachine3.position) annotation (
       Line(points={{-9.16667,-6},{0,-6},{0,-14.8},{8,-14.8}}, color={0,0,127}));
+  connect(auxiliaryPowerSystem.ac1, ground.p)
+    annotation (Line(points={{-48,-18},{-70,-18}}, color={0,0,255}));
+  connect(auxiliaryPowerSystem.dc_n1, controlModule_Power.pin)
+    annotation (Line(points={{-40,-18},{-40,-6},{-30,-6}}, color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},

@@ -3,7 +3,8 @@ model controlModuleTest
   Electrical.controlModule_Power controlModule_Power(
     maxTilt=0.05,
     samplePeriod=0.01,
-    R=100) annotation (Placement(transformation(extent={{-30,8},{-10,28}})));
+    R=100,
+    V=10)  annotation (Placement(transformation(extent={{-30,8},{-10,28}})));
   Mechanical.Chassis.droneChassis droneChassis1(length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{44,6},{94,26}})));
   Mechanical.Propeller.Propeller
@@ -46,7 +47,7 @@ model controlModuleTest
   Mechanical.Propeller.Propeller
                        propellerRev3
     annotation (Placement(transformation(extent={{8,4},{28,12}})));
-  PowerSystem.PowerSystem powerSystem
+  Electrical.Sources.AuxiliaryPowerSystem_FuelCell auxiliaryPowerSystem_Battery
     annotation (Placement(transformation(extent={{-50,-26},{-30,-6}})));
 equation
   connect(controlModule_Power.position, realExtendMultiple.y)
@@ -95,12 +96,13 @@ equation
        thickness=0.5));
   connect(propellerRev3.position, controlModule_Power.y3) annotation (Line(
         points={{5.8,7.2},{-9.16667,7.2},{-9.16667,12}}, color={0,0,127}));
-  connect(powerSystem.ac1, controlModule_Power.pin) annotation (Line(points={{
-          -40,-6},{-40,2},{-32,2},{-32,12},{-30,12}}, color={0,0,255}));
   connect(controlModule_Power.y, propellerRev.position)
     annotation (Line(points={{-9.16667,24},{-2,24},{-2,37.2},{5.8,37.2}}));
   connect(propellerRev1.position, controlModule_Power.y1) annotation (Line(
         points={{5.8,27.2},{-1.1,27.2},{-1.1,20},{-9.16667,20}}, color={0,0,127}));
+  connect(controlModule_Power.pin, auxiliaryPowerSystem_Battery.dc_n1)
+    annotation (Line(points={{-30,12},{-34,12},{-34,-2},{-36,-2},{-36,-6}},
+        color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     __Dymola_Commands(file="drone_animation_setup.mos"
