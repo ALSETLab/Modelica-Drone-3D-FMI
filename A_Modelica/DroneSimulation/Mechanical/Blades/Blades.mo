@@ -1,6 +1,7 @@
 within DroneSimulation.Mechanical.Blades;
 model Blades
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape5(
+    animation=false,
     m=0.010,
     r={-0.154,0,0},
     I_33=0.001,
@@ -9,6 +10,7 @@ model Blades
         rotation=270,
         origin={66,-10})));
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape4(
+    animation=false,
     m=0.01,
     r={0.154,0,0},
     I_33=0.001,
@@ -21,9 +23,21 @@ model Blades
     "Input from motor connecting the propeller blades to the motor"
     annotation (Placement(transformation(extent={{-120,-16},{-88,16}}),
         iconTransformation(extent={{-120,-16},{-88,16}})));
+  Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(
+    shapeType="modelica://DroneSimulation/Images/8.stl",
+    r_shape={-0.0085,-0.1,0},
+    lengthDirection(displayUnit="1") = {0,0,-1},
+    length=1e-3,
+    width=1e-3,
+    height=1e-3,
+    extra=1) annotation (Placement(transformation(extent={{-18,12},{2,32}})));
 equation
   connect(bodyShape4.frame_a, Input) annotation (Line(
       points={{66,0},{-104,0}},
+      color={95,95,95},
+      thickness=0.5));
+  connect(fixedShape.frame_a, Input) annotation (Line(
+      points={{-18,22},{-30,22},{-30,0},{-104,0}},
       color={95,95,95},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
