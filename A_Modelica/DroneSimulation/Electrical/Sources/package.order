@@ -1,2 +1,4 @@
 FuelCell
-AuxiliaryPowerSystem
+Battery
+AuxiliaryPowerSystem_FuelCell
+AuxiliaryPowerSystem_Battery

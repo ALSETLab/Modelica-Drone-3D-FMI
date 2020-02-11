@@ -1,6 +1,7 @@
 within DroneSimulation.Mechanical.Motor;
 model DCMotor_DCMachine "DC motor using DC machine from MSL"
   Modelica.Mechanics.MultiBody.Forces.WorldForce force(
+    animation=false,
     color={244,0,4},
     resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b,
     N_to_m=10)
@@ -23,7 +24,8 @@ model DCMotor_DCMachine "DC motor using DC machine from MSL"
     "Propeller gain. Set to 1 for clockwise, -1 for counterclockwise";
   Modelica.Blocks.Nonlinear.Limiter limiter(uMax=1e8, uMin=0)
     annotation (Placement(transformation(extent={{-94,-4},{-86,4}})));
-  Modelica.Mechanics.MultiBody.Forces.Torque torque annotation (Placement(
+  Modelica.Mechanics.MultiBody.Forces.Torque torque(animation=false)
+                                                    annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
