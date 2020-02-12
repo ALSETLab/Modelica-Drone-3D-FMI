@@ -15,7 +15,8 @@ package Runs
      rotationType=Visualization.Internal.Types.RotationTypes.RotationAxis,
      axis(displayUnit="1") = {1,0,0},
      angle=-90,
-     filename="C:/Users/montej7/Desktop/Use this folder/dji spark rev2.stl",
+    filename=ModelicaServices.ExternalReferences.loadResource(
+        "modelica://DroneSimulation/Images/1_DroneModel.stl"),
      scaleFactor={0.01,0.01,0.01},
      reflectsLight=true,
      overwriteColor=false,
@@ -49,6 +50,9 @@ package Runs
    replaceable Inputs.Keyboard.KeyboardInputs_SimVis inputDevice_SimVis
     constrainedby Interfaces.InputDevice_SimVis
      annotation (Placement(transformation(extent={{-32,-10},{-12,10}})));
+   Visualization.Cameras.FreeCamera     camera2(windowMode=Visualization.Cameras.Internal.Types.WindowMode.OpenVR_seated,
+      startDistanceToCenter={0,-3,0})
+     annotation (Placement(transformation(extent={{-2,-54},{18,-34}})));
  equation
    connect(world.frame_b, shape1.frame_a) annotation (Line(
        points={{-52,-50},{-42,-50}},
@@ -74,6 +78,10 @@ package Runs
   connect(controlModuleTest_fmu_inputs1.frame_a1, camera1.frame_b) annotation (
       Line(
       points={{31,-10.2},{31,-26},{18,-26}},
+      color={95,95,95},
+      thickness=0.5));
+  connect(camera2.frame_b, camera1.frame_b) annotation (Line(
+      points={{18,-44},{30,-44},{30,-26},{18,-26}},
       color={95,95,95},
       thickness=0.5));
    annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-80,-60},

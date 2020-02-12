@@ -68,8 +68,8 @@ equation
     annotation (Line(points={{-71,24},{-58,24}}, color={0,0,127}));
   connect(circlePath.y1, realExtendMultiple.u1) annotation (Line(points={{
           -71,16},{-66,16},{-66,18},{-58,18}}, color={0,0,127}));
-  connect(controlModule_Synchronous.Height, const1.y) annotation (Line(points={
-          {-16.6667,6},{-16.6667,-22},{-10.6,-22}}, color={0,0,127}));
+  connect(controlModule_Synchronous.Height, const1.y) annotation (Line(points={{
+          -16.6667,6},{-16.6667,-22},{-10.6,-22}},  color={0,0,127}));
   connect(propeller_DCMachine.Airframe, droneChassis1.frame_a1) annotation (
       Line(
       points={{28.2,36.4},{37.1,36.4},{37.1,22},{44,22}},

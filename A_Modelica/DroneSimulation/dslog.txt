@@ -1,0 +1,53 @@
+Log-file of program ./dymosim
+(generated: Wed Feb 12 16:38:49 2020)
+
+dymosim started
+... "dsin.txt" loading (dymosim input file)
+... "ModuleTest_SimVis.mat" creating (simulation result file)
+
+Integration started at T = 0 using integration method EULER
+(One-step solver with fixed stepsize and order 1)
+Rhs component 1 of system 1 is -nan(ind)
+Rhs component 2 of system 1 is -nan(ind)
+Rhs component 3 of system 1 is nan
+Rhs component 4 of system 1 is nan
+Rhs component 5 of system 1 is nan
+Rhs component 6 of system 1 is nan
+Rhs component 7 of system 1 is nan
+Rhs component 8 of system 1 is nan
+Rhs component 9 of system 1 is nan
+Rhs component 10 of system 1 is nan
+In system 1 controlModuleTest_fmu_inputs1.droneChassis1.bodyShape.body.a_0[3] = nan
+In system 1 controlModuleTest_fmu_inputs1.droneChassis1.bodyShape.body.a_0[2] = nan
+In system 1 controlModuleTest_fmu_inputs1.droneChassis1.bodyShape.body.a_0[1] = nan
+In system 1 controlModuleTest_fmu_inputs1.propeller_DCMachine3.blades.bodyShape4.body.der(w_a[2]) = nan
+In system 1 controlModuleTest_fmu_inputs1.propeller_DCMachine3.blades.bodyShape4.body.der(w_a[3]) = nan
+In system 1 controlModuleTest_fmu_inputs1.propeller_DCMachine2.blades.bodyShape4.body.der(w_a[3]) = nan
+In system 1 controlModuleTest_fmu_inputs1.propeller_DCMachine.blades.bodyShape4.body.der(w_a[3]) = nan
+In system 1 controlModuleTest_fmu_inputs1.propeller_DCMachine1.blades.bodyShape4.body.der(w_a[3]) = nan
+In system 1 controlModuleTest_fmu_inputs1.droneChassis1.bodyShape.body.der(w_a[3]) = nan
+In system 1 controlModuleTest_fmu_inputs1.propeller_DCMachine3.blades.bodyShape4.body.der(w_a[1]) = nan
+LINEAR SYSTEM OF EQUATIONS IS SINGULAR AT TIME = 0.41
+...    Linear system of equations number = 1
+... Variables which cannot be uniquely computed:
+... NOT ACCEPTING SINCE TOO LARGE RESDIUAL
+Integration terminated before reaching "StopTime" at T = 0.41
+States and derivatives:
+_dummy=1 0
+   CPU-time for integration      : 0.317 seconds
+   CPU-time for one GRID interval: 63.4 milliseconds
+   CPU-time for initialization   : 0.036 seconds
+   Number of result points       : 83
+   Number of GRID   points       : 6
+   Number of (successful) steps  : 41
+   Number of F-evaluations       : 41
+   Number of Jacobian-evaluations: 0
+   Number of (model) time events : 41
+   Number of (U) time events     : 0
+   Number of state    events     : 0
+   Number of step     events     : 0
+   Minimum integration stepsize  : 0.01
+   Maximum integration stepsize  : 0.01
+   Maximum integration order     : 1
+Calling terminal section
+... "dsfinal.txt" creating (final states)

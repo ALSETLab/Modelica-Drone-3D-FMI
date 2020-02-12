@@ -1,6 +1,10 @@
 within ;
 package DroneSimulation
-annotation (Documentation, uses(Modelica(version="3.2.3"), CHEETA(version="1"),
-    Visualization(version="1.5"),
-    Modelon(version="3.3")));
+annotation (Documentation, uses(                           CHEETA(version="1"),
+    Modelon(version="3.3"),
+    Modelica(version="3.2.2"),
+    Visualization(version="1.5.1"),
+    ModelicaServices(version="3.2.2")),
+  version="1",
+  conversion(noneFromVersion=""));
 end DroneSimulation;
