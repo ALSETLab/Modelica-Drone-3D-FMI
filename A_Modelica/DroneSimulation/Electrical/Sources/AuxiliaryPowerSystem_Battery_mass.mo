@@ -1,5 +1,5 @@
 within DroneSimulation.Electrical.Sources;
-model AuxiliaryPowerSystem_Battery "Auxiliary power system for drone"
+model AuxiliaryPowerSystem_Battery_mass "Auxiliary power system for drone"
   Modelica.Electrical.PowerConverters.DCDC.ChopperStepUp dcdc annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -97,4 +97,4 @@ equation
 <p><br><img src=\"modelica://CHEETA/Images/Electrical/CHEETASystem.PNG\"/></p>
 </html>"),
     experiment(StopTime=0.5));
-end AuxiliaryPowerSystem_Battery;
+end AuxiliaryPowerSystem_Battery_mass;

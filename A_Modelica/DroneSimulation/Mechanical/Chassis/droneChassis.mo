@@ -11,7 +11,7 @@ model droneChassis
     animation=false,
     r={0.25,0,0},
     r_CM={0.175,0,0},
-    m=0.5,
+    m=m,
   useQuaternions=false)
                       annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -19,14 +19,14 @@ model droneChassis
         origin={-12,14})));
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape2(
     animation=false,
-    m=0.5,
+    m=m,
     r={0,-0.25,0},
     r_CM={0,-0.175,0},
   useQuaternions=false)
     annotation (Placement(transformation(extent={{-22,-24},{-2,-4}})));
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape3(
     animation=false,
-    m=0.5,
+    m=m,
     r={-0.25,0,0},
     r_CM={-0.175,0,0},
   useQuaternions=false)
@@ -44,9 +44,10 @@ model droneChassis
   useQuaternions=false)
     annotation (Placement(transformation(extent={{32,-10},{52,10}})));
   Modelica.Mechanics.MultiBody.Parts.PointMass pointMass(
-    animation=false,                                     m=0.50,
+    animation=false,
+    m=m,
       sphereColor={255,0,255})
-    annotation (Placement(transformation(extent={{52,-10},{72,10}})));
+    annotation (Placement(transformation(extent={{54,-10},{74,10}})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a
     annotation (Placement(transformation(extent={{-116,4},{-84,36}})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a1
@@ -95,7 +96,7 @@ equation
       color={95,95,95},
       thickness=0.5));
   connect(pointMass.frame_a, bodyCylinder.frame_b) annotation (Line(
-      points={{62,0},{52,0}},
+      points={{64,0},{52,0}},
       color={95,95,95},
       thickness=0.5));
   connect(frame_a1, bodyShape.frame_a) annotation (Line(

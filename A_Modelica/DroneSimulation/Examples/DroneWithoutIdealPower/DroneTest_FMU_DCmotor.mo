@@ -21,7 +21,7 @@ model DroneTest_FMU_DCmotor
     R=R,
     V=V)
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
-  Mechanical.Chassis.droneChassis droneChassis1(length=0.25, m=0.5)
+  Mechanical.Chassis.droneChassis droneChassis1(length=0.25, m=15)
     annotation (Placement(transformation(extent={{44,-12},{94,8}})));
   Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine(PropellerGain=1,
       VaNominal=10)
@@ -47,7 +47,7 @@ model DroneTest_FMU_DCmotor
         origin={-44,8})));
   Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine3(VaNominal=10)
     annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
-  Electrical.Sources.AuxiliaryPowerSystem_Battery
+  Electrical.Sources.AuxiliaryPowerSystem_FuelCell
                                           auxiliaryPowerSystem(V=V)
     annotation (Placement(transformation(extent={{-54,-34},{-34,-14}})));
   parameter Modelica.SIunits.Voltage V=V "Fuel cell voltage";
@@ -111,10 +111,10 @@ equation
      annotation (Line(points={{-74,0},{-120,0}}, color={0,0,127}));
    connect(realExtendMultiple.u2, zcoord) annotation (Line(points={{-74,-6},{
            -90,-6},{-90,-80},{-120,-80}}, color={0,0,127}));
-  connect(auxiliaryPowerSystem.ac1, controlModule_Power.pin)
-    annotation (Line(points={{-48,-14},{-48,-6},{-30,-6}}, color={0,0,255}));
-  connect(ground.p, auxiliaryPowerSystem.dc_n1)
-    annotation (Line(points={{-40,-46},{-40,-14}}, color={0,0,255}));
+  connect(controlModule_Power.pin, auxiliaryPowerSystem.dc_n1) annotation (Line(
+        points={{-30,-6},{-36,-6},{-36,-14},{-40,-14}}, color={0,0,255}));
+  connect(ground.p, auxiliaryPowerSystem.ac1) annotation (Line(points={{-40,-46},
+          {-44,-46},{-44,-14},{-48,-14}}, color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},
