@@ -1,76 +1,23 @@
-within DroneSimulation.Visualization.Runs;
-model ModuleTest_SimVis2
- import Visualization;
-
-  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,-1,0})
-    annotation (Placement(transformation(extent={{-72,-60},{-52,-40}})));
-  inner Visualization.UpdateVisualization updateVisualization(
-      displayMultiBodyStructure=false) annotation (Placement(
-        transformation(extent={{60,42},{80,62}})));
-  Visualization.Shapes.FileShape shape1(
-    smoothNormals=true,
-    r_shape={-50,-50,-2},
-    shadowMask=Visualization.Shapes.Internal.Types.ShadowMask.NoShadows,
-    filename=Visualization.Utilities.RootDir + "/Extras/3DData/Terrain1/Terrain1.obj")
-    annotation (Placement(transformation(extent={{-42,-60},{-22,-40}})));
-  Visualization.Lights.SpotLight light1
-    annotation (Placement(transformation(extent={{-14,40},{6,60}})));
-  Modelica.Mechanics.MultiBody.Parts.Fixed fixed(r={500,500,500}, animation=true)
-    annotation (Placement(transformation(extent={{-38,40},{-18,60}})));
-  Visualization.Effects.SkyBox skyBox(
-    skyboxMode=Visualization.Effects.Internal.Types.SkyboxMode.SkyboxAndEphemeris,
-    year=0,
-    month=0,
-    day=0,
-    hour=0,
-    minute=0,
-    latitude=0,
-    longitude=0,
-    filename=Visualization.Utilities.RootDir + "/Extras/Bitmaps/Skymap/skymap2/skymap2_negx.png")
-    annotation (Placement(transformation(extent={{-76,38},{-56,58}})));
-
-  Visualization.Cameras.FreeCamera     camera1(windowMode=Visualization.Cameras.Internal.Types.WindowMode.Window,
-      startDistanceToCenter={0,-3,0})
-    annotation (Placement(transformation(extent={{-2,-36},{18,-16}})));
-  replaceable Inputs.Keyboard.KeyboardInputs_SimVis inputDevice_SimVis
-   constrainedby Interfaces.InputDevice_SimVis
-    annotation (Placement(transformation(extent={{-28,8},{-8,28}})));
-  Visualization.Cameras.FreeCamera     camera2(windowMode=Visualization.Cameras.Internal.Types.WindowMode.OpenVR_seated,
-      startDistanceToCenter={0,-3,0})
-    annotation (Placement(transformation(extent={{-2,-52},{18,-32}})));
-  Examples.DroneWithIdealPower.DroneTest_FMU_VISUALIZATON
-    droneTest_FMU_VISUALIZATON
-    annotation (Placement(transformation(extent={{42,-8},{62,12}})));
-  Modelica.Blocks.Sources.Constant const(k=0)
-    annotation (Placement(transformation(extent={{4,0},{24,20}})));
+within DroneSimulation.Examples.Visualization;
+model ModuleTest_Dymola
+ replaceable DroneSimulation.Visualization.Inputs.Keyboard.KeyboardInputs_SimVis
+                                                   inputDevice
+   constrainedby Interfaces.InputDevice_Dymola
+   annotation (Placement(transformation(extent={{-28,-10},{-8,10}})));
+  Examples.DroneWithIdealPower.DroneTest_FMU_Synchronous
+    controlModuleTest_fmu_inputs1
+    annotation (Placement(transformation(extent={{12,-10},{32,10}})));
 equation
-  connect(world.frame_b, shape1.frame_a) annotation (Line(
-      points={{-52,-50},{-42,-50}},
-      color={95,95,95},
-      thickness=0.5));
-  connect(fixed.frame_b,light1. frame_a) annotation (Line(
-      points={{-18,50},{-14,50}},
-      color={95,95,95},
-      thickness=0.5,
-      smooth=Smooth.None));
-  connect(camera1.frame_b, droneTest_FMU_VISUALIZATON.frame_a1) annotation (
-      Line(
-      points={{18,-26},{60,-26},{60,-8.2},{59,-8.2}},
-      color={95,95,95},
-      thickness=0.5));
-  connect(camera2.frame_b, droneTest_FMU_VISUALIZATON.frame_a1) annotation (
-      Line(
-      points={{18,-42},{60,-42},{60,-8.2},{59,-8.2}},
-      color={95,95,95},
-      thickness=0.5));
-  connect(droneTest_FMU_VISUALIZATON.xcoord, const.y)
-    annotation (Line(points={{40,10},{25,10}}, color={0,0,127}));
-  connect(droneTest_FMU_VISUALIZATON.ycoord, const.y)
-    annotation (Line(points={{40,2},{32,2},{32,10},{25,10}}, color={0,0,127}));
-  connect(droneTest_FMU_VISUALIZATON.zcoord, const.y) annotation (Line(points={
-          {40,-6},{32,-6},{32,10},{25,10}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-80,-60},
-            {80,60}}), graphics={
+ connect(inputDevice.X, controlModuleTest_fmu_inputs1.xcoord)
+   annotation (Line(points={{-7,5},{-3.5,5},{-3.5,8},{10,8}},
+                  color={0,0,127}));
+ connect(inputDevice.Y, controlModuleTest_fmu_inputs1.ycoord)
+   annotation (Line(points={{-7,0},{10,0}},       color={0,0,127}));
+ connect(inputDevice.Z, controlModuleTest_fmu_inputs1.zcoord)
+   annotation (Line(points={{-7,-5},{-4,-5},{-4,-8},{10,-8}},
+                   color={0,0,127}));
+ annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={
+           {-40,-40},{40,40}}), graphics={
                             Bitmap(
           extent={{-40,-40},{40,40}},
           imageSource=
@@ -80,14 +27,6 @@ equation
                +
               "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tYb29UCwI2tpt05/mgmQLWv46oCAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgWH16oIWFrW0QLa389efKyCXhF76jW/Lz+HNBGwvfTn5aaEnrugcI6emn5IJeEg6fpp6eZQA3qNfodLbIIcOuh6+o3Gm37oHDbS19Rz6ny02QR4NfD/Py0HqgcJB8L/Ifmgmt0GtugtuN/gghw6C/L9fjvdA4Ttfbw38wUEeHlpb63HPkgcI5aa/Xx28kDhHTla37oI2/T4W/e/qghwDX68d0Dh+A5/K36oI2H19eJ9UD6/dBGw6b7+KAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgIP/9k=",
           fileName="modelica://DroneSimulation/dronepic.jpg")}),
-                             Diagram(coordinateSystem(preserveAspectRatio=
-            false, extent={{-80,-60},{80,60}})),
-    experiment(
-      StopTime=50,
-      __Dymola_fixedstepsize=0.01,
-      __Dymola_Algorithm="Euler"),
-    __Dymola_experimentFlags(Advanced(
-        InlineMethod=1,
-        InlineOrder=2,
-        InlineFixedStep=0.01)));
-end ModuleTest_SimVis2;
+     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-40,
+           -40},{40,40}})));
+end ModuleTest_Dymola;

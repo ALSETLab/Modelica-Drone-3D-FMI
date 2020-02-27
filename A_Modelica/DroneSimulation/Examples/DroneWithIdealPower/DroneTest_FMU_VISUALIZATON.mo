@@ -23,8 +23,8 @@ model DroneTest_FMU_VISUALIZATON
                                   droneChassis_Visualization(
                                                 length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{44,-12},{94,8}})));
-  Mechanical.Propeller.Propeller_Visualization
-                                           propeller_Visualization(
+  Mechanical.Propeller.Propeller_DCMachine_Visualization
+                                           propeller_DCMachine_Visualization(
                                                                PropellerGain=1)
     annotation (Placement(transformation(extent={{10,12},{30,20}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple
@@ -37,15 +37,15 @@ model DroneTest_FMU_VISUALIZATON
     annotation (Placement(transformation(extent={{10,-80},{30,-60}})));
   Modelica.Blocks.Sources.Constant const1(k=0)
     annotation (Placement(transformation(extent={{2,-42},{-10,-30}})));
-  Mechanical.Propeller.Propeller_Visualization
-                                           propeller_Visualization1
+  Mechanical.Propeller.Propeller_DCMachine_Visualization
+                                           propeller_DCMachine_Visualization2
     annotation (Placement(transformation(extent={{10,2},{30,10}})));
-  Mechanical.Propeller.Propeller_Visualization
-                                           propeller_Visualization2(
+  Mechanical.Propeller.Propeller_DCMachine_Visualization
+                                           propeller_DCMachine_Visualization3(
                                                                 PropellerGain=1)
     annotation (Placement(transformation(extent={{10,-8},{30,0}})));
-  Mechanical.Propeller.Propeller_Visualization
-                                           propeller_Visualization3
+  Mechanical.Propeller.Propeller_DCMachine_Visualization
+                                           propeller_DCMachine_Visualization1
     annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-4,-4},{4,4}},
@@ -60,9 +60,9 @@ equation
   gPS.y[1] = xgps;
   gPS.y[2] = ygps;
   gPS.y[3] = zgps;
-  connect(propeller_Visualization.position, controlModule_Synchronous.y1)
-    annotation (Line(points={{7.8,15.2},{-2,15.2},{-2,6},{-9.16667,6}}, color={
-          0,0,127}));
+  connect(propeller_DCMachine_Visualization.position, controlModule_Synchronous.y1)
+    annotation (Line(points={{8,15.2},{-2,15.2},{-2,6},{-9.16667,6}}, color={0,
+          0,127}));
   connect(controlModule_Synchronous.position, realExtendMultiple.y)
     annotation (Line(points={{-31.6667,0},{-53,0}}, color={0,0,127}));
   connect(gPS.frame_a, droneChassis_Visualization.frame_a3) annotation (Line(
@@ -80,35 +80,35 @@ equation
         points={{9,-70},{-21.6667,-70},{-21.6667,-12}}, color={0,0,127}));
   connect(controlModule_Synchronous.Height, const1.y) annotation (Line(points={{
           -16.6667,-12},{-16.6667,-36},{-10.6,-36}},  color={0,0,127}));
-  connect(propeller_Visualization1.position, controlModule_Synchronous.y)
-    annotation (Line(points={{7.8,5.2},{-0.1,5.2},{-0.1,2},{-9.16667,2}}, color=
-         {0,0,127}));
-  connect(propeller_Visualization.Airframe, droneChassis_Visualization.frame_a1)
-    annotation (Line(
+  connect(propeller_DCMachine_Visualization2.position,
+    controlModule_Synchronous.y) annotation (Line(points={{8,5.2},{-0.1,5.2},{
+          -0.1,2},{-9.16667,2}}, color={0,0,127}));
+  connect(propeller_DCMachine_Visualization.Airframe,
+    droneChassis_Visualization.frame_a1) annotation (Line(
       points={{30.2,14.4},{37.1,14.4},{37.1,4},{44,4}},
       color={95,95,95},
       thickness=0.5));
-  connect(propeller_Visualization1.Airframe, droneChassis_Visualization.frame_a)
-    annotation (Line(
+  connect(propeller_DCMachine_Visualization2.Airframe,
+    droneChassis_Visualization.frame_a) annotation (Line(
       points={{30.2,4.4},{36.1,4.4},{36.1,0},{44,0}},
       color={95,95,95},
       thickness=0.5));
-  connect(propeller_Visualization2.Airframe, droneChassis_Visualization.frame_a2)
-    annotation (Line(
+  connect(propeller_DCMachine_Visualization3.Airframe,
+    droneChassis_Visualization.frame_a2) annotation (Line(
       points={{30.2,-5.6},{36.1,-5.6},{36.1,-4},{44,-4}},
       color={95,95,95},
       thickness=0.5));
-  connect(propeller_Visualization2.position, controlModule_Synchronous.y2)
-    annotation (Line(points={{7.8,-4.8},{-9.16667,-4.8},{-9.16667,-2}}, color={
-          0,0,127}));
-  connect(propeller_Visualization3.Airframe, droneChassis_Visualization.frame_a3)
-    annotation (Line(
+  connect(propeller_DCMachine_Visualization3.position,
+    controlModule_Synchronous.y2) annotation (Line(points={{8,-4.8},{-9.16667,
+          -4.8},{-9.16667,-2}}, color={0,0,127}));
+  connect(propeller_DCMachine_Visualization1.Airframe,
+    droneChassis_Visualization.frame_a3) annotation (Line(
       points={{30.2,-15.6},{36,-15.6},{36,-8},{44,-8}},
       color={95,95,95},
       thickness=0.5));
-  connect(propeller_Visualization3.position, controlModule_Synchronous.y3)
-    annotation (Line(points={{7.8,-14.8},{-9.16667,-14.8},{-9.16667,-6}}, color=
-         {0,0,127}));
+  connect(propeller_DCMachine_Visualization1.position,
+    controlModule_Synchronous.y3) annotation (Line(points={{8,-14.8},{-9.16667,
+          -14.8},{-9.16667,-6}}, color={0,0,127}));
   connect(controlModule_Synchronous.yaw, const.y)
     annotation (Line(points={{-31.6667,8},{-39.6,8}}, color={0,0,127}));
    connect(realExtendMultiple.u, xcoord) annotation (Line(points={{-74,6},{-88,

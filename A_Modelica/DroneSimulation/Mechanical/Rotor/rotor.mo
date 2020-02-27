@@ -1,6 +1,6 @@
 within DroneSimulation.Mechanical.Rotor;
 model rotor
-  Modelica.Mechanics.MultiBody.Joints.Revolute revolute(animation=false)
+  Modelica.Mechanics.MultiBody.Joints.Revolute revolute(animation=true)
     annotation (Placement(transformation(extent={{4,-10},{24,10}})));
 
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe

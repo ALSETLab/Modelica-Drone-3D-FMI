@@ -1,12 +1,26 @@
-within DroneSimulation.Visualization.Runs;
-model ModuleTest_SimVis2
+within DroneSimulation.Examples.Visualization;
+model ModuleTest_SimVis
  import Visualization;
+  Examples.DroneWithIdealPower.DroneTest_FMU_Synchronous_chassis
+    controlModuleTest_fmu_inputs1
+    annotation (Placement(transformation(extent={{14,-10},{34,10}})));
 
   inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,-1,0})
     annotation (Placement(transformation(extent={{-72,-60},{-52,-40}})));
   inner Visualization.UpdateVisualization updateVisualization(
       displayMultiBodyStructure=false) annotation (Placement(
         transformation(extent={{60,42},{80,62}})));
+  Visualization.Shapes.FileShape       shape(
+    rotationType=Visualization.Internal.Types.RotationTypes.RotationAxis,
+    axis(displayUnit="1") = {1,0,0},
+    angle=-90,
+   filename=ModelicaServices.ExternalReferences.loadResource(
+       "modelica://DroneSimulation/Images/1_DroneModel.stl"),
+    scaleFactor={0.01,0.01,0.01},
+    reflectsLight=true,
+    overwriteColor=false,
+    color={0,0,0})
+    annotation (Placement(transformation(extent={{38,-36},{58,-16}})));
   Visualization.Shapes.FileShape shape1(
     smoothNormals=true,
     r_shape={-50,-50,-2},
@@ -32,17 +46,13 @@ model ModuleTest_SimVis2
   Visualization.Cameras.FreeCamera     camera1(windowMode=Visualization.Cameras.Internal.Types.WindowMode.Window,
       startDistanceToCenter={0,-3,0})
     annotation (Placement(transformation(extent={{-2,-36},{18,-16}})));
-  replaceable Inputs.Keyboard.KeyboardInputs_SimVis inputDevice_SimVis
+  replaceable DroneSimulation.Visualization.Inputs.Keyboard.KeyboardInputs_SimVis
+                                                    inputDevice_SimVis
    constrainedby Interfaces.InputDevice_SimVis
-    annotation (Placement(transformation(extent={{-28,8},{-8,28}})));
+    annotation (Placement(transformation(extent={{-32,-10},{-12,10}})));
   Visualization.Cameras.FreeCamera     camera2(windowMode=Visualization.Cameras.Internal.Types.WindowMode.OpenVR_seated,
-      startDistanceToCenter={0,-3,0})
-    annotation (Placement(transformation(extent={{-2,-52},{18,-32}})));
-  Examples.DroneWithIdealPower.DroneTest_FMU_VISUALIZATON
-    droneTest_FMU_VISUALIZATON
-    annotation (Placement(transformation(extent={{42,-8},{62,12}})));
-  Modelica.Blocks.Sources.Constant const(k=0)
-    annotation (Placement(transformation(extent={{4,0},{24,20}})));
+     startDistanceToCenter={0,-3,0})
+    annotation (Placement(transformation(extent={{-2,-54},{18,-34}})));
 equation
   connect(world.frame_b, shape1.frame_a) annotation (Line(
       points={{-52,-50},{-42,-50}},
@@ -53,22 +63,27 @@ equation
       color={95,95,95},
       thickness=0.5,
       smooth=Smooth.None));
-  connect(camera1.frame_b, droneTest_FMU_VISUALIZATON.frame_a1) annotation (
-      Line(
-      points={{18,-26},{60,-26},{60,-8.2},{59,-8.2}},
+  connect(shape.frame_a, camera1.frame_b) annotation (Line(
+      points={{38,-26},{18,-26}},
       color={95,95,95},
       thickness=0.5));
-  connect(camera2.frame_b, droneTest_FMU_VISUALIZATON.frame_a1) annotation (
-      Line(
-      points={{18,-42},{60,-42},{60,-8.2},{59,-8.2}},
-      color={95,95,95},
-      thickness=0.5));
-  connect(droneTest_FMU_VISUALIZATON.xcoord, const.y)
-    annotation (Line(points={{40,10},{25,10}}, color={0,0,127}));
-  connect(droneTest_FMU_VISUALIZATON.ycoord, const.y)
-    annotation (Line(points={{40,2},{32,2},{32,10},{25,10}}, color={0,0,127}));
-  connect(droneTest_FMU_VISUALIZATON.zcoord, const.y) annotation (Line(points={
-          {40,-6},{32,-6},{32,10},{25,10}}, color={0,0,127}));
+  connect(inputDevice_SimVis.X, controlModuleTest_fmu_inputs1.xcoord)
+    annotation (Line(points={{-11,5},{-0.16665,5},{-0.16665,8},{12,8}},
+                   color={0,0,127}));
+  connect(inputDevice_SimVis.Y, controlModuleTest_fmu_inputs1.ycoord)
+    annotation (Line(points={{-11,0},{12,0}},      color={0,0,127}));
+  connect(inputDevice_SimVis.Z, controlModuleTest_fmu_inputs1.zcoord)
+    annotation (Line(points={{-11,-5},{-0.16665,-5},{-0.16665,-8},{12,
+          -8}},     color={0,0,127}));
+ connect(controlModuleTest_fmu_inputs1.frame_a1, camera1.frame_b) annotation (
+     Line(
+     points={{31,-10.2},{31,-26},{18,-26}},
+     color={95,95,95},
+     thickness=0.5));
+ connect(camera2.frame_b, camera1.frame_b) annotation (Line(
+     points={{18,-44},{30,-44},{30,-26},{18,-26}},
+     color={95,95,95},
+     thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-80,-60},
             {80,60}}), graphics={
                             Bitmap(
@@ -90,4 +105,4 @@ equation
         InlineMethod=1,
         InlineOrder=2,
         InlineFixedStep=0.01)));
-end ModuleTest_SimVis2;
+end ModuleTest_SimVis;

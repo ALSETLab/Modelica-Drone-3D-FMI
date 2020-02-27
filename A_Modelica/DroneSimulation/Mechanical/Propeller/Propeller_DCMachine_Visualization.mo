@@ -49,8 +49,7 @@ equation
       thickness=0.5));
   connect(dCMotor2_1.position, position)
     annotation (Line(points={{-84.4,0},{-120,0}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
-            -100,-40},{100,60}})),                               Diagram(
-        coordinateSystem(preserveAspectRatio=false, extent={{-100,-40},{100,
-            60}})));
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
+            -40},{100,60}})),                                    Diagram(
+        coordinateSystem(preserveAspectRatio=false, extent={{-100,-40},{100,60}})));
 end Propeller_DCMachine_Visualization;

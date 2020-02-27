@@ -1,5 +1,5 @@
 within DroneSimulation.Electrical;
-model controlModule_Synchronous
+model controlModule_Synchronous_limited
   parameter Modelica.SIunits.Time samplePeriod=0.01;
   Modelica.Blocks.Interfaces.RealOutput y annotation (Placement(transformation(
           extent={{140,10},{160,30}}), iconTransformation(extent={{140,10},{160,
@@ -61,7 +61,7 @@ model controlModule_Synchronous
   Blocks.Routing.RealExtract realExtract6(index=1)
     annotation (Placement(transformation(extent={{-60,-60},{-52,-52}})));
   Modelica.Blocks.Nonlinear.Limiter limiter1(uMax=0.523)
-    annotation (Placement(transformation(extent={{0,-10},{20,10}})));
+    annotation (Placement(transformation(extent={{0,-8},{20,12}})));
   Blocks.Routing.RealExtract realExtract7(index=1) annotation (Placement(
         transformation(
         extent={{-4,-4},{4,4}},
@@ -180,7 +180,7 @@ equation
           50},{-14,-100},{0,-100}},
                                 color={0,0,127}));
   connect(limiter1.u, gain.y)
-    annotation (Line(points={{-2,0},{-2,7},{-5.7,7}},   color={0,0,127}));
+    annotation (Line(points={{-2,2},{-2,7},{-5.7,7}},   color={0,0,127}));
   connect(limiter2.u, discreteTF1.y) annotation (Line(points={{-4,80},{
           -10,80},{-10,82},{-15,82}}, color={0,0,127}));
   connect(discreteTF1.u1, realExtract8.y) annotation (Line(points={{-26,72},
@@ -207,8 +207,8 @@ equation
           62,-72},{62,20}},            color={0,0,127}));
   connect(limiter.y, discreteTF5.u) annotation (Line(points={{21,30},{52,30}},
                                    color={0,0,127}));
-  connect(limiter1.y, discreteTF6.u) annotation (Line(points={{21,0},{32,0}},
-                                    color={0,0,127}));
+  connect(limiter1.y, discreteTF6.u) annotation (Line(points={{21,2},{26,2},{26,
+          0},{32,0}},               color={0,0,127}));
   connect(discreteTF6.u1, realExtract7.y) annotation (Line(points={{42,-10},{42,
           -60},{18.4,-60}},          color={0,0,127}));
   connect(realExpression.y,add3_1. u2)
@@ -261,4 +261,4 @@ equation
           fillColor={0,0,0},
           fillPattern=FillPattern.None)}), Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{140,100}})));
-end controlModule_Synchronous;
+end controlModule_Synchronous_limited;
