@@ -125,8 +125,8 @@ equation
     annotation (Line(points={{15,36},{6,36}}, color={0,0,127}));
   connect(product.u2, limiter.y) annotation (Line(points={{-48,56},{-56,56},{
           -56,30},{-65.6,30}}, color={0,0,127}));
-  connect(division.y, signalVoltage.v) annotation (Line(points={{-17,42},{-38,
-          42},{-38,14},{-62,14},{-62,-2.8}}, color={0,0,127}));
+  connect(division.y, signalVoltage.v) annotation (Line(points={{-17,42},{-40,
+          42},{-40,10},{-62,10},{-62,-2.8}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
             -100,-100},{100,100}}),                             graphics={
           Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
