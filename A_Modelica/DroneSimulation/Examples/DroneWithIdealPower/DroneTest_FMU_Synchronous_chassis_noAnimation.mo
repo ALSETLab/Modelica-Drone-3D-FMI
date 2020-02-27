@@ -71,8 +71,8 @@ equation
       thickness=0.5));
   connect(gPS.y, controlModule_Synchronous.GPS) annotation (Line(points={{9,-50},
           {-26.6667,-50},{-26.6667,-12}}, color={0,0,127}));
-  connect(accelerometer.frame_a, droneChassis_NoAnimation.frame_a3) annotation
-    (Line(
+  connect(accelerometer.frame_a, droneChassis_NoAnimation.frame_a3) annotation (
+     Line(
       points={{30,-70},{36,-70},{36,-8},{44,-8}},
       color={95,95,95},
       thickness=0.5));
@@ -81,8 +81,8 @@ equation
   connect(controlModule_Synchronous.Height, const1.y) annotation (Line(points={{
           -16.6667,-12},{-16.6667,-36},{-10.6,-36}},  color={0,0,127}));
   connect(propeller_noAnimation.position, controlModule_Synchronous.y)
-    annotation (Line(points={{7.8,5.2},{-0.1,5.2},{-0.1,2},{-9.16667,2}}, color
-        ={0,0,127}));
+    annotation (Line(points={{7.8,5.2},{-0.1,5.2},{-0.1,2},{-9.16667,2}}, color=
+         {0,0,127}));
   connect(propeller_noAnimation2.Airframe, droneChassis_NoAnimation.frame_a1)
     annotation (Line(
       points={{30.2,14.4},{37.1,14.4},{37.1,4},{44,4}},
@@ -107,8 +107,8 @@ equation
       color={95,95,95},
       thickness=0.5));
   connect(propeller_noAnimation1.position, controlModule_Synchronous.y3)
-    annotation (Line(points={{7.8,-14.8},{-9.16667,-14.8},{-9.16667,-6}}, color
-        ={0,0,127}));
+    annotation (Line(points={{7.8,-14.8},{-9.16667,-14.8},{-9.16667,-6}}, color=
+         {0,0,127}));
   connect(controlModule_Synchronous.yaw, const.y)
     annotation (Line(points={{-31.6667,8},{-39.6,8}}, color={0,0,127}));
    connect(realExtendMultiple.u, xcoord) annotation (Line(points={{-74,6},{-88,
