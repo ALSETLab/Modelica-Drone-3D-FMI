@@ -6,7 +6,7 @@ model Propeller_DCMachine
     VaNominal=VaNominal,
     IaNominal=IaNominal)
     annotation (Placement(transformation(extent={{-80,-20},{-40,20}})));
-  Rotor.rotor rotor1(k=PropellerGain)
+  Rotor.rotor rotor1
     annotation (Placement(transformation(extent={{-16,20},{26,-20}})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
     annotation (Placement(transformation(extent={{86,-26},{118,6}})));

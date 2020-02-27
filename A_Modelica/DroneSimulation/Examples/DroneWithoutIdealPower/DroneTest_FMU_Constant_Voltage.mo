@@ -36,8 +36,8 @@ model DroneTest_FMU_Constant_Voltage
   Modelica.Blocks.Sources.Constant const1(k=0)
     annotation (Placement(transformation(extent={{2,-42},{-10,-30}})));
   Mechanical.Propeller.Propeller_DCMachine_Power
-                                           propeller_DCMachine_Power2(VaNominal
-      =10, V=V)
+                                           propeller_DCMachine_Power2(VaNominal=
+       10, V=V)
     annotation (Placement(transformation(extent={{10,2},{30,10}})));
   Mechanical.Propeller.Propeller_DCMachine_Power
                                            propeller_DCMachine_Power3(
@@ -50,8 +50,8 @@ model DroneTest_FMU_Constant_Voltage
         rotation=0,
         origin={-44,8})));
   Mechanical.Propeller.Propeller_DCMachine_Power
-                                           propeller_DCMachine_Power1(VaNominal
-      =10, V=V)
+                                           propeller_DCMachine_Power1(VaNominal=
+       10, V=V)
     annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
   Modelica.Electrical.Analog.Sources.ConstantVoltage constantVoltage(V=V)
     annotation (Placement(transformation(extent={{4,38},{24,58}})));

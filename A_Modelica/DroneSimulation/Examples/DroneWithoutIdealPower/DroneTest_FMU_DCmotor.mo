@@ -40,8 +40,8 @@ model DroneTest_FMU_DCmotor
   Modelica.Blocks.Sources.Constant const1(k=0)
     annotation (Placement(transformation(extent={{2,-42},{-10,-30}})));
   Mechanical.Propeller.Propeller_DCMachine_Power
-                                           propeller_DCMachine_Power3(VaNominal
-      =V)
+                                           propeller_DCMachine_Power3(VaNominal=
+       V)
     annotation (Placement(transformation(extent={{10,2},{30,10}})));
   Mechanical.Propeller.Propeller_DCMachine_Power
                                            propeller_DCMachine_Power2(
@@ -53,8 +53,8 @@ model DroneTest_FMU_DCmotor
         rotation=0,
         origin={-44,8})));
   Mechanical.Propeller.Propeller_DCMachine_Power
-                                           propeller_DCMachine_Power1(VaNominal
-      =V)
+                                           propeller_DCMachine_Power1(VaNominal=
+       V)
     annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
   Electrical.Sources.AuxiliaryPowerSystem_FuelCell
                                           auxiliaryPowerSystem(V=V)

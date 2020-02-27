@@ -1,6 +1,6 @@
 within DroneSimulation.Mechanical.Propeller;
 model Propeller_DCMachine_Power
-  Rotor.rotor rotor1(k=PropellerGain)
+  Rotor.rotor rotor1
     annotation (Placement(transformation(extent={{-16,20},{26,-20}})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
     annotation (Placement(transformation(extent={{86,-26},{118,6}})));
