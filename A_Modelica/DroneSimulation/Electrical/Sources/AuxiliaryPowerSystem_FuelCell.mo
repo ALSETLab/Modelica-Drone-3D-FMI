@@ -1,6 +1,6 @@
 within DroneSimulation.Electrical.Sources;
 model AuxiliaryPowerSystem_FuelCell "Auxiliary power system for drone"
-  Modelica.Electrical.PowerConverters.DCDC.ChopperStepUp dcdc annotation (
+  PowerElectronics.Converters.DCDC.BuckConverter         dcdc annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,

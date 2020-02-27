@@ -1,6 +1,7 @@
 within DroneSimulation.Electrical.Sources;
 model AuxiliaryPowerSystem_Battery_mass "Auxiliary power system for drone"
-  Modelica.Electrical.PowerConverters.DCDC.ChopperStepUp dcdc annotation (
+  Modelica.Electrical.PowerConverters.DCDC.ChopperStepDown
+                                                         dcdc annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -32,14 +33,15 @@ equation
   connect(dcdc.fire_p, pwm.fire)
     annotation (Line(points={{-56,-12},{-56,-19}}, color={255,0,255}));
   connect(battery.pin_p, dcdc.dc_p1)
-    annotation (Line(points={{-72,4},{-66,4},{-66,6},{-60,6}},
+    annotation (Line(points={{-73.6667,3.33333},{-66,3.33333},{-66,6},{-60,6}},
                                                color={0,0,255}));
   connect(dcdc.dc_p2, ac1) annotation (Line(points={{-40,6},{-22,6},{-22,100},{
           -40,100}}, color={0,0,255}));
   connect(dcdc.dc_n2, dc_n1) annotation (Line(points={{-40,-6},{16,-6},{16,100},
           {40,100}}, color={0,0,255}));
-  connect(battery.pin_n, dcdc.dc_n1) annotation (Line(points={{-72,-4},{-66,-4},
-          {-66,-6},{-60,-6}}, color={0,0,255}));
+  connect(battery.pin_n, dcdc.dc_n1) annotation (Line(points={{-73.6667,
+          -3.33333},{-66,-3.33333},{-66,-6},{-60,-6}},
+                              color={0,0,255}));
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
