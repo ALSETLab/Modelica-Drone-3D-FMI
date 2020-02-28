@@ -27,8 +27,8 @@ equation
           {-49,-10}}, color={0,0,127}));
   connect(add.u2, uniformNoise.y) annotation (Line(points={{-49,-16},{-49,
           -30},{-59,-30}}, color={0,0,127}));
-  connect(droneTest_FMU_DCmotor.zcoord, add.u1) annotation (Line(points={{-23,-11},
-          {-56,0},{-54,0},{-54,-10},{-49,-10}}, color={0,0,127}));
+  connect(droneTest_FMU_DCmotor.zcoord, add.u1) annotation (Line(points={{-23,
+          -11},{-54,0},{-54,-10},{-49,-10}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-80,
             -40},{40,60}})), Diagram(coordinateSystem(preserveAspectRatio=
             false, extent={{-80,-40},{40,60}})),

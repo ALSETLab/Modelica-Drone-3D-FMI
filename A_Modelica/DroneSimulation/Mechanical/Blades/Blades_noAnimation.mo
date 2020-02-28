@@ -1,17 +1,21 @@
-within DroneSimulation.Examples.MavicAir;
-model MavicAir_Blades
+within DroneSimulation.Mechanical.Blades;
+model Blades_noAnimation
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape5(
+    animation=true,
     m=0.010,
-    r={-0.2,0,0},
-    I_33=0.001)
+    r={-0.154,0,0},
+    I_33=0.001,
+    useQuaternions=false)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={66,-10})));
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape4(
+    animation=true,
     m=0.01,
-    r={0.2,0,0},
+    r={0.154,0,0},
     I_33=0.001,
-    shapeType="cylinder")
+    shapeType="cylinder",
+    useQuaternions=false)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={66,10})));
@@ -26,4 +30,4 @@ equation
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)));
-end MavicAir_Blades;
+end Blades_noAnimation;

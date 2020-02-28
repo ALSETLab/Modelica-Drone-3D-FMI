@@ -1,6 +1,6 @@
 within DroneSimulation.Mechanical.Rotor;
 model rotor
-  Modelica.Mechanics.MultiBody.Joints.Revolute revolute(animation=false)
+  Modelica.Mechanics.MultiBody.Joints.Revolute revolute(animation=true)
     annotation (Placement(transformation(extent={{4,-10},{24,10}})));
 
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
@@ -25,8 +25,7 @@ model rotor
         extent={{-6,-6},{6,6}},
         rotation=270,
         origin={40,-22})));
-  parameter Real k=-1
-    "Propeller gain. Set to 1 for clockwise, -1 for counterclockwise";
+
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a force
     "Coordinate system fixed to the joint with one cut-force and cut-torque"
     annotation (Placement(transformation(extent={{-116,-78},{-84,-46}}),

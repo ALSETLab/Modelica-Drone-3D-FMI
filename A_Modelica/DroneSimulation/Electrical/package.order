@@ -5,3 +5,4 @@ propeller
 controlModule
 controlModule_Power
 controlModule_Synchronous
+controlModule_SynchronousPower

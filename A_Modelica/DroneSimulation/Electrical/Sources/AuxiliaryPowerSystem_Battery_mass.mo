@@ -1,6 +1,7 @@
 within DroneSimulation.Electrical.Sources;
-model AuxiliaryPowerSystem_FuelCell "Auxiliary power system for drone"
-  PowerElectronics.Converters.DCDC.BuckConverter         dcdc annotation (
+model AuxiliaryPowerSystem_Battery_mass "Auxiliary power system for drone"
+  Modelica.Electrical.PowerConverters.DCDC.ChopperStepDown
+                                                         dcdc annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
@@ -8,9 +9,15 @@ model AuxiliaryPowerSystem_FuelCell "Auxiliary power system for drone"
   Modelica.Electrical.PowerConverters.DCDC.Control.SignalPWM pwm(
       constantDutyCycle=0.5, f(displayUnit="kHz") = 100000)
     annotation (Placement(transformation(extent={{-60,-40},{-40,-20}})));
-  FuelCell.SimplifiedFuelCell                            simplifiedFuelCell(R=100, L=
-        0.001,
-    V=V)       annotation (Placement(transformation(extent={{-86,-6},{-74,6}})));
+  Battery                                                battery(
+    redeclare Modelon.Electrical.EnergyStorage.Components.BatteryPackEMF
+      stackVoltage,
+    V_min=V_min,
+    SOC_start=SOC_start)
+               annotation (Placement(transformation(extent={{-10,10},{10,-10}},
+        rotation=90,
+        origin={-82,0})));
+
   Modelica.Electrical.Analog.Interfaces.PositivePin ac1
                                                        "AC output" annotation (
       Placement(transformation(extent={{-50,90},{-30,110}}),iconTransformation(
@@ -19,17 +26,22 @@ model AuxiliaryPowerSystem_FuelCell "Auxiliary power system for drone"
   Modelica.Electrical.Analog.Interfaces.NegativePin dc_n1
     "Negative DC output"
     annotation (Placement(transformation(extent={{30,90},{50,110}})));
+  parameter Real V_min=0
+    "Minimum allowable terminal voltage (simulation terminated if below)";
+  parameter Real SOC_start=0.6 "Initial SOC";
 equation
   connect(dcdc.fire_p, pwm.fire)
     annotation (Line(points={{-56,-12},{-56,-19}}, color={255,0,255}));
-  connect(simplifiedFuelCell.pin_p, dcdc.dc_p1) annotation (Line(points={{-73,4},
-          {-66,4},{-66,6},{-60,6}}, color={0,0,255}));
-  connect(simplifiedFuelCell.pin_p1, dcdc.dc_n1) annotation (Line(points={{-73,
-          -4},{-68,-4},{-68,-6},{-60,-6}}, color={0,0,255}));
+  connect(battery.pin_p, dcdc.dc_p1)
+    annotation (Line(points={{-73.6667,3.33333},{-66,3.33333},{-66,6},{-60,6}},
+                                               color={0,0,255}));
   connect(dcdc.dc_p2, ac1) annotation (Line(points={{-40,6},{-22,6},{-22,100},{
           -40,100}}, color={0,0,255}));
   connect(dcdc.dc_n2, dc_n1) annotation (Line(points={{-40,-6},{16,-6},{16,100},
           {40,100}}, color={0,0,255}));
+  connect(battery.pin_n, dcdc.dc_n1) annotation (Line(points={{-73.6667,
+          -3.33333},{-66,-3.33333},{-66,-6},{-60,-6}},
+                              color={0,0,255}));
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
@@ -87,4 +99,4 @@ equation
 <p><br><img src=\"modelica://CHEETA/Images/Electrical/CHEETASystem.PNG\"/></p>
 </html>"),
     experiment(StopTime=0.5));
-end AuxiliaryPowerSystem_FuelCell;
+end AuxiliaryPowerSystem_Battery_mass;

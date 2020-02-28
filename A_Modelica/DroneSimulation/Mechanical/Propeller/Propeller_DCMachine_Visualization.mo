@@ -1,5 +1,5 @@
 within DroneSimulation.Mechanical.Propeller;
-model Propeller_DCMachine
+model Propeller_DCMachine_Visualization
   Motor.DCMotor_DCMachine
                     dCMotor2_1(
     k=PropellerGain,
@@ -10,8 +10,8 @@ model Propeller_DCMachine
     annotation (Placement(transformation(extent={{-16,20},{26,-20}})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
     annotation (Placement(transformation(extent={{86,-26},{118,6}})));
-  Blades.Blades
-         blades
+  Blades.Blades_Visualization
+         blades_Visualization
     annotation (Placement(transformation(extent={{50,6},{92,46}})));
 
   parameter Real PropellerGain=-1
@@ -31,7 +31,7 @@ equation
       points={{26.42,-10.4},{102,-10.4},{102,-10}},
       color={95,95,95},
       thickness=0.5));
-  connect(rotor1.Blade, blades.Input) annotation (Line(
+  connect(rotor1.Blade, blades_Visualization.Input) annotation (Line(
       points={{26.42,8},{36,8},{36,26},{49.16,26}},
       color={95,95,95},
       thickness=0.5));
@@ -52,4 +52,4 @@ equation
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -40},{100,60}})),                                    Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-40},{100,60}})));
-end Propeller_DCMachine;
+end Propeller_DCMachine_Visualization;

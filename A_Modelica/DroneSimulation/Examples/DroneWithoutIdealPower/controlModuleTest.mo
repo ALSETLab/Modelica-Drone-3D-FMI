@@ -97,11 +97,12 @@ equation
   connect(propellerRev3.position, controlModule_Power.y3) annotation (Line(
         points={{5.8,7.2},{-9.16667,7.2},{-9.16667,12}}, color={0,0,127}));
   connect(controlModule_Power.y, propellerRev.position)
-    annotation (Line(points={{-9.16667,24},{-2,24},{-2,37.2},{5.8,37.2}}));
+    annotation (Line(points={{-9.16667,20},{-2,20},{-2,37.2},{5.8,37.2}}));
   connect(propellerRev1.position, controlModule_Power.y1) annotation (Line(
-        points={{5.8,27.2},{-1.1,27.2},{-1.1,20},{-9.16667,20}}, color={0,0,127}));
+        points={{5.8,27.2},{-1.1,27.2},{-1.1,24},{-9.16667,24}}, color={0,0,127}));
   connect(controlModule_Power.pin, auxiliaryPowerSystem_Battery.dc_n1)
-    annotation (Line(points={{-30,12},{-34,12},{-34,-2},{-36,-2},{-36,-6}},
+    annotation (Line(points={{-30.1667,11.4},{-34,11.4},{-34,-2},{-36,-2},{-36,
+          -6}},
         color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
