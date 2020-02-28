@@ -51,8 +51,8 @@ model DroneTest_FMU_Battery
   Blocks.Routing.RealExtendMultiple realExtendMultiple
     annotation (Placement(transformation(extent={{-88,-10},{-68,10}})));
 
-  Electrical.Sources.Battery battery
-    annotation (Placement(transformation(extent={{-46,30},{-22,54}})));
+  Electrical.Sources.Battery battery(ns=7)
+    annotation (Placement(transformation(extent={{-76,38},{-52,62}})));
 equation
   gPS.y[1] = xgps;
   gPS.y[2] = ygps;
@@ -124,7 +124,7 @@ equation
   connect(realExtendMultiple.u2, zcoord) annotation (Line(points={{-88,-6},{-96,
           -6},{-96,-80},{-120,-80}}, color={0,0,127}));
   connect(battery.pin_p, propeller_DCMachine_Power.p1) annotation (Line(points=
-          {{-30,52},{-30,60},{-16,60},{-16,24},{-8.4,24}}, color={0,0,255}));
+          {{-60,60},{-60,62},{-16,62},{-16,24},{-8.4,24}}, color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},

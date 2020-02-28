@@ -79,6 +79,14 @@ model DCMotor_DCMachine_Power "DC motor using DC machine from MSL"
     annotation (Placement(transformation(extent={{4,32},{-16,52}})));
   Modelica.Blocks.Sources.Constant const(k=V)
     annotation (Placement(transformation(extent={{36,26},{16,46}})));
+  Modelica.Electrical.Analog.Basic.Resistor resistor(R=R) annotation (Placement(
+        transformation(
+        extent={{10,-10},{-10,10}},
+        rotation=90,
+        origin={-94,50})));
+  Modelica.Electrical.Analog.Basic.Ground ground1
+    annotation (Placement(transformation(extent={{-104,12},{-84,32}})));
+  parameter Modelica.SIunits.Resistance R=100 "Resistance at temperature T_ref";
 equation
   connect(gain1.y, realExtend1.u)
     annotation (Line(points={{5,-68},{14,-68}},  color={0,0,127}));
@@ -127,6 +135,10 @@ equation
           -56,30},{-65.6,30}}, color={0,0,127}));
   connect(division.y, signalVoltage.v) annotation (Line(points={{-17,42},{-40,
           42},{-40,10},{-62,10},{-62,-2.8}}, color={0,0,127}));
+  connect(p1, resistor.p)
+    annotation (Line(points={{-110,60},{-94,60}}, color={0,0,255}));
+  connect(resistor.n, ground1.p)
+    annotation (Line(points={{-94,40},{-94,32}}, color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
             -100,-100},{100,100}}),                             graphics={
           Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),

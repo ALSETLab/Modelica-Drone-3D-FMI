@@ -28,8 +28,10 @@ model Propeller_DCMachine_Power
     k=PropellerGain,
     VaNominal=VaNominal,
     IaNominal=IaNominal,
-    V=V) annotation (Placement(transformation(extent={{-68,-20},{-24,20}})));
+    V=V,
+    R=R) annotation (Placement(transformation(extent={{-68,-20},{-24,20}})));
   parameter Modelica.SIunits.Voltage V "Battery voltage";
+  parameter Modelica.SIunits.Resistance R=100 "Resistance at temperature T_ref";
 equation
   connect(rotor1.Airframe, Airframe) annotation (Line(
       points={{26.42,-10.4},{102,-10.4},{102,-10}},
