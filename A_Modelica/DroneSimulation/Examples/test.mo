@@ -26,16 +26,16 @@ model test
     annotation (Placement(transformation(extent={{-12,-50},{8,-30}})));
   Modelica.Blocks.Sources.Constant const2(k=0)
     annotation (Placement(transformation(extent={{-82,38},{-70,50}})));
-  Mechanical.Propeller.Propeller_DCMachine_Power propeller_DCMachine_Power1(VaNominal
-      =10, V=10)
+  Mechanical.Propeller.Propeller_DCMachine_Power propeller_DCMachine_Power1(VaNominal=
+       10, V=10)
     annotation (Placement(transformation(extent={{-8,38},{12,48}})));
   Mechanical.Propeller.Propeller_DCMachine_Power propeller_DCMachine_Power2(
       PropellerGain=1,
     VaNominal=10,
     V=10)
     annotation (Placement(transformation(extent={{-8,24},{12,34}})));
-  Mechanical.Propeller.Propeller_DCMachine_Power propeller_DCMachine_Power3(VaNominal
-      =10, V=10)
+  Mechanical.Propeller.Propeller_DCMachine_Power propeller_DCMachine_Power3(VaNominal=
+       10, V=10)
     annotation (Placement(transformation(extent={{-8,10},{12,20}})));
   Mechanical.Chassis.droneChassis droneChassis2(length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{68,34},{118,54}})));
