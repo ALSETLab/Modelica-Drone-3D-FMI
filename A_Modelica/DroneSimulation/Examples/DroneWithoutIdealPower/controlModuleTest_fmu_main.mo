@@ -520,8 +520,8 @@ equation
         points={{-23.8,42.4},{-34.8,42.4},{-34.8,28},{-45,28}}, color={0,0,127}));
   connect(droneTest_FMU_Constant_Voltage.ycoord, const.y) annotation (Line(
         points={{-23.8,20},{-34,20},{-34,28},{-45,28}}, color={0,0,127}));
-  connect(droneTest_FMU_Constant_Voltage.zcoord, add.y) annotation (Line(points
-        ={{-23.8,-2.4},{-32,-2.4},{-32,-11},{-39.5,-11}}, color={0,0,127}));
+  connect(droneTest_FMU_Constant_Voltage.zcoord, add.y) annotation (Line(points=
+         {{-23.8,-2.4},{-32,-2.4},{-32,-11},{-39.5,-11}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-80,
             -40},{40,60}})), Diagram(coordinateSystem(preserveAspectRatio=
             false, extent={{-80,-40},{40,60}})),

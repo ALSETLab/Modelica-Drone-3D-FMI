@@ -89,8 +89,8 @@ equation
         points={{-44.6667,24},{-44,24},{-44,16},{-42.6,16}}, color={0,0,127}));
   connect(accelerometer.y, controlModule_SynchronousPower.Gyero) annotation (
       Line(points={{-13,-40},{-49.6667,-40},{-49.6667,24}}, color={0,0,127}));
-  connect(gPS.y, controlModule_SynchronousPower.GPS) annotation (Line(points={{
-          -13,-18},{-54.6667,-18},{-54.6667,24}}, color={0,0,127}));
+  connect(gPS.y, controlModule_SynchronousPower.GPS) annotation (Line(points={{-13,-18},
+          {-54.6667,-18},{-54.6667,24}},          color={0,0,127}));
   connect(propeller_DCMachine_Power1.position, controlModule_SynchronousPower.y)
     annotation (Line(points={{-10,40},{-24,40},{-24,38},{-37.1667,38}}, color={
           0,0,127}));
@@ -160,8 +160,8 @@ equation
       points={{26,-154},{32,-154},{32,-92},{40,-92}},
       color={95,95,95},
       thickness=0.5));
-  connect(accelerometer1.y, controlModule.Gyero) annotation (Line(points={{5,
-          -154},{-25.6667,-154},{-25.6667,-96}}, color={0,0,127}));
+  connect(accelerometer1.y, controlModule.Gyero) annotation (Line(points={{5,-154},
+          {-25.6667,-154},{-25.6667,-96}},       color={0,0,127}));
   connect(controlModule.Height,const3. y) annotation (Line(points={{-20.6667,
           -96},{-20.6667,-120},{-14.6,-120}},
                                 color={0,0,127}));
