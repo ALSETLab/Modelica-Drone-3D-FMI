@@ -23,10 +23,8 @@ model DCMotor_EPDCMachine "DC motor using DC machine from MSL"
               Electrification.Machines.Examples.DCMachineIdeal
                                    machine(enable_thermal_port=true,
     internal_ground=true,
-    redeclare Electrification.Machines.Core.Examples.IdealSimple core,
-    redeclare Electrification.Machines.Electrical.Ideal electrical,
     redeclare replaceable Electrification.Machines.Control.TorqueControl
-      controller(tau_ref=1500, external_reference=false))         annotation (Placement(transformation(extent={{-82,-60},
+      controller)                                                 annotation (Placement(transformation(extent={{-82,-60},
             {-62,-40}})));
 public
   Modelica.Thermal.HeatTransfer.Celsius.FixedTemperature ambientTemperature(T=40)
@@ -83,6 +81,13 @@ public
 
   Modelica.Electrical.Analog.Sources.SignalVoltage signalVoltage
     annotation (Placement(transformation(extent={{-52,-4},{-72,16}})));
+  Electrification.Machines.Control.Adapters.Input_tau_ref input_tau_ref
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={-30,30})));
+  Modelica.Blocks.Sources.Cosine cosine(freqHz=100)
+    annotation (Placement(transformation(extent={{-60,60},{-40,80}})));
 equation
   connect(position, limiter.u)
     annotation (Line(points={{-120,0},{-88,0},{-88,60},{-80.8,60}},
@@ -144,6 +149,13 @@ equation
       points={{66,-72},{66,-80},{80,-80},{80,-60},{100,-60}},
       color={95,95,95},
       thickness=0.5));
+  connect(machine.controlBus, input_tau_ref.systemBus) annotation (Line(
+      points={{-80,-40},{-80,-22},{-30,-22},{-30,20}},
+      color={240,170,40},
+      pattern=LinePattern.Dot,
+      thickness=0.5));
+  connect(cosine.y, input_tau_ref.tau_ref)
+    annotation (Line(points={{-39,70},{-30,70},{-30,40}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
             -100,-100},{100,100}}),                             graphics={
           Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
