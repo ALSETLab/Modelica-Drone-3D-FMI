@@ -1,7 +1,7 @@
 within DroneSimulation.Mechanical.Rotor;
 model rotor
-  Modelica.Mechanics.MultiBody.Joints.Revolute revolute(animation=true)
-    annotation (Placement(transformation(extent={{4,-10},{24,10}})));
+  Modelica.Mechanics.MultiBody.Joints.Revolute revolute(animation=false)
+    annotation (Placement(transformation(extent={{4,14},{24,34}})));
 
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
     annotation (Placement(transformation(extent={{86,36},{118,68}})));
@@ -28,8 +28,8 @@ model rotor
 
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a force
     "Coordinate system fixed to the joint with one cut-force and cut-torque"
-    annotation (Placement(transformation(extent={{-116,-78},{-84,-46}}),
-      iconTransformation(extent={{-116,-78},{-84,-46}})));
+    annotation (Placement(transformation(extent={{-118,-78},{-86,-46}}),
+      iconTransformation(extent={{-118,-78},{-86,-46}})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Blade
     annotation (Placement(transformation(extent={{86,-56},{118,-24}})));
 Modelica.Mechanics.MultiBody.Interfaces.Frame_a torque_1
@@ -57,11 +57,11 @@ equation
       color={95,95,95},
       thickness=0.5));
   connect(revolute.frame_a, torque1.frame_a) annotation (Line(
-      points={{4,0},{-14,0},{-14,-78},{8,-78}},
+      points={{4,24},{-14,24},{-14,-78},{8,-78}},
       color={95,95,95},
       thickness=0.5));
   connect(revolute.frame_a, force) annotation (Line(
-      points={{4,0},{-48,0},{-48,-62},{-100,-62}},
+      points={{4,24},{-48,24},{-48,-62},{-102,-62}},
       color={95,95,95},
       thickness=0.5));
   connect(Airframe, torque1.frame_a) annotation (Line(
@@ -73,7 +73,7 @@ equation
       color={95,95,95},
       thickness=0.5));
   connect(revolute.frame_b, torque1.frame_b) annotation (Line(
-      points={{24,0},{62,0},{62,-78},{28,-78}},
+      points={{24,24},{62,24},{62,-78},{28,-78}},
       color={95,95,95},
       thickness=0.5));
   connect(relativeAngularVelocity.frame_b, torque1.frame_b) annotation (

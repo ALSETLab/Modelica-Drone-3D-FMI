@@ -5,9 +5,9 @@ model controlModuleTest_Synchronous
     maxTilt=0.05,
     samplePeriod=0.01)
            annotation (Placement(transformation(extent={{-30,8},{-10,28}})));
-  Mechanical.Chassis.droneChassis droneChassis1(length=0.25, m=0.5)
+  Mechanical.Chassis.Examples.droneChassis droneChassis1(length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{44,6},{94,26}})));
-  Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine(PropellerGain=1)
+  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine(PropellerGain=1)
     annotation (Placement(transformation(extent={{8,34},{28,42}})));
   inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
       -1})
@@ -37,11 +37,11 @@ model controlModuleTest_Synchronous
     annotation (Placement(transformation(extent={{-92,10},{-72,30}})));
   Modelica.Blocks.Sources.Constant const1(k=0)
     annotation (Placement(transformation(extent={{2,-28},{-10,-16}})));
-  Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine1
+  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine1
     annotation (Placement(transformation(extent={{8,24},{28,32}})));
-  Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine2(PropellerGain=1)
+  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine2(PropellerGain=1)
     annotation (Placement(transformation(extent={{8,14},{28,22}})));
-  Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine3
+  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine3
     annotation (Placement(transformation(extent={{8,4},{28,12}})));
 equation
   connect(controlModule_Synchronous.position, realExtendMultiple.y)

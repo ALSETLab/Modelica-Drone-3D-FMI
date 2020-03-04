@@ -1,17 +1,15 @@
-within DroneSimulation.Mechanical.Propeller;
-model Phantom_propeller
+within DroneSimulation.Mechanical.Propeller.Examples;
+model Propeller_Visualization
   Motor.DCMotor
           dCMotor(k=PropellerGain)
     annotation (Placement(transformation(extent={{-80,-20},{-40,20}})));
   Modelica.Blocks.Interfaces.RealInput position
     annotation (Placement(transformation(extent={{-142,-20},{-102,20}})));
-  Rotor.rotor
-        rotor1
+  Rotor.Examples.rotor rotor1
     annotation (Placement(transformation(extent={{-16,20},{26,-20}})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
     annotation (Placement(transformation(extent={{86,-26},{118,6}})));
-  Blades.Phantom_Blades
-         phantom_Blades
+  Blades.Examples.Blades_Visualization blades_Visualization
     annotation (Placement(transformation(extent={{50,6},{92,46}})));
   parameter Real PropellerGain=-1
     "Propeller gain. Set to 1 for clockwise, -1 for counterclockwise";
@@ -22,7 +20,7 @@ equation
       points={{26.42,-10.4},{102,-10.4},{102,-10}},
       color={95,95,95},
       thickness=0.5));
-  connect(rotor1.Blade, phantom_Blades.Input) annotation (Line(
+  connect(rotor1.Blade, blades_Visualization.Input) annotation (Line(
       points={{26.42,8},{36,8},{36,26},{49.16,26}},
       color={95,95,95},
       thickness=0.5));
@@ -42,4 +40,4 @@ equation
             -100,-40},{100,60}})),                               Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-40},{100,
             60}})));
-end Phantom_propeller;
+end Propeller_Visualization;

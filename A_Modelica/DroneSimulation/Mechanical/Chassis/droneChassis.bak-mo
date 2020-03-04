@@ -2,13 +2,15 @@ within DroneSimulation.Mechanical.Chassis;
 model droneChassis
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape(
     animation=false,
+    animateSphere=false,
     r={0,0.25,0},
     r_CM={0,0.175,0},
     m=m,
   useQuaternions=false)
-    annotation (Placement(transformation(extent={{-22,36},{-2,56}})));
+    annotation (Placement(transformation(extent={{-22,34},{-2,54}})));
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape1(
     animation=false,
+    animateSphere=false,
     r={0.25,0,0},
     r_CM={0.175,0,0},
     m=m,
@@ -16,16 +18,18 @@ model droneChassis
                       annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-12,14})));
+        origin={-12,12})));
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape2(
     animation=false,
+    animateSphere=false,
     m=m,
     r={0,-0.25,0},
     r_CM={0,-0.175,0},
   useQuaternions=false)
-    annotation (Placement(transformation(extent={{-22,-24},{-2,-4}})));
+    annotation (Placement(transformation(extent={{-22,-26},{-2,-6}})));
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape3(
     animation=false,
+    animateSphere=false,
     m=m,
     r={-0.25,0,0},
     r_CM={-0.175,0,0},
@@ -33,7 +37,7 @@ model droneChassis
                        annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=0,
-        origin={-12,-48})));
+        origin={-12,-50})));
   Modelica.Mechanics.MultiBody.Parts.BodyCylinder bodyCylinder(
     animation=false,
     density=0,
@@ -80,19 +84,19 @@ model droneChassis
     angle=45) annotation (Placement(transformation(extent={{58,20},{78,40}})));
 equation
   connect(bodyShape.frame_b, bodyCylinder.frame_a) annotation (Line(
-      points={{-2,46},{16,46},{16,0},{32,0}},
+      points={{-2,44},{16,44},{16,0},{32,0}},
       color={95,95,95},
       thickness=0.5));
   connect(bodyShape3.frame_b, bodyCylinder.frame_a) annotation (Line(
-      points={{-2,-48},{16,-48},{16,0},{32,0}},
+      points={{-2,-50},{16,-50},{16,0},{32,0}},
       color={95,95,95},
       thickness=0.5));
   connect(bodyShape1.frame_b, bodyCylinder.frame_a) annotation (Line(
-      points={{-2,14},{16,14},{16,0},{32,0}},
+      points={{-2,12},{16,12},{16,0},{32,0}},
       color={95,95,95},
       thickness=0.5));
   connect(bodyShape2.frame_b, bodyCylinder.frame_a) annotation (Line(
-      points={{-2,-14},{16,-14},{16,0},{32,0}},
+      points={{-2,-16},{16,-16},{16,0},{32,0}},
       color={95,95,95},
       thickness=0.5));
   connect(pointMass.frame_a, bodyCylinder.frame_b) annotation (Line(
@@ -100,19 +104,19 @@ equation
       color={95,95,95},
       thickness=0.5));
   connect(frame_a1, bodyShape.frame_a) annotation (Line(
-      points={{-100,60},{-62,60},{-62,46},{-22,46}},
+      points={{-100,60},{-62,60},{-62,44},{-22,44}},
       color={95,95,95},
       thickness=0.5));
   connect(frame_a, bodyShape1.frame_a) annotation (Line(
-      points={{-100,20},{-62,20},{-62,14},{-22,14}},
+      points={{-100,20},{-62,20},{-62,12},{-22,12}},
       color={95,95,95},
       thickness=0.5));
   connect(frame_a2, bodyShape2.frame_a) annotation (Line(
-      points={{-100,-20},{-62,-20},{-62,-14},{-22,-14}},
+      points={{-100,-20},{-62,-20},{-62,-16},{-22,-16}},
       color={95,95,95},
       thickness=0.5));
   connect(frame_a3, bodyShape3.frame_a) annotation (Line(
-      points={{-100,-60},{-62,-60},{-62,-48},{-22,-48}},
+      points={{-100,-60},{-62,-60},{-62,-50},{-22,-50}},
       color={95,95,95},
       thickness=0.5));
   connect(bodyCylinder.frame_a, frame_a4) annotation (Line(

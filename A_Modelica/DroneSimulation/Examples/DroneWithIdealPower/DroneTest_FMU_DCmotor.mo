@@ -17,11 +17,11 @@ model DroneTest_FMU_DCmotor
     annotation (Placement(transformation(extent={{100,-90},{120,-70}})));
   Electrical.controlModule controlModule(maxTilt=0.05, samplePeriod=0.01)
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
-  Mechanical.Chassis.droneChassis droneChassis1(length=0.25, m=0.5)
+  Mechanical.Chassis.Examples.droneChassis droneChassis1(length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{44,-12},{94,8}})));
-  Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine(PropellerGain=1,
-      VaNominal=10)
-    annotation (Placement(transformation(extent={{10,12},{30,20}})));
+  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine(PropellerGain=1,
+      VaNominal=5)
+    annotation (Placement(transformation(extent={{10,10},{30,18}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple
     annotation (Placement(transformation(extent={{-74,-10},{-54,10}})));
   Sensors.GPS gPS annotation (Placement(transformation(
@@ -30,25 +30,23 @@ model DroneTest_FMU_DCmotor
         origin={20,-50})));
   Sensors.Accelerometer accelerometer
     annotation (Placement(transformation(extent={{10,-80},{30,-60}})));
-  Modelica.Blocks.Sources.Constant const1(k=0)
-    annotation (Placement(transformation(extent={{2,-42},{-10,-30}})));
-  Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine1(VaNominal=10)
-    annotation (Placement(transformation(extent={{10,2},{30,10}})));
-  Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine2(PropellerGain=1,
-      VaNominal=10)
+  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine2(VaNominal=5)
+    annotation (Placement(transformation(extent={{10,0},{30,8}})));
+  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine3(PropellerGain=1,
+      VaNominal=5)
     annotation (Placement(transformation(extent={{10,-8},{30,0}})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-4,-4},{4,4}},
         rotation=0,
         origin={-44,8})));
-  Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine3(VaNominal=10)
+  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine1(VaNominal=5)
     annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
 equation
   gPS.y[1] = xgps;
   gPS.y[2] = ygps;
   gPS.y[3] = zgps;
   connect(propeller_DCMachine.position, controlModule.y1) annotation (Line(
-        points={{8,15.2},{-2,15.2},{-2,6},{-9.16667,6}}, color={0,0,127}));
+        points={{8,13.2},{-2,13.2},{-2,6},{-9.16667,6}}, color={0,0,127}));
   connect(controlModule.position,realExtendMultiple. y) annotation (Line(
         points={{-31.6667,0},{-53,0}},                color={0,0,127}));
   connect(gPS.frame_a,droneChassis1. frame_a3) annotation (Line(
@@ -65,34 +63,31 @@ equation
   connect(accelerometer.y,controlModule. Gyero) annotation (Line(points={{9,-70},
           {-21.6667,-70},{-21.6667,-12}},
                                     color={0,0,127}));
-  connect(controlModule.Height,const1. y) annotation (Line(points={{-16.6667,
-          -12},{-16.6667,-36},{-10.6,-36}},
-                                color={0,0,127}));
-  connect(propeller_DCMachine1.position, controlModule.y) annotation (Line(
-        points={{8,5.2},{-0.1,5.2},{-0.1,2},{-9.16667,2}}, color={0,0,127}));
+  connect(propeller_DCMachine2.position, controlModule.y) annotation (Line(
+        points={{8,3.2},{-0.1,3.2},{-0.1,2},{-9.16667,2}}, color={0,0,127}));
   connect(propeller_DCMachine.Airframe, droneChassis1.frame_a1) annotation (
       Line(
-      points={{30.2,14.4},{37.1,14.4},{37.1,4},{44,4}},
+      points={{30.2,12.4},{37.1,12.4},{37.1,4},{44,4}},
       color={95,95,95},
       thickness=0.5));
-  connect(propeller_DCMachine1.Airframe, droneChassis1.frame_a) annotation (
+  connect(propeller_DCMachine2.Airframe, droneChassis1.frame_a) annotation (
       Line(
-      points={{30.2,4.4},{36.1,4.4},{36.1,0},{44,0}},
+      points={{30.2,2.4},{36.1,2.4},{36.1,0},{44,0}},
       color={95,95,95},
       thickness=0.5));
-  connect(propeller_DCMachine2.Airframe, droneChassis1.frame_a2) annotation (
+  connect(propeller_DCMachine3.Airframe, droneChassis1.frame_a2) annotation (
       Line(
       points={{30.2,-5.6},{36.1,-5.6},{36.1,-4},{44,-4}},
       color={95,95,95},
       thickness=0.5));
-  connect(propeller_DCMachine2.position, controlModule.y2) annotation (Line(
+  connect(propeller_DCMachine3.position, controlModule.y2) annotation (Line(
         points={{8,-4.8},{-9.16667,-4.8},{-9.16667,-2}}, color={0,0,127}));
-  connect(propeller_DCMachine3.Airframe, droneChassis1.frame_a3) annotation (
+  connect(propeller_DCMachine1.Airframe, droneChassis1.frame_a3) annotation (
       Line(
       points={{30.2,-15.6},{36,-15.6},{36,-8},{44,-8}},
       color={95,95,95},
       thickness=0.5));
-  connect(propeller_DCMachine3.position, controlModule.y3) annotation (Line(
+  connect(propeller_DCMachine1.position, controlModule.y3) annotation (Line(
         points={{8,-14.8},{-9.16667,-14.8},{-9.16667,-6}}, color={0,0,127}));
    connect(controlModule.yaw, const.y)
      annotation (Line(points={{-31.6667,8},{-39.6,8}},

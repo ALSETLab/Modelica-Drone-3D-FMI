@@ -4,5 +4,6 @@ DroneTest_FMU
 DroneTest_FMU_Constant_Voltage
 DroneTest_FMU_RampVoltage
 DroneTest_FMU_Battery
+DroneTest_FMU_Battery_ElectricPower_Machine
 controlModuleTest
 controlModuleTest_fmu_main

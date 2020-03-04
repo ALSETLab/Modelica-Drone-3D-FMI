@@ -29,14 +29,6 @@ model controlModule_Power
         extent={{-20,-20},{20,20}},
         rotation=90,
         origin={0,-120})));
-  Modelica.Blocks.Interfaces.RealInput Height annotation (Placement(
-        transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=90,
-        origin={60,-120}), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=90,
-        origin={60,-120})));
   DroneSimulation.Blocks.Control.discretePID discretePID(
     ki=z_ki,
     kd=z_kd,

@@ -14,11 +14,11 @@ model DroneTest_FMU_RampVoltage
     annotation (Placement(transformation(extent={{100,-90},{120,-70}})));
 
   parameter Modelica.SIunits.Voltage V "Battery voltage";
-  Mechanical.Propeller.Propeller_DCMachine_Power propeller_DCMachine_Power(
+  Mechanical.Propeller.Examples.Propeller_DCMachine_Power
+    propeller_DCMachine_Power(
     PropellerGain=1,
     VaNominal=10,
-    V=V)
-    annotation (Placement(transformation(extent={{-8,16},{12,26}})));
+    V=V) annotation (Placement(transformation(extent={{-8,16},{12,26}})));
   Modelica.Electrical.Analog.Sources.RampVoltage     rampVoltage(
     V=-2,
     duration=10,
@@ -38,18 +38,18 @@ model DroneTest_FMU_RampVoltage
     annotation (Placement(transformation(extent={{-30,-26},{-42,-14}})));
   Modelica.Blocks.Sources.Constant const2(k=0)
     annotation (Placement(transformation(extent={{-84,16},{-72,28}})));
-  Mechanical.Propeller.Propeller_DCMachine_Power propeller_DCMachine_Power1(VaNominal=
-       10, V=V)
+  Mechanical.Propeller.Examples.Propeller_DCMachine_Power
+    propeller_DCMachine_Power1(VaNominal=10, V=V)
     annotation (Placement(transformation(extent={{-8,2},{12,12}})));
-  Mechanical.Propeller.Propeller_DCMachine_Power propeller_DCMachine_Power2(
+  Mechanical.Propeller.Examples.Propeller_DCMachine_Power
+    propeller_DCMachine_Power2(
     PropellerGain=1,
     VaNominal=10,
-    V=V)
-    annotation (Placement(transformation(extent={{-8,-12},{12,-2}})));
-  Mechanical.Propeller.Propeller_DCMachine_Power propeller_DCMachine_Power3(VaNominal=
-       10, V=V)
+    V=V) annotation (Placement(transformation(extent={{-8,-12},{12,-2}})));
+  Mechanical.Propeller.Examples.Propeller_DCMachine_Power
+    propeller_DCMachine_Power3(VaNominal=10, V=V)
     annotation (Placement(transformation(extent={{-8,-26},{12,-16}})));
-  Mechanical.Chassis.droneChassis droneChassis2(length=0.25, m=0.5)
+  Mechanical.Chassis.Examples.droneChassis droneChassis2(length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{48,-12},{98,8}})));
   inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,-1})
     annotation (Placement(transformation(extent={{62,52},{82,72}})));

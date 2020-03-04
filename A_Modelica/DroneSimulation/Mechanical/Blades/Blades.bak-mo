@@ -2,6 +2,7 @@ within DroneSimulation.Mechanical.Blades;
 model Blades
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape5(
     animation=false,
+    animateSphere=false,
     m=0.010,
     r={-0.154,0,0},
     I_33=0.001,
@@ -11,6 +12,7 @@ model Blades
         origin={66,-10})));
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape4(
     animation=false,
+    animateSphere=false,
     m=0.01,
     r={0.154,0,0},
     I_33=0.001,

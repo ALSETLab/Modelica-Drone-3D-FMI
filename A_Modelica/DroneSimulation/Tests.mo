@@ -49,7 +49,7 @@ package Tests
  model chassisTest
    Mechanical.Propeller                 propellerRev(PropellerGain=1)
       annotation (Placement(transformation(extent={{-20,40},{0,60}})));
-    Mechanical.Chassis.droneChassis droneChassis1
+    Mechanical.Chassis.Examples.droneChassis droneChassis1
       annotation (Placement(transformation(extent={{30,-10},{80,10}})));
    Modelica.Blocks.Sources.Step step(startTime=0, height=1)
      annotation (Placement(transformation(extent={{-100,-2},{-80,18}})));
@@ -123,7 +123,7 @@ package Tests
  end chassisTest;
 
  model simpleHoverTest
-    DroneSimulation.Mechanical.Chassis.droneChassis droneChassis1(m=10)
+    DroneSimulation.Mechanical.Chassis.Examples.droneChassis droneChassis1(m=10)
       annotation (Placement(transformation(extent={{30,-10},{80,10}})));
    inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
        -1})
@@ -561,7 +561,7 @@ package Tests
  end discreteTest;
 
  model discreteControlTest
-    DroneSimulation.Mechanical.Chassis.droneChassis droneChassis1
+    DroneSimulation.Mechanical.Chassis.Examples.droneChassis droneChassis1
       annotation (Placement(transformation(extent={{30,10},{80,30}})));
    inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
        -1})
@@ -672,7 +672,7 @@ package Tests
  model controlModuleTest
    Electrical.controlModule controlModule(maxTilt=0.05, samplePeriod=0.01)
      annotation (Placement(transformation(extent={{-30,8},{-10,28}})));
-    Mechanical.Chassis.droneChassis droneChassis1(length=0.25, m=0.5)
+    Mechanical.Chassis.Examples.droneChassis droneChassis1(length=0.25, m=0.5)
       annotation (Placement(transformation(extent={{46,6},{96,26}})));
    Electrical.propeller propellerRev(k=1)
      annotation (Placement(transformation(extent={{8,38},{28,58}})));
@@ -771,7 +771,7 @@ package Tests
  model controlModuleTest_fmu_inputs
    Electrical.controlModule controlModule(maxTilt=0.05, samplePeriod=0.01)
      annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
-    Mechanical.Chassis.droneChassis droneChassis1(length=0.25, m=0.5)
+    Mechanical.Chassis.Examples.droneChassis droneChassis1(length=0.25, m=0.5)
       annotation (Placement(transformation(extent={{44,-12},{94,8}})));
    Electrical.propeller propellerRev(k=1)
      annotation (Placement(transformation(extent={{8,18},{28,38}})));
@@ -923,7 +923,7 @@ package Tests
  model controlModuleTest2
    Electrical.controlModule controlModule(maxTilt=0.05, samplePeriod=0.01)
      annotation (Placement(transformation(extent={{-30,8},{-10,28}})));
-    Mechanical.Chassis.droneChassis droneChassis1(length=0.25, m=0.5)
+    Mechanical.Chassis.Examples.droneChassis droneChassis1(length=0.25, m=0.5)
       annotation (Placement(transformation(extent={{44,6},{94,26}})));
    Mechanical.Propeller propellerRev(PropellerGain=1)
      annotation (Placement(transformation(extent={{8,34},{28,42}})));
@@ -1038,7 +1038,7 @@ package Tests
      annotation (Placement(transformation(extent={{100,-90},{120,-70}})));
    Electrical.controlModule controlModule(maxTilt=0.05, samplePeriod=0.01)
      annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
-    Mechanical.Chassis.droneChassis droneChassis1(length=0.25, m=0.5)
+    Mechanical.Chassis.Examples.droneChassis droneChassis1(length=0.25, m=0.5)
       annotation (Placement(transformation(extent={{44,-12},{94,8}})));
    Mechanical.Propeller propellerRev(PropellerGain=1)
      annotation (Placement(transformation(extent={{10,12},{30,20}})));

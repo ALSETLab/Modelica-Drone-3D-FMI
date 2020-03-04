@@ -1,17 +1,16 @@
-within DroneSimulation.Mechanical.Propeller;
-model Propeller_DCMachine
+within DroneSimulation.Mechanical.Propeller.Examples;
+model DCMachine
   Motor.DCMotor_DCMachine
                     dCMotor2_1(
     k=PropellerGain,
     VaNominal=VaNominal,
     IaNominal=IaNominal)
     annotation (Placement(transformation(extent={{-80,-20},{-40,20}})));
-  Rotor.rotor rotor1
+  Rotor.Examples.rotor rotor1
     annotation (Placement(transformation(extent={{-16,20},{26,-20}})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
     annotation (Placement(transformation(extent={{86,-26},{118,6}})));
-  Blades.Blades
-         blades
+  Blades.Examples.Blades blades
     annotation (Placement(transformation(extent={{50,6},{92,46}})));
 
   parameter Real PropellerGain=-1
@@ -44,7 +43,7 @@ equation
       color={95,95,95},
       thickness=0.5));
   connect(rotor1.force, dCMotor2_1.force_out) annotation (Line(
-      points={{-16,12.4},{-40,12.4}},
+      points={{-16.42,12.4},{-40,12.4}},
       color={95,95,95},
       thickness=0.5));
   connect(dCMotor2_1.position, position)
@@ -52,4 +51,4 @@ equation
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -40},{100,60}})),                                    Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-40},{100,60}})));
-end Propeller_DCMachine;
+end DCMachine;

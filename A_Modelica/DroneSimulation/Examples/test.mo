@@ -1,10 +1,10 @@
 within DroneSimulation.Examples;
 model test
-  Mechanical.Propeller.Propeller_DCMachine_Power propeller_DCMachine_Power(
-      PropellerGain=1,
+  Mechanical.Propeller.Examples.Propeller_DCMachine_Power
+    propeller_DCMachine_Power(
+    PropellerGain=1,
     VaNominal=10,
-    V=10)
-    annotation (Placement(transformation(extent={{-8,52},{12,62}})));
+    V=10) annotation (Placement(transformation(extent={{-8,52},{12,62}})));
   Modelica.Blocks.Sources.Ramp ramp(duration=5, height=5)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
@@ -26,18 +26,18 @@ model test
     annotation (Placement(transformation(extent={{-12,-50},{8,-30}})));
   Modelica.Blocks.Sources.Constant const2(k=0)
     annotation (Placement(transformation(extent={{-82,38},{-70,50}})));
-  Mechanical.Propeller.Propeller_DCMachine_Power propeller_DCMachine_Power1(VaNominal=
-       10, V=10)
+  Mechanical.Propeller.Examples.Propeller_DCMachine_Power
+    propeller_DCMachine_Power1(VaNominal=10, V=10)
     annotation (Placement(transformation(extent={{-8,38},{12,48}})));
-  Mechanical.Propeller.Propeller_DCMachine_Power propeller_DCMachine_Power2(
-      PropellerGain=1,
+  Mechanical.Propeller.Examples.Propeller_DCMachine_Power
+    propeller_DCMachine_Power2(
+    PropellerGain=1,
     VaNominal=10,
-    V=10)
-    annotation (Placement(transformation(extent={{-8,24},{12,34}})));
-  Mechanical.Propeller.Propeller_DCMachine_Power propeller_DCMachine_Power3(VaNominal=
-       10, V=10)
+    V=10) annotation (Placement(transformation(extent={{-8,24},{12,34}})));
+  Mechanical.Propeller.Examples.Propeller_DCMachine_Power
+    propeller_DCMachine_Power3(VaNominal=10, V=10)
     annotation (Placement(transformation(extent={{-8,10},{12,20}})));
-  Mechanical.Chassis.droneChassis droneChassis2(length=0.25, m=0.5)
+  Mechanical.Chassis.Examples.droneChassis droneChassis2(length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{68,34},{118,54}})));
   Modelica.Blocks.Sources.Constant const4(k=0)
     annotation (Placement(transformation(extent={{-62,-72},{-50,-60}})));
@@ -49,9 +49,9 @@ model test
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
   Electrical.controlModule controlModule(maxTilt=0.05, samplePeriod=0.01)
     annotation (Placement(transformation(extent={{-34,-94},{-14,-74}})));
-  Mechanical.Chassis.droneChassis droneChassis1(length=0.25, m=0.5)
+  Mechanical.Chassis.Examples.droneChassis droneChassis1(length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{40,-96},{90,-76}})));
-  Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine(PropellerGain=1,
+  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine(PropellerGain=1,
       VaNominal=10)
     annotation (Placement(transformation(extent={{6,-72},{26,-64}})));
   Sensors.GPS gPS1
@@ -63,12 +63,12 @@ model test
     annotation (Placement(transformation(extent={{6,-164},{26,-144}})));
   Modelica.Blocks.Sources.Constant const3(k=0)
     annotation (Placement(transformation(extent={{-2,-126},{-14,-114}})));
-  Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine1(VaNominal=10)
+  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine1(VaNominal=10)
     annotation (Placement(transformation(extent={{6,-82},{26,-74}})));
-  Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine2(PropellerGain=1,
+  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine2(PropellerGain=1,
       VaNominal=10)
     annotation (Placement(transformation(extent={{6,-92},{26,-84}})));
-  Mechanical.Propeller.Propeller_DCMachine propeller_DCMachine3(VaNominal=10)
+  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine3(VaNominal=10)
     annotation (Placement(transformation(extent={{6,-102},{26,-94}})));
   Electrical.Sources.Battery battery(
     redeclare Modelon.Electrical.EnergyStorage.Components.BatteryPackEMF

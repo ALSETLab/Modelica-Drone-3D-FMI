@@ -19,9 +19,8 @@ model DroneTest_FMU_Synchronous_chassis_noAnimation
                            controlModule_Synchronous(
                                          maxTilt=0.05, samplePeriod=0.001)
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
-  Mechanical.Chassis.droneChassis_NoAnimation
-                                  droneChassis_NoAnimation(
-                                                length=0.25, m=0.5)
+  Mechanical.Chassis.Examples.droneChassis_NoAnimation droneChassis_NoAnimation(
+      length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{44,-12},{94,8}})));
   Mechanical.Propeller.Propeller_noAnimation
                                            propeller_noAnimation2(
