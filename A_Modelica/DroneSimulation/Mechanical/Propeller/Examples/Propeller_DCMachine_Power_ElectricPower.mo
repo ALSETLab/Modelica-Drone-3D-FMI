@@ -12,19 +12,11 @@ model Propeller_DCMachine_Power_ElectricPower
   Modelica.Blocks.Interfaces.RealInput position
     annotation (Placement(transformation(extent={{-140,-10},{-100,30}})));
 
-  parameter Modelica.SIunits.Voltage VaNominal=5
-    "Nominal armature voltage for motor"
-    annotation (Dialog(group="Motor Parameters"));
-  parameter Modelica.SIunits.Current IaNominal=0.1
-    "Nominal armature current (>0..Motor, <0..Generator) for motor"
-    annotation (Dialog(group="Motor Parameters"));
+
 
   Motor.DCMotor_EPDCMachine dCMotor_DCMachine2_1(
     k=PropellerGain,
-    VaNominal=VaNominal,
-    IaNominal=IaNominal,
-    V=V,
-    R=R) annotation (Placement(transformation(extent={{-68,-20},{-24,20}})));
+    V=V) annotation (Placement(transformation(extent={{-68,-20},{-24,20}})));
   parameter Modelica.SIunits.Voltage V "Battery voltage";
   parameter Modelica.SIunits.Resistance R=100 "Resistance at temperature T_ref";
 equation
@@ -45,11 +37,11 @@ equation
       color={95,95,95},
       thickness=0.5));
   connect(dCMotor_DCMachine2_1.torque_2, rotor1.torque_1) annotation (Line(
-      points={{-24,-12},{-16.42,-12}},
+      points={{-24,-12},{-20,-12},{-20,-12},{-16.42,-12}},
       color={95,95,95},
       thickness=0.5));
-  connect(dCMotor_DCMachine2_1.position, position) annotation (Line(points={{
-          -72.4,0},{-90,0},{-90,10},{-120,10}}, color={0,0,127}));
+  connect(dCMotor_DCMachine2_1.position, position) annotation (Line(points={{-72.4,0},
+          {-90,0},{-90,10},{-120,10}},          color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -40},{100,60}})),                                    Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-40},{100,60}})));

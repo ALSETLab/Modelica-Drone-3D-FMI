@@ -19,7 +19,7 @@ model PowerControl
   Modelica.Electrical.Analog.Sources.SignalVoltage signalVoltage
     annotation (Placement(transformation(extent={{13,-13},{-13,13}},
         rotation=90,
-        origin={79,11})));
+        origin={79,1})));
   Modelica.Blocks.Interfaces.RealInput Position
     "Position signal from the controller"
     annotation (Placement(transformation(extent={{-142,40},{-102,80}}),
@@ -46,18 +46,18 @@ equation
     annotation (Line(points={{-62,12},{-62,4}},  color={0,0,255}));
   connect(potentialSensor.p, resistor.p)
     annotation (Line(points={{-44,40},{-62,40},{-62,32}}, color={0,0,255}));
-  connect(division.y, signalVoltage.v) annotation (Line(points={{47,12},{52,12},
-          {52,11},{63.4,11}}, color={0,0,127}));
   connect(product.u2, Position) annotation (Line(points={{-10,52},{-22,52},{-22,
           60},{-122,60}}, color={0,0,127}));
   connect(potentialSensor.p, Battery) annotation (Line(points={{-44,40},{-82,40},
           {-82,-62},{-104,-62}}, color={0,0,255}));
-  connect(signalVoltage.p, p1) annotation (Line(points={{79,24},{80,24},{80,60},
-          {102,60}}, color={0,0,255}));
-  connect(signalVoltage.n, n1) annotation (Line(points={{79,-2},{80,-2},{80,-60},
-          {104,-60}}, color={0,0,255}));
   connect(p1, p1)
     annotation (Line(points={{102,60},{102,60},{102,60}}, color={0,0,255}));
+  connect(division.y, signalVoltage.v) annotation (Line(points={{47,12},{52,12},
+          {52,1},{63.4,1}}, color={0,0,127}));
+  connect(signalVoltage.p, p1) annotation (Line(points={{79,14},{80,14},{80,60},
+          {102,60}}, color={0,0,255}));
+  connect(signalVoltage.n, n1) annotation (Line(points={{79,-12},{78,-12},{78,
+          -60},{104,-60}}, color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200})}),
                                                                  Diagram(

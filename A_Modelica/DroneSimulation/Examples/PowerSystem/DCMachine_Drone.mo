@@ -1,49 +1,7 @@
 within DroneSimulation.Examples.PowerSystem;
-model DCMachine
+model DCMachine_Drone
   extends Modelon.Icons.Experiment;
 
-  Modelica.Mechanics.Rotational.Components.Inertia inertia(J=0.1,
-    w(fixed=true, start=0),
-    phi(fixed=true, start=0))
-    annotation (Placement(transformation(extent={{30,-10},{50,10}})));
-  Electrification.Electrical.DCSplitter splitterHVDC annotation (Placement(
-        transformation(
-        extent={{-4,4},{4,-4}},
-        rotation=180,
-        origin={-44,0})));
-  replaceable Electrification.Machines.Examples.DCMachine   machine(
-      internal_ground=true) constrainedby
-    Electrification.Machines.Interfaces.DCMachine(
-      internal_ground=true)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-  replaceable
-  Modelica.Blocks.Sources.Cosine trq_cmd(amplitude=150, freqHz=2) constrainedby
-    Modelica.Blocks.Interfaces.SO
-    annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
-public
-  Modelica.Thermal.HeatTransfer.Celsius.FixedTemperature ambientTemperature(T=40)
-    annotation (Placement(transformation(extent={{68,70},{48,90}})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow converterCoolingHeat(Q_flow=-1000)
-    annotation (Placement(transformation(extent={{68,40},{48,60}})));
-  Modelica.Thermal.HeatTransfer.Sources.FixedHeatFlow machineCoolingHeat(Q_flow=-1000) annotation (Placement(transformation(extent={{68,10},{48,30}})));
-  Electrification.Machines.Control.Adapters.Input_tau_ref torqueCommand
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-30,30})));
-  Electrification.Machines.Thermal.Adapters.Ambient ambient
-    annotation (Placement(transformation(extent={{20,76},{28,84}})));
-  Electrification.Machines.Thermal.Adapters.MachineLumped machineLumped
-    annotation (Placement(transformation(extent={{20,16},{28,24}})));
-  Electrification.Machines.Thermal.Adapters.ConverterLumped converterLumped
-    annotation (Placement(transformation(extent={{20,46},{28,54}})));
-  Electrification.Electrical.DCTripleSensor dcSensor
-    annotation (Placement(transformation(extent={{-32,-6},{-20,6}})));
-  Modelica.Electrical.Analog.Sources.SignalVoltage signalVoltage annotation (
-      Placement(transformation(
-        extent={{10,-10},{-10,10}},
-        rotation=90,
-        origin={-62,-2})));
   Modelica.Blocks.Sources.CombiTimeTable combiTimeTable(table=[0,0; 0.01,0;
         0.01,53.678276; 0.02,53.678276; 0.02,0; 0.03,0; 0.03,0; 0.04,0; 0.04,0;
         0.05,0; 0.05,1.0218866; 0.06,1.0218866; 0.06,0.3816317; 0.07,0.3816317;
@@ -496,30 +454,7 @@ public
         4.6556544; 9.94,4.656107; 9.95,4.656107; 9.95,4.6565533; 9.96,4.6565533;
         9.96,4.656994; 9.97,4.656994; 9.97,4.6574283; 9.98,4.6574283; 9.98,
         4.657856; 9.99,4.657856; 9.99,4.658278; 10,4.658278; 10,4.658694])
-    annotation (Placement(transformation(extent={{-112,-12},{-92,8}})));
-  Modelica.Mechanics.Rotational.Components.Inertia inertia1(
-    J=0.1,
-    w(fixed=true, start=0),
-    phi(fixed=true, start=0))
-    annotation (Placement(transformation(extent={{30,-66},{50,-46}})));
-  Electrification.Electrical.DCSplitter splitterHVDC1
-                                                     annotation (Placement(
-        transformation(
-        extent={{-4,4},{4,-4}},
-        rotation=180,
-        origin={-44,-56})));
-  replaceable Electrification.Machines.Examples.DCMachine   machine1(
-      internal_ground=true) constrainedby
-    Electrification.Machines.Examples.DCMachine(
-      internal_ground=true)
-    annotation (Placement(transformation(extent={{-10,-66},{10,-46}})));
-  Electrification.Electrical.DCTripleSensor dcSensor1
-    annotation (Placement(transformation(extent={{-32,-62},{-20,-50}})));
-  Modelica.Electrical.Analog.Sources.SignalVoltage signalVoltage1 annotation (
-      Placement(transformation(
-        extent={{10,-10},{-10,10}},
-        rotation=90,
-        origin={-62,-58})));
+    annotation (Placement(transformation(extent={{-52,50},{-32,70}})));
   Modelica.Blocks.Sources.CombiTimeTable combiTimeTable1(table=[0,0; 0.01,0;
         0.01,0.8550153; 0.02,0.8550153; 0.02,1.0368519; 0.03,1.0368519; 0.03,
         1.0528996; 0.04,1.0528996; 0.04,1.1091965; 0.05,1.1091965; 0.05,
@@ -972,7 +907,7 @@ public
         4.6564116; 9.96,4.6568584; 9.97,4.6568584; 9.97,4.657299; 9.98,4.657299;
         9.98,4.6577334; 9.99,4.6577334; 9.99,4.6581616; 10,4.6581616; 10,
         4.6585836])
-    annotation (Placement(transformation(extent={{-112,-68},{-92,-48}})));
+    annotation (Placement(transformation(extent={{-52,20},{-32,40}})));
   Modelica.Blocks.Sources.CombiTimeTable combiTimeTable2(table=[0,0; 0.01,0;
         0.01,0; 0.02,0; 0.02,50.844604; 0.03,50.844604; 0.03,1.9687861; 0.04,
         1.9687861; 0.04,2.068815; 0.05,2.068815; 0.05,0.71948236; 0.06,
@@ -1426,7 +1361,7 @@ public
         4.6554904; 9.95,4.6554904; 9.95,4.6559544; 9.96,4.6559544; 9.96,
         4.6564116; 9.97,4.6564116; 9.97,4.656863; 9.98,4.656863; 9.98,4.6573086;
         9.99,4.6573086; 9.99,4.6577477; 10,4.6577477; 10,4.65818])
-    annotation (Placement(transformation(extent={{-112,-138},{-92,-118}})));
+    annotation (Placement(transformation(extent={{-52,-20},{-32,0}})));
   Modelica.Blocks.Sources.CombiTimeTable combiTimeTable3(table=[0,0; 0.01,0;
         0.01,0.8550153; 0.02,0.8550153; 0.02,1.0398704; 0.03,1.0398704; 0.03,
         1.0893034; 0.04,1.0893034; 0.04,1.0194527; 0.05,1.0194527; 0.05,
@@ -1879,199 +1814,67 @@ public
         4.6557074; 9.95,4.6557074; 9.95,4.6561646; 9.96,4.6561646; 9.96,
         4.6566157; 9.97,4.6566157; 9.97,4.6570606; 9.98,4.6570606; 9.98,
         4.6574993; 9.99,4.6574993; 9.99,4.657932; 10,4.657932; 10,4.6583576])
-    annotation (Placement(transformation(extent={{-112,-212},{-92,-192}})));
-  Modelica.Mechanics.Rotational.Components.Inertia inertia2(
-    J=0.1,
-    w(fixed=true, start=0),
-    phi(fixed=true, start=0))
-    annotation (Placement(transformation(extent={{30,-136},{50,-116}})));
-  Electrification.Electrical.DCSplitter splitterHVDC2
-                                                     annotation (Placement(
-        transformation(
-        extent={{-4,4},{4,-4}},
-        rotation=180,
-        origin={-44,-126})));
-  replaceable Electrification.Machines.Examples.DCMachine   machine2(
-      internal_ground=true) constrainedby
-    Electrification.Machines.Examples.DCMachine(
-      internal_ground=true)
-    annotation (Placement(transformation(extent={{-10,-136},{10,-116}})));
-  Electrification.Electrical.DCTripleSensor dcSensor2
-    annotation (Placement(transformation(extent={{-32,-132},{-20,-120}})));
-  Modelica.Electrical.Analog.Sources.SignalVoltage signalVoltage2 annotation (
-      Placement(transformation(
+    annotation (Placement(transformation(extent={{-52,-60},{-32,-40}})));
+  Mechanical.Propeller.Examples.Propeller_DCMachine_Power_ElectricPower
+    propeller_DCMachine_Power_ElectricPower(V=10)
+    annotation (Placement(transformation(extent={{-2,56},{18,66}})));
+  Mechanical.Propeller.Examples.Propeller_DCMachine_Power_ElectricPower
+    propeller_DCMachine_Power_ElectricPower1(V=10)
+    annotation (Placement(transformation(extent={{-4,24},{16,34}})));
+  Mechanical.Propeller.Examples.Propeller_DCMachine_Power_ElectricPower
+    propeller_DCMachine_Power_ElectricPower2(V=10)
+    annotation (Placement(transformation(extent={{-6,-14},{14,-4}})));
+  Mechanical.Propeller.Examples.Propeller_DCMachine_Power_ElectricPower
+    propeller_DCMachine_Power_ElectricPower3(V=10)
+    annotation (Placement(transformation(extent={{-6,-54},{14,-44}})));
+  Mechanical.Chassis.Examples.droneChassis droneChassis
+    annotation (Placement(transformation(extent={{40,0},{100,20}})));
+  Sensors.GPS gPS annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
-        rotation=90,
-        origin={-62,-128})));
-  Modelica.Mechanics.Rotational.Components.Inertia inertia3(
-    J=0.1,
-    w(fixed=true, start=0),
-    phi(fixed=true, start=0))
-    annotation (Placement(transformation(extent={{30,-210},{50,-190}})));
-  Electrification.Electrical.DCSplitter splitterHVDC3
-                                                     annotation (Placement(
-        transformation(
-        extent={{-4,4},{4,-4}},
         rotation=180,
-        origin={-44,-200})));
-  replaceable Electrification.Machines.Examples.DCMachine   machine3(
-      internal_ground=true) constrainedby
-    Electrification.Machines.Examples.DCMachine(
-      internal_ground=true)
-    annotation (Placement(transformation(extent={{-10,-210},{10,-190}})));
-  Electrification.Electrical.DCTripleSensor dcSensor3
-    annotation (Placement(transformation(extent={{-32,-206},{-20,-194}})));
-  Modelica.Electrical.Analog.Sources.SignalVoltage signalVoltage3 annotation (
-      Placement(transformation(
-        extent={{10,-10},{-10,10}},
-        rotation=90,
-        origin={-62,-202})));
-  replaceable
-  Modelica.Blocks.Sources.Cosine trq_cmd1(amplitude=150, freqHz=2)
-                                                                  constrainedby
-    Modelica.Blocks.Sources.Cosine
-    annotation (Placement(transformation(extent={{-90,-40},{-70,-20}})));
-  Electrification.Machines.Control.Adapters.Input_tau_ref torqueCommand1
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-26,-30})));
-  replaceable
-  Modelica.Blocks.Sources.Cosine trq_cmd2(amplitude=150, freqHz=2)
-                                                                  constrainedby
-    Modelica.Blocks.Sources.Cosine
-    annotation (Placement(transformation(extent={{-80,-100},{-60,-80}})));
-  Electrification.Machines.Control.Adapters.Input_tau_ref torqueCommand2
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-30,-90})));
-  Electrification.Machines.Control.Adapters.Input_tau_ref torqueCommand3
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-30,-170})));
-  replaceable
-  Modelica.Blocks.Sources.Cosine trq_cmd3(amplitude=150, freqHz=2)
-                                                                  constrainedby
-    Modelica.Blocks.Sources.Cosine
-    annotation (Placement(transformation(extent={{-94,-180},{-74,-160}})));
+        origin={90,-30})));
 equation
-  connect(machine.flange, inertia.flange_a)
-    annotation (Line(points={{10,0},{30,0}}, color={0,0,0}));
-  connect(torqueCommand.tau_ref, trq_cmd.y)
-    annotation (Line(points={{-40,30},{-59,30}},        color={0,0,127}));
-  connect(ambient.heat, ambientTemperature.port)
-    annotation (Line(points={{28,80},{48,80}}, color={191,0,0}));
-  connect(ambient.machine, machine.thermalPort) annotation (Line(points={{20,80},
-          {10,80},{10,20},{0,20},{0,10}}, color={191,0,0}));
-  connect(machineLumped.machine, machine.thermalPort)
-    annotation (Line(points={{20,20},{0,20},{0,10}}, color={191,0,0}));
-  connect(machineCoolingHeat.port, machineLumped.heat)
-    annotation (Line(points={{48,20},{28,20}}, color={191,0,0}));
-  connect(converterCoolingHeat.port, converterLumped.heat)
-    annotation (Line(points={{48,50},{28,50}}, color={191,0,0}));
-  connect(converterLumped.machine, machine.thermalPort) annotation (Line(points={{20,50},
-          {10,50},{10,20},{0,20},{0,10}},         color={191,0,0}));
-  connect(dcSensor.plug_a, splitterHVDC.plug_a) annotation (Line(
-      points={{-32,0},{-40,0}},
-      color={255,128,0},
+  connect(combiTimeTable.y[1], propeller_DCMachine_Power_ElectricPower.position)
+    annotation (Line(points={{-31,60},{-16,60},{-16,61},{-4,61}}, color={0,0,
+          127}));
+  connect(combiTimeTable1.y[1], propeller_DCMachine_Power_ElectricPower1.position)
+    annotation (Line(points={{-31,30},{-18,30},{-18,29},{-6,29},{-6,29}}, color
+        ={0,0,127}));
+  connect(combiTimeTable2.y[1], propeller_DCMachine_Power_ElectricPower2.position)
+    annotation (Line(points={{-31,-10},{-20,-10},{-20,-9},{-8,-9}}, color={0,0,
+          127}));
+  connect(combiTimeTable3.y[1], propeller_DCMachine_Power_ElectricPower3.position)
+    annotation (Line(points={{-31,-50},{-20,-50},{-20,-49},{-8,-49},{-8,-49}},
+        color={0,0,127}));
+  connect(droneChassis.frame_a1, propeller_DCMachine_Power_ElectricPower.Airframe)
+    annotation (Line(
+      points={{40,16},{30,16},{30,59},{18.2,59}},
+      color={95,95,95},
       thickness=0.5));
-  connect(dcSensor.plug_b, machine.plug_a) annotation (Line(
-      points={{-20,0},{-10,0}},
-      color={255,128,0},
+  connect(propeller_DCMachine_Power_ElectricPower1.Airframe, droneChassis.frame_a)
+    annotation (Line(
+      points={{16.2,27},{16.2,12},{40,12}},
+      color={95,95,95},
       thickness=0.5));
-  connect(splitterHVDC.p, signalVoltage.p) annotation (Line(points={{-48,4},{
-          -56,4},{-56,8},{-62,8}}, color={0,0,255}));
-  connect(signalVoltage.n, splitterHVDC.n)
-    annotation (Line(points={{-62,-12},{-48,-12},{-48,-4}}, color={0,0,255}));
-  connect(signalVoltage.v, combiTimeTable.y[1])
-    annotation (Line(points={{-74,-2},{-91,-2}}, color={0,0,127}));
-  connect(machine1.flange, inertia1.flange_a)
-    annotation (Line(points={{10,-56},{30,-56}}, color={0,0,0}));
-  connect(dcSensor1.plug_a, splitterHVDC1.plug_a) annotation (Line(
-      points={{-32,-56},{-40,-56}},
-      color={255,128,0},
+  connect(droneChassis.frame_a2, propeller_DCMachine_Power_ElectricPower2.Airframe)
+    annotation (Line(
+      points={{40,8},{28,8},{28,-11},{14.2,-11}},
+      color={95,95,95},
       thickness=0.5));
-  connect(dcSensor1.plug_b, machine1.plug_a) annotation (Line(
-      points={{-20,-56},{-10,-56}},
-      color={255,128,0},
+  connect(droneChassis.frame_a3, propeller_DCMachine_Power_ElectricPower3.Airframe)
+    annotation (Line(
+      points={{40,4},{32,4},{32,-51},{14.2,-51}},
+      color={95,95,95},
       thickness=0.5));
-  connect(splitterHVDC1.p, signalVoltage1.p) annotation (Line(points={{-48,-52},
-          {-56,-52},{-56,-48},{-62,-48}}, color={0,0,255}));
-  connect(signalVoltage1.n, splitterHVDC1.n)
-    annotation (Line(points={{-62,-68},{-48,-68},{-48,-60}}, color={0,0,255}));
-  connect(machine2.flange, inertia2.flange_a)
-    annotation (Line(points={{10,-126},{30,-126}}, color={0,0,0}));
-  connect(dcSensor2.plug_a, splitterHVDC2.plug_a) annotation (Line(
-      points={{-32,-126},{-40,-126}},
-      color={255,128,0},
-      thickness=0.5));
-  connect(dcSensor2.plug_b, machine2.plug_a) annotation (Line(
-      points={{-20,-126},{-10,-126}},
-      color={255,128,0},
-      thickness=0.5));
-  connect(splitterHVDC2.p, signalVoltage2.p) annotation (Line(points={{-48,-122},
-          {-56,-122},{-56,-118},{-62,-118}}, color={0,0,255}));
-  connect(signalVoltage2.n, splitterHVDC2.n) annotation (Line(points={{-62,-138},
-          {-48,-138},{-48,-130}}, color={0,0,255}));
-  connect(machine3.flange, inertia3.flange_a)
-    annotation (Line(points={{10,-200},{30,-200}}, color={0,0,0}));
-  connect(dcSensor3.plug_a, splitterHVDC3.plug_a) annotation (Line(
-      points={{-32,-200},{-40,-200}},
-      color={255,128,0},
-      thickness=0.5));
-  connect(dcSensor3.plug_b, machine3.plug_a) annotation (Line(
-      points={{-20,-200},{-10,-200}},
-      color={255,128,0},
-      thickness=0.5));
-  connect(splitterHVDC3.p, signalVoltage3.p) annotation (Line(points={{-48,-196},
-          {-56,-196},{-56,-192},{-62,-192}}, color={0,0,255}));
-  connect(signalVoltage3.n, splitterHVDC3.n) annotation (Line(points={{-62,-212},
-          {-48,-212},{-48,-204}}, color={0,0,255}));
-  connect(signalVoltage1.v, combiTimeTable1.y[1])
-    annotation (Line(points={{-74,-58},{-91,-58}}, color={0,0,127}));
-  connect(signalVoltage2.v, combiTimeTable2.y[1])
-    annotation (Line(points={{-74,-128},{-91,-128}}, color={0,0,127}));
-  connect(signalVoltage3.v, combiTimeTable3.y[1])
-    annotation (Line(points={{-74,-202},{-91,-202}}, color={0,0,127}));
-  connect(machine.thermalPort, machine1.thermalPort)
-    annotation (Line(points={{0,10},{0,-46}}, color={191,0,0}));
-  connect(machine2.thermalPort, machine1.thermalPort)
-    annotation (Line(points={{0,-116},{0,-46}}, color={191,0,0}));
-  connect(machine3.thermalPort, machine2.thermalPort)
-    annotation (Line(points={{0,-190},{0,-116}}, color={191,0,0}));
-  connect(torqueCommand.systemBus, machine.controlBus) annotation (Line(
-      points={{-20,30},{-8,30},{-8,10}},
-      color={240,170,40},
-      pattern=LinePattern.Dot,
-      thickness=0.5));
-  connect(torqueCommand1.tau_ref, trq_cmd1.y)
-    annotation (Line(points={{-36,-30},{-69,-30}}, color={0,0,127}));
-  connect(torqueCommand1.systemBus, machine1.controlBus) annotation (Line(
-      points={{-16,-30},{-8,-30},{-8,-46}},
-      color={240,170,40},
-      pattern=LinePattern.Dot,
-      thickness=0.5));
-  connect(torqueCommand2.tau_ref, trq_cmd2.y)
-    annotation (Line(points={{-40,-90},{-59,-90}}, color={0,0,127}));
-  connect(torqueCommand2.systemBus, machine2.controlBus) annotation (Line(
-      points={{-20,-90},{-8,-90},{-8,-116}},
-      color={240,170,40},
-      pattern=LinePattern.Dot,
-      thickness=0.5));
-  connect(torqueCommand3.tau_ref, trq_cmd3.y)
-    annotation (Line(points={{-40,-170},{-73,-170}}, color={0,0,127}));
-  connect(torqueCommand3.systemBus, machine3.controlBus) annotation (Line(
-      points={{-20,-170},{-8,-170},{-8,-190}},
-      color={240,170,40},
-      pattern=LinePattern.Dot,
+  connect(droneChassis.frame_a4, gPS.frame_a) annotation (Line(
+      points={{70,-8.88178e-16},{66,-8.88178e-16},{66,-30},{80,-30}},
+      color={95,95,95},
       thickness=0.5));
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,-240},{140,
+    Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{120,
             100}})),
-    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-160,-240},{
-            140,100}})),
-    experiment(StopTime=3),
+    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
+            100,100}})),
+    experiment(StopTime=10),
     __Dymola_experimentSetupOutput,Documentation(revisions="<html><hr><p><font class=\"copyright_bold\">Copyright &copy; 2004-2019, MODELON AB</font> <font class=\"copyright_base\">The use of this software component is regulated by the licensing conditions for the Electrification Library. This copyright notice must, unaltered, accompany all components that are derived from, copied from, or by other means have their origin from the Electrification Library. </font></p></html>"));
-end DCMachine;
+end DCMachine_Drone;

@@ -15,7 +15,9 @@ model controlModuleTest_fmu_main
     annotation (Placement(transformation(extent={{-50,-16},{-40,-6}})));
    inner Modelica.Blocks.Noise.GlobalSeed globalSeed
      annotation (Placement(transformation(extent={{-36,-36},{-26,-26}})));
-  DroneTest_FMU_Constant_Voltage            droneTest_FMU_Constant_Voltage(V=12.1)
+  DroneTest_FMU_Battery_ElectricPower_Machine
+                                            droneTest_FMU_Battery_ElectricPower_Machine(
+                                                                           V=12.1)
     annotation (Placement(transformation(extent={{-18,-8},{40,48}})));
   Modelica.Blocks.Sources.CombiTimeTable combiTimeTable(table=[0,-0.48630482;
         0.01,-0.48630482; 0.01,-0.48630482; 0.02,-0.48630482; 0.02,-0.48630482;
@@ -516,12 +518,15 @@ equation
           -51,-8}},   color={0,0,127}));
   connect(add.u2, uniformNoise.y) annotation (Line(points={{-51,-14},{-51,-32},
           {-59,-32}},      color={0,0,127}));
-  connect(droneTest_FMU_Constant_Voltage.xcoord, const.y) annotation (Line(
-        points={{-23.8,42.4},{-34.8,42.4},{-34.8,28},{-45,28}}, color={0,0,127}));
-  connect(droneTest_FMU_Constant_Voltage.ycoord, const.y) annotation (Line(
-        points={{-23.8,20},{-34,20},{-34,28},{-45,28}}, color={0,0,127}));
-  connect(droneTest_FMU_Constant_Voltage.zcoord, add.y) annotation (Line(points=
-         {{-23.8,-2.4},{-32,-2.4},{-32,-11},{-39.5,-11}}, color={0,0,127}));
+  connect(droneTest_FMU_Battery_ElectricPower_Machine.xcoord, const.y)
+    annotation (Line(points={{-23.8,42.4},{-34.8,42.4},{-34.8,28},{-45,28}},
+        color={0,0,127}));
+  connect(droneTest_FMU_Battery_ElectricPower_Machine.ycoord, const.y)
+    annotation (Line(points={{-23.8,20},{-34,20},{-34,28},{-45,28}}, color={0,0,
+          127}));
+  connect(droneTest_FMU_Battery_ElectricPower_Machine.zcoord, add.u1)
+    annotation (Line(points={{-23.8,-2.4},{-56,-2.4},{-56,-8},{-51,-8}}, color=
+          {0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-80,
             -40},{40,60}})), Diagram(coordinateSystem(preserveAspectRatio=
             false, extent={{-80,-40},{40,60}})),

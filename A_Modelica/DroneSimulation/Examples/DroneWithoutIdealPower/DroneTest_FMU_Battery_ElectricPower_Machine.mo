@@ -17,7 +17,6 @@ model DroneTest_FMU_Battery_ElectricPower_Machine
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power_ElectricPower
     propeller_DCMachine_Power_ElectricPower(
     PropellerGain=1,
-    VaNominal=10,
     V=V) annotation (Placement(transformation(extent={{-8,16},{12,26}})));
   Sensors.GPS gPS annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
@@ -27,20 +26,17 @@ model DroneTest_FMU_Battery_ElectricPower_Machine
     maxTilt=0.05,
     samplePeriod=0.01)
     annotation (Placement(transformation(extent={{-58,-10},{-38,10}})));
-  Modelica.Blocks.Sources.Constant const1(k=0)
-    annotation (Placement(transformation(extent={{-30,-26},{-42,-14}})));
   Modelica.Blocks.Sources.Constant const2(k=0)
     annotation (Placement(transformation(extent={{-84,16},{-72,28}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power_ElectricPower
-    propeller_DCMachine_Power_ElectricPower2(VaNominal=10, V=V)
+    propeller_DCMachine_Power_ElectricPower2(              V=V)
     annotation (Placement(transformation(extent={{-8,2},{12,12}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power_ElectricPower
     propeller_DCMachine_Power_ElectricPower3(
     PropellerGain=1,
-    VaNominal=10,
     V=V) annotation (Placement(transformation(extent={{-8,-12},{12,-2}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power_ElectricPower
-    propeller_DCMachine_Power_ElectricPower1(VaNominal=10, V=V)
+    propeller_DCMachine_Power_ElectricPower1(              V=V)
     annotation (Placement(transformation(extent={{-8,-26},{12,-16}})));
   Mechanical.Chassis.Examples.droneChassis droneChassis2(length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{48,-12},{98,8}})));
@@ -56,11 +52,8 @@ equation
   gPS.y[2] = ygps;
   gPS.y[3] = zgps;
   connect(propeller_DCMachine_Power_ElectricPower.position, controlModule_Power.y1)
-    annotation (Line(points={{-10,21},{-24,21},{-24,6},{-37.1667,6}}, color={0,
+    annotation (Line(points={{-10,21},{-28,21},{-28,6},{-37.1667,6}}, color={0,
           0,127}));
-  connect(controlModule_Power.Height, const1.y) annotation (Line(points={{
-          -44.6667,-12},{-44,-12},{-44,-20},{-42.6,-20}},
-                                                 color={0,0,127}));
   connect(gPS.y, controlModule_Power.GPS) annotation (Line(points={{-13,-54},{
           -54.6667,-54},{-54.6667,-12}},
                                 color={0,0,127}));
@@ -71,7 +64,7 @@ equation
     controlModule_Power.y2) annotation (Line(points={{-10,-7},{-24,-7},{-24,-2},
           {-37.1667,-2}}, color={0,0,127}));
   connect(controlModule_Power.y3, propeller_DCMachine_Power_ElectricPower1.position)
-    annotation (Line(points={{-37.1667,-6},{-24,-6},{-24,-21},{-10,-21}}, color=
+    annotation (Line(points={{-37.1667,-6},{-28,-6},{-28,-21},{-10,-21}}, color=
          {0,0,127}));
   connect(const2.y, controlModule_Power.yaw) annotation (Line(points={{-71.4,22},
           {-64,22},{-64,8},{-59.6667,8}}, color={0,0,127}));

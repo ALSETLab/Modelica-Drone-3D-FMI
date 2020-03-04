@@ -463,6 +463,9 @@ model DCMachineAnimation
     annotation (Placement(transformation(extent={{60,40},{80,60}})));
   Mechanical.Blades.Examples.Blades blades1
     annotation (Placement(transformation(extent={{60,0},{80,20}})));
+  Mechanical.Propeller.Examples.Propeller_DCMachine_Power_ElectricPower
+    propeller_DCMachine_Power_ElectricPower(V=10)
+    annotation (Placement(transformation(extent={{-8,-6},{12,4}})));
 equation
   connect(dCMotor_EPDCMachine.position, combiTimeTable.y[1])
     annotation (Line(points={{-12,38},{-19,38}}, color={0,0,127}));
@@ -475,7 +478,7 @@ equation
       color={95,95,95},
       thickness=0.5));
   connect(dCMotor_EPDCMachine.torque_2, rotor.force) annotation (Line(
-      points={{10,32},{14,32},{14,31.8},{19.8,31.8}},
+      points={{10,31.8},{14,31.8},{14,31.8},{19.8,31.8}},
       color={95,95,95},
       thickness=0.5));
   connect(rotor.Airframe, blades.Input) annotation (Line(
@@ -486,4 +489,6 @@ equation
       points={{40.2,34},{50,34},{50,10},{59.6,10}},
       color={95,95,95},
       thickness=0.5));
+  connect(propeller_DCMachine_Power_ElectricPower.position, combiTimeTable.y[1])
+    annotation (Line(points={{-10,-1},{-10,0},{-19,0},{-19,38}}, color={0,0,127}));
 end DCMachineAnimation;
