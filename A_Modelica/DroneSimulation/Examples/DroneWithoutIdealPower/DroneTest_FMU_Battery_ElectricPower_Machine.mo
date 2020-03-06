@@ -53,21 +53,20 @@ equation
   gPS.y[3] = zgps;
   connect(propeller_DCMachine_Power_ElectricPower.position,
     controlModule_Synchronous.y1) annotation (Line(points={{-10,21},{-28,21},{
-          -28,4.72727},{-34.8571,4.72727}}, color={0,0,127}));
+          -28,4.4},{-32.9091,4.4}}, color={0,0,127}));
   connect(gPS.y, controlModule_Synchronous.GPS) annotation (Line(points={{-13,
-          -54},{-51.1429,-54},{-51.1429,-10}}, color={0,0,127}));
+          -54},{-53.6364,-54},{-53.6364,-11.8}}, color={0,0,127}));
   connect(propeller_DCMachine_Power_ElectricPower2.position,
     controlModule_Synchronous.y) annotation (Line(points={{-10,7},{-24,7},{-24,
-          1.45455},{-34.8571,1.45455}}, color={0,0,127}));
+          0.8},{-32.9091,0.8}}, color={0,0,127}));
   connect(propeller_DCMachine_Power_ElectricPower3.position,
     controlModule_Synchronous.y2) annotation (Line(points={{-10,-7},{-24,-7},{
-          -24,-1.81818},{-34.8571,-1.81818}}, color={0,0,127}));
+          -24,-2.8},{-32.9091,-2.8}}, color={0,0,127}));
   connect(controlModule_Synchronous.y3,
     propeller_DCMachine_Power_ElectricPower1.position) annotation (Line(points=
-          {{-34.8571,-5.09091},{-28,-5.09091},{-28,-21},{-10,-21}}, color={0,0,
-          127}));
+          {{-32.9091,-6.4},{-28,-6.4},{-28,-21},{-10,-21}}, color={0,0,127}));
   connect(const2.y, controlModule_Synchronous.yaw) annotation (Line(points={{
-          -71.4,22},{-64,22},{-64,6.36364},{-56.2857,6.36364}}, color={0,0,127}));
+          -71.4,22},{-64,22},{-64,6.2},{-60.1818,6.2}}, color={0,0,127}));
   connect(droneChassis2.frame_a1, propeller_DCMachine_Power_ElectricPower.Airframe)
     annotation (Line(
       points={{48,4},{40,4},{40,19},{12.2,19}},
@@ -96,11 +95,10 @@ equation
       points={{8,-74},{72,-74},{72,-54},{8,-54}},
       color={95,95,95},
       thickness=0.5));
-  connect(accelerometer.y, controlModule_Synchronous.Gyero)
-    annotation (Line(points={{-13,-74},{-46,-74},{-46,-10}}, color={0,0,127}));
+  connect(accelerometer.y, controlModule_Synchronous.Gyero) annotation (Line(
+        points={{-13,-74},{-47.0909,-74},{-47.0909,-11.8}}, color={0,0,127}));
   connect(controlModule_Synchronous.position, realExtendMultiple.y) annotation
-    (Line(points={{-56.2857,-0.181818},{-62,-0.181818},{-62,0},{-67,0}}, color=
-          {0,0,127}));
+    (Line(points={{-60.1818,-1},{-62,-1},{-62,0},{-67,0}}, color={0,0,127}));
   connect(realExtendMultiple.u1, ycoord)
     annotation (Line(points={{-88,0},{-120,0}}, color={0,0,127}));
   connect(realExtendMultiple.u, xcoord) annotation (Line(points={{-88,6},{-98,6},

@@ -6,7 +6,7 @@ model DroneTest
         origin={-70,0})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-66,18},{-46,38}})));
-  DroneTest_FMU_Synchronous           droneTest_FMU_Synchronous
+  DroneTest_FMU                       droneTest_FMU_Synchronous
     annotation (Placement(transformation(extent={{-18,-16},{32,34}})));
   Modelica.Blocks.Noise.UniformNoise uniformNoise(
     samplePeriod=0.1,
@@ -28,8 +28,7 @@ equation
   connect(add.u2, uniformNoise.y) annotation (Line(points={{-49,-16},{-49,
           -30},{-59,-30}}, color={0,0,127}));
   connect(droneTest_FMU_Synchronous.zcoord, add.u1) annotation (Line(points={{
-          -23,-11},{-32,-11},{-32,0},{-54,0},{-54,-10},{-49,-10}}, color={0,0,
-          127}));
+          -23,-11},{-54,0},{-54,-10},{-49,-10}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-80,
             -40},{40,60}})), Diagram(coordinateSystem(preserveAspectRatio=
             false, extent={{-80,-40},{40,60}})),
