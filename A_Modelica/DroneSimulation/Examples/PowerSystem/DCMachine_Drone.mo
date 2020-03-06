@@ -1833,6 +1833,8 @@ model DCMachine_Drone
         extent={{10,-10},{-10,10}},
         rotation=180,
         origin={90,-30})));
+  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,-1})
+    annotation (Placement(transformation(extent={{62,52},{82,72}})));
 equation
   connect(combiTimeTable.y[1], propeller_DCMachine_Power_ElectricPower.position)
     annotation (Line(points={{-31,60},{-16,60},{-16,61},{-4,61}}, color={0,0,

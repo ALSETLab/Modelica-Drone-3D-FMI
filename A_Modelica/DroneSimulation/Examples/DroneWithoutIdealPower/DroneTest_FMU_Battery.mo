@@ -18,22 +18,21 @@ model DroneTest_FMU_Battery
     propeller_DCMachine_Power(
     PropellerGain=1,
     VaNominal=10,
-    V=V) annotation (Placement(transformation(extent={{-8,16},{12,26}})));
+    V=V) annotation (Placement(transformation(extent={{-8,14},{12,24}})));
   Modelica.Electrical.Analog.Basic.Ground ground
     annotation (Placement(transformation(extent={{20,24},{40,44}})));
   Sensors.GPS gPS annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-2,-66})));
-  Electrical.controlModule controlModule_Power(
-    maxTilt=0.05,
-    samplePeriod=0.01)
+  Electrical.controlModule controlModule_Synchronous(
+    maxTilt=0.05, samplePeriod=0.001)
     annotation (Placement(transformation(extent={{-58,-10},{-38,10}})));
   Modelica.Blocks.Sources.Constant const2(k=0)
     annotation (Placement(transformation(extent={{-84,16},{-72,28}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power1(VaNominal=10, V=V)
-    annotation (Placement(transformation(extent={{-8,2},{12,12}})));
+    annotation (Placement(transformation(extent={{-8,0},{12,10}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power2(
     PropellerGain=1,
@@ -60,39 +59,38 @@ equation
   gPS.y[1] = xgps;
   gPS.y[2] = ygps;
   gPS.y[3] = zgps;
-  connect(propeller_DCMachine_Power.position, controlModule_Power.y1)
-    annotation (Line(points={{-10,18},{-24,18},{-24,6},{-37.1667,6}}, color={0,0,
-          127}));
-  connect(gPS.y, controlModule_Power.GPS) annotation (Line(points={{-13,-66},{
-          -54.6667,-66},{-54.6667,-12}},
-                                color={0,0,127}));
-  connect(propeller_DCMachine_Power1.position, controlModule_Power.y)
-    annotation (Line(points={{-10,4},{-24,4},{-24,2},{-37.1667,2}}, color={0,0,127}));
+  connect(propeller_DCMachine_Power.position, controlModule_Synchronous.y1)
+    annotation (Line(points={{-10,16},{-24,16},{-24,6},{-37.1667,6}}, color={0,
+          0,127}));
+  connect(gPS.y, controlModule_Synchronous.GPS) annotation (Line(points={{-13,
+          -66},{-54.6667,-66},{-54.6667,-12}}, color={0,0,127}));
+  connect(propeller_DCMachine_Power1.position, controlModule_Synchronous.y)
+    annotation (Line(points={{-10,2},{-37.1667,2}}, color={0,0,127}));
   connect(propeller_DCMachine_Power1.p1,propeller_DCMachine_Power. p1)
-    annotation (Line(points={{-8.4,10},{-16,10},{-16,24},{-8.4,24}}, color={0,0,
+    annotation (Line(points={{-8.4,8},{-16,8},{-16,22},{-8.4,22}},   color={0,0,
           255}));
-  connect(propeller_DCMachine_Power2.position, controlModule_Power.y2)
-    annotation (Line(points={{-10,-10},{-24,-10},{-24,-2},{-37.1667,-2}}, color=
-         {0,0,127}));
-  connect(controlModule_Power.y3, propeller_DCMachine_Power3.position)
-    annotation (Line(points={{-37.1667,-6},{-24,-6},{-24,-24},{-10,-24}}, color=
-         {0,0,127}));
+  connect(propeller_DCMachine_Power2.position, controlModule_Synchronous.y2)
+    annotation (Line(points={{-10,-10},{-24,-10},{-24,-2},{-37.1667,-2}}, color
+        ={0,0,127}));
+  connect(controlModule_Synchronous.y3, propeller_DCMachine_Power3.position)
+    annotation (Line(points={{-37.1667,-6},{-24,-6},{-24,-24},{-10,-24}}, color
+        ={0,0,127}));
   connect(propeller_DCMachine_Power3.p1,propeller_DCMachine_Power. p1)
-    annotation (Line(points={{-8.4,-18},{-16,-18},{-16,24},{-8.4,24}},
+    annotation (Line(points={{-8.4,-18},{-16,-18},{-16,22},{-8.4,22}},
                      color={0,0,255}));
   connect(propeller_DCMachine_Power2.p1,propeller_DCMachine_Power. p1)
-    annotation (Line(points={{-8.4,-4},{-16,-4},{-16,24},{-8.4,24}},
+    annotation (Line(points={{-8.4,-4},{-16,-4},{-16,22},{-8.4,22}},
                      color={0,0,255}));
-  connect(const2.y, controlModule_Power.yaw) annotation (Line(points={{-71.4,22},
-          {-64,22},{-64,8},{-59.6667,8}}, color={0,0,127}));
+  connect(const2.y, controlModule_Synchronous.yaw) annotation (Line(points={{
+          -71.4,22},{-64,22},{-64,8},{-59.6667,8}}, color={0,0,127}));
   connect(droneChassis2.frame_a1,propeller_DCMachine_Power. Airframe)
     annotation (Line(
-      points={{48,4},{40,4},{40,19},{12.2,19}},
+      points={{48,4},{40,4},{40,17},{12.2,17}},
       color={95,95,95},
       thickness=0.5));
   connect(droneChassis2.frame_a,propeller_DCMachine_Power1. Airframe)
     annotation (Line(
-      points={{48,0},{38,0},{38,5},{12.2,5}},
+      points={{48,0},{38,0},{38,3},{12.2,3}},
       color={95,95,95},
       thickness=0.5));
   connect(droneChassis2.frame_a2,propeller_DCMachine_Power2. Airframe)
@@ -113,9 +111,9 @@ equation
       points={{8,-86},{72,-86},{72,-66},{8,-66}},
       color={95,95,95},
       thickness=0.5));
-  connect(accelerometer.y, controlModule_Power.Gyero) annotation (Line(points={{-13,-86},
-          {-49.6667,-86},{-49.6667,-12}},          color={0,0,127}));
-  connect(controlModule_Power.position, realExtendMultiple.y)
+  connect(accelerometer.y, controlModule_Synchronous.Gyero) annotation (Line(
+        points={{-13,-86},{-49.6667,-86},{-49.6667,-12}}, color={0,0,127}));
+  connect(controlModule_Synchronous.position, realExtendMultiple.y)
     annotation (Line(points={{-59.6667,0},{-67,0}}, color={0,0,127}));
   connect(realExtendMultiple.u1, ycoord)
     annotation (Line(points={{-88,0},{-120,0}}, color={0,0,127}));
@@ -125,8 +123,8 @@ equation
           -6},{-96,-80},{-120,-80}}, color={0,0,127}));
   connect(battery.pin_n, ground.p) annotation (Line(points={{6,52},{10,52},{10,
           56},{30,56},{30,44}}, color={0,0,255}));
-  connect(battery.pin_p, propeller_DCMachine_Power.p1) annotation (Line(points=
-          {{-2,52},{-4,52},{-4,56},{-16,56},{-16,24},{-8.4,24}}, color={0,0,255}));
+  connect(battery.pin_p, propeller_DCMachine_Power.p1) annotation (Line(points={{-2,52},
+          {-4,52},{-4,56},{-16,56},{-16,22},{-8.4,22}},          color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{120,100}}),                                  graphics={
           Rectangle(
