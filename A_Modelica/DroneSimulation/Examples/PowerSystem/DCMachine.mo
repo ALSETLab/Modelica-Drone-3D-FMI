@@ -2,10 +2,6 @@ within DroneSimulation.Examples.PowerSystem;
 model DCMachine
   extends Modelon.Icons.Experiment;
 
-  Modelica.Mechanics.Rotational.Components.Inertia inertia(J=0.1,
-    w(fixed=true, start=0),
-    phi(fixed=true, start=0))
-    annotation (Placement(transformation(extent={{30,-10},{50,10}})));
   Electrification.Electrical.DCSplitter splitterHVDC annotation (Placement(
         transformation(
         extent={{-4,4},{4,-4}},
@@ -17,7 +13,7 @@ model DCMachine
       internal_ground=true)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
   replaceable
-  Modelica.Blocks.Sources.Cosine trq_cmd(amplitude=150, freqHz=2) constrainedby
+  Modelica.Blocks.Sources.Cosine trq_cmd(amplitude=10,  freqHz=2) constrainedby
     Modelica.Blocks.Interfaces.SO
     annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
 public
@@ -1927,7 +1923,7 @@ public
         rotation=90,
         origin={-62,-202})));
   replaceable
-  Modelica.Blocks.Sources.Cosine trq_cmd1(amplitude=150, freqHz=2)
+  Modelica.Blocks.Sources.Cosine trq_cmd1(amplitude=10,  freqHz=2)
                                                                   constrainedby
     Modelica.Blocks.Sources.Cosine
     annotation (Placement(transformation(extent={{-90,-40},{-70,-20}})));
@@ -1937,7 +1933,7 @@ public
         rotation=270,
         origin={-26,-30})));
   replaceable
-  Modelica.Blocks.Sources.Cosine trq_cmd2(amplitude=150, freqHz=2)
+  Modelica.Blocks.Sources.Cosine trq_cmd2(amplitude=10,  freqHz=2)
                                                                   constrainedby
     Modelica.Blocks.Sources.Cosine
     annotation (Placement(transformation(extent={{-80,-100},{-60,-80}})));
@@ -1952,13 +1948,18 @@ public
         rotation=270,
         origin={-30,-170})));
   replaceable
-  Modelica.Blocks.Sources.Cosine trq_cmd3(amplitude=150, freqHz=2)
+  Modelica.Blocks.Sources.Cosine trq_cmd3(amplitude=10,  freqHz=2)
                                                                   constrainedby
     Modelica.Blocks.Sources.Cosine
     annotation (Placement(transformation(extent={{-94,-180},{-74,-160}})));
+  Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor annotation (
+      Placement(transformation(
+        extent={{-10,10},{10,-10}},
+        rotation=270,
+        origin={40,-10})));
+  Modelica.Mechanics.Rotational.Components.Fixed fixed
+    annotation (Placement(transformation(extent={{30,-34},{50,-14}})));
 equation
-  connect(machine.flange, inertia.flange_a)
-    annotation (Line(points={{10,0},{30,0}}, color={0,0,0}));
   connect(torqueCommand.tau_ref, trq_cmd.y)
     annotation (Line(points={{-40,30},{-59,30}},        color={0,0,127}));
   connect(ambient.heat, ambientTemperature.port)
@@ -2067,6 +2068,10 @@ equation
       color={240,170,40},
       pattern=LinePattern.Dot,
       thickness=0.5));
+  connect(torqueSensor.flange_a, machine.flange)
+    annotation (Line(points={{40,0},{10,0}}, color={0,0,0}));
+  connect(torqueSensor.flange_b, fixed.flange)
+    annotation (Line(points={{40,-20},{40,-24}}, color={0,0,0}));
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-160,-240},{140,
             100}})),

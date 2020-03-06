@@ -3,5 +3,6 @@ Templates
 DCMotor
 DCMotor_DCMachine
 DCMotor_EMF
-DCMotor_DCMachine_Power
+DCMotor_DCPM
 DCMotor_EPDCMachine
+DCMotor_DCSE
