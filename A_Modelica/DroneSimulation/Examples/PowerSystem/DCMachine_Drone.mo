@@ -1838,8 +1838,8 @@ equation
     annotation (Line(points={{-31,60},{-16,60},{-16,61},{-4,61}}, color={0,0,
           127}));
   connect(combiTimeTable1.y[1], propeller_DCMachine_Power_ElectricPower1.position)
-    annotation (Line(points={{-31,30},{-18,30},{-18,29},{-6,29},{-6,29}}, color
-        ={0,0,127}));
+    annotation (Line(points={{-31,30},{-18,30},{-18,29},{-6,29},{-6,29}}, color=
+         {0,0,127}));
   connect(combiTimeTable2.y[1], propeller_DCMachine_Power_ElectricPower2.position)
     annotation (Line(points={{-31,-10},{-20,-10},{-20,-9},{-8,-9}}, color={0,0,
           127}));
