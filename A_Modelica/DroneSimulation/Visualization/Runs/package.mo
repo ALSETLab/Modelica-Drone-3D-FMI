@@ -47,7 +47,7 @@ package Runs
    Visualization.Cameras.FreeCamera     camera1(windowMode=Visualization.Cameras.Internal.Types.WindowMode.Window,
        startDistanceToCenter={0,-3,0})
      annotation (Placement(transformation(extent={{-2,-36},{18,-16}})));
-   replaceable Inputs.Keyboard.KeyboardInputs_SimVis inputDevice_SimVis
+   replaceable Inputs.Joystick.JoyStickInputs_SimVis inputDevice_SimVis
     constrainedby Interfaces.InputDevice_SimVis
      annotation (Placement(transformation(extent={{-32,-10},{-12,10}})));
    Visualization.Cameras.FreeCamera     camera2(windowMode=Visualization.Cameras.Internal.Types.WindowMode.OpenVR_seated,
@@ -68,12 +68,13 @@ package Runs
        color={95,95,95},
        thickness=0.5));
    connect(inputDevice_SimVis.X, controlModuleTest_fmu_inputs1.xcoord)
-     annotation (Line(points={{-11,5},{-0.16665,5},{-0.16665,8},{10,8}},
-                    color={0,0,127}));
+     annotation (Line(points={{-10.3333,6.66667},{-0.16665,6.66667},{-0.16665,8},
+          {10,8}},  color={0,0,127}));
    connect(inputDevice_SimVis.Y, controlModuleTest_fmu_inputs1.ycoord)
-     annotation (Line(points={{-11,0},{10,0}},      color={0,0,127}));
+     annotation (Line(points={{-10.3333,0},{10,0}}, color={0,0,127}));
    connect(inputDevice_SimVis.Z, controlModuleTest_fmu_inputs1.zcoord)
-     annotation (Line(points={{-11,-5},{-0.16665,-5},{-0.16665,-8},{10,-8}},
+     annotation (Line(points={{-10.3333,-6.66667},{-0.16665,-6.66667},{-0.16665,
+          -8},{10,-8}},
                      color={0,0,127}));
   connect(camera2.frame_b, camera1.frame_b) annotation (Line(
       points={{18,-44},{28,-44},{28,-26},{18,-26}},
