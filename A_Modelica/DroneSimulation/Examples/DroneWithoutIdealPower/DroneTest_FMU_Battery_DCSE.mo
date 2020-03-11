@@ -36,8 +36,7 @@ model DroneTest_FMU_Battery_DCSE
   Mechanical.Propeller.Examples.Propeller_DCSE_Power
     propeller_DCMachine_Power2_3(VaNominal=10, V=V)
     annotation (Placement(transformation(extent={{-8,2},{12,12}})));
-  Mechanical.Propeller.Examples.Propeller_DCSE_Power propeller_DCMachine_Power2
-    (
+  Mechanical.Propeller.Examples.Propeller_DCSE_Power propeller_DCMachine_Power2(
     PropellerGain=1,
     VaNominal=10,
     V=V) annotation (Placement(transformation(extent={{-8,-12},{12,-2}})));
@@ -58,8 +57,8 @@ equation
   gPS.y[2] = ygps;
   gPS.y[3] = zgps;
   connect(propeller_DCMachine_Power2_1.position, controlModule_Synchronous.y1)
-    annotation (Line(points={{-10,18},{-24,18},{-24,5.6},{-30.8182,5.6}}, color
-        ={0,0,127}));
+    annotation (Line(points={{-10,18},{-24,18},{-24,5.6},{-30.8182,5.6}}, color=
+         {0,0,127}));
   connect(gPS.y, controlModule_Synchronous.GPS) annotation (Line(points={{-13,
           -66},{-53.2727,-66},{-53.2727,-14.2}}, color={0,0,127}));
   connect(propeller_DCMachine_Power2_3.position, controlModule_Synchronous.y)
@@ -99,8 +98,8 @@ equation
       thickness=0.5));
   connect(accelerometer.y, controlModule_Synchronous.Gyero) annotation (Line(
         points={{-13,-86},{-46.1818,-86},{-46.1818,-14.2}}, color={0,0,127}));
-  connect(controlModule_Synchronous.position, realExtendMultiple.y) annotation
-    (Line(points={{-60.3636,-1},{-64,-1},{-64,0},{-67,0}}, color={0,0,127}));
+  connect(controlModule_Synchronous.position, realExtendMultiple.y) annotation (
+     Line(points={{-60.3636,-1},{-64,-1},{-64,0},{-67,0}}, color={0,0,127}));
   connect(realExtendMultiple.u1, ycoord)
     annotation (Line(points={{-88,0},{-120,0}}, color={0,0,127}));
   connect(realExtendMultiple.u, xcoord) annotation (Line(points={{-88,6},{-98,6},

@@ -70,11 +70,11 @@ equation
     annotation (Line(points={{-8.4,8},{-16,8},{-16,22},{-8.4,22}},   color={0,0,
           255}));
   connect(propeller_DCMachine_Power2.position, controlModule_Synchronous.y2)
-    annotation (Line(points={{-10,-10},{-24,-10},{-24,-2},{-37.1667,-2}}, color
-        ={0,0,127}));
+    annotation (Line(points={{-10,-10},{-24,-10},{-24,-2},{-37.1667,-2}}, color=
+         {0,0,127}));
   connect(controlModule_Synchronous.y3, propeller_DCMachine_Power3.position)
-    annotation (Line(points={{-37.1667,-6},{-24,-6},{-24,-24},{-10,-24}}, color
-        ={0,0,127}));
+    annotation (Line(points={{-37.1667,-6},{-24,-6},{-24,-24},{-10,-24}}, color=
+         {0,0,127}));
   connect(propeller_DCMachine_Power3.p1,propeller_DCMachine_Power. p1)
     annotation (Line(points={{-8.4,-18},{-16,-18},{-16,22},{-8.4,22}},
                      color={0,0,255}));

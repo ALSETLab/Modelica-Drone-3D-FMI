@@ -97,8 +97,8 @@ equation
       thickness=0.5));
   connect(accelerometer.y, controlModule_Synchronous.Gyero) annotation (Line(
         points={{-13,-74},{-47.0909,-74},{-47.0909,-11.8}}, color={0,0,127}));
-  connect(controlModule_Synchronous.position, realExtendMultiple.y) annotation
-    (Line(points={{-60.1818,-1},{-62,-1},{-62,0},{-67,0}}, color={0,0,127}));
+  connect(controlModule_Synchronous.position, realExtendMultiple.y) annotation (
+     Line(points={{-60.1818,-1},{-62,-1},{-62,0},{-67,0}}, color={0,0,127}));
   connect(realExtendMultiple.u1, ycoord)
     annotation (Line(points={{-88,0},{-120,0}}, color={0,0,127}));
   connect(realExtendMultiple.u, xcoord) annotation (Line(points={{-88,6},{-98,6},
