@@ -1,8 +1,32 @@
-within DroneSimulation.Examples.DroneWithIdealPower;
-model DroneTest_FMU_Synchronous_chassis
+within DroneSimulation.Examples.Visualization;
+model DroneForVR
+  Electrical.controlModule controlModule(maxTilt=0.05, samplePeriod=0.01)
+    annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
+  Mechanical.droneChassis droneChassis1(length=0.25, m=0.5)
+    annotation (Placement(transformation(extent={{44,-12},{94,8}})));
+  Electrical.propeller propellerRev(k=1)
+    annotation (Placement(transformation(extent={{8,18},{28,38}})));
+  Electrical.propeller propellerRev3(k=1)
+    annotation (Placement(transformation(extent={{8,-22},{28,-2}})));
+  Electrical.propeller propellerRev1(k=-1)
+    annotation (Placement(transformation(extent={{8,-2},{28,18}})));
+  Electrical.propeller propellerRev2(k=-1)
+    annotation (Placement(transformation(extent={{8,-42},{28,-22}})));
   inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
       -1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
+  Blocks.Routing.RealExtendMultiple realExtendMultiple
+    annotation (Placement(transformation(extent={{-58,-10},{-38,10}})));
+  Sensors.GPS gPS annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={18,-58})));
+  Sensors.Accelerometer accelerometer
+    annotation (Placement(transformation(extent={{8,-94},{28,-74}})));
+  Modelica.Blocks.Sources.Constant const(k=0)
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={-36,26})));
   Modelica.Blocks.Interfaces.RealInput xcoord
     annotation (Placement(transformation(extent={{-140,60},{-100,100}})));
   Modelica.Blocks.Interfaces.RealInput zcoord
@@ -15,101 +39,71 @@ model DroneTest_FMU_Synchronous_chassis
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
   Modelica.Blocks.Interfaces.RealOutput zgps
     annotation (Placement(transformation(extent={{100,-90},{120,-70}})));
-  Electrical.controlModule_Synchronous
-                           controlModule_Synchronous(
-                                         maxTilt=0.05, samplePeriod=0.001)
-    annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
-  Mechanical.Chassis.Examples.droneChassis droneChassis1(length=0.25, m=0.5)
-    annotation (Placement(transformation(extent={{44,-12},{94,8}})));
-  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine(PropellerGain=1)
-    annotation (Placement(transformation(extent={{10,12},{30,20}})));
-  Blocks.Routing.RealExtendMultiple realExtendMultiple
-    annotation (Placement(transformation(extent={{-74,-10},{-54,10}})));
-  Sensors.GPS gPS annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={20,-50})));
-  Sensors.Accelerometer accelerometer
-    annotation (Placement(transformation(extent={{10,-80},{30,-60}})));
   Modelica.Blocks.Sources.Constant const1(k=0)
-    annotation (Placement(transformation(extent={{2,-42},{-10,-30}})));
-  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine1
-    annotation (Placement(transformation(extent={{10,2},{30,10}})));
-  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine2(PropellerGain=1)
-    annotation (Placement(transformation(extent={{10,-8},{30,0}})));
-  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine3
-    annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
-  Modelica.Blocks.Sources.Constant const(k=0)
-    annotation (Placement(transformation(extent={{-4,-4},{4,4}},
-        rotation=0,
-        origin={-44,8})));
-  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a1 annotation (
+    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+        rotation=180,
+        origin={0,-40})));
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a annotation (
       Placement(transformation(
         extent={{-16,-16},{16,16}},
-        rotation=90,
-        origin={70,-102})));
+        rotation=-90,
+        origin={70,-100})));
 equation
   gPS.y[1] = xgps;
   gPS.y[2] = ygps;
   gPS.y[3] = zgps;
-  connect(propeller_DCMachine.position, controlModule_Synchronous.y1)
-    annotation (Line(points={{8,15.2},{-2,15.2},{-2,6},{-9.09091,6}}, color={0,
-          0,127}));
-  connect(controlModule_Synchronous.position, realExtendMultiple.y)
-    annotation (Line(points={{-31.8182,0},{-53,0}}, color={0,0,127}));
-  connect(gPS.frame_a,droneChassis1. frame_a3) annotation (Line(
-      points={{30,-50},{36,-50},{36,-8},{44,-8}},
+  connect(propellerRev3.frame_a, droneChassis1.frame_a2) annotation (Line(
+      points={{28,-12},{32,-12},{32,-4},{44,-4}},
       color={95,95,95},
       thickness=0.5));
-  connect(gPS.y, controlModule_Synchronous.GPS) annotation (Line(points={{9,-50},
-          {-26.3636,-50},{-26.3636,-12}}, color={0,0,127}));
-  connect(accelerometer.frame_a,droneChassis1. frame_a3) annotation (Line(
-      points={{30,-70},{36,-70},{36,-8},{44,-8}},
+  connect(propellerRev2.frame_a, droneChassis1.frame_a3) annotation (Line(
+      points={{28,-32},{36,-32},{36,-8},{44,-8}},
       color={95,95,95},
       thickness=0.5));
-  connect(accelerometer.y, controlModule_Synchronous.Gyero) annotation (Line(
-        points={{9,-70},{-20.9091,-70},{-20.9091,-12}}, color={0,0,127}));
-  connect(controlModule_Synchronous.Height, const1.y) annotation (Line(points={{-14,-12},
-          {-14,-36},{-10.6,-36}},                     color={0,0,127}));
-  connect(propeller_DCMachine1.position, controlModule_Synchronous.y)
-    annotation (Line(points={{8,5.2},{-0.1,5.2},{-0.1,2},{-9.09091,2}}, color={
-          0,0,127}));
-  connect(propeller_DCMachine.Airframe, droneChassis1.frame_a1) annotation (
-      Line(
-      points={{30.2,14.4},{37.1,14.4},{37.1,4},{44,4}},
+  connect(propellerRev1.frame_a, droneChassis1.frame_a) annotation (Line(
+      points={{28,8},{32,8},{32,0},{44,0}},
       color={95,95,95},
       thickness=0.5));
-  connect(propeller_DCMachine1.Airframe, droneChassis1.frame_a) annotation (
-      Line(
-      points={{30.2,4.4},{36.1,4.4},{36.1,0},{44,0}},
+  connect(propellerRev.position, controlModule.y1) annotation (Line(points={{5.8,28},
+          {-2,28},{-2,6},{-9.16667,6}},     color={0,0,127}));
+  connect(propellerRev1.position, controlModule.y) annotation (Line(points={{5.8,8},
+          {0,8},{0,2},{-9.16667,2}},    color={0,0,127}));
+  connect(propellerRev3.position, controlModule.y2) annotation (Line(points={{5.8,-12},
+          {0,-12},{0,-2},{-9.16667,-2}},     color={0,0,127}));
+  connect(propellerRev2.position, controlModule.y3) annotation (Line(points={{5.8,-32},
+          {-2,-32},{-2,-6},{-9.16667,-6}},     color={0,0,127}));
+  connect(controlModule.position, realExtendMultiple.y) annotation (Line(
+        points={{-31.6667,0},{-37,0}},                color={0,0,127}));
+  connect(gPS.frame_a, droneChassis1.frame_a3) annotation (Line(
+      points={{28,-58},{36,-58},{36,-8},{44,-8}},
       color={95,95,95},
       thickness=0.5));
-  connect(propeller_DCMachine2.Airframe, droneChassis1.frame_a2) annotation (
-      Line(
-      points={{30.2,-5.6},{36.1,-5.6},{36.1,-4},{44,-4}},
+  connect(gPS.y, controlModule.GPS) annotation (Line(points={{7,-58},{-26.6667,
+          -58},{-26.6667,-12}},
+                          color={0,0,127}));
+  connect(accelerometer.frame_a, droneChassis1.frame_a3) annotation (Line(
+      points={{28,-84},{36,-84},{36,-8},{44,-8}},
       color={95,95,95},
       thickness=0.5));
-  connect(propeller_DCMachine2.position, controlModule_Synchronous.y2)
-    annotation (Line(points={{8,-4.8},{-9.09091,-4.8},{-9.09091,-2}}, color={0,
-          0,127}));
-  connect(propeller_DCMachine3.Airframe, droneChassis1.frame_a3) annotation (
-      Line(
-      points={{30.2,-15.6},{36,-15.6},{36,-8},{44,-8}},
+  connect(accelerometer.y, controlModule.Gyero) annotation (Line(points={{7,-84},
+          {-21.6667,-84},{-21.6667,-12}},
+                                    color={0,0,127}));
+  connect(controlModule.yaw, const.y) annotation (Line(points={{-31.6667,8},{
+          -36,8},{-36,15},{-36,15}},   color={0,0,127}));
+  connect(xcoord, realExtendMultiple.u) annotation (Line(points={{-120,80},{-78,
+          80},{-78,6},{-58,6}}, color={0,0,127}));
+  connect(ycoord, realExtendMultiple.u1)
+    annotation (Line(points={{-120,0},{-58,0}}, color={0,0,127}));
+  connect(zcoord, realExtendMultiple.u2) annotation (Line(points={{-120,-80},{-80,
+          -80},{-80,-6},{-58,-6}}, color={0,0,127}));
+  connect(propellerRev.frame_a, droneChassis1.frame_a1) annotation (Line(
+      points={{28,28},{42,28},{42,4},{44,4}},
       color={95,95,95},
       thickness=0.5));
-  connect(propeller_DCMachine3.position, controlModule_Synchronous.y3)
-    annotation (Line(points={{8,-14.8},{-9.09091,-14.8},{-9.09091,-6}}, color={
-          0,0,127}));
-  connect(controlModule_Synchronous.yaw, const.y)
-    annotation (Line(points={{-31.8182,8},{-39.6,8}}, color={0,0,127}));
-   connect(realExtendMultiple.u, xcoord) annotation (Line(points={{-74,6},{-88,
-           6},{-88,80},{-120,80}}, color={0,0,127}));
-   connect(realExtendMultiple.u1, ycoord)
-     annotation (Line(points={{-74,0},{-120,0}}, color={0,0,127}));
-   connect(realExtendMultiple.u2, zcoord) annotation (Line(points={{-74,-6},{
-           -90,-6},{-90,-80},{-120,-80}}, color={0,0,127}));
-  connect(droneChassis1.frame_a4, frame_a1) annotation (Line(
-      points={{69,-12},{70,-12},{70,-102}},
+  connect(controlModule.Height, const1.y) annotation (Line(points={{-14,-12},
+          {-12,-12},{-12,-40},{-11,-40}}, color={0,0,127}));
+  connect(droneChassis1.frame_a4, frame_a) annotation (Line(
+      points={{69,-12},{70,-12},{70,-100}},
       color={95,95,95},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
@@ -127,4 +121,4 @@ equation
           fileName="modelica://DroneSimulation/dronepic.jpg")}), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
     __Dymola_Commands(file="drone_animation_setup.mos" "drone_animation_setup"));
-end DroneTest_FMU_Synchronous_chassis;
+end DroneForVR;
