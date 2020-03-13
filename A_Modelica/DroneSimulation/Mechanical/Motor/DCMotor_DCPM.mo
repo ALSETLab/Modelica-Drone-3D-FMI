@@ -13,8 +13,6 @@ model DCMotor_DCPM "DC motor using DC machine from MSL"
     annotation (Placement(transformation(extent={{84,46},{116,78}}),
         iconTransformation(extent={{84,46},{116,78}})));
   Modelica.Blocks.Interfaces.RealInput position
-    annotation (Placement(transformation(extent={{-140,-80},{-100,-40}}),
-        iconTransformation(extent={{-140,-80},{-100,-40}})));
   Blocks.Routing.RealExtend realExtend1
     annotation (Placement(transformation(extent={{16,-78},{36,-58}})));
   Modelica.Blocks.Math.Gain gain1(k=k)
@@ -24,7 +22,9 @@ model DCMotor_DCPM "DC motor using DC machine from MSL"
   parameter Real k=-1
     "Propeller gain. Set to 1 for clockwise, -1 for counterclockwise";
   Modelica.Blocks.Nonlinear.Limiter limiter(uMax=1e8, uMin=0)
-    annotation (Placement(transformation(extent={{-78,30},{-70,38}})));
+    annotation (Placement(transformation(extent={{-4,-4},{4,4}},
+        rotation=270,
+        origin={-56,36})));
   Modelica.Mechanics.MultiBody.Forces.Torque torque(animation=false)
                                                     annotation (Placement(
         transformation(
@@ -65,8 +65,8 @@ model DCMotor_DCPM "DC motor using DC machine from MSL"
 
   Modelica.Electrical.Analog.Interfaces.PositivePin p1
                            "pin to be measured"
-    annotation (Placement(transformation(extent={{-120,50},{-100,70}}),
-        iconTransformation(extent={{-120,50},{-100,70}})));
+    annotation (Placement(transformation(extent={{-110,30},{-90,50}}),
+        iconTransformation(extent={{-110,30},{-90,50}})));
   parameter Modelica.SIunits.Resistance R=100 "Resistance at temperature T_ref";
   Electrical.Sources.PowerControl powerControl(V=V, R=R) annotation (Placement(
         transformation(
@@ -78,8 +78,7 @@ equation
     annotation (Line(points={{5,-68},{14,-68}},  color={0,0,127}));
   connect(realExtend.y, force.force) annotation (Line(points={{-1.6,0},{24,0}},
                                color={0,0,127}));
-  connect(position, limiter.u)
-    annotation (Line(points={{-120,-60},{-88,-60},{-88,34},{-78.8,34}},
+  connect(position, limiter.u),
                                                   color={0,0,127}));
   connect(force_out, force.frame_b) annotation (Line(
       points={{100,62},{60,62},{60,0},{46,0}},
@@ -105,16 +104,18 @@ equation
     annotation (Line(points={{-40,-38},{-40,-24},{-52,-24}}, color={0,0,0}));
   connect(ground.p, dcpm.pin_an)
     annotation (Line(points={{-77,-14},{-68,-14}}, color={0,0,255}));
-  connect(limiter.y, powerControl.Position) annotation (Line(points={{-69.6,34},
-          {-56,34},{-56,22.2}}, color={0,0,127}));
-  connect(powerControl.Battery, p1) annotation (Line(points={{-68.2,20.4},{
-          -68.2,60},{-110,60}}, color={0,0,255}));
+  connect(limiter.y, powerControl.Position) annotation (Line(points={{-56,31.6},
+          {-56,22.2}},          color={0,0,127}));
+  connect(powerControl.Battery, p1) annotation (Line(points={{-68.2,20},{-68.2,
+          40},{-100,40}},       color={0,0,255}));
   connect(powerControl.n1, dcpm.pin_an)
-    annotation (Line(points={{-68,-0.4},{-68,-14}}, color={0,0,255}));
+    annotation (Line(points={{-68,1.77636e-15},{-68,-14}},
+                                                    color={0,0,255}));
   connect(powerControl.p1, dcpm.pin_ap)
-    annotation (Line(points={{-56,-0.2},{-56,-14}}, color={0,0,255}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
-            -100,-100},{100,100}}),                             graphics={
+    annotation (Line(points={{-56,-1.77636e-15},{-56,-14}},
+                                                    color={0,0,255}));
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
+            -100},{100,100}}),                                  graphics={
           Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
           Text(
           extent={{-72,22},{76,-20}},

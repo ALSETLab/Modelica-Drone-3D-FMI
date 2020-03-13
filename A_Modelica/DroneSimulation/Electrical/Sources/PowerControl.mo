@@ -26,14 +26,14 @@ model PowerControl
         iconTransformation(extent={{-142,40},{-102,80}})));
   Modelica.Electrical.Analog.Interfaces.PositivePin Battery
     "pin connecting to battery/voltage source"
-    annotation (Placement(transformation(extent={{-114,-72},{-94,-52}}),
-        iconTransformation(extent={{-114,-72},{-94,-52}})));
+    annotation (Placement(transformation(extent={{-110,-72},{-90,-52}}),
+        iconTransformation(extent={{-110,-72},{-90,-52}})));
   Modelica.Electrical.Analog.Interfaces.PositivePin p1
-    annotation (Placement(transformation(extent={{92,50},{112,70}}),
-        iconTransformation(extent={{92,50},{112,70}})));
+    annotation (Placement(transformation(extent={{90,50},{110,70}}),
+        iconTransformation(extent={{90,50},{110,70}})));
   Modelica.Electrical.Analog.Interfaces.NegativePin n1
-    annotation (Placement(transformation(extent={{94,-70},{114,-50}}),
-        iconTransformation(extent={{94,-70},{114,-50}})));
+    annotation (Placement(transformation(extent={{90,-70},{110,-50}}),
+        iconTransformation(extent={{90,-70},{110,-50}})));
   parameter Modelica.SIunits.Resistance R=R "Resistance at temperature T_ref";
 equation
   connect(product.u1,potentialSensor. phi)
@@ -49,17 +49,20 @@ equation
   connect(product.u2, Position) annotation (Line(points={{-10,52},{-22,52},{-22,
           60},{-122,60}}, color={0,0,127}));
   connect(potentialSensor.p, Battery) annotation (Line(points={{-44,40},{-82,40},
-          {-82,-62},{-104,-62}}, color={0,0,255}));
+          {-82,-62},{-100,-62}}, color={0,0,255}));
   connect(p1, p1)
-    annotation (Line(points={{102,60},{102,60},{102,60}}, color={0,0,255}));
+    annotation (Line(points={{100,60},{100,60},{100,60}}, color={0,0,255}));
   connect(division.y, signalVoltage.v) annotation (Line(points={{47,12},{52,12},
           {52,1},{63.4,1}}, color={0,0,127}));
   connect(signalVoltage.p, p1) annotation (Line(points={{79,14},{80,14},{80,60},
-          {102,60}}, color={0,0,255}));
+          {100,60}}, color={0,0,255}));
   connect(signalVoltage.n, n1) annotation (Line(points={{79,-12},{78,-12},{78,
-          -60},{104,-60}}, color={0,0,255}));
+          -60},{100,-60}}, color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
-          Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200})}),
-                                                                 Diagram(
+          Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}), Text(
+          extent={{-94,42},{100,-38}},
+          lineColor={28,108,200},
+          textString="Speed
+Controller")}),                                                  Diagram(
         coordinateSystem(preserveAspectRatio=false)));
 end PowerControl;
