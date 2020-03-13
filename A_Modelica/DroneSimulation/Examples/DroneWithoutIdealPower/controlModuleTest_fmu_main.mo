@@ -1,6 +1,7 @@
 within DroneSimulation.Examples.DroneWithoutIdealPower;
 model controlModuleTest_fmu_main
-  Modelica.Blocks.Sources.Ramp ramp(duration=5, height=5)
+  Modelica.Blocks.Sources.Ramp ramp(duration=5, height=5,
+    startTime=20)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-70,0})));
@@ -15,27 +16,23 @@ model controlModuleTest_fmu_main
     annotation (Placement(transformation(extent={{-50,-16},{-40,-6}})));
    inner Modelica.Blocks.Noise.GlobalSeed globalSeed
      annotation (Placement(transformation(extent={{-36,-36},{-26,-26}})));
-  DroneTest_FMU                             droneTest_FMU_Battery_ElectricPower_Machine(
-                                                                           V=12.1)
+  DroneTest_FMU_Battery                     droneTest_FMU_Battery2_1(      V=12.1)
     annotation (Placement(transformation(extent={{-18,-8},{40,48}})));
 equation
   connect(ramp.y, add.u1) annotation (Line(points={{-59,0},{-56,0},{-56,-8},{
           -51,-8}},   color={0,0,127}));
   connect(add.u2, uniformNoise.y) annotation (Line(points={{-51,-14},{-51,-32},
           {-59,-32}},      color={0,0,127}));
-  connect(droneTest_FMU_Battery_ElectricPower_Machine.xcoord, const.y)
-    annotation (Line(points={{-23.8,42.4},{-34.8,42.4},{-34.8,28},{-45,28}},
-        color={0,0,127}));
-  connect(droneTest_FMU_Battery_ElectricPower_Machine.ycoord, const.y)
-    annotation (Line(points={{-23.8,20},{-34,20},{-34,28},{-45,28}}, color={0,0,
-          127}));
-  connect(droneTest_FMU_Battery_ElectricPower_Machine.zcoord, add.y)
-    annotation (Line(points={{-23.8,-2.4},{-31.6364,-2.4},{-31.6364,-11},{-39.5,
-          -11}}, color={0,0,127}));
+  connect(droneTest_FMU_Battery2_1.xcoord, const.y) annotation (Line(points={{
+          -23.2727,42.4},{-34.8,42.4},{-34.8,28},{-45,28}}, color={0,0,127}));
+  connect(droneTest_FMU_Battery2_1.ycoord, const.y) annotation (Line(points={{
+          -23.2727,20},{-34,20},{-34,28},{-45,28}}, color={0,0,127}));
+  connect(droneTest_FMU_Battery2_1.zcoord, ramp.y) annotation (Line(points={{
+          -23.2727,-2.4},{-40.6364,-2.4},{-40.6364,0},{-59,0}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-80,
             -40},{40,60}})), Diagram(coordinateSystem(preserveAspectRatio=
             false, extent={{-80,-40},{40,60}})),
-    experiment(StopTime=10, Tolerance=0.01),
+    experiment(StopTime=3000, Tolerance=0.01),
     __Dymola_Commands(executeCall(ensureSimulated=true) = {createPlot(
         id=1,
         position={338,6,507,816},
