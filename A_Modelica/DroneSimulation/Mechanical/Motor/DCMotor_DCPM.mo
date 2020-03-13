@@ -13,10 +13,8 @@ model DCMotor_DCPM "DC motor using DC machine from MSL"
     annotation (Placement(transformation(extent={{84,46},{116,78}}),
         iconTransformation(extent={{84,46},{116,78}})));
   Modelica.Blocks.Interfaces.RealInput position
-    annotation (Placement(transformation(extent={{-20,-20},{20,20}},
-        rotation=270,
-        origin={-46,84}),
-        iconTransformation(extent={{-64,56},{-24,96}})));
+    annotation (Placement(transformation(extent={{-140,-80},{-100,-40}}),
+        iconTransformation(extent={{-140,-80},{-100,-40}})));
   Blocks.Routing.RealExtend realExtend1
     annotation (Placement(transformation(extent={{16,-78},{36,-58}})));
   Modelica.Blocks.Math.Gain gain1(k=k)
@@ -81,7 +79,7 @@ equation
   connect(realExtend.y, force.force) annotation (Line(points={{-1.6,0},{24,0}},
                                color={0,0,127}));
   connect(position, limiter.u)
-    annotation (Line(points={{-46,84},{-70,84},{-70,34},{-78.8,34}},
+    annotation (Line(points={{-120,-60},{-88,-60},{-88,34},{-78.8,34}},
                                                   color={0,0,127}));
   connect(force_out, force.frame_b) annotation (Line(
       points={{100,62},{60,62},{60,0},{46,0}},

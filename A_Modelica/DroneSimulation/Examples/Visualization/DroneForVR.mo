@@ -2,7 +2,8 @@ within DroneSimulation.Examples.Visualization;
 model DroneForVR
   Electrical.controlModule controlModule(maxTilt=0.05, samplePeriod=0.01)
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
-  Mechanical.droneChassis droneChassis1(length=0.25, m=0.5)
+  Mechanical.Chassis.Examples.droneChassis
+                          droneChassis1(length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{44,-12},{94,8}})));
   Electrical.propeller propellerRev(k=1)
     annotation (Placement(transformation(extent={{8,18},{28,38}})));
@@ -39,10 +40,6 @@ model DroneForVR
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
   Modelica.Blocks.Interfaces.RealOutput zgps
     annotation (Placement(transformation(extent={{100,-90},{120,-70}})));
-  Modelica.Blocks.Sources.Constant const1(k=0)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=180,
-        origin={0,-40})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a annotation (
       Placement(transformation(
         extent={{-16,-16},{16,16}},
@@ -100,8 +97,6 @@ equation
       points={{28,28},{42,28},{42,4},{44,4}},
       color={95,95,95},
       thickness=0.5));
-  connect(controlModule.Height, const1.y) annotation (Line(points={{-14,-12},
-          {-12,-12},{-12,-40},{-11,-40}}, color={0,0,127}));
   connect(droneChassis1.frame_a4, frame_a) annotation (Line(
       points={{69,-12},{70,-12},{70,-100}},
       color={95,95,95},
