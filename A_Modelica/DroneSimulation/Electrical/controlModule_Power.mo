@@ -165,10 +165,15 @@ model controlModule_Power
     annotation (Placement(transformation(extent={{40,58},{60,72}})));
 
   parameter Modelica.SIunits.Voltage V "Controller Voltage";
-  Modelica.Electrical.Analog.Sensors.PotentialSensor potentialSensor
-    annotation (Placement(transformation(extent={{-92,-76},{-72,-56}})));
   Modelica.Electrical.Analog.Interfaces.PositivePin pin "pin to be measured"
     annotation (Placement(transformation(extent={{-112,-76},{-92,-56}})));
+  Modelica.Electrical.Analog.Basic.Resistor resistor(R=1000) annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={-86,-74})));
+  Modelica.Electrical.Analog.Basic.Ground ground
+    annotation (Placement(transformation(extent={{-98,-112},{-78,-92}})));
 equation
 
   connect(position, realExtract.u) annotation (Line(points={{-120,0},{-90,0},
@@ -250,16 +255,13 @@ equation
   connect(add3_1.u3,realExpression2. y) annotation (Line(points={{74.8,69.2},{
           68,69.2},{68,65},{61,65}},
                                   color={0,0,127}));
-  connect(potentialSensor.p, pin)
-    annotation (Line(points={{-92,-66},{-102,-66}}, color={0,0,255}));
-  connect(y1, add3_1.y) annotation (Line(points={{150,60},{120,60},{120,74},{
-          88.6,74}}, color={0,0,127}));
   connect(y, add3_2.y)
     annotation (Line(points={{150,20},{130.6,20}}, color={0,0,127}));
   connect(y2, add3_3.y)
     annotation (Line(points={{150,-20},{126.6,-20}}, color={0,0,127}));
   connect(y3, add3_4.y)
     annotation (Line(points={{150,-60},{128.6,-60}}, color={0,0,127}));
+
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{140,100}}),                                  graphics={Text(
           extent={{-44,30},{86,-32}},

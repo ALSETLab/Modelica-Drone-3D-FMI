@@ -124,8 +124,8 @@ equation
       points={{12,-60},{72,-60},{72,-40},{12,-40}},
       color={95,95,95},
       thickness=0.5));
-  connect(accelerometer.y, controlModule_Power.Gyero) annotation (Line(points={
-          {-9,-60},{-49.6667,-60},{-49.6667,-12}}, color={0,0,127}));
+  connect(accelerometer.y, controlModule_Power.Gyero) annotation (Line(points={{-9,-60},
+          {-49.6667,-60},{-49.6667,-12}},          color={0,0,127}));
   connect(controlModule_Power.position, realExtendMultiple.y)
     annotation (Line(points={{-59.6667,0},{-67,0}}, color={0,0,127}));
   connect(realExtendMultiple.u1, ycoord)
@@ -142,14 +142,11 @@ equation
     annotation (Line(points={{-54,-86},{-67,-86}}, color={0,0,255}));
   connect(dcdc.dc_n2, ground.p)
     annotation (Line(points={{-34,-86},{-6,-86},{-6,-100}}, color={0,0,255}));
-  connect(dcdc.dc_p2, controlModule_Power.pin) annotation (Line(points={{-34,
-          -74},{-20,-74},{-20,-64},{-62,-64},{-62,-6.6},{-58.1667,-6.6}}, color=
-         {0,0,255}));
   connect(battery.pin_p, propeller_DCMachine_Power.p1) annotation (Line(points=
           {{-67,-74},{-58,-74},{-58,-48},{-16,-48},{-16,22},{-8.4,22}}, color={
           0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{120,100}}),                                  graphics={
+            -120},{100,100}}),                                  graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},
           lineColor={215,215,215},

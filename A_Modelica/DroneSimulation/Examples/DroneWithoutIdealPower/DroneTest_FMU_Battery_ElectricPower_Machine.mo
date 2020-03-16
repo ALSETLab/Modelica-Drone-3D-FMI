@@ -54,8 +54,8 @@ equation
   connect(propeller_DCMachine_Power_ElectricPower.position,
     controlModule_Synchronous.y1) annotation (Line(points={{-10,21},{-28,21},{
           -28,4.4},{-32.9091,4.4}}, color={0,0,127}));
-  connect(gPS.y, controlModule_Synchronous.GPS) annotation (Line(points={{-13,
-          -54},{-53.6364,-54},{-53.6364,-11.8}}, color={0,0,127}));
+  connect(gPS.y, controlModule_Synchronous.GPS) annotation (Line(points={{-13,-54},
+          {-53.6364,-54},{-53.6364,-11.8}},      color={0,0,127}));
   connect(propeller_DCMachine_Power_ElectricPower2.position,
     controlModule_Synchronous.y) annotation (Line(points={{-10,7},{-24,7},{-24,
           0.8},{-32.9091,0.8}}, color={0,0,127}));
@@ -65,8 +65,8 @@ equation
   connect(controlModule_Synchronous.y3,
     propeller_DCMachine_Power_ElectricPower1.position) annotation (Line(points=
           {{-32.9091,-6.4},{-28,-6.4},{-28,-21},{-10,-21}}, color={0,0,127}));
-  connect(const2.y, controlModule_Synchronous.yaw) annotation (Line(points={{
-          -71.4,22},{-64,22},{-64,6.2},{-60.1818,6.2}}, color={0,0,127}));
+  connect(const2.y, controlModule_Synchronous.yaw) annotation (Line(points={{-71.4,
+          22},{-64,22},{-64,6.2},{-60.1818,6.2}},       color={0,0,127}));
   connect(droneChassis2.frame_a1, propeller_DCMachine_Power_ElectricPower.Airframe)
     annotation (Line(
       points={{48,4},{40,4},{40,19},{12.2,19}},

@@ -1,13 +1,12 @@
 within DroneSimulation.Examples.DroneWithIdealPower;
 model DroneTest
-  Modelica.Blocks.Sources.Ramp ramp(duration=5, height=5)
+  Modelica.Blocks.Sources.Ramp ramp(duration=5, height=5,
+    startTime=30)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-70,0})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-66,18},{-46,38}})));
-  DroneTest_FMU_DCmotor               droneTest_FMU_DCmotor
-    annotation (Placement(transformation(extent={{-18,-16},{32,34}})));
   Modelica.Blocks.Noise.UniformNoise uniformNoise(
     samplePeriod=0.1,
     y_min=-0.5,
@@ -32,5 +31,5 @@ equation
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-80,
             -40},{40,60}})), Diagram(coordinateSystem(preserveAspectRatio=
             false, extent={{-80,-40},{40,60}})),
-    experiment(StopTime=10));
+    experiment(StopTime=40));
 end DroneTest;

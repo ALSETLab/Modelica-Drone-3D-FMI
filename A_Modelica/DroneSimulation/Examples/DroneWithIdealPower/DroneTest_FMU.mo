@@ -17,7 +17,7 @@ model DroneTest_FMU
     annotation (Placement(transformation(extent={{100,-90},{120,-70}})));
   Electrical.controlModule_Synchronous
                            controlModule_Synchronous(
-                                         maxTilt=0.05, samplePeriod=0.01)
+                                         maxTilt=0.05, samplePeriod=0.001)
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
   Mechanical.Chassis.Examples.droneChassis droneChassis1(length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{44,-12},{94,8}})));
