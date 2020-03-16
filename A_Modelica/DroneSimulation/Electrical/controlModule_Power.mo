@@ -170,10 +170,7 @@ model controlModule_Power
   Modelica.Electrical.Analog.Interfaces.PositivePin pin "pin to be measured"
     annotation (Placement(transformation(extent={{-112,-76},{-92,-56}})));
 equation
-  y = (pin.v*add3_1.y)/(V);
-  y1 = (pin.v*add3_2.y)/(V);
-  y2 = (pin.v*add3_3.y)/(V);
-  y3 = (pin.v*add3_4.y)/(V);
+
   connect(position, realExtract.u) annotation (Line(points={{-120,0},{-90,0},
           {-90,30},{-80,30}}, color={0,0,127}));
   connect(position, realExtract1.u)
@@ -255,6 +252,14 @@ equation
                                   color={0,0,127}));
   connect(potentialSensor.p, pin)
     annotation (Line(points={{-92,-66},{-102,-66}}, color={0,0,255}));
+  connect(y1, add3_1.y) annotation (Line(points={{150,60},{120,60},{120,74},{
+          88.6,74}}, color={0,0,127}));
+  connect(y, add3_2.y)
+    annotation (Line(points={{150,20},{130.6,20}}, color={0,0,127}));
+  connect(y2, add3_3.y)
+    annotation (Line(points={{150,-20},{126.6,-20}}, color={0,0,127}));
+  connect(y3, add3_4.y)
+    annotation (Line(points={{150,-60},{128.6,-60}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{140,100}}),                                  graphics={Text(
           extent={{-44,30},{86,-32}},
