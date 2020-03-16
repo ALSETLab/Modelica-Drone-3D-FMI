@@ -7,8 +7,6 @@ model DroneTest
         origin={-70,0})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-66,18},{-46,38}})));
-  DroneTest_FMU                       droneTest_FMU_DCmotor
-    annotation (Placement(transformation(extent={{-18,-16},{32,34}})));
   Modelica.Blocks.Noise.UniformNoise uniformNoise(
     samplePeriod=0.1,
     y_min=-0.5,

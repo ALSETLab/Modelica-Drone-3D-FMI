@@ -142,9 +142,6 @@ equation
     annotation (Line(points={{-54,-86},{-67,-86}}, color={0,0,255}));
   connect(dcdc.dc_n2, ground.p)
     annotation (Line(points={{-34,-86},{-6,-86},{-6,-100}}, color={0,0,255}));
-  connect(dcdc.dc_p2, controlModule_Power.pin) annotation (Line(points={{-34,-74},
-          {-20,-74},{-20,-64},{-62,-64},{-62,-6.6},{-58.1667,-6.6}},      color=
-         {0,0,255}));
   connect(battery.pin_p, propeller_DCMachine_Power.p1) annotation (Line(points=
           {{-67,-74},{-58,-74},{-58,-48},{-16,-48},{-16,22},{-8.4,22}}, color={
           0,0,255}));
