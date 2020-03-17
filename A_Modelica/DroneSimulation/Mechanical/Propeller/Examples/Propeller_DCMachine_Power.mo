@@ -52,10 +52,10 @@ equation
       points={{-24,-12},{-16.42,-12}},
       color={95,95,95},
       thickness=0.5));
-  connect(dCMotor_DCMachine_Power.position, position) annotation (Line(points={{-55.68,
-          15.2},{-90,15.2},{-90,-20},{-120,-20}},      color={0,0,127}));
-  connect(dCMotor_DCMachine_Power.p1, p1) annotation (Line(points={{-70.2,12},{
-          -86,12},{-86,40},{-104,40}}, color={0,0,255}));
+  connect(dCMotor_DCMachine_Power.position, position) annotation (Line(points={{-72.4,
+          -12},{-90,-12},{-90,-20},{-120,-20}},        color={0,0,127}));
+  connect(dCMotor_DCMachine_Power.p1, p1) annotation (Line(points={{-68,8},{-86,
+          8},{-86,40},{-104,40}},      color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -40},{100,60}})),                                    Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-40},{100,60}})));

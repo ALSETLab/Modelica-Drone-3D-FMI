@@ -2,7 +2,6 @@ within DroneSimulation.Mechanical.Motor;
 model DCMotor_DCPM "DC motor using DC machine from MSL"
   Modelica.Mechanics.MultiBody.Forces.WorldForce force(
     animation=false,
-    color={244,0,4},
     resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b,
     N_to_m=10)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
@@ -12,9 +11,6 @@ model DCMotor_DCPM "DC motor using DC machine from MSL"
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a force_out
     annotation (Placement(transformation(extent={{84,46},{116,78}}),
         iconTransformation(extent={{84,46},{116,78}})));
-  Modelica.Blocks.Interfaces.RealInput position
-  Blocks.Routing.RealExtend realExtend1
-    annotation (Placement(transformation(extent={{16,-78},{36,-58}})));
   Modelica.Blocks.Math.Gain gain1(k=k)
     annotation (Placement(transformation(extent={{-16,-78},{4,-58}})));
   Blocks.Routing.RealExtend realExtend
@@ -73,19 +69,25 @@ model DCMotor_DCPM "DC motor using DC machine from MSL"
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-62,10})));
+  Modelica.Blocks.Interfaces.RealInput position
+    "Connector of Real input signal"
+    annotation (Placement(transformation(extent={{-140,-80},{-100,-40}})));
+  Blocks.Routing.RealExtend realExtend1
+    annotation (Placement(transformation(extent={{30,-72},{38,-64}})));
 equation
   connect(gain1.y, realExtend1.u)
-    annotation (Line(points={{5,-68},{14,-68}},  color={0,0,127}));
+    annotation (Line(points={{5,-68},{29.2,-68}},color={0,0,127}));
   connect(realExtend.y, force.force) annotation (Line(points={{-1.6,0},{24,0}},
                                color={0,0,127}));
-  connect(position, limiter.u),
-                                                  color={0,0,127}));
+  connect(position, limiter.u);
+
   connect(force_out, force.frame_b) annotation (Line(
       points={{100,62},{60,62},{60,0},{46,0}},
       color={95,95,95},
       thickness=0.5));
   connect(realExtend1.y, torque.torque)
-    annotation (Line(points={{37,-68},{58,-68}}, color={0,0,127}));
+    annotation (Line(points={{38.4,-68},{58,-68}},
+                                                 color={0,0,127}));
   connect(torque.frame_b, torque_1) annotation (Line(
       points={{70,-52},{70,0},{100,0}},
       color={95,95,95},
@@ -114,6 +116,8 @@ equation
   connect(powerControl.p1, dcpm.pin_ap)
     annotation (Line(points={{-56,-1.77636e-15},{-56,-14}},
                                                     color={0,0,255}));
+  connect(limiter.u, position) annotation (Line(points={{-56,40.8},{-66,40.8},{-66,
+          84},{-120,84},{-120,-60}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}),                                  graphics={
           Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),

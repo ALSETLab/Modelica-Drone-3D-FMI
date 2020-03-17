@@ -29,14 +29,6 @@ model controlModule_SynchronousPower
         extent={{-20,-20},{20,20}},
         rotation=90,
         origin={0,-120})));
-  Modelica.Blocks.Interfaces.RealInput Height annotation (Placement(
-        transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=90,
-        origin={60,-120}), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=90,
-        origin={60,-120})));
   Blocks.Control.discreteTF                  discreteTF4(
     ki=z_ki,
     kd=z_kd,
@@ -183,10 +175,8 @@ model controlModule_SynchronousPower
   parameter Modelica.SIunits.Resistance R=R "Internal resistance of controller";
   parameter Modelica.SIunits.Voltage V = V "Voltage of the controller";
 equation
-  y = (pin.i*add3_1.y)/(V/R);
-  y1 = (pin.i*add3_2.y)/(V/R);
-  y2 = (pin.i*add3_3.y)/(V/R);
-  y3 = (pin.i*add3_4.y)/(V/R);
+
+
   connect(position, realExtract.u) annotation (Line(points={{-120,0},{-90,0},
           {-90,30},{-80,30}}, color={0,0,127}));
   connect(position, realExtract1.u)
@@ -265,6 +255,14 @@ equation
     annotation (Line(points={{-100,-60},{-100,-72}}, color={0,0,255}));
   connect(resistor.n, ground.p)
     annotation (Line(points={{-100,-92},{-100,-100}}, color={0,0,255}));
+  connect(add3_1.y, y) annotation (Line(points={{88.6,74},{118,74},{118,60},{150,
+          60}}, color={0,0,127}));
+  connect(y1, add3_2.y)
+    annotation (Line(points={{150,20},{130.6,20}}, color={0,0,127}));
+  connect(y2, add3_3.y)
+    annotation (Line(points={{150,-20},{126.6,-20}}, color={0,0,127}));
+  connect(y3, add3_4.y)
+    annotation (Line(points={{150,-60},{128.6,-60}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
             {140,100}}),                                        graphics={Text(
           extent={{-44,30},{86,-32}},
