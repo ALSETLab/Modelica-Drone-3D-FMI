@@ -1,0 +1,20 @@
+ 
+Compiling and linking the model (Visual C++). 
+ 
+**********************************************************************
+** Visual Studio 2017 Developer Command Prompt v15.9.16
+** Copyright (c) 2017 Microsoft Corporation
+**********************************************************************
+[vcvarsall.bat] Environment initialized for: 'x86'
+dsmodel.c
+dsmodelext1.c
+Generating Code...
+   Creating library dymosim.lib and object dymosim.exp
+libds.lib(amat.obj) : warning LNK4049: locally defined symbol ___iob_func imported
+libds.lib(aprint.obj) : warning LNK4217: locally defined symbol ___iob_func imported in function _aprintLine
+libds.lib(dsres.obj) : warning LNK4049: locally defined symbol ___iob_func imported
+libds.lib(tpl.obj) : warning LNK4049: locally defined symbol ___iob_func imported
+libds.lib(rsyaux.obj) : warning LNK4049: locally defined symbol ___iob_func imported
+ 
+Successful generation of Dymosim. 
+ 
