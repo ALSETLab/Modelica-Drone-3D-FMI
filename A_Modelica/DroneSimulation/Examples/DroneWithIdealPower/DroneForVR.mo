@@ -2,7 +2,8 @@ within DroneSimulation.Examples.DroneWithIdealPower;
 model DroneForVR
   Electrical.controlModule controlModule(maxTilt=0.05, samplePeriod=0.01)
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
-  Mechanical.droneChassis droneChassis1(length=0.25, m=0.5)
+  Mechanical.Chassis.Examples.droneChassis_NoAnimation
+                          droneChassis1(length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{44,-12},{94,8}})));
   Electrical.propeller propellerRev(k=1)
     annotation (Placement(transformation(extent={{8,18},{28,38}})));

@@ -19,7 +19,7 @@ model controlModuleTest_fmu_main
     annotation (Placement(transformation(extent={{-48,-18},{-38,-8}})));
    inner Modelica.Blocks.Noise.GlobalSeed globalSeed
      annotation (Placement(transformation(extent={{-14,-76},{-4,-66}})));
-  DroneTest_FMU_Battery2 droneTest_FMU_Battery2_1(V=12.1)
+  DroneTest_FMU_Battery2 drone(V=12.1)
     annotation (Placement(transformation(extent={{-2,-60},{88,50}})));
 equation
 
@@ -29,11 +29,25 @@ equation
                  color={0,0,127}));
   connect(add.u2,uniformNoise. y) annotation (Line(points={{-49,-16},{-49,
           -30},{-59,-30}}, color={0,0,127}));
-  connect(droneTest_FMU_Battery2_1.ycoord, const.y) annotation (Line(points={{-11,0},
-          {-36,0},{-36,28},{-45,28}},    color={0,0,127}));
-  connect(droneTest_FMU_Battery2_1.xcoord, const.y) annotation (Line(points={{-11,40},
-          {-24,40},{-24,28},{-45,28}},     color={0,0,127}));
-  connect(droneTest_FMU_Battery2_1.zcoord, add.u1) annotation (Line(points={{-11,-40},
-          {-32,-40},{-32,-2},{-54,-2},{-54,-10},{-49,-10}},      color={0,0,127}));
-  annotation (experiment(StopTime=10));
+  connect(drone.ycoord, const.y) annotation (Line(points={{-11,0},{-36,0},{-36,
+          28},{-45,28}}, color={0,0,127}));
+  connect(drone.xcoord, const.y) annotation (Line(points={{-11,40},{-24,40},{
+          -24,28},{-45,28}}, color={0,0,127}));
+  connect(drone.zcoord, add.u1) annotation (Line(points={{-11,-40},{-32,-40},{
+          -32,-2},{-54,-2},{-54,-10},{-49,-10}}, color={0,0,127}));
+  annotation (experiment(StopTime=10), __Dymola_Commands(executeCall(
+          ensureSimulated=true) = {createPlot(
+        id=1,
+        position={15,10,584,420},
+        y={"drone.xgps","drone.ygps","drone.zgps"},
+        range={0.0,10.0,-2.0,6.0},
+        grid=true,
+        legends={"X Position","Y Position","Z Position"},
+        leftTitleType=2,
+        leftTitle="Position (m)",
+        bottomTitleType=2,
+        bottomTitle="Time (s)",
+        colors={{28,108,200},{238,46,47},{0,140,72}},
+        patterns={LinePattern.Solid,LinePattern.Dash,LinePattern.Dot},
+        thicknesses={1.0,1.0,1.0})}));
 end controlModuleTest_fmu_main;

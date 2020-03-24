@@ -48,7 +48,9 @@ model DCMotor_DCMachine "DC motor using DC machine from MSL"
   Modelica.Electrical.Machines.BasicMachines.DCMachines.DC_PermanentMagnet dcpm(
     TaOperational=293.15,
     VaNominal=VaNominal,
-    IaNominal=IaNominal)
+    IaNominal=IaNominal,
+    Jr=1,
+    useSupport=false)
     annotation (Placement(transformation(extent={{-72,-34},{-52,-14}})));
   Modelica.Electrical.Analog.Sources.SignalVoltage signalVoltage
     annotation (Placement(transformation(extent={{10,-10},{-10,10}},
