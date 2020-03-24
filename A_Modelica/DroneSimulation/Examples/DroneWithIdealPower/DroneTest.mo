@@ -5,7 +5,7 @@ model DroneTest
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-70,0})));
-  Modelica.Blocks.Sources.Constant const(k=-0.25)
+  Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-56,36},{-36,56}})));
   Modelica.Blocks.Noise.UniformNoise uniformNoise(
     samplePeriod=0.1,
@@ -18,7 +18,7 @@ model DroneTest
      annotation (Placement(transformation(extent={{-36,-36},{-26,-26}})));
   DroneTest_FMU_Continuous drone
     annotation (Placement(transformation(extent={{-10,2},{10,22}})));
-  Modelica.Blocks.Sources.Constant const1(k=-0.25)
+  Modelica.Blocks.Sources.Constant const1(k=0)
     annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
 equation
   connect(ramp.y, add.u1) annotation (Line(points={{-59,0},{-54,0},{-54,-10},

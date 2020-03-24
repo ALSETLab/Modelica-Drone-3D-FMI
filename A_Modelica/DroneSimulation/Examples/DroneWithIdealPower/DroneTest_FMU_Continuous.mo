@@ -17,12 +17,15 @@ model DroneTest_FMU_Continuous
     annotation (Placement(transformation(extent={{100,-90},{120,-70}})));
   Electrical.controlModule_Continuous controlModule_Continuious(
     maxTilt=0.05,
-    Yaw_Ti=10,
-    Yaw_Td=2,
+    Yaw_Ti=100,
+    Yaw_Td=20,
+    Yaw_kp=0.001,
     x_Ti=3,
     x_Td=1,
+    x_kp=0.01,
     y_Ti=30,
     y_Td=10,
+    y_kp=0.01,
     z_Ti=1.5,
     z_Td=0.5,
     gyro_x_Ti=10/3,
@@ -86,8 +89,6 @@ equation
       points={{30.2,-5.6},{36.1,-5.6},{36.1,-4},{44,-4}},
       color={95,95,95},
       thickness=0.5));
-  connect(propeller3.position, controlModule_Continuious.y2) annotation (Line(
-        points={{7.8,-4.8},{-9.16667,-4.8},{-9.16667,0}}, color={0,0,127}));
   connect(propeller1.Airframe, droneChassis1.frame_a3) annotation (Line(
       points={{30.2,-15.6},{36,-15.6},{36,-8},{44,-8}},
       color={95,95,95},
@@ -103,6 +104,8 @@ equation
      annotation (Line(points={{-74,0},{-120,0}}, color={0,0,127}));
    connect(realExtendMultiple.u2, zcoord) annotation (Line(points={{-74,-6},{
            -90,-6},{-90,-80},{-120,-80}}, color={0,0,127}));
+  connect(propeller3.position, controlModule_Continuious.y2) annotation (Line(
+        points={{7.8,-4.8},{-0.1,-4.8},{-0.1,0},{-9.16667,0}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{100,100}}),                                  graphics={
           Rectangle(
