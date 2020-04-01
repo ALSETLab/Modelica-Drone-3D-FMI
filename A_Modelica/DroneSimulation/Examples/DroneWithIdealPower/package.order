@@ -1,8 +1,10 @@
 DroneTest_FMU
 DroneTest_FMU_DCmotor
+DroneTest_FMU_Continuous
 DroneTest_FMU_Synchronous
 DroneTest_FMU_Synchronous_chassis
 DroneTest
 controlModuleTest_Synchronous
 DroneTest_FMU_VISUALIZATON
-DroneTest_FMU_Synchronous_chassis_noAnimation
+DroneForVR
+DroneTest_collision

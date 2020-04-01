@@ -1,3 +1,4 @@
 discretePID
 discreteTF
+continuousPID
 ModulatedSignalController

@@ -29,14 +29,6 @@ model controlModule_Power
         extent={{-20,-20},{20,20}},
         rotation=90,
         origin={0,-120})));
-  Modelica.Blocks.Interfaces.RealInput Height annotation (Placement(
-        transformation(
-        extent={{-20,-20},{20,20}},
-        rotation=90,
-        origin={60,-120}), iconTransformation(
-        extent={{-20,-20},{20,20}},
-        rotation=90,
-        origin={60,-120})));
   DroneSimulation.Blocks.Control.discretePID discretePID(
     ki=z_ki,
     kd=z_kd,
@@ -172,16 +164,17 @@ model controlModule_Power
   Modelica.Blocks.Sources.RealExpression realExpression2(y=discretePID4.y)
     annotation (Placement(transformation(extent={{40,58},{60,72}})));
 
-  parameter Modelica.SIunits.Voltage V "Controller Voltage";
-  Modelica.Electrical.Analog.Sensors.PotentialSensor potentialSensor
-    annotation (Placement(transformation(extent={{-92,-76},{-72,-56}})));
   Modelica.Electrical.Analog.Interfaces.PositivePin pin "pin to be measured"
     annotation (Placement(transformation(extent={{-112,-76},{-92,-56}})));
+  Modelica.Electrical.Analog.Basic.Resistor resistor(R=1000) annotation (
+      Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=270,
+        origin={-88,-76})));
+  Modelica.Electrical.Analog.Basic.Ground ground
+    annotation (Placement(transformation(extent={{-98,-112},{-78,-92}})));
 equation
-  y = (pin.v*add3_1.y)/(V);
-  y1 = (pin.v*add3_2.y)/(V);
-  y2 = (pin.v*add3_3.y)/(V);
-  y3 = (pin.v*add3_4.y)/(V);
+
   connect(position, realExtract.u) annotation (Line(points={{-120,0},{-90,0},
           {-90,30},{-80,30}}, color={0,0,127}));
   connect(position, realExtract1.u)
@@ -261,8 +254,19 @@ equation
   connect(add3_1.u3,realExpression2. y) annotation (Line(points={{74.8,69.2},{
           68,69.2},{68,65},{61,65}},
                                   color={0,0,127}));
-  connect(potentialSensor.p, pin)
-    annotation (Line(points={{-92,-66},{-102,-66}}, color={0,0,255}));
+  connect(y, add3_2.y)
+    annotation (Line(points={{150,20},{130.6,20}}, color={0,0,127}));
+  connect(y2, add3_3.y)
+    annotation (Line(points={{150,-20},{126.6,-20}}, color={0,0,127}));
+  connect(y3, add3_4.y)
+    annotation (Line(points={{150,-60},{128.6,-60}}, color={0,0,127}));
+
+  connect(pin, resistor.p)
+    annotation (Line(points={{-102,-66},{-88,-66}}, color={0,0,255}));
+  connect(ground.p, resistor.n)
+    annotation (Line(points={{-88,-92},{-88,-86}}, color={0,0,255}));
+  connect(add3_1.y, y1) annotation (Line(points={{88.6,74},{116,74},{116,60},{
+          150,60}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{140,100}}),                                  graphics={Text(
           extent={{-44,30},{86,-32}},

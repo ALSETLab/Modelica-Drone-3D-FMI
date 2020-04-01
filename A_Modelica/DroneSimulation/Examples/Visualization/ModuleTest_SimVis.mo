@@ -8,14 +8,14 @@ model ModuleTest_SimVis
   inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,-1,0})
     annotation (Placement(transformation(extent={{-72,-60},{-52,-40}})));
   inner Visualization.UpdateVisualization updateVisualization(
-      displayMultiBodyStructure=false) annotation (Placement(
-        transformation(extent={{60,42},{80,62}})));
-  Visualization.Shapes.FileShape       shape(
+      displayMultiBodyStructure=false)
+    annotation (Placement(transformation(extent={{60,42},{80,62}})));
+  Visualization.Shapes.FileShape shape(
     rotationType=Visualization.Internal.Types.RotationTypes.RotationAxis,
     axis(displayUnit="1") = {1,0,0},
     angle=-90,
-   filename=ModelicaServices.ExternalReferences.loadResource(
-       "modelica://DroneSimulation/Images/1_DroneModel.stl"),
+    filename=ModelicaServices.ExternalReferences.loadResource(
+        "modelica://DroneSimulation/Images/1_DroneModel.stl"),
     scaleFactor={0.01,0.01,0.01},
     reflectsLight=true,
     overwriteColor=false,
@@ -25,7 +25,8 @@ model ModuleTest_SimVis
     smoothNormals=true,
     r_shape={-50,-50,-2},
     shadowMask=Visualization.Shapes.Internal.Types.ShadowMask.NoShadows,
-    filename=Visualization.Utilities.RootDir + "/Extras/3DData/Terrain1/Terrain1.obj")
+    filename=Visualization.Utilities.RootDir +
+        "/Extras/3DData/Terrain1/Terrain1.obj")
     annotation (Placement(transformation(extent={{-42,-60},{-22,-40}})));
   Visualization.Lights.SpotLight light1
     annotation (Placement(transformation(extent={{-14,40},{6,60}})));
@@ -40,18 +41,19 @@ model ModuleTest_SimVis
     minute=0,
     latitude=0,
     longitude=0,
-    filename=Visualization.Utilities.RootDir + "/Extras/Bitmaps/Skymap/skymap2/skymap2_negx.png")
+    filename=Visualization.Utilities.RootDir +
+        "/Extras/Bitmaps/Skymap/skymap2/skymap2_negx.png")
     annotation (Placement(transformation(extent={{-76,38},{-56,58}})));
 
-  Visualization.Cameras.FreeCamera     camera1(windowMode=Visualization.Cameras.Internal.Types.WindowMode.Window,
+  Visualization.Cameras.FreeCamera camera1(windowMode=Visualization.Cameras.Internal.Types.WindowMode.Window,
       startDistanceToCenter={0,-3,0})
     annotation (Placement(transformation(extent={{-2,-36},{18,-16}})));
   replaceable DroneSimulation.Visualization.Inputs.Keyboard.KeyboardInputs_SimVis
                                                     inputDevice_SimVis
    constrainedby Interfaces.InputDevice_SimVis
     annotation (Placement(transformation(extent={{-32,-10},{-12,10}})));
-  Visualization.Cameras.FreeCamera     camera2(windowMode=Visualization.Cameras.Internal.Types.WindowMode.OpenVR_seated,
-     startDistanceToCenter={0,-3,0})
+  Visualization.Cameras.FreeCamera camera2(windowMode=Visualization.Cameras.Internal.Types.WindowMode.OpenVR_seated,
+      startDistanceToCenter={0,-3,0})
     annotation (Placement(transformation(extent={{-2,-54},{18,-34}})));
 equation
   connect(world.frame_b, shape1.frame_a) annotation (Line(

@@ -8,20 +8,16 @@ package MavicAir
                              controlModuleSpeed(maxTilt=0.15,
                                                          samplePeriod=0.01)
       annotation (Placement(transformation(extent={{-30,8},{-10,28}})));
-  Mechanical.Chassis.MavicAir_droneChassis droneChassis_1_1(length=0.25, m=0.5)
+  Mechanical.Chassis.Examples.MavicAir droneChassis_1_1(length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{42,6},{92,26}})));
-    Mechanical.Propeller.MavicAir_propeller
-                         propeller_1_1
-      annotation (Placement(transformation(extent={{8,32},{28,42}})));
-    Mechanical.Propeller.MavicAir_propeller
-                         propeller_1_3
-      annotation (Placement(transformation(extent={{8,6},{28,16}})));
-    Mechanical.Propeller.MavicAir_propeller
-                         propeller_1_2
-      annotation (Placement(transformation(extent={{8,20},{28,30}})));
-    Mechanical.Propeller.MavicAir_propeller
-                         propeller_1_4
-      annotation (Placement(transformation(extent={{8,-8},{28,2}})));
+  Mechanical.Propeller.Examples.MavicAir propeller_1_1
+    annotation (Placement(transformation(extent={{8,32},{28,42}})));
+  Mechanical.Propeller.Examples.MavicAir propeller_1_3
+    annotation (Placement(transformation(extent={{8,6},{28,16}})));
+  Mechanical.Propeller.Examples.MavicAir propeller_1_2
+    annotation (Placement(transformation(extent={{8,20},{28,30}})));
+  Mechanical.Propeller.Examples.MavicAir propeller_1_4
+    annotation (Placement(transformation(extent={{8,-8},{28,2}})));
     inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
         -1})
       annotation (Placement(transformation(extent={{60,60},{80,80}})));

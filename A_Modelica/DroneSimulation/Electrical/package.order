@@ -6,3 +6,4 @@ controlModule
 controlModule_Power
 controlModule_Synchronous
 controlModule_SynchronousPower
+controlModule_Continuous

@@ -15,13 +15,13 @@ model DroneTest_FMU_Constant_Voltage
 
 
   parameter Modelica.SIunits.Voltage V "Battery voltage";
-  Mechanical.Propeller.Propeller_DCMachine_Power propeller_DCMachine_Power(
+  Mechanical.Propeller.Examples.Propeller_DCMachine_Power
+    propeller_DCMachine_Power(
     PropellerGain=1,
     VaNominal=10,
-    V=V)
-    annotation (Placement(transformation(extent={{-8,16},{12,26}})));
+    V=V) annotation (Placement(transformation(extent={{-8,16},{12,26}})));
   Modelica.Electrical.Analog.Sources.ConstantVoltage constantVoltage(V=V)
-    annotation (Placement(transformation(extent={{-8,34},{12,54}})));
+    annotation (Placement(transformation(extent={{-8,36},{12,56}})));
   Modelica.Electrical.Analog.Basic.Ground ground
     annotation (Placement(transformation(extent={{20,24},{40,44}})));
   Sensors.GPS gPS annotation (Placement(transformation(
@@ -32,22 +32,20 @@ model DroneTest_FMU_Constant_Voltage
     maxTilt=0.05,
     samplePeriod=0.01)
     annotation (Placement(transformation(extent={{-58,-10},{-38,10}})));
-  Modelica.Blocks.Sources.Constant const1(k=0)
-    annotation (Placement(transformation(extent={{-30,-26},{-42,-14}})));
   Modelica.Blocks.Sources.Constant const2(k=0)
     annotation (Placement(transformation(extent={{-84,16},{-72,28}})));
-  Mechanical.Propeller.Propeller_DCMachine_Power propeller_DCMachine_Power1(VaNominal=
-       10, V=V)
+  Mechanical.Propeller.Examples.Propeller_DCMachine_Power
+    propeller_DCMachine_Power1(VaNominal=10, V=V)
     annotation (Placement(transformation(extent={{-8,2},{12,12}})));
-  Mechanical.Propeller.Propeller_DCMachine_Power propeller_DCMachine_Power2(
+  Mechanical.Propeller.Examples.Propeller_DCMachine_Power
+    propeller_DCMachine_Power2(
     PropellerGain=1,
     VaNominal=10,
-    V=V)
-    annotation (Placement(transformation(extent={{-8,-12},{12,-2}})));
-  Mechanical.Propeller.Propeller_DCMachine_Power propeller_DCMachine_Power3(VaNominal=
-       10, V=V)
+    V=V) annotation (Placement(transformation(extent={{-8,-12},{12,-2}})));
+  Mechanical.Propeller.Examples.Propeller_DCMachine_Power
+    propeller_DCMachine_Power3(VaNominal=10, V=V)
     annotation (Placement(transformation(extent={{-8,-26},{12,-16}})));
-  Mechanical.Chassis.droneChassis droneChassis2(length=0.25, m=0.5)
+  Mechanical.Chassis.Examples.droneChassis droneChassis2(length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{48,-12},{98,8}})));
   inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,-1})
     annotation (Placement(transformation(extent={{62,52},{82,72}})));
@@ -61,13 +59,11 @@ equation
   gPS.y[2] = ygps;
   gPS.y[3] = zgps;
   connect(constantVoltage.n,ground. p)
-    annotation (Line(points={{12,44},{30,44}}, color={0,0,255}));
+    annotation (Line(points={{12,46},{22,46},{22,44},{30,44}},
+                                               color={0,0,255}));
   connect(propeller_DCMachine_Power.position, controlModule_Power.y1)
     annotation (Line(points={{-10,18},{-24,18},{-24,6},{-37.1667,6}}, color={0,0,
           127}));
-  connect(controlModule_Power.Height, const1.y) annotation (Line(points={{
-          -44.6667,-12},{-44,-12},{-44,-20},{-42.6,-20}},
-                                                 color={0,0,127}));
   connect(gPS.y, controlModule_Power.GPS) annotation (Line(points={{-13,-54},{
           -54.6667,-54},{-54.6667,-12}},
                                 color={0,0,127}));
@@ -115,7 +111,7 @@ equation
       color={95,95,95},
       thickness=0.5));
   connect(constantVoltage.p, propeller_DCMachine_Power.p1) annotation (Line(
-        points={{-8,44},{-16,44},{-16,24},{-8.4,24}}, color={0,0,255}));
+        points={{-8,46},{-16,46},{-16,24},{-8.4,24}}, color={0,0,255}));
   connect(accelerometer.frame_a, gPS.frame_a) annotation (Line(
       points={{8,-74},{72,-74},{72,-54},{8,-54}},
       color={95,95,95},

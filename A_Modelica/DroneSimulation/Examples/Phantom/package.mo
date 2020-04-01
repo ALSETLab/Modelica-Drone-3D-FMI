@@ -11,11 +11,10 @@ package Phantom
                              controlModuleSpeed(maxTilt=0.15,
                                                          samplePeriod=0.01)
       annotation (Placement(transformation(extent={{-30,8},{-10,28}})));
-  Mechanical.Chassis.Phantom_droneChassis droneChassis_1_1(length=0.35, m=0.65)
+  Mechanical.Chassis.Examples.Phantom droneChassis_1_1(length=0.35, m=0.65)
     annotation (Placement(transformation(extent={{42,6},{92,26}})));
-    Mechanical.Propeller.Phantom_propeller
-                         propeller_1_1
-      annotation (Placement(transformation(extent={{8,30},{28,36}})));
+  Mechanical.Propeller.Examples.Phantom propeller_1_1
+    annotation (Placement(transformation(extent={{8,30},{28,36}})));
     inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
         -1})
       annotation (Placement(transformation(extent={{60,60},{80,80}})));
@@ -44,15 +43,12 @@ package Phantom
       annotation (Placement(transformation(extent={{-92,10},{-72,30}})));
     Modelica.Blocks.Sources.Constant const1(k=0)
       annotation (Placement(transformation(extent={{40,-98},{20,-78}})));
-    Mechanical.Propeller.Phantom_propeller
-                         propeller_1_2(PropellerGain=1)
-      annotation (Placement(transformation(extent={{8,20},{28,26}})));
-    Mechanical.Propeller.Phantom_propeller
-                         propeller_1_3
-      annotation (Placement(transformation(extent={{8,10},{28,16}})));
-    Mechanical.Propeller.Phantom_propeller
-                         propeller_1_4(PropellerGain=1)
-      annotation (Placement(transformation(extent={{8,0},{28,6}})));
+  Mechanical.Propeller.Examples.Phantom propeller_1_2(PropellerGain=1)
+    annotation (Placement(transformation(extent={{8,20},{28,26}})));
+  Mechanical.Propeller.Examples.Phantom propeller_1_3
+    annotation (Placement(transformation(extent={{8,10},{28,16}})));
+  Mechanical.Propeller.Examples.Phantom propeller_1_4(PropellerGain=1)
+    annotation (Placement(transformation(extent={{8,0},{28,6}})));
   equation
      connect(propeller_1_1.position, controlModuleSpeed.y1) annotation (Line(
            points={{5.8,32.4},{-2,32.4},{-2,24},{-9.16667,24}},

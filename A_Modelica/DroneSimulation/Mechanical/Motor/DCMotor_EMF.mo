@@ -21,7 +21,8 @@ model DCMotor_EMF
     annotation (Placement(transformation(extent={{-10,-4},{-2,4}})));
   parameter Real k=-1
     "Propeller gain. Set to 1 for clockwise, -1 for counterclockwise";
-  Modelica.Blocks.Nonlinear.Limiter limiter(uMax=1e8, uMin=0)
+  Modelica.Blocks.Nonlinear.Limiter limiter(uMax=1e8, uMin=0,
+    homotopyType=Modelica.Blocks.Types.LimiterHomotopy.LowerLimit)
     annotation (Placement(transformation(extent={{-94,-4},{-86,4}})));
   Modelica.Mechanics.MultiBody.Forces.Torque torque annotation (Placement(
         transformation(
@@ -38,7 +39,7 @@ model DCMotor_EMF
         iconTransformation(extent={{84,-76},{116,-44}})));
   Electrical.Machines.SimpleMotor_EMF simpleMotor_EMF(
     R_trs=0.1,
-    X_s=0,
+    X_s=0.2,
     R_hyst=1)
     annotation (Placement(transformation(extent={{-74,-10},{-54,10}})));
   Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor annotation (

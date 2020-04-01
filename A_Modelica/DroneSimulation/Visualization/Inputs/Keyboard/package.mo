@@ -1,8 +1,7 @@
 within DroneSimulation.Visualization.Inputs;
 package Keyboard
   model KeyboardInputs_SimVis
-    extends
-     DroneSimulation.Visualization.Interfaces.InputDevice_SimVis;
+    extends DroneSimulation.Visualization.Interfaces.InputDevice_SimVis;
     import DroneSimulation;
     Modelica_DeviceDrivers.Blocks.OperatingSystem.SynchronizeRealtime
                                         synchronizeRealtime
@@ -269,8 +268,7 @@ package Keyboard
   end Keyboard_Conversion;
 
   model KeyboardInputs_Dymola
-    extends
-     DroneSimulation.Visualization.Interfaces.InputDevice_Dymola;
+    extends DroneSimulation.Visualization.Interfaces.InputDevice_Dymola;
     import DroneSimulation;
     Modelica_DeviceDrivers.Blocks.OperatingSystem.SynchronizeRealtime
                                         synchronizeRealtime
