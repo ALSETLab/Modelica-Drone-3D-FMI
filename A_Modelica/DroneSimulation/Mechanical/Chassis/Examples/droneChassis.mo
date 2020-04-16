@@ -3,6 +3,7 @@ model droneChassis
   extends DroneSimulation.Mechanical.Chassis.Templates.droneChassis;
 
   Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(
+    animation=animation,
     shapeType="modelica://DroneSimulation/Images/9.stl",
     r_shape={0,0,0},
     lengthDirection(displayUnit="1") = {1,0,0},
@@ -18,6 +19,7 @@ model droneChassis
     animation=false,
     n(displayUnit="1") = {0,1,0},
     angle=45) annotation (Placement(transformation(extent={{58,20},{78,40}})));
+  parameter Boolean animation=true "= true, if animation shall be enabled";
 equation
   connect(fixedRotation.frame_b,fixedRotation1. frame_a) annotation (Line(
       points={{50,30},{58,30}},

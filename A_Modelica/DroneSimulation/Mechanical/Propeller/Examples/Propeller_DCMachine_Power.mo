@@ -4,7 +4,7 @@ model Propeller_DCMachine_Power
     annotation (Placement(transformation(extent={{-16,20},{26,-20}})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
     annotation (Placement(transformation(extent={{86,-26},{118,6}})));
-  Blades.Examples.Blades blades
+  Blades.Examples.Blades blades(animation=animation)
     annotation (Placement(transformation(extent={{50,6},{92,46}})));
 
   parameter Real PropellerGain=-1
@@ -31,6 +31,7 @@ model Propeller_DCMachine_Power
     R=R) annotation (Placement(transformation(extent={{-68,-20},{-24,20}})));
   parameter Modelica.SIunits.Voltage V "Battery voltage";
   parameter Modelica.SIunits.Resistance R=100 "Resistance at temperature T_ref";
+  parameter Boolean animation=true "= true, if animation shall be enabled";
 equation
   connect(rotor1.Airframe, Airframe) annotation (Line(
       points={{26.42,-10.4},{102,-10.4},{102,-10}},

@@ -1,5 +1,6 @@
 within DroneSimulation.Mechanical.Propeller.Examples;
 model Propeller
+
   Motor.DCMotor
           dCMotor(k=PropellerGain)
     annotation (Placement(transformation(extent={{-80,-20},{-40,20}})));
@@ -9,10 +10,11 @@ model Propeller
     annotation (Placement(transformation(extent={{-16,20},{26,-20}})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
     annotation (Placement(transformation(extent={{86,-26},{118,6}})));
-  Blades.Examples.Blades blades
+  Blades.Examples.Blades blades(animation=animation)
     annotation (Placement(transformation(extent={{50,6},{92,46}})));
   parameter Real PropellerGain=-1
     "Propeller gain. Set to 1 for clockwise, -1 for counterclockwise";
+  parameter Boolean animation=true "= true, if animation shall be enabled";
 equation
   connect(dCMotor.position, position)
     annotation (Line(points={{-84.4,0},{-122,0}}, color={0,0,127}));

@@ -19,7 +19,8 @@ model controlModuleTest_fmu_main
     annotation (Placement(transformation(extent={{-48,-18},{-38,-8}})));
    inner Modelica.Blocks.Noise.GlobalSeed globalSeed
      annotation (Placement(transformation(extent={{-14,-76},{-4,-66}})));
-  DroneTest_FMU_Battery2 drone(V=12.1)
+  DroneTest_FMU_Constant_Voltage
+                         drone(V=12.1, animation=false)
     annotation (Placement(transformation(extent={{-2,-60},{88,50}})));
 equation
 
@@ -29,12 +30,13 @@ equation
                  color={0,0,127}));
   connect(add.u2,uniformNoise. y) annotation (Line(points={{-49,-16},{-49,
           -30},{-59,-30}}, color={0,0,127}));
-  connect(drone.ycoord, const.y) annotation (Line(points={{-11,0},{-36,0},{-36,
-          28},{-45,28}}, color={0,0,127}));
-  connect(drone.xcoord, const.y) annotation (Line(points={{-11,40},{-24,40},{
+  connect(drone.ycoord, const.y) annotation (Line(points={{-11,-5},{-36,-5},{
+          -36,28},{-45,28}},
+                         color={0,0,127}));
+  connect(drone.xcoord, const.y) annotation (Line(points={{-11,39},{-24,39},{
           -24,28},{-45,28}}, color={0,0,127}));
-  connect(drone.zcoord, add.u1) annotation (Line(points={{-11,-40},{-32,-40},{
-          -32,-2},{-54,-2},{-54,-10},{-49,-10}}, color={0,0,127}));
+  connect(add.y, drone.zcoord) annotation (Line(points={{-37.5,-13},{-37.5,
+          -32.5},{-11,-32.5},{-11,-49}}, color={0,0,127}));
   annotation (experiment(StopTime=10), __Dymola_Commands(executeCall(
           ensureSimulated=true) = {createPlot(
         id=1,

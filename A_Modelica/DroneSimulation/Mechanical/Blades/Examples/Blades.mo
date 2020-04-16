@@ -26,6 +26,7 @@ model Blades
     annotation (Placement(transformation(extent={{-120,-16},{-88,16}}),
         iconTransformation(extent={{-120,-16},{-88,16}})));
   Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(
+    animation=animation,
     shapeType="modelica://DroneSimulation/Images/8.stl",
     r_shape={-0.0085,-0.1,0},
     lengthDirection(displayUnit="1") = {0,0,-1},
@@ -33,6 +34,7 @@ model Blades
     width=1e-3,
     height=1e-3,
     extra=1) annotation (Placement(transformation(extent={{-18,12},{2,32}})));
+  parameter Boolean animation=true "= true, if animation shall be enabled";
 equation
   connect(bodyShape4.frame_a, Input) annotation (Line(
       points={{66,0},{-104,0}},

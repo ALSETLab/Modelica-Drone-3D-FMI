@@ -8,7 +8,7 @@ model rotor
   Modelica.Mechanics.MultiBody.Sensors.RelativeAngularVelocity
     relativeAngularVelocity
     annotation (Placement(transformation(extent={{30,74},{50,94}})));
-  Modelica.Mechanics.MultiBody.Forces.Torque torque1
+  Modelica.Mechanics.MultiBody.Forces.Torque torque1(animation=false)
     annotation (Placement(transformation(extent={{8,-88},{28,-68}})));
   Modelica.Blocks.Math.Gain gain(k=-0.004) annotation (Placement(
         transformation(
