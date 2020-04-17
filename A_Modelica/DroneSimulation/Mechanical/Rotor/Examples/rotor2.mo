@@ -1,20 +1,22 @@
 within DroneSimulation.Mechanical.Rotor.Examples;
-model rotor
+model rotor2
   Modelica.Mechanics.MultiBody.Joints.Revolute revolute(animation=false)
-    annotation (Placement(transformation(extent={{4,14},{24,34}})));
+    annotation (Placement(transformation(extent={{10,10},{30,30}})));
 
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
     annotation (Placement(transformation(extent={{86,36},{118,68}})));
   Modelica.Mechanics.MultiBody.Sensors.RelativeAngularVelocity
     relativeAngularVelocity
     annotation (Placement(transformation(extent={{30,74},{50,94}})));
-  Modelica.Mechanics.MultiBody.Forces.Torque torque1(animation=false)
+  Modelica.Mechanics.MultiBody.Forces.ForceAndTorque
+                                             forceAndTorque(
+                                                     animation=false)
     annotation (Placement(transformation(extent={{8,-88},{28,-68}})));
-  Modelica.Blocks.Math.Gain gain(k=-0.001) annotation (Placement(
+  Modelica.Blocks.Math.Gain gain(k=-1)     annotation (Placement(
         transformation(
         extent={{-6,-6},{6,6}},
         rotation=270,
-        origin={40,12})));
+        origin={40,10})));
   Blocks.Routing.RealExtract realExtract annotation (Placement(
         transformation(
         extent={{-6,-6},{6,6}},
@@ -40,55 +42,62 @@ Modelica.Mechanics.MultiBody.Interfaces.Frame_b torque_2
     "Coordinate system b fixed to the component with one cut-force and cut-torque"
   annotation (Placement(transformation(extent={{-118,-16},{-86,16}}),
       iconTransformation(extent={{-118,-16},{-86,16}})));
+  Modelica.Mechanics.MultiBody.Sensors.CutForce cutForce
+    annotation (Placement(transformation(extent={{-60,-52},{-40,-32}})));
 equation
   connect(relativeAngularVelocity.w_rel, realExtract.u)
     annotation (Line(points={{40,73},{40,46}}, color={0,0,127}));
   connect(realExtract.y, gain.u)
-    annotation (Line(points={{40,33.4},{40,19.2}}, color={0,0,127}));
+    annotation (Line(points={{40,33.4},{40,17.2}}, color={0,0,127}));
   connect(gain.y, realExtend2.u)
-    annotation (Line(points={{40,5.4},{40,-14.8}},
+    annotation (Line(points={{40,3.4},{40,-14.8}},
                                                 color={0,0,127}));
-  connect(realExtend2.y, torque1.torque) annotation (Line(points={{40,-28.6},
-          {40,-40},{12,-40},{12,-66}},
-                              color={0,0,127}));
-  connect(relativeAngularVelocity.frame_a, torque1.frame_a) annotation (
+  connect(realExtend2.y, forceAndTorque.torque) annotation (Line(points={{40,
+          -28.6},{40,-40},{18,-40},{18,-66}}, color={0,0,127}));
+  connect(relativeAngularVelocity.frame_a, forceAndTorque.frame_a) annotation (
       Line(
       points={{30,84},{-14,84},{-14,-78},{8,-78}},
       color={95,95,95},
       thickness=0.5));
-  connect(revolute.frame_a, torque1.frame_a) annotation (Line(
-      points={{4,24},{-14,24},{-14,-78},{8,-78}},
-      color={95,95,95},
-      thickness=0.5));
-  connect(revolute.frame_a, force) annotation (Line(
-      points={{4,24},{-48,24},{-48,-62},{-102,-62}},
-      color={95,95,95},
-      thickness=0.5));
-  connect(Airframe, torque1.frame_a) annotation (Line(
+  connect(Airframe, forceAndTorque.frame_a) annotation (Line(
       points={{102,52},{84,52},{84,92},{-14,92},{-14,-78},{8,-78}},
       color={95,95,95},
       thickness=0.5));
-  connect(Blade, torque1.frame_b) annotation (Line(
-      points={{102,-40},{62,-40},{62,-78},{28,-78}},
+  connect(revolute.frame_b, forceAndTorque.frame_b) annotation (Line(
+      points={{30,20},{62,20},{62,-78},{28,-78}},
       color={95,95,95},
       thickness=0.5));
-  connect(revolute.frame_b, torque1.frame_b) annotation (Line(
-      points={{24,24},{62,24},{62,-78},{28,-78}},
-      color={95,95,95},
-      thickness=0.5));
-  connect(relativeAngularVelocity.frame_b, torque1.frame_b) annotation (
+  connect(relativeAngularVelocity.frame_b, forceAndTorque.frame_b) annotation (
       Line(
       points={{50,84},{62,84},{62,-78},{28,-78}},
       color={95,95,95},
       thickness=0.5));
-connect(torque_2, torque1.frame_b) annotation (Line(
-    points={{-102,0},{62,0},{62,-78},{28,-78}},
-    color={95,95,95},
-    thickness=0.5));
-connect(torque_1, torque1.frame_a) annotation (Line(
-    points={{-102,60},{-14,60},{-14,-78},{8,-78}},
-    color={95,95,95},
-    thickness=0.5));
+  connect(torque_2, forceAndTorque.frame_b) annotation (Line(
+      points={{-102,0},{62,0},{62,-78},{28,-78}},
+      color={95,95,95},
+      thickness=0.5));
+  connect(torque_1, forceAndTorque.frame_a) annotation (Line(
+      points={{-102,60},{-14,60},{-14,-78},{8,-78}},
+      color={95,95,95},
+      thickness=0.5));
+  connect(revolute.frame_a, forceAndTorque.frame_a) annotation (Line(
+      points={{10,20},{-14,20},{-14,-78},{8,-78}},
+      color={95,95,95},
+      thickness=0.5));
+  connect(force, cutForce.frame_a) annotation (Line(
+      points={{-102,-62},{-86,-62},{-86,-42},{-60,-42}},
+      color={95,95,95},
+      thickness=0.5));
+  connect(cutForce.frame_b, forceAndTorque.frame_a) annotation (Line(
+      points={{-40,-42},{-14,-42},{-14,-78},{8,-78}},
+      color={95,95,95},
+      thickness=0.5));
+  connect(forceAndTorque.force, cutForce.force) annotation (Line(points={{10,
+          -66},{10,-59},{-58,-59},{-58,-53}}, color={0,0,127}));
+  connect(Blade, forceAndTorque.frame_b) annotation (Line(
+      points={{102,-40},{62,-40},{62,-78},{28,-78}},
+      color={95,95,95},
+      thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
           Text(
@@ -96,4 +105,4 @@ connect(torque_1, torque1.frame_a) annotation (Line(
           lineColor={28,108,200},
           textString="Rotor")}),      Diagram(coordinateSystem(
           preserveAspectRatio=false)));
-end rotor;
+end rotor2;

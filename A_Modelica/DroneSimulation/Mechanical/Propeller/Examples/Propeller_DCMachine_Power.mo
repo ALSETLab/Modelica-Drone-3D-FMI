@@ -1,6 +1,6 @@
 within DroneSimulation.Mechanical.Propeller.Examples;
 model Propeller_DCMachine_Power
-  Rotor.Examples.rotor rotor1
+  Rotor.Examples.rotor2 rotor2_1
     annotation (Placement(transformation(extent={{-16,20},{26,-20}})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
     annotation (Placement(transformation(extent={{86,-26},{118,6}})));
@@ -33,23 +33,23 @@ model Propeller_DCMachine_Power
   parameter Modelica.SIunits.Resistance R=100 "Resistance at temperature T_ref";
   parameter Boolean animation=true "= true, if animation shall be enabled";
 equation
-  connect(rotor1.Airframe, Airframe) annotation (Line(
+  connect(rotor2_1.Airframe, Airframe) annotation (Line(
       points={{26.42,-10.4},{102,-10.4},{102,-10}},
       color={95,95,95},
       thickness=0.5));
-  connect(rotor1.Blade, blades.Input) annotation (Line(
+  connect(rotor2_1.Blade, blades.Input) annotation (Line(
       points={{26.42,8},{36,8},{36,26},{49.16,26}},
       color={95,95,95},
       thickness=0.5));
-  connect(dCMotor_DCMachine_Power.force_out, rotor1.force) annotation (Line(
+  connect(dCMotor_DCMachine_Power.force_out, rotor2_1.force) annotation (Line(
       points={{-24,12.4},{-20,12.4},{-20,12.4},{-16.42,12.4}},
       color={95,95,95},
       thickness=0.5));
-  connect(rotor1.torque_2, dCMotor_DCMachine_Power.torque_1) annotation (Line(
+  connect(rotor2_1.torque_2, dCMotor_DCMachine_Power.torque_1) annotation (Line(
       points={{-16.42,0},{-24,0}},
       color={95,95,95},
       thickness=0.5));
-  connect(dCMotor_DCMachine_Power.torque_2, rotor1.torque_1) annotation (Line(
+  connect(dCMotor_DCMachine_Power.torque_2, rotor2_1.torque_1) annotation (Line(
       points={{-24,-12},{-16.42,-12}},
       color={95,95,95},
       thickness=0.5));

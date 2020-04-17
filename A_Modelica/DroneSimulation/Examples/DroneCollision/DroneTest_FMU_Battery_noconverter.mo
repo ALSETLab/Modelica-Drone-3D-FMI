@@ -49,7 +49,9 @@ model DroneTest_FMU_Battery_noconverter
     propeller_DCMachine_Power3(VaNominal=10, V=V,
     animation=animation)
     annotation (Placement(transformation(extent={{-8,-26},{12,-16}})));
-  Mechanical.Chassis.Examples.droneChassis droneChassis2(length=0.25, m=0.5,
+  Mechanical.Chassis.Examples.droneChassis droneChassis2(
+    length=0.5,
+    m=0.5,
     animation=animation)
     annotation (Placement(transformation(extent={{48,-12},{98,8}})));
   inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,-1})

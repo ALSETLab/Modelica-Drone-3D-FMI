@@ -7,12 +7,12 @@ model SimpleDCmotor
   parameter Modelica.SIunits.Inertia Jp = 0.002 "Propeller inertia";
   parameter motorK Kt = 2 "Motor current to torque constant";
   parameter aeroFriction bp = 0.004 "Propeller friction force";
-  parameter propellerK Kf= 0.01 "Propeller constant";
+  parameter propellerK Ke= 0.01 "Propeller constant";
 
   Modelica.SIunits.Torque tout "Output torque";
   Modelica.SIunits.Force fout "Output force";
   Modelica.SIunits.AngularVelocity w "Angular speed of motor";
-
+  Modelica.SIunits.Voltage V "machine voltage";
   Modelica.Blocks.Interfaces.RealInput current
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
   Modelica.Blocks.Interfaces.RealOutput torque
@@ -22,9 +22,10 @@ model SimpleDCmotor
 equation
   tout=Kt*current;
   Jp*der(w)= tout-bp*w;
-  fout=w*Kf;
+  fout=w*Ke;
   force = fout;
   torque = tout;
+  V = (tout*Ke*w);
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
         Text(
