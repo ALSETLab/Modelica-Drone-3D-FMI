@@ -13,6 +13,7 @@ model SimpleDCmotor
   Modelica.SIunits.Force fout "Output force";
   Modelica.SIunits.AngularVelocity w "Angular speed of motor";
   Modelica.SIunits.Voltage V "machine voltage";
+  Modelica.SIunits.Power p "Machine power";
   Modelica.Blocks.Interfaces.RealInput current
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
   Modelica.Blocks.Interfaces.RealOutput torque
@@ -26,6 +27,7 @@ equation
   force = fout;
   torque = tout;
   V = (tout*Ke*w);
+  p = current*V;
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
         Text(

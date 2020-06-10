@@ -16,7 +16,7 @@ model DroneTest
     annotation (Placement(transformation(extent={{-48,-18},{-38,-8}})));
    inner Modelica.Blocks.Noise.GlobalSeed globalSeed
      annotation (Placement(transformation(extent={{-36,-36},{-26,-26}})));
-  DroneTest_FMU             drone(animation=true)
+  DroneTest_FMU             drone(animation=false)
     annotation (Placement(transformation(extent={{-10,2},{10,22}})));
   Modelica.Blocks.Sources.Constant const1(k=0)
     annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
