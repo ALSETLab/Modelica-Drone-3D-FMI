@@ -35,7 +35,9 @@ model PowerControl
     annotation (Placement(transformation(extent={{90,-70},{110,-50}}),
         iconTransformation(extent={{90,-70},{110,-50}})));
   parameter Modelica.SIunits.Resistance R=R "Resistance at temperature T_ref";
+  Real power;
 equation
+  power = p1.v*p1.i;
   connect(product.u1,potentialSensor. phi)
     annotation (Line(points={{-10,40},{-23,40}}, color={0,0,127}));
   connect(product.y,division. u1) annotation (Line(points={{13,46},{18,46},{18,18},
