@@ -1,5 +1,5 @@
 within DroneSimulation.Mechanical.Motor;
-model DCMotor_DCPM "DC motor using DC machine from MSL"
+model DCMotor_DCPM2 "DC motor using DC machine from MSL"
 
   parameter Real k=-1
     "Propeller gain. Set to 1 for clockwise, -1 for counterclockwise";
@@ -11,9 +11,16 @@ model DCMotor_DCPM "DC motor using DC machine from MSL"
     TaOperational=293.15,
     VaNominal=VaNominal,
     IaNominal=IaNominal,
+    TaNominal=293.15,
+    Ra=0.15,
+    TaRef=293.15,
+    alpha20a(displayUnit="1/K") = Modelica.Electrical.Machines.Thermal.Constants.alpha20Aluminium,
+
+    La=0.0015,
+    Jr=0.015,
     useSupport=false,
     wMechanical(start=0))
-    annotation (Placement(transformation(extent={{-72,-34},{-52,-14}})));
+    annotation (Placement(transformation(extent={{-72,-36},{-52,-16}})));
   Modelica.Electrical.Analog.Basic.Ground ground annotation (Placement(
         transformation(
         origin={-77,-19},
@@ -82,16 +89,17 @@ equation
   connect(position, limiter.u);
 
   connect(ground.p, dcpm.pin_an)
-    annotation (Line(points={{-77,-14},{-68,-14}}, color={0,0,255}));
+    annotation (Line(points={{-77,-14},{-72,-14},{-72,-16},{-68,-16}},
+                                                   color={0,0,255}));
   connect(limiter.y, powerControl.Position) annotation (Line(points={{-56,31.6},
           {-56,22.2}},          color={0,0,127}));
   connect(powerControl.Battery, p1) annotation (Line(points={{-68.2,20},{-68.2,
           40},{-100,40}},       color={0,0,255}));
   connect(powerControl.n1, dcpm.pin_an)
-    annotation (Line(points={{-68,1.77636e-15},{-68,-14}},
+    annotation (Line(points={{-68,1.77636e-15},{-68,-16}},
                                                     color={0,0,255}));
   connect(powerControl.p1, dcpm.pin_ap)
-    annotation (Line(points={{-56,-1.77636e-15},{-56,-14}},
+    annotation (Line(points={{-56,-1.77636e-15},{-56,-16}},
                                                     color={0,0,255}));
   connect(limiter.u, position) annotation (Line(points={{-56,40.8},{-66,40.8},{
           -66,84},{-120,84},{-120,0}},
@@ -120,7 +128,7 @@ equation
   connect(gain1.u, multiSensor.tau) annotation (Line(points={{-12,-60},{-22,-60},
           {-22,-58},{-27,-58}}, color={0,0,127}));
   connect(multiSensor.flange_a, dcpm.flange)
-    annotation (Line(points={{-38,-48},{-38,-24},{-52,-24}}, color={0,0,0}));
+    annotation (Line(points={{-38,-48},{-38,-26},{-52,-26}}, color={0,0,0}));
   connect(fixed.flange, multiSensor.flange_b)
     annotation (Line(points={{-38,-80},{-38,-68}}, color={0,0,0}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
@@ -131,4 +139,4 @@ equation
           lineColor={28,108,200},
           textString="Motor")}),      Diagram(coordinateSystem(
           preserveAspectRatio=false, extent={{-100,-100},{100,100}})));
-end DCMotor_DCPM;
+end DCMotor_DCPM2;

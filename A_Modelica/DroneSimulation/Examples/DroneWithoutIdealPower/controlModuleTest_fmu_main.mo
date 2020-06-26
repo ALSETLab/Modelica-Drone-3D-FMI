@@ -2,8 +2,9 @@ within DroneSimulation.Examples.DroneWithoutIdealPower;
 model controlModuleTest_fmu_main
   Modelica.Blocks.Sources.Ramp ramp(duration=5, height=5);
   Modelica.Blocks.Sources.Ramp ramp1(
-    duration=10,
+    duration=5,
     height=5,
+    offset=0,
     startTime=0)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
@@ -19,7 +20,7 @@ model controlModuleTest_fmu_main
     annotation (Placement(transformation(extent={{-48,-20},{-38,-10}})));
    inner Modelica.Blocks.Noise.GlobalSeed globalSeed
      annotation (Placement(transformation(extent={{-14,-76},{-4,-66}})));
-  DroneTest_FMU_Battery  drone(V=12.1, animation=true)
+  DroneTest_FMU_Battery  drone(V=22.1, animation=true)
     annotation (Placement(transformation(extent={{-2,-58},{88,52}})));
   Modelica.Blocks.Sources.Ramp ramp2(
     duration=5,
@@ -49,7 +50,7 @@ equation
           -36},{-44,-36},{-44,-44},{-41,-44}}, color={0,0,127}));
   connect(drone.zcoord, ramp1.y) annotation (Line(points={{-11,-47},{-11,-26},{
           -28,-26},{-28,0},{-59,0}}, color={0,0,127}));
-  annotation (experiment(StopTime=20, Tolerance=0.001),
+  annotation (experiment(StopTime=10, Tolerance=0.001),
                                        __Dymola_Commands(executeCall(
           ensureSimulated=true) = {createPlot(
         id=1,
