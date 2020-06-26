@@ -43,7 +43,7 @@ equation
       color={95,95,95},
       thickness=0.5));
   connect(rotor1.force, dCMotor2_1.force_out) annotation (Line(
-      points={{-16,12.4},{-40,12.4}},
+      points={{-16.42,12.4},{-40,12.4}},
       color={95,95,95},
       thickness=0.5));
   connect(dCMotor2_1.position, position)

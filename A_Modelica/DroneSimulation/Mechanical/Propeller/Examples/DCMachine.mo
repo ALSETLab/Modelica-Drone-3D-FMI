@@ -6,11 +6,11 @@ model DCMachine
     VaNominal=VaNominal,
     IaNominal=IaNominal)
     annotation (Placement(transformation(extent={{-80,-20},{-40,20}})));
-  Rotor.Examples.rotor rotor1
+  Rotor.Examples.rotor3 rotor3_1(k=PropellerGain)
     annotation (Placement(transformation(extent={{-16,20},{26,-20}})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
     annotation (Placement(transformation(extent={{86,-26},{118,6}})));
-  Blades.Examples.Blades blades
+  Blades.Examples.Blades blades(animation=animation)
     annotation (Placement(transformation(extent={{50,6},{92,46}})));
 
   parameter Real PropellerGain=-1
@@ -25,24 +25,25 @@ model DCMachine
     "Nominal armature current (>0..Motor, <0..Generator) for motor"
     annotation (Dialog(group="Motor Parameters"));
 
+  parameter Boolean animation=true "= true, if animation shall be enabled";
 equation
-  connect(rotor1.Airframe, Airframe) annotation (Line(
+  connect(rotor3_1.Airframe, Airframe) annotation (Line(
       points={{26.42,-10.4},{102,-10.4},{102,-10}},
       color={95,95,95},
       thickness=0.5));
-  connect(rotor1.Blade, blades.Input) annotation (Line(
+  connect(rotor3_1.Blade, blades.Input) annotation (Line(
       points={{26.42,8},{36,8},{36,26},{49.16,26}},
       color={95,95,95},
       thickness=0.5));
-  connect(rotor1.torque_2, dCMotor2_1.torque_1) annotation (Line(
+  connect(rotor3_1.torque_2, dCMotor2_1.torque_1) annotation (Line(
       points={{-16.42,0},{-40,0}},
       color={95,95,95},
       thickness=0.5));
-  connect(dCMotor2_1.torque_2, rotor1.torque_1) annotation (Line(
+  connect(dCMotor2_1.torque_2, rotor3_1.torque_1) annotation (Line(
       points={{-40,-12},{-16.42,-12}},
       color={95,95,95},
       thickness=0.5));
-  connect(rotor1.force, dCMotor2_1.force_out) annotation (Line(
+  connect(rotor3_1.force, dCMotor2_1.force_out) annotation (Line(
       points={{-16.42,12.4},{-40,12.4}},
       color={95,95,95},
       thickness=0.5));

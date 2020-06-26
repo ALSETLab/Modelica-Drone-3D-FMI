@@ -1813,7 +1813,7 @@ model PropellerTest
         4.6566157; 9.97,4.6566157; 9.97,4.6570606; 9.98,4.6570606; 9.98,
         4.6574993; 9.99,4.6574993; 9.99,4.657932; 10,4.657932; 10,4.6583576])
     annotation (Placement(transformation(extent={{-60,-60},{-40,-40}})));
-  Mechanical.Motor.DCMotor_EPDCMachine dCMotor_EPDCMachine(V=10)
+  Mechanical.Motor.DCMotor_Averaged_Machine dCMotor_EPDCMachine(V=10)
     annotation (Placement(transformation(extent={{-16,60},{4,80}})));
 equation
   connect(combiTimeTable.y[1], dCMotor_EPDCMachine.position)

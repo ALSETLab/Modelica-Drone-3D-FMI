@@ -7,19 +7,20 @@ model SimpleElectricalMotor
     annotation (Placement(transformation(extent={{-16,20},{26,-20}})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
     annotation (Placement(transformation(extent={{86,-26},{118,6}})));
-  Blades.Examples.Blades blades
-    annotation (Placement(transformation(extent={{50,6},{92,46}})));
+  Blades.Examples.Blades blades(animation=animation)
+    annotation (Placement(transformation(extent={{52,6},{94,46}})));
   parameter Real PropellerGain=-1
     "Propeller gain. Set to 1 for clockwise, -1 for counterclockwise";
   Modelica.Blocks.Interfaces.RealInput position
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
+  parameter Boolean animation=true "= true, if animation shall be enabled";
 equation
   connect(rotor1.Airframe, Airframe) annotation (Line(
       points={{26.42,-10.4},{102,-10.4},{102,-10}},
       color={95,95,95},
       thickness=0.5));
   connect(rotor1.Blade, blades.Input) annotation (Line(
-      points={{26.42,8},{36,8},{36,26},{49.16,26}},
+      points={{26.42,8},{36,8},{36,26},{51.16,26}},
       color={95,95,95},
       thickness=0.5));
   connect(rotor1.torque_2, dCMotor2_1.torque_1) annotation (Line(
