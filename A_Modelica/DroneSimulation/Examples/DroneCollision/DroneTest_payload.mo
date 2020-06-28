@@ -4,7 +4,7 @@ model DroneTest_payload
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-70,0})));
-  Modelica.Blocks.Sources.Constant const(k=0)
+  Modelica.Blocks.Sources.Constant const(k=-0.25)
     annotation (Placement(transformation(extent={{-56,36},{-36,56}})));
   Modelica.Blocks.Noise.UniformNoise uniformNoise(
     samplePeriod=0.1,
@@ -15,11 +15,11 @@ model DroneTest_payload
     annotation (Placement(transformation(extent={{-48,-18},{-38,-8}})));
    inner Modelica.Blocks.Noise.GlobalSeed globalSeed
      annotation (Placement(transformation(extent={{-36,-36},{-26,-26}})));
-  DroneTest_FMU_Battery_noconverter drone(V=12.1, animation=false)
+  DroneTest_FMU_Constant_Voltage    drone(V=22.1, animation=false)
     annotation (Placement(transformation(extent={{-2,22},{18,42}})));
   Modelica.Blocks.Sources.Constant const1(k=0)
     annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
-  Modelica.Blocks.Sources.Constant const2[3](k={0,0,9.81*3})
+  Modelica.Blocks.Sources.Constant const2[3](k={0,0,-9.81*3})
     annotation (Placement(transformation(extent={{-16,-16},{4,4}})));
   Modelica.Mechanics.MultiBody.Forces.WorldForce force
     annotation (Placement(transformation(extent={{18,-12},{38,8}})));
@@ -28,19 +28,16 @@ equation
           {-49,-10}}, color={0,0,127}));
   connect(add.u2, uniformNoise.y) annotation (Line(points={{-49,-16},{-49,
           -30},{-59,-30}}, color={0,0,127}));
-  connect(drone.ycoord, const1.y) annotation (Line(points={{-4,32.9091},{-36,
-          32.9091},{-36,30},{-59,30}},
-                             color={0,0,127}));
-  connect(drone.xcoord, const.y) annotation (Line(points={{-4,40.1818},{-24,
-          40.1818},{-24,46},{-35,46}},
-                             color={0,0,127}));
-  connect(drone.zcoord, ramp.y) annotation (Line(points={{-4,25.6364},{-32,
-          25.6364},{-32,0},{-59,0}},
-                       color={0,0,127}));
+  connect(drone.ycoord, const1.y) annotation (Line(points={{-4,32},{-36,32},{
+          -36,30},{-59,30}}, color={0,0,127}));
+  connect(drone.xcoord, const.y) annotation (Line(points={{-4,40},{-24,40},{-24,
+          46},{-35,46}},     color={0,0,127}));
+  connect(drone.zcoord, ramp.y) annotation (Line(points={{-4,24},{-32,24},{-32,
+          0},{-59,0}}, color={0,0,127}));
   connect(const2.y, force.force) annotation (Line(points={{5,-6},{10,-6},{10,-2},
           {16,-2}}, color={0,0,127}));
   connect(force.frame_b, drone.frame_a1) annotation (Line(
-      points={{38,-2},{38,23.6364},{15.2,23.6364}},
+      points={{38,-2},{38,21.6},{15.2,21.6}},
       color={95,95,95},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-80,

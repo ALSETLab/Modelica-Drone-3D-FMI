@@ -98,14 +98,14 @@ model controlModule_Synchronous
   Blocks.Control.discreteTF
              discreteTF4(
     ki=1,
-    kd=0.8,
+    kd=2,
     kp=1.5,
     samplePeriod=5*samplePeriod,
     period=5*samplePeriod)
     annotation (Placement(transformation(extent={{-42,-40},{-22,-20}})));
   Blocks.Control.discreteTF
              discreteTF5(
-    ki=0.3,
+    ki=2,
     kd=1,
     kp=1,
     samplePeriod=5*samplePeriod,
@@ -113,7 +113,7 @@ model controlModule_Synchronous
     annotation (Placement(transformation(extent={{34,20},{54,40}})));
   Blocks.Control.discreteTF
              discreteTF6(
-    ki=0.1,
+    ki=2,
     kd=1,
     kp=1,
     samplePeriod=5*samplePeriod,
@@ -260,5 +260,31 @@ equation
           lineColor={0,0,0},
           fillColor={0,0,0},
           fillPattern=FillPattern.None)}), Diagram(coordinateSystem(
-          preserveAspectRatio=false, extent={{-100,-100},{120,100}})));
+          preserveAspectRatio=false, extent={{-100,-100},{120,100}})),
+    __Dymola_Commands(executeCall(ensureSimulated=true) = {createPlot(
+        id=2,
+        position={622,11,584,414},
+        y={
+          "drone.propeller_DCMachine_Power.dCMotor_DCMachine_Power.force.force[3]"},
+        range={0.0,10.0,-1.0,7.0},
+        autoscale=false,
+        grid=true,
+        legends={"Thrust (on one motor)"},
+        bottomTitleType=2,
+        bottomTitle="Time (s)",
+        colors={{28,108,200}},
+        thicknesses={1.0}),createPlot(
+        id=1,
+        position={15,10,584,420},
+        y={"drone.xgps","drone.ygps","drone.zgps"},
+        range={0.0,10.0,-0.5,5.5},
+        grid=true,
+        legends={"X Position","Y Position","Z Position"},
+        leftTitleType=2,
+        leftTitle="Position (m)",
+        bottomTitleType=2,
+        bottomTitle="Time (s)",
+        colors={{28,108,200},{238,46,47},{0,140,72}},
+        patterns={LinePattern.Solid,LinePattern.Dash,LinePattern.Dot},
+        thicknesses={1.0,1.0,1.0})} "CreateThrust"));
 end controlModule_Synchronous;

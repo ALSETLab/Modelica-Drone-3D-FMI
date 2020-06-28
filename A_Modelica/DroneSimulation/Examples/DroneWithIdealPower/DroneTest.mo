@@ -5,8 +5,8 @@ model DroneTest
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=0,
         origin={-70,0})));
-  Modelica.Blocks.Sources.Constant const(k=0)
-    annotation (Placement(transformation(extent={{-56,36},{-36,56}})));
+  Modelica.Blocks.Sources.Constant const(k=0.5)
+    annotation (Placement(transformation(extent={{-56,38},{-36,58}})));
   Modelica.Blocks.Noise.UniformNoise uniformNoise(
     samplePeriod=0.1,
     y_min=-0.5,
@@ -28,9 +28,9 @@ equation
   connect(drone.ycoord, const1.y) annotation (Line(points={{-12,12},{-36,12},{
           -36,30},{-59,30}}, color={0,0,127}));
   connect(drone.xcoord, const.y) annotation (Line(points={{-12,20},{-24,20},{
-          -24,46},{-35,46}}, color={0,0,127}));
-  connect(drone.zcoord, add.u1) annotation (Line(points={{-12,4},{-34,4},{-34,0},
-          {-54,0},{-54,-10},{-49,-10}}, color={0,0,127}));
+          -24,48},{-35,48}}, color={0,0,127}));
+  connect(drone.zcoord, add.y) annotation (Line(points={{-12,4},{-24,4},{-24,
+          -13},{-37.5,-13}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-80,
             -40},{40,60}})), Diagram(coordinateSystem(preserveAspectRatio=
             false, extent={{-80,-40},{40,60}})),

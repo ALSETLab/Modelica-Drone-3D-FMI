@@ -20,8 +20,8 @@ model DroneTest_FMU_Battery
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power(
     PropellerGain=1,
-    VaNominal=22.2,
-    IaNominal=15,
+    VaNominal=15,
+    IaNominal=50,
     V=V,
     animation=animation)
          annotation (Placement(transformation(extent={{-8,14},{12,24}})));
@@ -31,7 +31,7 @@ model DroneTest_FMU_Battery
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={-2,-66})));
-  Electrical.controlModule_Synchronous2
+  Electrical.controlModule_Synchronous
                            controlModule_Synchronous2_1(
     maxTilt=0.05, samplePeriod=0.001)
     annotation (Placement(transformation(extent={{-58,-10},{-38,10}})));
@@ -39,30 +39,30 @@ model DroneTest_FMU_Battery
     annotation (Placement(transformation(extent={{-84,16},{-72,28}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power1(
-    VaNominal=22.2,
-    IaNominal=15,                            V=V,
+    VaNominal=15,
+    IaNominal=50,                            V=V,
     animation=animation)
     annotation (Placement(transformation(extent={{-8,0},{12,10}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power2(
     PropellerGain=1,
-    VaNominal=22.2,
-    IaNominal=15,
+    VaNominal=15,
+    IaNominal=50,
     V=V,
     animation=animation)
          annotation (Placement(transformation(extent={{-8,-12},{12,-2}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power3(
-    VaNominal=22.2,
-    IaNominal=15,                            V=V,
+    VaNominal=15,
+    IaNominal=50,                            V=V,
     animation=animation)
     annotation (Placement(transformation(extent={{-8,-26},{12,-16}})));
   Mechanical.Chassis.Examples.droneChassis droneChassis2(length=0.25,
-    m=0.2,
+    m=0.5,
     animation=animation)
     annotation (Placement(transformation(extent={{48,-12},{98,8}})));
   inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,-1})
-    annotation (Placement(transformation(extent={{62,52},{82,72}})));
+    annotation (Placement(transformation(extent={{60,60},{80,80}})));
   Sensors.Accelerometer accelerometer
     annotation (Placement(transformation(extent={{-12,-96},{8,-76}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple
@@ -70,7 +70,11 @@ model DroneTest_FMU_Battery
 
   Electrical.Sources.Battery battery(
     internal_ground=false,
-    ns=3)
+    redeclare
+      Modelon.Electrical.EnergyStorage.Components.BatteryPackEMFModShepherd
+      stackVoltage,
+    SOC_start=1,
+    ns=10)
     annotation (Placement(transformation(extent={{14,30},{-10,54}})));
   parameter Boolean animation=true "= true, if animation shall be enabled";
   Modelica.Blocks.Sources.TimeTable timeTable(table=[0,0; 0.005,0; 0.005,
@@ -1075,8 +1079,8 @@ equation
   gPS.y[1] = xgps;
   gPS.y[2] = ygps;
   gPS.y[3] = zgps;
-  connect(gPS.y, controlModule_Synchronous2_1.GPS) annotation (Line(points={{
-          -13,-66},{-54.3636,-66},{-54.3636,-12}}, color={0,0,127}));
+  connect(gPS.y, controlModule_Synchronous2_1.GPS) annotation (Line(points={{-13,-66},
+          {-54.3636,-66},{-54.3636,-12}},          color={0,0,127}));
   connect(propeller_DCMachine_Power1.p1,propeller_DCMachine_Power. p1)
     annotation (Line(points={{-8.4,8},{-16,8},{-16,22},{-8.4,22}},   color={0,0,
           255}));
@@ -1086,8 +1090,8 @@ equation
   connect(propeller_DCMachine_Power2.p1,propeller_DCMachine_Power. p1)
     annotation (Line(points={{-8.4,-4},{-16,-4},{-16,22},{-8.4,22}},
                      color={0,0,255}));
-  connect(const2.y, controlModule_Synchronous2_1.yaw) annotation (Line(points={
-          {-71.4,22},{-64,22},{-64,8},{-59.8182,8}}, color={0,0,127}));
+  connect(const2.y, controlModule_Synchronous2_1.yaw) annotation (Line(points={{-71.4,
+          22},{-64,22},{-64,8},{-59.8182,8}},        color={0,0,127}));
   connect(droneChassis2.frame_a1,propeller_DCMachine_Power. Airframe)
     annotation (Line(
       points={{48,4},{40,4},{40,17},{12.2,17}},
@@ -1136,11 +1140,11 @@ equation
   connect(controlModule_Synchronous2_1.y, propeller_DCMachine_Power1.position)
     annotation (Line(points={{-37.0909,2},{-10,2}}, color={0,0,127}));
   connect(propeller_DCMachine_Power2.position, controlModule_Synchronous2_1.y2)
-    annotation (Line(points={{-10,-10},{-24,-10},{-24,-2},{-37.0909,-2}}, color
-        ={0,0,127}));
+    annotation (Line(points={{-10,-10},{-24,-10},{-24,-2},{-37.0909,-2}}, color=
+         {0,0,127}));
   connect(controlModule_Synchronous2_1.y3, propeller_DCMachine_Power3.position)
-    annotation (Line(points={{-37.0909,-6},{-24,-6},{-24,-24},{-10,-24}}, color
-        ={0,0,127}));
+    annotation (Line(points={{-37.0909,-6},{-24,-6},{-24,-24},{-10,-24}}, color=
+         {0,0,127}));
 annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},

@@ -40,9 +40,9 @@ Modelica.Mechanics.MultiBody.Interfaces.Frame_b torque_2
     "Coordinate system b fixed to the component with one cut-force and cut-torque"
   annotation (Placement(transformation(extent={{-118,-16},{-86,16}}),
       iconTransformation(extent={{-118,-16},{-86,16}})));
-  Modelica.Blocks.Sources.RealExpression realExpression(y=3.5e-6*(
+  Modelica.Blocks.Sources.RealExpression realExpression(y=-3.5e-6*(
         relativeAngularVelocity.w_rel[3])^2)
-    annotation (Placement(transformation(extent={{-80,-90},{-60,-70}})));
+    annotation (Placement(transformation(extent={{-96,-90},{-76,-70}})));
   Blocks.Routing.RealExtend realExtend1 annotation (Placement(
         transformation(
         extent={{-6,-6},{6,6}},
@@ -50,6 +50,12 @@ Modelica.Mechanics.MultiBody.Interfaces.Frame_b torque_2
         origin={-40,-80})));
   Modelica.Mechanics.MultiBody.Forces.WorldForce force1
     annotation (Placement(transformation(extent={{-22,-90},{-2,-70}})));
+  Modelica.Blocks.Math.Gain gain1(k=k)     annotation (Placement(
+        transformation(
+        extent={{-6,-6},{6,6}},
+        rotation=0,
+        origin={-62,-80})));
+  parameter Real k=-1 "Gain value multiplied with input signal";
 equation
   connect(relativeAngularVelocity.w_rel, realExtract.u)
     annotation (Line(points={{40,73},{40,46}}, color={0,0,127}));
@@ -93,8 +99,6 @@ equation
       thickness=0.5));
   connect(realExtend2.u, gain.y)
     annotation (Line(points={{40,-14.8},{40,-6.6}}, color={0,0,127}));
-  connect(realExpression.y, realExtend1.u)
-    annotation (Line(points={{-59,-80},{-47.2,-80}}, color={0,0,127}));
   connect(realExtend1.y, force1.force)
     annotation (Line(points={{-33.4,-80},{-24,-80}}, color={0,0,127}));
   connect(force1.frame_b, torque.frame_a) annotation (Line(
@@ -103,6 +107,10 @@ equation
       thickness=0.5));
   connect(realExtract.y, gain.u)
     annotation (Line(points={{40,33.4},{40,7.2}}, color={0,0,127}));
+  connect(gain1.u, realExpression.y)
+    annotation (Line(points={{-69.2,-80},{-75,-80}}, color={0,0,127}));
+  connect(gain1.y, realExtend1.u) annotation (Line(points={{-55.4,-80},{-52,-80},
+          {-52,-80},{-47.2,-80}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
           Text(

@@ -73,15 +73,15 @@ model controlModule_Synchronous2
     annotation (Placement(transformation(extent={{-16,-2},{-12,2}})));
   Blocks.Control.discreteTF
              discreteTF1(
-    ki=1,
-    kd=1,
-    kp=1,
+    ki=0,
+    kd=0.08,
+    kp=0.04,
     samplePeriod=5*samplePeriod,
     period=5*samplePeriod)
     annotation (Placement(transformation(extent={{-36,70},{-16,90}})));
   Blocks.Control.discreteTF
              discreteTF2(
-    ki=2,
+    ki=1,
     kd=1,
     kp=1,
     samplePeriod=5*samplePeriod,
@@ -89,7 +89,7 @@ model controlModule_Synchronous2
     annotation (Placement(transformation(extent={{-44,20},{-24,40}})));
   Blocks.Control.discreteTF
              discreteTF3(
-    ki=2,
+    ki=1,
     kd=1,
     kp=1,
     samplePeriod=5*samplePeriod,
@@ -97,25 +97,25 @@ model controlModule_Synchronous2
     annotation (Placement(transformation(extent={{-44,-10},{-24,10}})));
   Blocks.Control.discreteTF
              discreteTF4(
-    ki=2,
-    kd=3,
-    kp=2,
+    ki=1,
+    kd=2,
+    kp=1,
     samplePeriod=5*samplePeriod,
     period=5*samplePeriod)
     annotation (Placement(transformation(extent={{-42,-40},{-22,-20}})));
   Blocks.Control.discreteTF
              discreteTF5(
-    ki=4,
-    kd=1.5,
-    kp=1.5,
+    ki=2,
+    kd=1,
+    kp=1,
     samplePeriod=5*samplePeriod,
     period=5*samplePeriod)
     annotation (Placement(transformation(extent={{34,20},{54,40}})));
   Blocks.Control.discreteTF
              discreteTF6(
-    ki=4,
-    kd=1.5,
-    kp=1.5,
+    ki=2,
+    kd=1,
+    kp=1,
     samplePeriod=5*samplePeriod,
     period=5*samplePeriod)
     annotation (Placement(transformation(extent={{28,-14},{48,6}})));

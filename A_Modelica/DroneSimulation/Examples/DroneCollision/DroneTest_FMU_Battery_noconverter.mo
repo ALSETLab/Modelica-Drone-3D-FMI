@@ -17,7 +17,8 @@ model DroneTest_FMU_Battery_noconverter
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power(
     PropellerGain=1,
-    VaNominal=10,
+    VaNominal=15,
+    IaNominal=50,
     V=V,
     animation=animation)
          annotation (Placement(transformation(extent={{-8,14},{12,24}})));
@@ -35,18 +36,23 @@ model DroneTest_FMU_Battery_noconverter
   Modelica.Blocks.Sources.Constant const2(k=0)
     annotation (Placement(transformation(extent={{-84,16},{-72,28}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
-    propeller_DCMachine_Power1(VaNominal=10, V=V,
+    propeller_DCMachine_Power1(
+    VaNominal=15,
+    IaNominal=50,                            V=V,
     animation=animation)
     annotation (Placement(transformation(extent={{-8,0},{12,10}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power2(
     PropellerGain=1,
-    VaNominal=10,
+    VaNominal=15,
+    IaNominal=50,
     V=V,
     animation=animation)
          annotation (Placement(transformation(extent={{-8,-12},{12,-2}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
-    propeller_DCMachine_Power3(VaNominal=10, V=V,
+    propeller_DCMachine_Power3(
+    VaNominal=15,
+    IaNominal=50,                            V=V,
     animation=animation)
     annotation (Placement(transformation(extent={{-8,-26},{12,-16}})));
   Mechanical.Chassis.Examples.droneChassis droneChassis2(
@@ -62,16 +68,18 @@ model DroneTest_FMU_Battery_noconverter
     annotation (Placement(transformation(extent={{-88,-10},{-68,10}})));
 
   parameter Boolean animation=true "= true, if animation shall be enabled";
-  Modelica.Electrical.Analog.Sources.ConstantVoltage constantVoltage(V=11.1)
-    annotation (Placement(transformation(
-        extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={-82,-90})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a1 annotation (
       Placement(transformation(
         extent={{-16,-16},{16,16}},
         rotation=90,
         origin={72,-102})));
+  Electrical.Sources.Battery battery(
+    internal_ground=false,
+    SOC_start=1,
+    ns=6)
+    annotation (Placement(transformation(extent={{18,-18},{-18,18}},
+        rotation=270,
+        origin={-82,-80})));
 equation
   gPS_collision.y[1] = xgps;
   gPS_collision.y[2] = ygps;
@@ -142,11 +150,10 @@ equation
       points={{73,-12},{72,-12},{72,-102}},
       color={95,95,95},
       thickness=0.5));
-  connect(propeller_DCMachine_Power3.p1, constantVoltage.p) annotation (Line(
-        points={{-8.4,-18},{-42,-18},{-42,-64},{-82,-64},{-82,-80}}, color={0,0,
-          255}));
-  connect(constantVoltage.n, ground.p)
-    annotation (Line(points={{-82,-100},{-82,-120}}, color={0,0,255}));
+  connect(battery.pin_n, ground.p) annotation (Line(points={{-67,-86},{-70,-86},
+          {-70,-120},{-82,-120}}, color={0,0,255}));
+  connect(battery.pin_p, propeller_DCMachine_Power.p1) annotation (Line(points=
+          {{-67,-74},{-16,-18},{-16,22},{-8.4,22}}, color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -120},{100,100}}),                                  graphics={
           Rectangle(
