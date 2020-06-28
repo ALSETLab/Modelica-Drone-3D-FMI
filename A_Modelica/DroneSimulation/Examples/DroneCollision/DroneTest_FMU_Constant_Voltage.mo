@@ -16,9 +16,10 @@ model DroneTest_FMU_Constant_Voltage
   parameter Modelica.SIunits.Voltage V "Battery voltage";
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power(
+    IaNominal=50,
     animation=animation,
     PropellerGain=1,
-    VaNominal=10,
+    VaNominal=15,
     V=V) annotation (Placement(transformation(extent={{-8,16},{12,26}})));
   Modelica.Electrical.Analog.Sources.ConstantVoltage constantVoltage(V=V)
     annotation (Placement(transformation(extent={{-8,36},{12,56}})));
@@ -36,17 +37,22 @@ model DroneTest_FMU_Constant_Voltage
     annotation (Placement(transformation(extent={{-84,16},{-72,28}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power1(
-    animation=animation,       VaNominal=10, V=V)
+    IaNominal=50,
+    animation=animation,
+    VaNominal=15,                            V=V)
     annotation (Placement(transformation(extent={{-8,2},{12,12}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power2(
+    IaNominal=50,
     animation=animation,
     PropellerGain=1,
-    VaNominal=10,
+    VaNominal=15,
     V=V) annotation (Placement(transformation(extent={{-8,-12},{12,-2}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power3(
-    animation=animation,       VaNominal=10, V=V)
+    IaNominal=50,
+    animation=animation,
+    VaNominal=15,                            V=V)
     annotation (Placement(transformation(extent={{-8,-26},{12,-16}})));
   Mechanical.Chassis.Examples.droneChassis droneChassis2(
     animation=animation,                                 length=0.25, m=0.5)

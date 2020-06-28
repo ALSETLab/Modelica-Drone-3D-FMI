@@ -23,7 +23,7 @@ Modelica.Mechanics.MultiBody.Interfaces.Frame_b torque_2
     "Coordinate system b fixed to the component with one cut-force and cut-torque"
   annotation (Placement(transformation(extent={{-118,-16},{-86,16}}),
       iconTransformation(extent={{-118,-16},{-86,16}})));
-  Modelica.Blocks.Sources.RealExpression realExpression(y=-3.5e-6*(
+  Modelica.Blocks.Sources.RealExpression aero_torque(y=-3.5e-6*(
         relativeAngularVelocity.w_rel[3])^2)
     annotation (Placement(transformation(extent={{-92,-86},{-72,-66}})));
   Blocks.Routing.RealExtend realExtend1 annotation (Placement(
@@ -31,18 +31,8 @@ Modelica.Mechanics.MultiBody.Interfaces.Frame_b torque_2
         extent={{-6,-6},{6,6}},
         rotation=0,
         origin={-18,-76})));
-  Modelica.Blocks.Sources.RealExpression realExpression1(y=0.0015*(
-        relativeAngularVelocity.w_rel[3]))
-    annotation (Placement(transformation(extent={{-92,-102},{-72,-82}})));
-  Blocks.Routing.RealExtend realExtend2 annotation (Placement(
-        transformation(
-        extent={{-6,-6},{6,6}},
-        rotation=0,
-        origin={-52,-92})));
   Modelica.Mechanics.MultiBody.Forces.WorldTorque torque
-    annotation (Placement(transformation(extent={{14,-30},{34,-50}})));
-  Modelica.Mechanics.MultiBody.Forces.WorldForce force2
-    annotation (Placement(transformation(extent={{-30,-102},{-10,-82}})));
+    annotation (Placement(transformation(extent={{4,-66},{24,-86}})));
   Modelica.Blocks.Math.Gain gain(k=k)
     annotation (Placement(transformation(extent={{-52,-80},{-44,-72}})));
   parameter Real k "Gain value multiplied with input signal";
@@ -75,21 +65,13 @@ equation
       points={{-102,-62},{-48,-62},{-48,24},{10,24}},
       color={95,95,95},
       thickness=0.5));
-  connect(realExpression1.y, realExtend2.u)
-    annotation (Line(points={{-71,-92},{-59.2,-92}}, color={0,0,127}));
-  connect(realExtend2.y, force2.force)
-    annotation (Line(points={{-45.4,-92},{-32,-92}}, color={0,0,127}));
-  connect(force2.frame_b, revolute.frame_a) annotation (Line(
-      points={{-10,-92},{6,-92},{6,24},{10,24}},
-      color={95,95,95},
-      thickness=0.5));
   connect(realExtend1.y, torque.torque)
-    annotation (Line(points={{-11.4,-76},{12,-76},{12,-40}}, color={0,0,127}));
+    annotation (Line(points={{-11.4,-76},{2,-76}},           color={0,0,127}));
   connect(torque.frame_b, Blade) annotation (Line(
-      points={{34,-40},{102,-40}},
+      points={{24,-76},{68,-76},{68,-40},{102,-40}},
       color={95,95,95},
       thickness=0.5));
-  connect(realExpression.y, gain.u)
+  connect(aero_torque.y, gain.u)
     annotation (Line(points={{-71,-76},{-52.8,-76}}, color={0,0,127}));
   connect(gain.y, realExtend1.u)
     annotation (Line(points={{-43.6,-76},{-25.2,-76}}, color={0,0,127}));

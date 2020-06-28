@@ -17,7 +17,8 @@ model DroneTest_FMU_Battery2
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power(
     PropellerGain=1,
-    VaNominal=10,
+    VaNominal=15,
+    IaNominal=50,
     V=V,
     animation=animation)
          annotation (Placement(transformation(extent={{-8,14},{12,24}})));
@@ -36,18 +37,23 @@ model DroneTest_FMU_Battery2
   Modelica.Blocks.Sources.Constant const2(k=0)
     annotation (Placement(transformation(extent={{-84,16},{-72,28}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
-    propeller_DCMachine_Power1(VaNominal=10, V=V,
+    propeller_DCMachine_Power1(
+    VaNominal=15,
+    IaNominal=50,                            V=V,
     animation=animation)
     annotation (Placement(transformation(extent={{-8,0},{12,10}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power2(
     PropellerGain=1,
-    VaNominal=10,
+    VaNominal=15,
+    IaNominal=50,
     V=V,
     animation=animation)
          annotation (Placement(transformation(extent={{-8,-12},{12,-2}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
-    propeller_DCMachine_Power3(VaNominal=10, V=V,
+    propeller_DCMachine_Power3(
+    VaNominal=15,
+    IaNominal=50,                            V=V,
     animation=animation)
     annotation (Placement(transformation(extent={{-8,-26},{12,-16}})));
   Mechanical.Chassis.Examples.droneChassis droneChassis2(length=0.25, m=0.5,
@@ -62,8 +68,8 @@ model DroneTest_FMU_Battery2
 
   Electrical.Sources.Battery battery(
     internal_ground=false,
-    SOC_start=0.6,
-    ns=3)
+    SOC_start=1,
+    ns=6)
     annotation (Placement(transformation(extent={{18,-18},{-18,18}},
         rotation=270,
         origin={-82,-80})));

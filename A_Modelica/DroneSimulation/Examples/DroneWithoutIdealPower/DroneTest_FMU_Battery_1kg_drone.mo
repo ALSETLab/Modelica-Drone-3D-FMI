@@ -138,11 +138,11 @@ equation
   connect(controlModule_Synchronous2_1.y, propeller_DCMachine_Power1.position)
     annotation (Line(points={{-37.0909,2},{-10,2}}, color={0,0,127}));
   connect(propeller_DCMachine_Power2.position, controlModule_Synchronous2_1.y2)
-    annotation (Line(points={{-10,-10},{-24,-10},{-24,-2},{-37.0909,-2}}, color
-        ={0,0,127}));
+    annotation (Line(points={{-10,-10},{-24,-10},{-24,-2},{-37.0909,-2}}, color=
+         {0,0,127}));
   connect(controlModule_Synchronous2_1.y3, propeller_DCMachine_Power3.position)
-    annotation (Line(points={{-37.0909,-6},{-24,-6},{-24,-24},{-10,-24}}, color
-        ={0,0,127}));
+    annotation (Line(points={{-37.0909,-6},{-24,-6},{-24,-24},{-10,-24}}, color=
+         {0,0,127}));
 annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},

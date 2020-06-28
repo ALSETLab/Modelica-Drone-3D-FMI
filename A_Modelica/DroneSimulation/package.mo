@@ -8,6 +8,7 @@ annotation (Documentation, uses(
     Claytex(version="2019.2"),
     IdealizedContact(version="0.2.0"),
     BrushlessDCDrives(version="1.0.1"),
-    Modelica_Synchronous(version="0.92.1")),
+    Modelica_Synchronous(version="0.92.1"),
+    Modelon(version="3.4")),
   version="1");
 end DroneSimulation;

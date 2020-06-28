@@ -22,7 +22,8 @@ model DroneTest_FMU_DCmotor
     animation=animation)
     annotation (Placement(transformation(extent={{44,-12},{94,8}})));
   Mechanical.Propeller.Examples.DCMachine propeller_DCMachine(PropellerGain=1,
-    VaNominal=10,
+    VaNominal=15,
+    IaNominal=10,
     animation=animation)
     annotation (Placement(transformation(extent={{10,10},{30,18}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple
@@ -33,18 +34,23 @@ model DroneTest_FMU_DCmotor
         origin={20,-50})));
   Sensors.Accelerometer accelerometer
     annotation (Placement(transformation(extent={{10,-80},{30,-60}})));
-  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine2(VaNominal=10,
+  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine2(
+    VaNominal=15,
+    IaNominal=10,
       animation=animation)
     annotation (Placement(transformation(extent={{10,0},{30,8}})));
   Mechanical.Propeller.Examples.DCMachine propeller_DCMachine3(PropellerGain=1,
-    VaNominal=10,
+    VaNominal=15,
+    IaNominal=10,
     animation=animation)
     annotation (Placement(transformation(extent={{10,-8},{30,0}})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-4,-4},{4,4}},
         rotation=0,
         origin={-44,8})));
-  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine1(VaNominal=10,
+  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine1(
+    VaNominal=15,
+    IaNominal=10,
       animation=animation)
     annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
   parameter Boolean animation=true "= true, if animation shall be enabled";
