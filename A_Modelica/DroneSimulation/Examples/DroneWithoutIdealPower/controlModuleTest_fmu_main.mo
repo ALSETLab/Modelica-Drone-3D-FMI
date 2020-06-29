@@ -51,8 +51,10 @@ equation
           -40,40},{-11,40},{-11,41}}, color={0,0,127}));
   connect(drone.zcoord, add1.u1) annotation (Line(points={{-11,-47},{-34,-16},{
           -34,-36},{-44,-36},{-44,-44},{-41,-44}}, color={0,0,127}));
-  annotation (experiment(StopTime=10, Tolerance=0.001),
-                                       __Dymola_Commands(executeCall(
+  annotation (experiment(
+      StopTime=1800,
+      __Dymola_NumberOfIntervals=5000,
+      Tolerance=0.001),                __Dymola_Commands(executeCall(
           ensureSimulated=true) = {createPlot(
         id=1,
         position={15,10,584,420},

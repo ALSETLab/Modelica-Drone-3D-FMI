@@ -37,7 +37,7 @@ model PowerControl
         iconTransformation(extent={{90,-70},{110,-50}})));
   parameter Modelica.SIunits.Resistance R=R "Resistance at temperature T_ref";
   Real power;
-  Modelica.Blocks.Sources.RealExpression realExpression(y=5)
+  Modelica.Blocks.Sources.RealExpression realExpression(y=3)
     annotation (Placement(transformation(extent={{-72,-46},{-52,-26}})));
   Modelica.Electrical.Analog.Sensors.CurrentSensor   currentSensor
     annotation (Placement(transformation(extent={{10,10},{-10,-10}},

@@ -15,7 +15,7 @@ model DroneTest_payload
     annotation (Placement(transformation(extent={{-48,-18},{-38,-8}})));
    inner Modelica.Blocks.Noise.GlobalSeed globalSeed
      annotation (Placement(transformation(extent={{-36,-36},{-26,-26}})));
-  DroneTest_FMU_Constant_Voltage    drone(V=22.1, animation=false)
+  DroneTest_FMU                     drone(        animation=false)
     annotation (Placement(transformation(extent={{-2,22},{18,42}})));
   Modelica.Blocks.Sources.Constant const1(k=0)
     annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
@@ -37,7 +37,7 @@ equation
   connect(const2.y, force.force) annotation (Line(points={{5,-6},{10,-6},{10,-2},
           {16,-2}}, color={0,0,127}));
   connect(force.frame_b, drone.frame_a1) annotation (Line(
-      points={{38,-2},{38,21.6},{15.2,21.6}},
+      points={{38,-2},{38,21.8},{15,21.8}},
       color={95,95,95},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-80,

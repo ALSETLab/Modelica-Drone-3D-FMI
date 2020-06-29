@@ -74,7 +74,7 @@ model DroneTest_FMU_Battery
       Modelon.Electrical.EnergyStorage.Components.BatteryPackEMFModShepherd
       stackVoltage,
     SOC_start=1,
-    ns=10)
+    ns=4)
     annotation (Placement(transformation(extent={{14,30},{-10,54}})));
   parameter Boolean animation=true "= true, if animation shall be enabled";
   Modelica.Blocks.Sources.TimeTable timeTable(table=[0,0; 0.005,0; 0.005,

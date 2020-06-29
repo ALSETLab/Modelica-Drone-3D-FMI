@@ -29,8 +29,8 @@ equation
           -36,30},{-59,30}}, color={0,0,127}));
   connect(drone.xcoord, const.y) annotation (Line(points={{-12,20},{-24,20},{
           -24,48},{-35,48}}, color={0,0,127}));
-  connect(drone.zcoord, add.y) annotation (Line(points={{-12,4},{-24,4},{-24,
-          -13},{-37.5,-13}}, color={0,0,127}));
+  connect(drone.zcoord, ramp.y) annotation (Line(points={{-12,4},{-36,4},{-36,0},
+          {-59,0}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-80,
             -40},{40,60}})), Diagram(coordinateSystem(preserveAspectRatio=
             false, extent={{-80,-40},{40,60}})),
