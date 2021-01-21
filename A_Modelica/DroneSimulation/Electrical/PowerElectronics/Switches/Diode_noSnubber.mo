@@ -1,16 +1,16 @@
 within DroneSimulation.Electrical.PowerElectronics.Switches;
 model Diode_noSnubber
-  parameter Modelica.SIunits.Resistance Rcond=1e-5
+  parameter Modelica.Units.SI.Resistance Rcond=1e-5
     "Forward state-on differential resistance (closed resistance)";
-  parameter Modelica.SIunits.Voltage Vt=0.8 "Forward threshold voltage";
-  parameter Modelica.SIunits.Conductance Gof=1e-5
+  parameter Modelica.Units.SI.Voltage Vt=0.8 "Forward threshold voltage";
+  parameter Modelica.Units.SI.Conductance Gof=1e-5
     "Backward state-off conductance (opened conductance)";
-  Modelica.Electrical.MultiPhase.Interfaces.PositivePlug positivePlug
+  Modelica.Electrical.Polyphase.Interfaces.PositivePlug positivePlug
     annotation (Placement(transformation(extent={{0,132},{20,152}})));
-  Modelica.Electrical.MultiPhase.Interfaces.NegativePlug negativePlug
+  Modelica.Electrical.Polyphase.Interfaces.NegativePlug negativePlug
     annotation (Placement(transformation(extent={{2,-30},{22,-10}}),
         iconTransformation(extent={{2,-30},{22,-10}})));
-  Modelica.Electrical.MultiPhase.Ideal.IdealDiode diode1(
+  Modelica.Electrical.Polyphase.Ideal.IdealDiode diode1(
     Ron={Rcond,Rcond,Rcond},
     Goff={Gof,Gof,Gof},
     Vknee={Vt,Vt,Vt}) annotation (Placement(transformation(

@@ -3,7 +3,7 @@ model discretePID
   parameter Real ki=10 "I gain";
   parameter Real kd=5 "D gain";
   parameter Real kp=15 "P gain";
-  parameter Modelica.SIunits.Time samplePeriod=0.01
+  parameter Modelica.Units.SI.Time samplePeriod=0.01
     "Sample period of component";
   Modelica.Blocks.Discrete.TransferFunction transferFunction(samplePeriod=
         samplePeriod,

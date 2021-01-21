@@ -2,7 +2,7 @@ within DroneSimulation.Sensors;
 model TorqueSensor
   "Ideal sensor to measure the torque between two flanges (= flange_a.tau)"
 
-  extends Modelica.Icons.RotationalSensor;
+  extends Modelica.Icons.RoundSensor;
   Modelica.Blocks.Interfaces.RealOutput tau(unit="N.m")
     "Torque in flange flange_a and flange_b (tau = flange_a.tau = -flange_b.tau) as output signal"
     annotation (Placement(transformation(

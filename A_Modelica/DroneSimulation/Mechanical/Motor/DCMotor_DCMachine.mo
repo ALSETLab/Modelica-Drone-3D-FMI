@@ -34,9 +34,9 @@ model DCMotor_DCMachine "DC motor using DC machine from MSL"
         origin={-77,-19},
         extent={{-5,-5},{5,5}},
         rotation=0)));
-  parameter Modelica.SIunits.Voltage VaNominal=5
+  parameter Modelica.Units.SI.Voltage VaNominal=5
     "Nominal armature voltage for motor";
-  parameter Modelica.SIunits.Current IaNominal=0.1
+  parameter Modelica.Units.SI.Current IaNominal=0.1
     "Nominal armature current (>0..Motor, <0..Generator) for motor";
 
   Modelica.Mechanics.Rotational.Sensors.MultiSensor multiSensor annotation (
@@ -49,9 +49,9 @@ model DCMotor_DCMachine "DC motor using DC machine from MSL"
   Modelica.Mechanics.MultiBody.Forces.WorldForce force(
     animation=false,
     color={244,0,4},
-    resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b,
-    N_to_m=10)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=0,
         origin={36,0})));
   Blocks.Routing.RealExtend realExtend1

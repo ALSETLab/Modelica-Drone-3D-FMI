@@ -15,8 +15,8 @@ model continuousPID
         rotation=90,
         origin={0,-100})));
 
-  parameter Modelica.SIunits.Time Ti "Time Constant of Integrator";
-  parameter Modelica.SIunits.Time Td "Time Constant of Derivative block";
+  parameter Modelica.Units.SI.Time Ti "Time Constant of Integrator";
+  parameter Modelica.Units.SI.Time Td "Time Constant of Derivative block";
   Modelica.Blocks.Discrete.ZeroOrderHold zeroOrderHold(samplePeriod=0.0001)
     annotation (Placement(transformation(extent={{-46,-10},{-26,10}})));
   Modelica.Blocks.Continuous.Derivative derivative(

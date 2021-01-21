@@ -8,20 +8,20 @@ model SimpleMotor_EMF "Simplified DC motor model with EMF"
   Modelica.Electrical.Analog.Basic.Resistor resistor(R=R_trs)
     "Effective resistance for transport  ac loss"
     annotation (Placement(transformation(extent={{-50,8},{-30,28}})));
-  parameter Modelica.SIunits.Resistance R_trs=1e-6
+  parameter Modelica.Units.SI.Resistance R_trs=1e-6
     "Effective resistance for transport  ac loss";
-  parameter Modelica.SIunits.Inductance X_s=0.041 "Reactance";
+  parameter Modelica.Units.SI.Inductance X_s=0.041 "Reactance";
   Modelica.Electrical.Analog.Basic.Resistor hysteresis(R=R_hyst)
     "Effective resistance for hysteresis ac loss" annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={40,0})));
-  parameter Modelica.SIunits.Resistance R_hyst=149
+  parameter Modelica.Units.SI.Resistance R_hyst=149
     "Effective resistance for hysteresis ac loss";
-  Modelica.Electrical.Analog.Basic.EMF emf(k=k) "back EMF"
+  Modelica.Electrical.Analog.Basic.RotationalEMF emf(k=k) "back EMF"
     annotation (Placement(transformation(extent={{62,-10},{82,10}})));
-  parameter Modelica.SIunits.ElectricalTorqueConstant k=0.021
+  parameter Modelica.Units.SI.ElectricalTorqueConstant k=0.021
     "Transformation coefficient of back EMF";
   Modelica.Mechanics.Rotational.Interfaces.Flange_b flange1
                                                            "Flange"

@@ -47,7 +47,8 @@ model SwitchCellAverP "Switching cell average P"
         extent={{-10,-10},{10,10}},
         rotation=-90,
         origin={-72,-48})));
-  parameter Modelica.SIunits.Resistance Ron "Forward state-on differential resistance (closed resistance)";
+  parameter Modelica.Units.SI.Resistance Ron
+    "Forward state-on differential resistance (closed resistance)";
 equation
   connect(pin, signalCurrent.p)
     annotation (Line(points={{-60,70},{-60,32},{-72,32},{-72,-6}},

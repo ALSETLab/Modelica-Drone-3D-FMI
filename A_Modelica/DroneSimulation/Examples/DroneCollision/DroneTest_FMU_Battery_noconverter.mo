@@ -13,7 +13,7 @@ model DroneTest_FMU_Battery_noconverter
   Modelica.Blocks.Interfaces.RealOutput zgps
     annotation (Placement(transformation(extent={{100,-90},{120,-70}})));
 
-  parameter Modelica.SIunits.Voltage V "Battery voltage";
+  parameter Modelica.Units.SI.Voltage V "Battery voltage";
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power(
     PropellerGain=1,

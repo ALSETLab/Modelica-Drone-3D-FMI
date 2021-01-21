@@ -1,7 +1,7 @@
 within DroneSimulation.Electrical.PowerElectronics.Converters.ACDC;
 model Snubber_Rectifier
   "3 phase AC to single phase DC rectifier using snubber diodes"
-  Modelica.Electrical.MultiPhase.Basic.Star star(m=3) annotation (Placement(
+  Modelica.Electrical.Polyphase.Basic.Star star(m=3) annotation (Placement(
         transformation(
         origin={-24,66},
         extent={{-10,10},{10,-10}},
@@ -24,20 +24,19 @@ model Snubber_Rectifier
         extent={{-9,-8},{9,8}},
         rotation=180,
         origin={-51,20})));
-  parameter Modelica.SIunits.Resistance Rcond=1e-5
+  parameter Modelica.Units.SI.Resistance Rcond=1e-5
     "Forward state-on differential resistance (closed resistance)";
-  parameter Modelica.SIunits.Voltage Vt=0 "Forward threshold voltage";
-  parameter Modelica.SIunits.Conductance Gof=1e-5
+  parameter Modelica.Units.SI.Voltage Vt=0 "Forward threshold voltage";
+  parameter Modelica.Units.SI.Conductance Gof=1e-5
     "Backward state-off conductance (opened conductance)";
-  parameter Modelica.SIunits.Resistance R1=1e-3 "Snubber Resistance";
-  parameter Modelica.SIunits.Capacitance C1=1e-6 "SnubberCapacitance";
-  Modelica.Electrical.MultiPhase.Basic.Star star1(m=3)
-                                                      annotation (Placement(
+  parameter Modelica.Units.SI.Resistance R1=1e-3 "Snubber Resistance";
+  parameter Modelica.Units.SI.Capacitance C1=1e-6 "SnubberCapacitance";
+  Modelica.Electrical.Polyphase.Basic.Star star1(m=3) annotation (Placement(
         transformation(
         origin={-16,-6},
         extent={{-10,10},{10,-10}},
         rotation=0)));
-  Modelica.Electrical.MultiPhase.Interfaces.PositivePlug positivePlug
+  Modelica.Electrical.Polyphase.Interfaces.PositivePlug positivePlug
     annotation (Placement(transformation(extent={{-120,10},{-100,30}}),
         iconTransformation(extent={{-120,10},{-100,30}})));
   Modelica.Electrical.Analog.Interfaces.PositivePin pin_p

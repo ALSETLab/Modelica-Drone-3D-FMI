@@ -39,11 +39,10 @@ model Phantom
     annotation (Placement(transformation(extent={{-16,-16},{16,16}},
         rotation=90,
         origin={0,-100})));
-  parameter Modelica.SIunits.Length length=0.168
-                                                "Length of cylinder";
-  parameter Modelica.SIunits.Length W=0.083;
-   parameter Modelica.SIunits.Length H=0.049;
-  parameter Modelica.SIunits.Mass m=1 "Mass of rigid body";
+  parameter Modelica.Units.SI.Length length=0.168 "Length of cylinder";
+  parameter Modelica.Units.SI.Length W=0.083;
+  parameter Modelica.Units.SI.Length H=0.049;
+  parameter Modelica.Units.SI.Mass m=1 "Mass of rigid body";
 equation
   connect(bodyShape.frame_b, bodyBox.frame_a) annotation (Line(
       points={{-16,50},{16,50},{16,2},{32,2}},

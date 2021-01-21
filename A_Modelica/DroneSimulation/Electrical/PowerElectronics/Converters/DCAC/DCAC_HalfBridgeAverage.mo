@@ -66,7 +66,7 @@ model DCAC_HalfBridgeAverage
         iconTransformation(extent={{-100,-70},{-80,-50}})));
   Modelica.Electrical.Analog.Basic.Ground ground1
     annotation (Placement(transformation(extent={{0,-24},{20,-4}})));
-  parameter Modelica.SIunits.Resistance Ron=0.1
+  parameter Modelica.Units.SI.Resistance Ron=0.1
     "Forward state-on differential resistance (closed resistance)";
     parameter Real Vd "DC voltage";
 equation

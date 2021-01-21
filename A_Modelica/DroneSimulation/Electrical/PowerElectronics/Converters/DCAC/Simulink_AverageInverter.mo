@@ -21,7 +21,7 @@ model Simulink_AverageInverter
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-46,50})));
-  Modelica.Electrical.MultiPhase.Interfaces.PositivePlug positivePlug
+  Modelica.Electrical.Polyphase.Interfaces.PositivePlug positivePlug
     annotation (Placement(transformation(extent={{140,-74},{160,-54}}),
         iconTransformation(extent={{140,-74},{160,-54}})));
   Blocks.Routing.multiphtoabc                  multiphtoabc annotation (

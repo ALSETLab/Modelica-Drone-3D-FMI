@@ -2,17 +2,17 @@ within DroneSimulation.Electrical.PowerElectronics.Converters.DCDC;
 model BuckConverter "Step down chopper"
   import Modelica.Constants.pi;
   extends Modelica.Electrical.PowerConverters.Icons.Converter;
-  parameter Modelica.SIunits.Resistance RonTransistor=1e-05
+  parameter Modelica.Units.SI.Resistance RonTransistor=1e-05
     "Transistor closed resistance";
-  parameter Modelica.SIunits.Conductance GoffTransistor=1e-05
+  parameter Modelica.Units.SI.Conductance GoffTransistor=1e-05
     "Transistor opened conductance";
-  parameter Modelica.SIunits.Voltage VkneeTransistor=0
+  parameter Modelica.Units.SI.Voltage VkneeTransistor=0
     "Transistor threshold voltage";
-  parameter Modelica.SIunits.Resistance RonDiode(final min=0) = 1e-05
+  parameter Modelica.Units.SI.Resistance RonDiode(final min=0) = 1e-05
     "Closed diode resistance";
-  parameter Modelica.SIunits.Conductance GoffDiode(final min=0) = 1e-05
+  parameter Modelica.Units.SI.Conductance GoffDiode(final min=0) = 1e-05
     "Opened diode conductance";
-  parameter Modelica.SIunits.Voltage VkneeDiode(final min=0) = 0
+  parameter Modelica.Units.SI.Voltage VkneeDiode(final min=0) = 0
     "Diode forward threshold voltage";
   extends Modelica.Electrical.PowerConverters.Interfaces.DCDC.DCtwoPin1;
   extends Modelica.Electrical.PowerConverters.Interfaces.DCDC.DCtwoPin2;
@@ -38,7 +38,7 @@ model BuckConverter "Step down chopper"
         rotation=90)));
   Modelica.Electrical.Analog.Basic.Inductor inductor(L=L)
     annotation (Placement(transformation(extent={{14,50},{34,70}})));
-  parameter Modelica.SIunits.Inductance L=1e-3 "Inductance";
+  parameter Modelica.Units.SI.Inductance L=1e-3 "Inductance";
   Modelica.Electrical.Analog.Basic.Capacitor capacitor annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},

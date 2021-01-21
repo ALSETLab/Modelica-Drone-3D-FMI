@@ -18,10 +18,10 @@ model DCMachine_Visualization
   Modelica.Blocks.Interfaces.RealInput position
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
 
-  parameter Modelica.SIunits.Voltage VaNominal=5
+  parameter Modelica.Units.SI.Voltage VaNominal=5
     "Nominal armature voltage for motor"
     annotation (Dialog(group="Motor Parameters"));
-  parameter Modelica.SIunits.Current IaNominal=0.1
+  parameter Modelica.Units.SI.Current IaNominal=0.1
     "Nominal armature current (>0..Motor, <0..Generator) for motor"
     annotation (Dialog(group="Motor Parameters"));
 

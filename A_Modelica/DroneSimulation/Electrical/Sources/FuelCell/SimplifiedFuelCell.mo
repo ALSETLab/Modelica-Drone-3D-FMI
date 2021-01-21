@@ -18,9 +18,9 @@ model SimplifiedFuelCell
   Modelica.Electrical.Analog.Interfaces.PositivePin pin_p annotation (Placement(
         transformation(extent={{60,30},{80,50}}), iconTransformation(extent={{
             60,30},{80,50}})));
-  parameter Modelica.SIunits.Resistance R "Impedance";
-  parameter Modelica.SIunits.Inductance L "Impedance";
-  parameter Modelica.SIunits.Voltage V=1000 "Fuel cell voltage";
+  parameter Modelica.Units.SI.Resistance R "Impedance";
+  parameter Modelica.Units.SI.Inductance L "Impedance";
+  parameter Modelica.Units.SI.Voltage V=1000 "Fuel cell voltage";
   Modelica.Electrical.Analog.Basic.Ground ground
     annotation (Placement(transformation(extent={{-62,-34},{-42,-14}})));
   Modelica.Electrical.Analog.Basic.Resistor resistor1(R=R)

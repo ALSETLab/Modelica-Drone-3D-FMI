@@ -25,7 +25,7 @@ model PowerSystem
                                                        "AC output" annotation (
       Placement(transformation(extent={{-10,90},{10,110}}), iconTransformation(
           extent={{-10,90},{10,110}})));
-  parameter Modelica.SIunits.Voltage V=10 "Fuel cell voltage";
+  parameter Modelica.Units.SI.Voltage V=10 "Fuel cell voltage";
 equation
   connect(dcdc.dc_p2, inductor.p)
     annotation (Line(points={{-40,6},{-24,6}}, color={0,0,255}));

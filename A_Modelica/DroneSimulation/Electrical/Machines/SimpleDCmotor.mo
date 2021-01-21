@@ -4,16 +4,16 @@ model SimpleDCmotor
   type aeroFriction = Real(quantity = "Propeller friction", unit = "Nms", min=0);
   type propellerK = Real(quantity = "Propeller constant", unit = "Ns", min=0);
 
-  parameter Modelica.SIunits.Inertia Jp = 0.002 "Propeller inertia";
+  parameter Modelica.Units.SI.Inertia Jp=0.002 "Propeller inertia";
   parameter motorK Kt = 2 "Motor current to torque constant";
   parameter aeroFriction bp = 0.004 "Propeller friction force";
   parameter propellerK Ke= 0.004 "Propeller constant";
 
-  Modelica.SIunits.Torque tout "Output torque";
-  Modelica.SIunits.Force fout "Output force";
-  Modelica.SIunits.AngularVelocity w "Angular speed of motor";
-  Modelica.SIunits.Voltage V "machine voltage";
-  Modelica.SIunits.Power p "Machine power";
+  Modelica.Units.SI.Torque tout "Output torque";
+  Modelica.Units.SI.Force fout "Output force";
+  Modelica.Units.SI.AngularVelocity w "Angular speed of motor";
+  Modelica.Units.SI.Voltage V "machine voltage";
+  Modelica.Units.SI.Power p "Machine power";
   Modelica.Blocks.Interfaces.RealInput current
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
   Modelica.Blocks.Interfaces.RealOutput torque

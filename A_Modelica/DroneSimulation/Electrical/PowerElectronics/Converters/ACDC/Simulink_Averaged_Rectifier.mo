@@ -6,14 +6,23 @@ model Simulink_Averaged_Rectifier "Averaged rectifier model from Simulink"
   Modelica.Electrical.Analog.Interfaces.NegativePin DC_n
     annotation (Placement(transformation(extent={{80,-70},{100,-50}}),
         iconTransformation(extent={{80,-70},{100,-50}})));
-  Modelica.Electrical.MultiPhase.Interfaces.PositivePlug AC
-    annotation (Placement(transformation(extent={{-100,-10},{-80,10}}),
+  Modelica.Electrical.Polyphase.Interfaces.PositivePlug AC annotation (
+      Placement(transformation(extent={{-100,-10},{-80,10}}),
         iconTransformation(extent={{-100,-10},{-80,10}})));
-  Modelica.SIunits.Voltage va,vb,vc,vab,vbc,vca,vref,vrms,vdc;
-  Modelica.SIunits.Resistance rac,R_fixed;
-  Modelica.SIunits.Power Pdc;
-  parameter Modelica.SIunits.Power P_fixed;
-  parameter Modelica.SIunits.Voltage V_rated;
+  Modelica.Units.SI.Voltage va;
+  Modelica.Units.SI.Voltage vb;
+  Modelica.Units.SI.Voltage vc;
+  Modelica.Units.SI.Voltage vab;
+  Modelica.Units.SI.Voltage vbc;
+  Modelica.Units.SI.Voltage vca;
+  Modelica.Units.SI.Voltage vref;
+  Modelica.Units.SI.Voltage vrms;
+  Modelica.Units.SI.Voltage vdc;
+  Modelica.Units.SI.Resistance rac;
+  Modelica.Units.SI.Resistance R_fixed;
+  Modelica.Units.SI.Power Pdc;
+  parameter Modelica.Units.SI.Power P_fixed;
+  parameter Modelica.Units.SI.Voltage V_rated;
 
   Modelica.Electrical.Analog.Interfaces.PositivePin v_ref
     annotation (Placement(transformation(extent={{74,-10},{94,10}}),

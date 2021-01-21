@@ -20,9 +20,9 @@ model DCMotor_Averaged_Machine "DC motor using DC machine from MSL"
   Modelica.Mechanics.MultiBody.Forces.WorldForce force(
     animation=false,
     color={244,0,4},
-    resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b,
-    N_to_m=10)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=90,
         origin={74,32})));
   Blocks.Routing.RealExtend realExtend1

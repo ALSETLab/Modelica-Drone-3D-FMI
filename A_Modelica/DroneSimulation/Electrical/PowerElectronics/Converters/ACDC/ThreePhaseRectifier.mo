@@ -9,18 +9,18 @@ model ThreePhaseRectifier "3 phase rectifier model"
         origin={0,15},
         extent={{-6,-5},{6,5}},
         rotation=180)));
-  Modelica.Electrical.MultiPhase.Basic.Star
-             star1(m=m) annotation (Placement(transformation(
+  Modelica.Electrical.Polyphase.Basic.Star star1(m=m) annotation (Placement(
+        transformation(
         origin={0,50},
         extent={{-10,-10},{10,10}},
         rotation=90)));
-  Modelica.Electrical.MultiPhase.Basic.Star
-             star2(m=m) annotation (Placement(transformation(
+  Modelica.Electrical.Polyphase.Basic.Star star2(m=m) annotation (Placement(
+        transformation(
         origin={0,-50},
         extent={{-10,10},{10,-10}},
         rotation=270)));
-  Modelica.Electrical.MultiPhase.Interfaces.PositivePlug plug_p1
-                                 "Positive polyphase electrical plug with m pins"
+  Modelica.Electrical.Polyphase.Interfaces.PositivePlug plug_p1
+    "Positive polyphase electrical plug with m pins"
     annotation (Placement(transformation(extent={{-90,-10},{-70,10}})));
   Modelica.Electrical.Analog.Interfaces.NegativePin load_n
     "Negative pin connection for load"
@@ -39,13 +39,13 @@ model ThreePhaseRectifier "3 phase rectifier model"
         origin={1e-06,-23},
         extent={{-6,-5},{6,5.00004}},
         rotation=180)));
-  parameter Modelica.SIunits.Resistance Rcond=1e-5
+  parameter Modelica.Units.SI.Resistance Rcond=1e-5
     "Forward state-on differential resistance (closed resistance)";
-  parameter Modelica.SIunits.Voltage Vt=0 "Forward threshold voltage";
-  parameter Modelica.SIunits.Conductance Gof=1e-5
+  parameter Modelica.Units.SI.Voltage Vt=0 "Forward threshold voltage";
+  parameter Modelica.Units.SI.Conductance Gof=1e-5
     "Backward state-off conductance (opened conductance)";
-  parameter Modelica.SIunits.Resistance R1=1e-3 "Snubber Resistance";
-  parameter Modelica.SIunits.Capacitance C1=1e-6 "SnubberCapacitance";
+  parameter Modelica.Units.SI.Resistance R1=1e-3 "Snubber Resistance";
+  parameter Modelica.Units.SI.Capacitance C1=1e-6 "SnubberCapacitance";
 equation
   connect(star2.pin_n, load_n)
     annotation (Line(points={{0,-60},{0,-84}}, color={0,0,255}));

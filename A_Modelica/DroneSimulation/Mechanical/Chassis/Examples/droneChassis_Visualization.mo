@@ -28,8 +28,8 @@ model droneChassis_Visualization
     annotation (Placement(transformation(extent={{-16,-16},{16,16}},
         rotation=90,
         origin={0,-100})));
-  parameter Modelica.SIunits.Length length=0.25 "Length of cylinder";
-  parameter Modelica.SIunits.Mass m=1 "Mass of rigid body";
+  parameter Modelica.Units.SI.Length length=0.25 "Length of cylinder";
+  parameter Modelica.Units.SI.Mass m=1 "Mass of rigid body";
   Visualization.Shapes.FileShape                      shape(
     r_shape={0,0,0},
     lengthDirection(displayUnit="1") = {1,0,0},

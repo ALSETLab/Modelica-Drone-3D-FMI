@@ -145,12 +145,12 @@ package Tests
           origin={-76,-40})));
    Modelica.Blocks.Sources.Ramp ramp(height=5, duration=0.5)
      annotation (Placement(transformation(extent={{-118,-10},{-98,10}})));
-   Modelica.Blocks.Continuous.PID PID(
-     k=1.5,
-     Ti=0.8,
-     Td=1,
-     initType=Modelica.Blocks.Types.InitPID.SteadyState)
-     annotation (Placement(transformation(extent={{-58,-6},{-46,6}})));
+    Modelica.Blocks.Continuous.PID PID(
+      k=1.5,
+      Ti=0.8,
+      Td=1,
+      initType=Modelica.Blocks.Types.Init.SteadyState)
+      annotation (Placement(transformation(extent={{-58,-6},{-46,6}})));
    Modelica.Blocks.Math.Feedback feedback
      annotation (Placement(transformation(extent={{-86,-10},{-66,10}})));
    Mechanical.Propeller                 propellerRev(PropellerGain=1)
@@ -210,11 +210,9 @@ package Tests
  end simpleHoverTest;
 
  model propellerTest
-   Modelica.Mechanics.MultiBody.Forces.WorldForce force(
-     color={244,0,4},
-     resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b,
-     N_to_m=10)
-     annotation (Placement(transformation(extent={{-44,46},{-24,66}})));
+    Modelica.Mechanics.MultiBody.Forces.WorldForce force(color={244,0,4},
+        resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
+      annotation (Placement(transformation(extent={{-44,46},{-24,66}})));
 
    Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape(
      m=0.5,
@@ -223,13 +221,12 @@ package Tests
      annotation (Placement(transformation(extent={{-10,46},{10,66}})));
    inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,-1})
      annotation (Placement(transformation(extent={{-78,-84},{-58,-64}})));
-   Modelica.Mechanics.MultiBody.Forces.WorldForce force1(
-     color={244,0,4},
-     resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b,
-     N_to_m=10) annotation (Placement(transformation(
-         extent={{-10,-10},{10,10}},
-         rotation=0,
-         origin={-34,24})));
+    Modelica.Mechanics.MultiBody.Forces.WorldForce force1(color={244,0,4},
+        resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
+      annotation (Placement(transformation(
+          extent={{-10,-10},{10,10}},
+          rotation=0,
+          origin={-34,24})));
 
    Modelica.Blocks.Sources.Constant torque1
                                           [3](k={0,0,-1})
@@ -244,11 +241,9 @@ package Tests
          extent={{-10,-10},{10,10}},
          rotation=0,
          origin={0,24})));
-   Modelica.Mechanics.MultiBody.Forces.WorldForce force2(
-     color={244,0,4},
-     resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b,
-     N_to_m=10)
-     annotation (Placement(transformation(extent={{-44,-16},{-24,4}})));
+    Modelica.Mechanics.MultiBody.Forces.WorldForce force2(color={244,0,4},
+        resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
+      annotation (Placement(transformation(extent={{-44,-16},{-24,4}})));
 
    Modelica.Blocks.Sources.Constant torque2(k=1) annotation (Placement(
          transformation(
@@ -260,13 +255,12 @@ package Tests
      r={0,-0.25,0},
      r_CM={0,-0.175,0})
      annotation (Placement(transformation(extent={{-10,-16},{10,4}})));
-   Modelica.Mechanics.MultiBody.Forces.WorldForce force3(
-     color={244,0,4},
-     resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b,
-     N_to_m=10) annotation (Placement(transformation(
-         extent={{-10,-10},{10,10}},
-         rotation=0,
-         origin={-34,-38})));
+    Modelica.Mechanics.MultiBody.Forces.WorldForce force3(color={244,0,4},
+        resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
+      annotation (Placement(transformation(
+          extent={{-10,-10},{10,10}},
+          rotation=0,
+          origin={-34,-38})));
 
    Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape3(
      m=0.5,
@@ -648,8 +642,8 @@ package Tests
       kd=0,
       ki=0,
       kp=1) annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-   Modelica.Blocks.Sources.Sine sine(freqHz=10)
-     annotation (Placement(transformation(extent={{-98,-10},{-78,10}})));
+    Modelica.Blocks.Sources.Sine sine(f=10)
+      annotation (Placement(transformation(extent={{-98,-10},{-78,10}})));
    Modelica.Blocks.Sources.Step step1(height=1)
      annotation (Placement(transformation(extent={{-74,-68},{-54,-48}})));
    Modelica.Blocks.Discrete.Sampler sampler(samplePeriod=0.01)

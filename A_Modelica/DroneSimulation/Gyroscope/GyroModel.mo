@@ -3,8 +3,10 @@ model GyroModel "Example of how gyroscopic precession works on a simple gyro."
   extends Modelica.Icons.Example;
   inner Modelica.Mechanics.MultiBody.World world(animateWorld = false, animateGravity = false) "world component" annotation(Placement(visible = true, transformation(origin = {-132.021, -80}, extent = {{-10, -10}, {10, 10}}, rotation = -720)));
   Modelica.Mechanics.MultiBody.Parts.BodyCylinder mount(r = {0, 0.002, 0}, color = {155, 155, 155}, diameter = 0.08, specularCoefficient = 1) "mount of the gyro" annotation(Placement(visible = true, transformation(origin = {-70, -80}, extent = {{-10, -10}, {10, 10}}, rotation = -720)));
-  parameter Modelica.SIunits.AngularVelocity spin = 500 "Angular velocity of inner rotor.";
-  parameter Modelica.SIunits.Force forceMagnitude = 0.3 "Magnitude of applied force.";
+  parameter Modelica.Units.SI.AngularVelocity spin=500
+    "Angular velocity of inner rotor.";
+  parameter Modelica.Units.SI.Force forceMagnitude=0.3
+    "Magnitude of applied force.";
   Modelica.Mechanics.MultiBody.Visualizers.VoluminousWheel outerRing(rRim = 0.041, width = 0.005, color = {155, 155, 155}, specularCoefficient = 1, rTire = 0.045, rCurvature = 0.040) "outer ring of the gyro" annotation(Placement(visible = true, transformation(origin = {100.85, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation(r = {0, 0.041, 0}, animation = false) "distance from the outer ring to the center of the gyro" annotation(Placement(visible = true, transformation(origin = {0, -40}, extent = {{-10, -10}, {10, 10}}, rotation = -270)));
   Modelica.Mechanics.MultiBody.Parts.FixedRotation outerRinFixedgRotation(animation = false, angle = 90) "fixed rotation to line up the outer ring initially" annotation(Placement(visible = true, transformation(origin = {70, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
@@ -20,11 +22,25 @@ model GyroModel "Example of how gyroscopic precession works on a simple gyro."
   Modelica.Mechanics.MultiBody.Joints.Revolute revoluteY(n = {0, 1, 0}, animation = false) "revolution around the Y-axis" annotation(Placement(visible = true, transformation(origin = {0, -15}, extent = {{-10, -10}, {10, 10}}, rotation = -270)));
   Modelica.Mechanics.MultiBody.Visualizers.FixedShape rotationIndicator(color = {255, 255, 0}, length = 0.002, width = 0.04, height = 0.002, specularCoefficient = 1) "indicator of the orientation of the rotor" annotation(Placement(visible = true, transformation(origin = {130, 85}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.MultiBody.Parts.FixedTranslation rotationIndicatorOrientator(r = {-0.003, 0, 0}, animation = false) "placement for the indicator of the rotor orientation" annotation(Placement(visible = true, transformation(origin = {100, 85}, extent = {{-10, -10}, {10, 10}}, rotation = -360)));
-  Modelica.Mechanics.MultiBody.Forces.WorldForce force1(diameter = 0.003, N_to_m = 5, resolveInFrame = Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b) "external force" annotation(Placement(visible = true, transformation(origin = {70, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  Modelica.Mechanics.MultiBody.Forces.WorldForce force1(resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
+    "external force" annotation (Placement(visible=true, transformation(
+        origin={70,-80},
+        extent={{-10,-10},{10,10}},
+        rotation=0)));
   Modelica.Blocks.Sources.Pulse pulse1[3](amplitude = {0, 0, -forceMagnitude}, period = 100, width = 3, startTime = 1, nperiod = 1) "signal to external force" annotation(Placement(visible = true, transformation(origin = {30, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.MultiBody.Visualizers.FixedShape baseOrientationIndicator(color = {0, 0, 200}, length = 0.002, width = 0.0012, height = 0.06, specularCoefficient = 1) "indicator of the orientation of the mount" annotation(Placement(visible = true, transformation(origin = {-70, -50}, extent = {{-10, -10}, {10, 10}}, rotation = -180)));
-  parameter Modelica.SIunits.Conversions.NonSIunits.Angle_deg degreeOfForce = 45 "Angle of applied force.";
-  Modelica.Mechanics.MultiBody.Parts.FixedRotation forceOrientator(animation = false, angle = 90, r = {0.038 * cos(Modelica.SIunits.Conversions.from_deg(degreeOfForce)), 0.038 * sin(Modelica.SIunits.Conversions.from_deg(degreeOfForce)), 0}, n = {0, 0, 1}) "displacement showing where to put the external force" annotation(Placement(visible = true, transformation(origin = {70, -25}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
+  parameter Modelica.Units.NonSI.Angle_deg degreeOfForce=45
+    "Angle of applied force.";
+  Modelica.Mechanics.MultiBody.Parts.FixedRotation forceOrientator(
+    animation=false,
+    angle=90,
+    r={0.038*cos(Modelica.Units.Conversions.from_deg(degreeOfForce)),0.038*sin(
+        Modelica.Units.Conversions.from_deg(degreeOfForce)),0},
+    n={0,0,1}) "displacement showing where to put the external force"
+    annotation (Placement(visible=true, transformation(
+        origin={70,-25},
+        extent={{-10,-10},{10,10}},
+        rotation=0)));
 equation
   connect(mount.frame_a, world.frame_b) annotation(Line(visible = true, origin = {-101.01, -80}, points = {{21.01, 0}, {-21.011, 0}}, color = {95, 95, 95}));
   connect(outerRinFixedgRotation.frame_b, outerRing.frame_a) annotation(Line(visible = true, origin = {85.425, 0}, points = {{-5.425, 0}, {5.425, 0}}, color = {95, 95, 95}));

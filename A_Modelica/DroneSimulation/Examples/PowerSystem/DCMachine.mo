@@ -12,9 +12,8 @@ model DCMachine
     Electrification.Machines.Interfaces.DCMachine(
       internal_ground=true)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-  replaceable
-  Modelica.Blocks.Sources.Cosine trq_cmd(amplitude=10,  freqHz=2) constrainedby
-    Modelica.Blocks.Interfaces.SO
+  replaceable Modelica.Blocks.Sources.Cosine trq_cmd(amplitude=10, f=2)
+    constrainedby Modelica.Blocks.Interfaces.SO
     annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
 public
   Modelica.Thermal.HeatTransfer.Celsius.FixedTemperature ambientTemperature(T=40)
@@ -1922,20 +1921,16 @@ public
         extent={{10,-10},{-10,10}},
         rotation=90,
         origin={-62,-202})));
-  replaceable
-  Modelica.Blocks.Sources.Cosine trq_cmd1(amplitude=10,  freqHz=2)
-                                                                  constrainedby
-    Modelica.Blocks.Sources.Cosine
+  replaceable Modelica.Blocks.Sources.Cosine trq_cmd1(amplitude=10, f=2)
+    constrainedby Modelica.Blocks.Sources.Cosine
     annotation (Placement(transformation(extent={{-90,-40},{-70,-20}})));
   Electrification.Machines.Control.Adapters.Input_tau_ref torqueCommand1
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-26,-30})));
-  replaceable
-  Modelica.Blocks.Sources.Cosine trq_cmd2(amplitude=10,  freqHz=2)
-                                                                  constrainedby
-    Modelica.Blocks.Sources.Cosine
+  replaceable Modelica.Blocks.Sources.Cosine trq_cmd2(amplitude=10, f=2)
+    constrainedby Modelica.Blocks.Sources.Cosine
     annotation (Placement(transformation(extent={{-80,-100},{-60,-80}})));
   Electrification.Machines.Control.Adapters.Input_tau_ref torqueCommand2
     annotation (Placement(transformation(
@@ -1947,10 +1942,8 @@ public
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-30,-170})));
-  replaceable
-  Modelica.Blocks.Sources.Cosine trq_cmd3(amplitude=10,  freqHz=2)
-                                                                  constrainedby
-    Modelica.Blocks.Sources.Cosine
+  replaceable Modelica.Blocks.Sources.Cosine trq_cmd3(amplitude=10, f=2)
+    constrainedby Modelica.Blocks.Sources.Cosine
     annotation (Placement(transformation(extent={{-94,-180},{-74,-160}})));
   Modelica.Mechanics.Rotational.Sensors.TorqueSensor torqueSensor annotation (
       Placement(transformation(

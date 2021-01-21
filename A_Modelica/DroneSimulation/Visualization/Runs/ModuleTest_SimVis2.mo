@@ -38,8 +38,7 @@ model ModuleTest_SimVis2
   Visualization.Cameras.FreeCamera     camera2(windowMode=Visualization.Cameras.Internal.Types.WindowMode.OpenVR_seated,
       startDistanceToCenter={0,-3,0})
     annotation (Placement(transformation(extent={{-2,-52},{18,-32}})));
-  Examples.DroneWithIdealPower.DroneTest_FMU_VISUALIZATON
-    droneTest_FMU_VISUALIZATON
+  Examples.DroneWithIdealPower.Drone_Visualization droneTest_FMU_VISUALIZATON
     annotation (Placement(transformation(extent={{42,-8},{62,12}})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{4,0},{24,20}})));

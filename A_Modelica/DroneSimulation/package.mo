@@ -1,14 +1,16 @@
 within ;
 package DroneSimulation
 annotation (Documentation, uses(
-    ModelicaServices(version="3.2.3"),
     Visualization(version="1.5.1"),
-    Modelica(version="3.2.3"),
-    VeSyMA(version="2019.2"),
-    Claytex(version="2019.2"),
     IdealizedContact(version="0.2.0"),
-    BrushlessDCDrives(version="1.0.1"),
-    Modelica_Synchronous(version="0.92.1"),
-    Modelon(version="3.4")),
-  version="1");
+    ModelicaServices(version="4.0.0"),
+    Modelica(version="4.0.0"),
+    VeSyMA(version="2020.3"),
+    Claytex(version="2020.3"),
+    BrushlessDCDrives(version="1.1.2"),
+    Modelon(version="3.3"),
+    Battery(version="2.2.0")),
+  version="3",
+  conversion(from(version={"2","1"}, script=
+          "modelica://DroneSimulation/ConvertFromDroneSimulation_2.mos")));
 end DroneSimulation;

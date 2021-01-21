@@ -6,7 +6,7 @@ model SwitchCellAverN "Switching cell average n"
   Modelica.Electrical.Analog.Interfaces.Pin pin
     annotation (Placement(transformation(extent={{-130,80},{-110,100}}),
         iconTransformation(extent={{-130,80},{-110,100}})));
-  parameter Modelica.SIunits.Resistance Ron
+  parameter Modelica.Units.SI.Resistance Ron
     "Forward state-on differential resistance (closed resistance)";
   Modelica.Electrical.Analog.Interfaces.NegativePin pin_n
     annotation (Placement(transformation(extent={{-130,-80},{-110,-60}}),

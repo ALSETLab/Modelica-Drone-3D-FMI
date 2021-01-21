@@ -4,8 +4,7 @@ model circlePath
     startTime=10,
     amplitude=2,
     offset=-2,
-    freqHz=0.2)
-    annotation (Placement(transformation(extent={{-44,42},{-24,62}})));
+    f=0.2) annotation (Placement(transformation(extent={{-44,42},{-24,62}})));
   Modelica.Blocks.Sources.Ramp ramp4(
     height=1,
     duration=0,
@@ -26,8 +25,7 @@ model circlePath
     startTime=10,
     offset=0.25,
     amplitude=2,
-    freqHz=0.2)
-    annotation (Placement(transformation(extent={{-12,68},{8,88}})));
+    f=0.2) annotation (Placement(transformation(extent={{-12,68},{8,88}})));
   Modelica.Blocks.Interfaces.RealOutput y
     annotation (Placement(transformation(extent={{100,30},{120,50}})));
   Modelica.Blocks.Interfaces.RealOutput y1

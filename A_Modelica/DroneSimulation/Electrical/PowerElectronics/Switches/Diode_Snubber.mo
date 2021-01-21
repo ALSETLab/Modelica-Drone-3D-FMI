@@ -1,32 +1,32 @@
 within DroneSimulation.Electrical.PowerElectronics.Switches;
 model Diode_Snubber
-  parameter Modelica.SIunits.Resistance Rcond=1e-5
+  parameter Modelica.Units.SI.Resistance Rcond=1e-5
     "Forward state-on differential resistance (closed resistance)";
-  parameter Modelica.SIunits.Voltage Vt=0 "Forward threshold voltage";
-  parameter Modelica.SIunits.Conductance Gof=1e-5
+  parameter Modelica.Units.SI.Voltage Vt=0 "Forward threshold voltage";
+  parameter Modelica.Units.SI.Conductance Gof=1e-5
     "Backward state-off conductance (opened conductance)";
-  parameter Modelica.SIunits.Resistance R1=1e-3 "Snubber Resistance";
-  parameter Modelica.SIunits.Capacitance C1=1e-6 "SnubberCapacitance";
-  Modelica.Electrical.MultiPhase.Ideal.IdealDiode diode(
+  parameter Modelica.Units.SI.Resistance R1=1e-3 "Snubber Resistance";
+  parameter Modelica.Units.SI.Capacitance C1=1e-6 "SnubberCapacitance";
+  Modelica.Electrical.Polyphase.Ideal.IdealDiode diode(
     Ron={Rcond,Rcond,Rcond},
     Goff={Gof,Gof,Gof},
     Vknee={Vt,Vt,Vt}) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={0,64})));
-  Modelica.Electrical.MultiPhase.Basic.Resistor resistor(R={R1,R1,R1}) annotation (
-     Placement(transformation(
+  Modelica.Electrical.Polyphase.Basic.Resistor resistor(R={R1,R1,R1})
+    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={28,76})));
-  Modelica.Electrical.MultiPhase.Basic.Capacitor capacitor(C={C1,C1,C1})
+  Modelica.Electrical.Polyphase.Basic.Capacitor capacitor(C={C1,C1,C1})
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={28,44})));
-  Modelica.Electrical.MultiPhase.Interfaces.PositivePlug positivePlug
+  Modelica.Electrical.Polyphase.Interfaces.PositivePlug positivePlug
     annotation (Placement(transformation(extent={{0,132},{20,152}})));
-  Modelica.Electrical.MultiPhase.Interfaces.NegativePlug negativePlug
+  Modelica.Electrical.Polyphase.Interfaces.NegativePlug negativePlug
     annotation (Placement(transformation(extent={{2,-30},{22,-10}}),
         iconTransformation(extent={{2,-30},{22,-10}})));
 equation
