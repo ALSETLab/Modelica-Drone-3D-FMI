@@ -13,14 +13,14 @@ model BrakeChopper
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={-20,16})));
-  parameter Modelica.SIunits.Resistance R "Resistance at temperature T_ref"
+  parameter Modelica.Units.SI.Resistance R "Resistance at temperature T_ref"
     annotation (Dialog(group="External Brake Resistor"));
-  parameter Modelica.SIunits.Temperature T_ref=300.15 "Reference temperature"
+  parameter Modelica.Units.SI.Temperature T_ref=300.15 "Reference temperature"
     annotation (Dialog(group="External Brake Resistor"));
-  parameter Modelica.SIunits.LinearTemperatureCoefficient alpha=0
+  parameter Modelica.Units.SI.LinearTemperatureCoefficient alpha=0
     "Temperature coefficient of resistance (R_actual = R*(1 + alpha*(T_heatPort - T_ref))"
     annotation (Dialog(group="External Brake Resistor"));
-  parameter Modelica.SIunits.Temperature T=resistor.T_ref
+  parameter Modelica.Units.SI.Temperature T=resistor.T_ref
     "Fixed device temperature if useHeatPort = false"
     annotation (Dialog(group="External Brake Resistor"));
   Modelica.Electrical.Analog.Basic.Capacitor capacitor(C=C) annotation (
@@ -28,7 +28,7 @@ model BrakeChopper
         extent={{-10,-10},{10,10}},
         rotation=270,
         origin={40,0})));
-  parameter Modelica.SIunits.Capacitance C "Capacitance"
+  parameter Modelica.Units.SI.Capacitance C "Capacitance"
     annotation (Dialog(group="Bus Capacitor"));
   Modelica.Electrical.Analog.Ideal.IdealOpeningSwitch switch annotation (
       Placement(transformation(
@@ -39,7 +39,7 @@ model BrakeChopper
     annotation (Placement(transformation(extent={{-26,-60},{-6,-40}})));
   Modelica.Blocks.Sources.BooleanPulse booleanPulse(period=period)
     annotation (Placement(transformation(extent={{-78,-32},{-58,-12}})));
-  parameter Modelica.SIunits.Time period "Switching period"
+  parameter Modelica.Units.SI.Time period "Switching period"
     annotation (Dialog(group="Device Switching"));
   Modelica.Electrical.Analog.Interfaces.PositivePin p_in
     "Positive electrical pin" annotation (Placement(transformation(extent={{-94,

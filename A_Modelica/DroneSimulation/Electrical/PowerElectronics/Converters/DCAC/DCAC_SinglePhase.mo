@@ -1,17 +1,17 @@
 within DroneSimulation.Electrical.PowerElectronics.Converters.DCAC;
 model DCAC_SinglePhase "Single phase DC to AC converter"
   extends Modelica.Blocks.Icons.Block;
-  parameter Modelica.SIunits.Resistance RonTransistor=1e-05
+  parameter Modelica.Units.SI.Resistance RonTransistor=1e-05
     "Transistor closed resistance";
-  parameter Modelica.SIunits.Conductance GoffTransistor=1e-05
+  parameter Modelica.Units.SI.Conductance GoffTransistor=1e-05
     "Transistor opened conductance";
-  parameter Modelica.SIunits.Voltage VkneeTransistor=0
+  parameter Modelica.Units.SI.Voltage VkneeTransistor=0
     "Transistor threshold voltage";
-  parameter Modelica.SIunits.Resistance RonDiode=1e-05
+  parameter Modelica.Units.SI.Resistance RonDiode=1e-05
     "Diode closed resistance";
-  parameter Modelica.SIunits.Conductance GoffDiode=1e-05
+  parameter Modelica.Units.SI.Conductance GoffDiode=1e-05
     "Diode opened conductance";
-  parameter Modelica.SIunits.Voltage VkneeDiode=0 "Diode threshold voltage";
+  parameter Modelica.Units.SI.Voltage VkneeDiode=0 "Diode threshold voltage";
   // parameter Boolean useEnable "Enables enable signal connector";
   extends Modelica.Electrical.PowerConverters.Interfaces.DCAC.DCtwoPin;
   extends Modelica.Electrical.PowerConverters.Interfaces.DCAC.ACpin;

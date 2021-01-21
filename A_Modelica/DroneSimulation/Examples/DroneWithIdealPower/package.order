@@ -1,9 +1,7 @@
-DroneTest_FMU
-DroneTest_FMU_DCmotor
-DroneTest_FMU_Continuous
-DroneTest_FMU_Synchronous
-DroneTest_FMU_Synchronous_chassis
-DroneTest
-controlModuleTest_Synchronous
-DroneTest_FMU_VISUALIZATON
+TestSystem
+Drone_IdealMachine
+Drone_IdealMachine_ContinuousPID
+Drone_IdealMachine_SynchronousPID
+Drone_DCPM_Chassis
+Drone_Visualization
 DroneForVR

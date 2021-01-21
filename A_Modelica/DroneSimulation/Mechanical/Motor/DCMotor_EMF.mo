@@ -1,10 +1,9 @@
 within DroneSimulation.Mechanical.Motor;
 model DCMotor_EMF
-  Modelica.Mechanics.MultiBody.Forces.WorldForce force(
-    color={244,0,4},
-    resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b,
-    N_to_m=10)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+  Modelica.Mechanics.MultiBody.Forces.WorldForce force(color={244,0,4},
+      resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=0,
         origin={36,0})));
 

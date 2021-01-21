@@ -7,9 +7,9 @@ model Diode_NoEvent
   parameter Real Vknee(final min=0) = 0.7;
   Real va,vb,vc,ia,ib,ic, LossPower;
   Boolean offa,offb,offc;
-  Modelica.Electrical.MultiPhase.Interfaces.PositivePlug p_p
+  Modelica.Electrical.Polyphase.Interfaces.PositivePlug p_p
     annotation (Placement(transformation(extent={{-114,-10},{-94,10}})));
-  Modelica.Electrical.MultiPhase.Interfaces.NegativePlug p_n
+  Modelica.Electrical.Polyphase.Interfaces.NegativePlug p_n
     annotation (Placement(transformation(extent={{94,-10},{114,10}})));
 protected
     Real sa(start=0, final unit="1");

@@ -3,9 +3,9 @@ model DCMotor_DCSE "DC motor using DC machine from MSL"
   Modelica.Mechanics.MultiBody.Forces.WorldForce force(
     animation=false,
     color={244,0,4},
-    resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b,
-    N_to_m=10)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=0,
         origin={36,0})));
 
@@ -57,14 +57,14 @@ model DCMotor_DCSE "DC motor using DC machine from MSL"
         origin={-83,-3},
         extent={{-5,-5},{5,5}},
         rotation=0)));
-  parameter Modelica.SIunits.Voltage VaNominal=5
+  parameter Modelica.Units.SI.Voltage VaNominal=5
     "Nominal armature voltage for motor";
-  parameter Modelica.SIunits.Current IaNominal=0.1
+  parameter Modelica.Units.SI.Current IaNominal=0.1
     "Nominal armature current (>0..Motor, <0..Generator) for motor";
-  parameter Modelica.SIunits.Voltage V
-    "Battery voltage";
+  parameter Modelica.Units.SI.Voltage V "Battery voltage";
 
-  parameter Modelica.SIunits.Resistance R=100 "Resistance at temperature T_ref";
+  parameter Modelica.Units.SI.Resistance R=100
+    "Resistance at temperature T_ref";
   Modelica.Electrical.Analog.Sources.SignalVoltage signalVoltage
     annotation (Placement(transformation(extent={{-50,-6},{-70,14}})));
   Modelica.Electrical.Analog.Sources.ConstantVoltage constantVoltage(V=5)

@@ -1,8 +1,8 @@
 within DroneSimulation.Blocks.Routing;
 model multiphtoabc
-  Modelica.Electrical.MultiPhase.Interfaces.PositivePlug m
-    annotation (Placement(transformation(extent={{-114,-10},{-94,10}}),
-        iconTransformation(extent={{-114,-10},{-94,10}})));
+  Modelica.Electrical.Polyphase.Interfaces.PositivePlug m annotation (Placement(
+        transformation(extent={{-114,-10},{-94,10}}), iconTransformation(extent
+          ={{-114,-10},{-94,10}})));
   Modelica.Electrical.Analog.Interfaces.PositivePin a
     annotation (Placement(transformation(extent={{94,86},{114,106}})));
   Modelica.Electrical.Analog.Interfaces.PositivePin b

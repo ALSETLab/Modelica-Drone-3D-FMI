@@ -12,18 +12,19 @@ model Propeller_Averaged_Power
   Modelica.Blocks.Interfaces.RealInput position
     annotation (Placement(transformation(extent={{-140,-40},{-100,0}})));
 
-  parameter Modelica.SIunits.Voltage VaNominal=5
+  parameter Modelica.Units.SI.Voltage VaNominal=5
     "Nominal armature voltage for motor"
     annotation (Dialog(group="Motor Parameters"));
-  parameter Modelica.SIunits.Current IaNominal=0.1
+  parameter Modelica.Units.SI.Current IaNominal=0.1
     "Nominal armature current (>0..Motor, <0..Generator) for motor"
     annotation (Dialog(group="Motor Parameters"));
 
   Motor.DCMotor_Averaged_Machine dCMotor_DCMachine_SeriesExcited(
     k=PropellerGain,
     V=V) annotation (Placement(transformation(extent={{-68,-20},{-24,20}})));
-  parameter Modelica.SIunits.Voltage V "Battery voltage";
-  parameter Modelica.SIunits.Resistance R=100 "Resistance at temperature T_ref";
+  parameter Modelica.Units.SI.Voltage V "Battery voltage";
+  parameter Modelica.Units.SI.Resistance R=100
+    "Resistance at temperature T_ref";
   parameter Boolean animation=true "= true, if animation shall be enabled";
 equation
   connect(rotor1.Airframe, Airframe) annotation (Line(

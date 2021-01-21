@@ -61,8 +61,8 @@ model droneChassis_NoAnimation
     annotation (Placement(transformation(extent={{-16,-16},{16,16}},
         rotation=90,
         origin={0,-100})));
-  parameter Modelica.SIunits.Length length=0.25 "Length of cylinder";
-  parameter Modelica.SIunits.Mass m=1 "Mass of rigid body";
+  parameter Modelica.Units.SI.Length length=0.25 "Length of cylinder";
+  parameter Modelica.Units.SI.Mass m=1 "Mass of rigid body";
 equation
   connect(bodyShape.frame_b, bodyCylinder.frame_a) annotation (Line(
       points={{-2,46},{16,46},{16,0},{32,0}},

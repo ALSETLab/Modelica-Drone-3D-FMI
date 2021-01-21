@@ -16,8 +16,9 @@ model Propeller_DCMachine_Power_ElectricPower
 
   Motor.DCMotor_Averaged_Machine dCMotor_DCMachine2_1(k=PropellerGain, V=V)
     annotation (Placement(transformation(extent={{-68,-20},{-24,20}})));
-  parameter Modelica.SIunits.Voltage V "Battery voltage";
-  parameter Modelica.SIunits.Resistance R=100 "Resistance at temperature T_ref";
+  parameter Modelica.Units.SI.Voltage V "Battery voltage";
+  parameter Modelica.Units.SI.Resistance R=100
+    "Resistance at temperature T_ref";
   parameter Boolean animation=true "= true, if animation shall be enabled";
 equation
   connect(rotor1.Airframe, Airframe) annotation (Line(

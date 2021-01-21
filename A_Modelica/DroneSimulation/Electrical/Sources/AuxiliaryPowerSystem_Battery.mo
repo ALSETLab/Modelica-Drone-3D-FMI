@@ -21,7 +21,7 @@ model AuxiliaryPowerSystem_Battery "Auxiliary power system for drone"
                                                        "AC output" annotation (
       Placement(transformation(extent={{-50,90},{-30,110}}),iconTransformation(
           extent={{-50,90},{-30,110}})));
-  parameter Modelica.SIunits.Voltage V=1000 "Fuel cell voltage";
+  parameter Modelica.Units.SI.Voltage V=1000 "Fuel cell voltage";
   Modelica.Electrical.Analog.Interfaces.NegativePin dc_n1 "Negative DC output"
     annotation (Placement(transformation(extent={{30,90},{50,110}})));
   parameter Real V_min=0

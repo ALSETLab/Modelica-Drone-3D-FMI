@@ -20,13 +20,12 @@ package Electrical
           origin={66,-10})));
     Modelica.Mechanics.MultiBody.Joints.Revolute revolute
       annotation (Placement(transformation(extent={{4,-10},{24,10}})));
-    Modelica.Mechanics.MultiBody.Forces.WorldForce force(
-      color={244,0,4},
-      resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b,
-      N_to_m=10)
-      annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-          rotation=90,
-          origin={-14,-10})));
+  Modelica.Mechanics.MultiBody.Forces.WorldForce force(color={244,0,4},
+      resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
+        rotation=90,
+        origin={-14,-10})));
 
     Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a
       annotation (Placement(transformation(extent={{84,-16},{116,16}})));

@@ -1,8 +1,7 @@
 within DroneSimulation.Examples.Visualization;
 model ModuleTest_SimVis
  import Visualization;
-  Examples.DroneWithIdealPower.DroneTest_FMU_Synchronous_chassis
-    controlModuleTest_fmu_inputs1
+  DroneWithIdealPower.Drone_DCPM_Chassis controlModuleTest_fmu_inputs1
     annotation (Placement(transformation(extent={{14,-10},{34,10}})));
 
   inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,-1,0})

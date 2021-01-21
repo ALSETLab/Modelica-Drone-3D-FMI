@@ -35,7 +35,7 @@ model PowerControl
   Modelica.Electrical.Analog.Interfaces.NegativePin n1
     annotation (Placement(transformation(extent={{90,-70},{110,-50}}),
         iconTransformation(extent={{90,-70},{110,-50}})));
-  parameter Modelica.SIunits.Resistance R=R "Resistance at temperature T_ref";
+  parameter Modelica.Units.SI.Resistance R=R "Resistance at temperature T_ref";
   Real power;
   Modelica.Blocks.Sources.RealExpression realExpression(y=3)
     annotation (Placement(transformation(extent={{-72,-46},{-52,-26}})));

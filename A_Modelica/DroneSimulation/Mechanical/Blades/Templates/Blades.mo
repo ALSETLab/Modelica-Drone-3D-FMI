@@ -25,8 +25,8 @@ partial model Blades
     "Input from motor connecting the propeller blades to the motor"
     annotation (Placement(transformation(extent={{-120,-16},{-88,16}}),
         iconTransformation(extent={{-120,-16},{-88,16}})));
-  parameter Modelica.SIunits.Mass m=0.01 "Mass of rigid body";
-  parameter Modelica.SIunits.Position r[3]={0.154,0,0}
+  parameter Modelica.Units.SI.Mass m=0.01 "Mass of rigid body";
+  parameter Modelica.Units.SI.Position r[3]={0.154,0,0}
     "Vector from frame_a to frame_b resolved in frame_a";
 equation
   connect(bodyShape4.frame_a, Input) annotation (Line(

@@ -5,7 +5,7 @@ model ModuleTest_NoInput
     duration=4,
     startTime=0)
     annotation (Placement(transformation(extent={{-66,18},{-46,38}})));
-  Examples.DroneWithIdealPower.DroneTest_FMU_Synchronous
+  DroneWithIdealPower.Drone_IdealMachine_SynchronousPID
     controlModuleTest_fmu_inputs1
     annotation (Placement(transformation(extent={{-18,-16},{32,34}})));
   Modelica.Blocks.Sources.Constant const1(k=0)

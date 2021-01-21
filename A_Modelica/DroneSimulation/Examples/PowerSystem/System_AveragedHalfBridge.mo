@@ -35,7 +35,7 @@ model System_AveragedHalfBridge
         origin={-17,-61})));
   Modelica.Blocks.Sources.Sine sine(
     amplitude=1000,
-    freqHz=60,
+    f=60,
     phase=0,
     startTime=0.07)
     annotation (Placement(transformation(extent={{-56,-38},{-40,-22}})));

@@ -4,13 +4,14 @@ model RotorLiftForce "Generator for periodic impulses."
   Modelica.Blocks.Sources.Pulse pulse(period = 2 * 3.1415927 / angularVelocity, width = duty, amplitude = magnitude, startTime = phase / angularVelocity + liftStart, offset = magnitudeOffset, nperiod = 8) annotation(Placement(visible = true, transformation(origin = {-70, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Blocks.Sources.Constant const1(k = 0) annotation(Placement(visible = true, transformation(origin = {-70, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
   Modelica.Mechanics.MultiBody.Forces.WorldForce force(resolveInFrame = Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b, color = {0, 0, 200}) annotation(Placement(visible = true, transformation(origin = {10, 0}, extent = {{-10, -10}, {10, 10}}, rotation = -360)));
-  parameter Modelica.SIunits.AngularVelocity angularVelocity "Velocity of the rotor blade.";
-  parameter Modelica.SIunits.Angle phase "Phase ofset of the rotor blade.";
-  parameter Modelica.SIunits.Period duty "Force duty.";
-  parameter Modelica.SIunits.Force magnitude "Force magnitude.";
+  parameter Modelica.Units.SI.AngularVelocity angularVelocity
+    "Velocity of the rotor blade.";
+  parameter Modelica.Units.SI.Angle phase "Phase ofset of the rotor blade.";
+  parameter Modelica.Units.SI.Period duty "Force duty.";
+  parameter Modelica.Units.SI.Force magnitude "Force magnitude.";
   Modelica.Mechanics.MultiBody.Interfaces.Frame_b frame_b annotation(Placement(visible = true, transformation(origin = {60, 0}, extent = {{-16, -16}, {16, 16}}, rotation = 0), iconTransformation(origin = {100, 0}, extent = {{-16, -16}, {16, 16}}, rotation = 0)));
-  parameter Modelica.SIunits.Force magnitudeOffset "Force ofset.";
-  parameter Modelica.SIunits.Force liftStart "Start force";
+  parameter Modelica.Units.SI.Force magnitudeOffset "Force ofset.";
+  parameter Modelica.Units.SI.Force liftStart "Start force";
 equation
   connect(force.frame_b, frame_b) annotation(Line(visible = true, origin = {40, 0}, points = {{-20, 0}, {20, 0}}, color = {95, 95, 95}));
   connect(const1.y, force.force[3]) annotation(Line(visible = true, origin = {-32.75, -25}, points={{-26.25,

@@ -4,8 +4,8 @@ package Control
       parameter Real ki=10 "I gain";
       parameter Real kd=5 "D gain";
       parameter Real kp=15 "P gain";
-      parameter Modelica.SIunits.Time samplePeriod=0.01
-        "Sample period of component";
+  parameter Modelica.Units.SI.Time samplePeriod=0.01
+    "Sample period of component";
       Modelica.Blocks.Interfaces.RealInput u
         annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
       Modelica.Blocks.Interfaces.RealOutput y
@@ -19,28 +19,26 @@ package Control
             rotation=90,
             origin={0,-100})));
 
-      Modelica_Synchronous.RealSignals.Periodic.TransferFunction
-        transferFunction1(
-        b={(kp + ki*samplePeriod/2 + kd/samplePeriod),(-kp + ki*
-            samplePeriod/2 - 2*kd/samplePeriod),kd/samplePeriod},
-        a={1,-1,0},
-        x(fixed=true))
-        annotation (Placement(transformation(extent={{-14,-10},{6,10}})));
-    Modelica_Synchronous.ClockSignals.Clocks.PeriodicRealClock
-                             periodicClock(period=period)
-      annotation (Placement(transformation(extent={{-98,-36},{-86,-24}})));
-      Modelica_Synchronous.RealSignals.Sampler.SampleClocked
-                                                          sample2
-        annotation (Placement(transformation(extent={{-62,-6},{-50,6}})));
-      Modelica_Synchronous.RealSignals.Sampler.Hold         hold1
-        annotation (Placement(transformation(extent={{66,-6},{78,6}})));
-      Modelica_Synchronous.RealSignals.Sampler.SampleClocked
-                                                          sample1
-        annotation (Placement(transformation(extent={{-6,6},{6,-6}},
-            rotation=90,
-            origin={-32,-42})));
-      parameter Modelica.SIunits.Time period=0.01
-        "Period of clock (defined as Real number)";
+  Modelica.Clocked.RealSignals.Periodic.TransferFunction transferFunction1(
+    b={(kp + ki*samplePeriod/2 + kd/samplePeriod),(-kp + ki*samplePeriod/2 - 2*
+        kd/samplePeriod),kd/samplePeriod},
+    a={1,-1,0},
+    x(fixed=true))
+    annotation (Placement(transformation(extent={{-14,-10},{6,10}})));
+  Modelica.Clocked.ClockSignals.Clocks.PeriodicRealClock periodicClock(period=
+        period)
+    annotation (Placement(transformation(extent={{-98,-36},{-86,-24}})));
+  Modelica.Clocked.RealSignals.Sampler.SampleClocked sample2
+    annotation (Placement(transformation(extent={{-62,-6},{-50,6}})));
+  Modelica.Clocked.RealSignals.Sampler.Hold hold1
+    annotation (Placement(transformation(extent={{66,-6},{78,6}})));
+  Modelica.Clocked.RealSignals.Sampler.SampleClocked sample1 annotation (
+      Placement(transformation(
+        extent={{-6,6},{6,-6}},
+        rotation=90,
+        origin={-32,-42})));
+  parameter Modelica.Units.SI.Time period=0.01
+    "Period of clock (defined as Real number)";
   equation
 
       connect(hold1.u, transferFunction1.y)

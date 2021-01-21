@@ -3,9 +3,9 @@ model DCMotor
   Modelica.Mechanics.MultiBody.Forces.WorldForce force(
     animation=false,
     color={244,0,4},
-    resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b,
-    N_to_m=10)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
+    resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
+    annotation (Placement(transformation(
+        extent={{-10,-10},{10,10}},
         rotation=0,
         origin={36,0})));
 

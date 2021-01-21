@@ -1,6 +1,6 @@
 within DroneSimulation.Electrical;
 model controlModule
-  parameter Modelica.SIunits.Time samplePeriod=0.01;
+  parameter Modelica.Units.SI.Time samplePeriod=0.01;
   Modelica.Blocks.Interfaces.RealOutput y annotation (Placement(transformation(
           extent={{140,10},{160,30}}), iconTransformation(extent={{140,10},{160,
             30}})));

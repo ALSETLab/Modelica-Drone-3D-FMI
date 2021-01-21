@@ -11,7 +11,7 @@ package Joystick
     Modelica.Blocks.Math.Gain gain1(k=-2)
       annotation (Placement(transformation(extent={{-28,-4},{-20,4}})));
    Modelica.Blocks.Interfaces.RealInput JoyStickInput annotation (
-       Placement(transformation(extent={{-54,-10},{-34,10}})));
+       Placement(transformation(extent={{-60,-10},{-40,10}})));
    Modelica.Blocks.Continuous.FirstOrder firstOrder(T=0.3)
      annotation (Placement(transformation(extent={{22,-6},{34,6}})));
   equation
@@ -20,7 +20,7 @@ package Joystick
    connect(integrator.u, gain1.y)
      annotation (Line(points={{-15.2,0},{-19.6,0}}, color={0,0,127}));
    connect(JoyStickInput, gain1.u)
-     annotation (Line(points={{-44,0},{-28.8,0}}, color={0,0,127}));
+     annotation (Line(points={{-50,0},{-28.8,0}}, color={0,0,127}));
    connect(gain.y, firstOrder.u)
      annotation (Line(points={{14.4,0},{20.8,0}}, color={0,0,127}));
    connect(Output, firstOrder.y)
@@ -61,11 +61,13 @@ package Joystick
     connect(JoyStick_Z.Output, Z)
       annotation (Line(points={{32.5,-40},{70,-40}}, color={0,0,127}));
     connect(joystickInput.axes[1], JoyStick_X.JoyStickInput) annotation (Line(
-          points={{-9,5.16667},{0,5.16667},{0,40},{9,40}}, color={0,0,127}));
+          points={{-9,5.16667},{0,5.16667},{0,40},{7.5,40}},
+                                                           color={0,0,127}));
     connect(joystickInput.axes[2], JoyStick_Y.JoyStickInput)
-      annotation (Line(points={{-9,5.5},{0,5.5},{0,0},{9,0}}, color={0,0,127}));
+      annotation (Line(points={{-9,5.5},{0,5.5},{0,0},{7.5,0}},
+                                                              color={0,0,127}));
    connect(joystickInput.axes[3], JoyStick_Z.JoyStickInput)
-     annotation (Line(points={{-9,5.83333},{0,5.83333},{0,-40},{9,-40}},
+     annotation (Line(points={{-9,5.83333},{0,5.83333},{0,-40},{7.5,-40}},
          color={0,0,127}));
    annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-60,
              -60},{60,60}}), graphics={    Bitmap(extent={{-74,-58},{76,60}},
@@ -112,7 +114,8 @@ package Joystick
     parameter Real ZGain=1 "Gain value multiplied with input signal";
   equation
     connect(joystickInput.axes[3],JoyStick_Z.JoyStickInput)  annotation (Line(
-          points={{-9,5.83333},{-2,5.83333},{-2,-40},{9,-40}}, color={0,0,127}));
+          points={{-9,5.83333},{-2,5.83333},{-2,-40},{7.5,-40}},
+                                                               color={0,0,127}));
     connect(JoyStick_X.Output, X)
       annotation (Line(points={{32.5,40},{70,40}}, color={0,0,127}));
     connect(JoyStick_Y.Output, Y)
@@ -120,10 +123,11 @@ package Joystick
     connect(JoyStick_Z.Output, Z)
       annotation (Line(points={{32.5,-40},{70,-40}}, color={0,0,127}));
    connect(joystickInput.axes[1], JoyStick_X.JoyStickInput)
-     annotation (Line(points={{-9,5.16667},{0,5.16667},{0,40},{9,40}},
+     annotation (Line(points={{-9,5.16667},{0,5.16667},{0,40},{7.5,40}},
          color={0,0,127}));
    connect(joystickInput.axes[2], JoyStick_Y.JoyStickInput)
-     annotation (Line(points={{-9,5.5},{0,5.5},{0,0},{9,0}}, color={0,
+     annotation (Line(points={{-9,5.5},{0,5.5},{0,0},{7.5,0}},
+                                                             color={0,
            0,127}));
    annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-60,
              -60},{60,60}}), graphics={    Bitmap(extent={{-74,-58},{

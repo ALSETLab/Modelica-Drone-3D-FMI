@@ -4,7 +4,7 @@ model ModuleTest_Dymola
                                                    inputDevice
    constrainedby Interfaces.InputDevice_Dymola
    annotation (Placement(transformation(extent={{-28,-10},{-8,10}})));
-  Examples.DroneWithIdealPower.DroneTest_FMU_Synchronous
+  DroneWithIdealPower.Drone_IdealMachine_SynchronousPID
     controlModuleTest_fmu_inputs1
     annotation (Placement(transformation(extent={{12,-10},{32,10}})));
 equation

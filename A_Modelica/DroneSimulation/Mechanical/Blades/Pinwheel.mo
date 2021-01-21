@@ -1,7 +1,7 @@
 within DroneSimulation.Mechanical.Blades;
 model Pinwheel
 
-parameter Modelica.SIunits.Inertia J=10 "Moment of inertia";
+  parameter Modelica.Units.SI.Inertia J=10 "Moment of inertia";
   Modelica.Mechanics.MultiBody.Visualizers.PipeWithScalarField
     pipeWithScalarField(
     animation=false,

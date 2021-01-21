@@ -1,6 +1,6 @@
 within DroneSimulation.Electrical;
 model controlModule_SynchronousPower
-  parameter Modelica.SIunits.Time samplePeriod=0.01;
+  parameter Modelica.Units.SI.Time samplePeriod=0.01;
   Modelica.Blocks.Interfaces.RealOutput y1 annotation (Placement(transformation(
           extent={{140,10},{160,30}}), iconTransformation(extent={{140,10},{160,
             30}})));
@@ -172,8 +172,9 @@ model controlModule_SynchronousPower
     annotation (Placement(transformation(extent={{-110,-70},{-90,-50}})));
   Modelica.Electrical.Analog.Basic.Ground ground
     annotation (Placement(transformation(extent={{-110,-120},{-90,-100}})));
-  parameter Modelica.SIunits.Resistance R=R "Internal resistance of controller";
-  parameter Modelica.SIunits.Voltage V = V "Voltage of the controller";
+  parameter Modelica.Units.SI.Resistance R=R
+    "Internal resistance of controller";
+  parameter Modelica.Units.SI.Voltage V=V "Voltage of the controller";
 equation
 
 
