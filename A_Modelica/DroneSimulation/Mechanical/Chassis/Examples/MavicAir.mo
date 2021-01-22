@@ -1,5 +1,5 @@
 within DroneSimulation.Mechanical.Chassis.Examples;
-partial model MavicAir
+model MavicAir
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape(
     r={0,0.101,0},
     r_CM={0,0.175,0},

@@ -48,27 +48,27 @@ equation
   gPS.y[2] = ygps;
   gPS.y[3] = zgps;
   connect(mavicAir_propeller.position, controlModule_Synchronous.y1)
-    annotation (Line(points={{7.8,15.2},{-2,15.2},{-2,6},{-9.16667,6}}, color={
+    annotation (Line(points={{7.8,15.2},{-2,15.2},{-2,6},{-9.09091,6}}, color={
           0,0,127}));
   connect(controlModule_Synchronous.position, realExtendMultiple.y)
-    annotation (Line(points={{-31.6667,0},{-53,0}}, color={0,0,127}));
+    annotation (Line(points={{-31.8182,0},{-53,0}}, color={0,0,127}));
   connect(gPS.y, controlModule_Synchronous.GPS) annotation (Line(points={{9,-50},
-          {-26.6667,-50},{-26.6667,-12}}, color={0,0,127}));
+          {-26.3636,-50},{-26.3636,-12}}, color={0,0,127}));
   connect(accelerometer.y, controlModule_Synchronous.Gyero) annotation (Line(
-        points={{9,-70},{-21.6667,-70},{-21.6667,-12}}, color={0,0,127}));
+        points={{9,-70},{-20.9091,-70},{-20.9091,-12}}, color={0,0,127}));
   connect(controlModule_Synchronous.Height, const1.y) annotation (Line(points={{
           -16.6667,-12},{-16.6667,-36},{-10.6,-36}},  color={0,0,127}));
   connect(mavicAir_propeller1.position, controlModule_Synchronous.y)
-    annotation (Line(points={{7.8,5.2},{-0.1,5.2},{-0.1,2},{-9.16667,2}}, color=
+    annotation (Line(points={{7.8,5.2},{-0.1,5.2},{-0.1,2},{-9.09091,2}}, color=
          {0,0,127}));
   connect(mavicAir_propeller2.position, controlModule_Synchronous.y2)
-    annotation (Line(points={{7.8,-4.8},{-9.16667,-4.8},{-9.16667,-2}}, color={
+    annotation (Line(points={{7.8,-4.8},{-9.09091,-4.8},{-9.09091,-2}}, color={
           0,0,127}));
   connect(mavicAir_propeller3.position, controlModule_Synchronous.y3)
-    annotation (Line(points={{7.8,-14.8},{-9.16667,-14.8},{-9.16667,-6}}, color=
+    annotation (Line(points={{7.8,-14.8},{-9.09091,-14.8},{-9.09091,-6}}, color=
          {0,0,127}));
   connect(controlModule_Synchronous.yaw, const.y)
-    annotation (Line(points={{-31.6667,8},{-39.6,8}}, color={0,0,127}));
+    annotation (Line(points={{-31.8182,8},{-39.6,8}}, color={0,0,127}));
    connect(realExtendMultiple.u, xcoord) annotation (Line(points={{-74,6},{-88,
            6},{-88,80},{-120,80}}, color={0,0,127}));
    connect(realExtendMultiple.u1, ycoord)

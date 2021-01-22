@@ -20,7 +20,7 @@ model TestSystem
     annotation (Placement(transformation(extent={{-48,-20},{-38,-10}})));
    inner Modelica.Blocks.Noise.GlobalSeed globalSeed
      annotation (Placement(transformation(extent={{-14,-76},{-4,-66}})));
-  DC_DCPM_Battery_1kg drone(V=12.1, animation=true)
+  Drone_DCPM_Battery  drone(V=12.1, animation=true)
     annotation (Placement(transformation(extent={{-2,-38},{90,48}})));
   Modelica.Blocks.Sources.Ramp ramp2(
     duration=5,

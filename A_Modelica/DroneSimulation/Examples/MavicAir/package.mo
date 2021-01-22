@@ -48,26 +48,26 @@ package MavicAir
       annotation (Placement(transformation(extent={{40,-98},{20,-78}})));
   equation
      connect(propeller_1_1.position, controlModuleSpeed.y1) annotation (Line(
-           points={{5.8,36},{-2,36},{-2,24},{-9.16667,24}},
+           points={{5.8,36},{-2,36},{-2,24},{-9.09091,24}},
                                                       color={0,0,127}));
      connect(propeller_1_2.position, controlModuleSpeed.y) annotation (Line(
-           points={{5.8,24},{-2,24},{-2,20},{-9.16667,20}},
+           points={{5.8,24},{-2,24},{-2,20},{-9.09091,20}},
                                                     color={0,0,127}));
      connect(propeller_1_3.position, controlModuleSpeed.y2) annotation (Line(
-           points={{5.8,10},{0,10},{0,16},{-9.16667,16}},
+           points={{5.8,10},{0,10},{0,16},{-9.09091,16}},
                                                   color={0,0,127}));
      connect(propeller_1_4.position, controlModuleSpeed.y3) annotation (Line(
-           points={{5.8,-4},{-2,-4},{-2,12},{-9.16667,12}},
+           points={{5.8,-4},{-2,-4},{-2,12},{-9.09091,12}},
                                                         color={0,0,127}));
      connect(controlModuleSpeed.position, realExtendMultiple.y)
-       annotation (Line(points={{-31.6667,18},{-37,18}},
+       annotation (Line(points={{-31.8182,18},{-37,18}},
                                                     color={0,0,127}));
      connect(gPS.frame_a, droneChassis_1_1.frame_a3) annotation (Line(
          points={{28,-40},{36,-40},{36,10},{42,10}},
          color={95,95,95},
          thickness=0.5));
      connect(gPS.y, controlModuleSpeed.GPS) annotation (Line(points={{7,-40},{
-          -26.6667,-40},{-26.6667,6}},
+          -26.3636,-40},{-26.3636,6}},
                                  color={0,0,127}));
      connect(accelerometer.frame_a, droneChassis_1_1.frame_a3) annotation (
          Line(
@@ -75,12 +75,12 @@ package MavicAir
          color={95,95,95},
          thickness=0.5));
      connect(accelerometer.y, controlModuleSpeed.Gyero) annotation (Line(
-           points={{7,-66},{-21.6667,-66},{-21.6667,6}},
+           points={{7,-66},{-20.9091,-66},{-20.9091,6}},
                                                color={0,0,127}));
     connect(ramp.y, firstOrder1.u)
       annotation (Line(points={{-80,-39},{-80,-32}},   color={0,0,127}));
      connect(controlModuleSpeed.yaw, const.y) annotation (Line(points={{
-          -31.6667,26},{-36,26},{-36,46},{-71,46}},
+          -31.8182,26},{-36,26},{-36,46},{-71,46}},
                                               color={0,0,127}));
     connect(firstOrder1.y, realExtendMultiple.u2) annotation (Line(points={{
             -80,-9},{-80,2},{-64,2},{-64,12},{-58,12}}, color={0,0,127}));
