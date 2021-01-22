@@ -67,13 +67,6 @@ model Drone_DCPM_Battery_Switching
   Blocks.Routing.RealExtendMultiple realExtendMultiple
     annotation (Placement(transformation(extent={{-88,-10},{-68,10}})));
 
-  Electrical.Sources.Battery battery(
-    internal_ground=false,
-    SOC_start=1,
-    ns=6)
-    annotation (Placement(transformation(extent={{18,-18},{-18,18}},
-        rotation=270,
-        origin={-82,-80})));
   Electrical.PowerElectronics.Converters.DCDC.BuckConverter
                                                          dcdc annotation (
       Placement(transformation(
@@ -84,6 +77,26 @@ model Drone_DCPM_Battery_Switching
       constantDutyCycle=0.4, f(displayUnit="kHz") = 1000)
     annotation (Placement(transformation(extent={{-54,-122},{-34,-102}})));
   parameter Boolean animation=true "= true, if animation shall be enabled";
+  Modelica.Electrical.Batteries.BatteryStacks.CellRCStack battery2(
+    Ns=3,
+    Np=1,
+    cellData=cellData2,
+    useHeatPort=false,
+    SOC(fixed=true, start=0.95)) annotation (Placement(transformation(
+        extent={{10,10},{-10,-10}},
+        rotation=0,
+        origin={-78,-74})));
+  parameter Modelica.Electrical.Batteries.ParameterRecords.TransientData.ExampleData cellData2(
+    Qnom=18000,
+    useLinearSOCDependency=false,
+    Ri=cellData2.OCVmax/1200,
+    Idis=0.1,
+    nRC=2,
+    rcData={Modelica.Electrical.Batteries.ParameterRecords.TransientData.RCData(
+        R=0.2*cellData2.Ri, C=60/(0.2*cellData2.Ri)),
+        Modelica.Electrical.Batteries.ParameterRecords.TransientData.RCData(R=
+        0.1*cellData2.Ri, C=10/(0.1*cellData2.Ri))})
+    annotation (Placement(transformation(extent={{20,62},{40,82}})));
 equation
   gPS_collision.y[1] = xgps;
   gPS_collision.y[2] = ygps;
@@ -147,15 +160,8 @@ equation
           -6},{-96,-80},{-120,-80}}, color={0,0,127}));
   connect(dcdc.fire_p, pwm.fire)
     annotation (Line(points={{-50,-92},{-50,-101}}, color={255,0,255}));
-  connect(dcdc.dc_p1, battery.pin_p)
-    annotation (Line(points={{-54,-74},{-67,-74}}, color={0,0,255}));
-  connect(dcdc.dc_n1, battery.pin_n)
-    annotation (Line(points={{-54,-86},{-67,-86}}, color={0,0,255}));
   connect(dcdc.dc_n2, ground.p)
     annotation (Line(points={{-34,-86},{-6,-86},{-6,-100}}, color={0,0,255}));
-  connect(battery.pin_p, propeller_DCMachine_Power.p1) annotation (Line(points=
-          {{-67,-74},{-58,-74},{-58,-48},{-16,-48},{-16,22},{-8.4,22}}, color={
-          0,0,255}));
   connect(dcdc.dc_p2, controlModule_Power.pin) annotation (Line(points={{-34,-74},
           {-26,-74},{-26,-68},{-62,-68},{-62,-6.6},{-58.1667,-6.6}},      color=
          {0,0,255}));
@@ -165,6 +171,13 @@ equation
   connect(propeller_DCMachine_Power1.position, controlModule_Power.y)
     annotation (Line(points={{-10,2},{-37.1667,2}}, color={0,0,127}));
 
+  connect(battery2.p, dcdc.dc_p1)
+    annotation (Line(points={{-68,-74},{-54,-74}}, color={0,0,255}));
+  connect(battery2.n, dcdc.dc_n1) annotation (Line(points={{-88,-74},{-92,-74},
+          {-92,-86},{-54,-86}}, color={0,0,255}));
+  connect(propeller_DCMachine_Power3.p1, dcdc.dc_p1) annotation (Line(points={{
+          -8.4,-18},{-16,-18},{-16,-40},{-64,-40},{-64,-74},{-54,-74}}, color={
+          0,0,255}));
  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},

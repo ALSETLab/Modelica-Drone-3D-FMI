@@ -7,14 +7,14 @@ model DC_DCPM_Battery_1kg "Drone that weighs 1kg"
   Modelica.Blocks.Interfaces.RealInput ycoord
     annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
   Modelica.Blocks.Interfaces.RealOutput xgps
-    annotation (Placement(transformation(extent={{120,70},{140,90}}),
-        iconTransformation(extent={{120,70},{140,90}})));
+    annotation (Placement(transformation(extent={{100,70},{120,90}}),
+        iconTransformation(extent={{100,70},{120,90}})));
   Modelica.Blocks.Interfaces.RealOutput ygps
-    annotation (Placement(transformation(extent={{120,-10},{140,10}}),
-        iconTransformation(extent={{120,-10},{140,10}})));
+    annotation (Placement(transformation(extent={{100,-10},{120,10}}),
+        iconTransformation(extent={{100,-10},{120,10}})));
   Modelica.Blocks.Interfaces.RealOutput zgps
-    annotation (Placement(transformation(extent={{120,-90},{140,-70}}),
-        iconTransformation(extent={{120,-90},{140,-70}})));
+    annotation (Placement(transformation(extent={{100,-90},{120,-70}}),
+        iconTransformation(extent={{100,-90},{120,-70}})));
 
   parameter Modelica.Units.SI.Voltage V "Battery voltage";
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
@@ -25,8 +25,6 @@ model DC_DCPM_Battery_1kg "Drone that weighs 1kg"
     V=V,
     animation=animation)
          annotation (Placement(transformation(extent={{-8,14},{12,24}})));
-  Modelica.Electrical.Analog.Basic.Ground ground
-    annotation (Placement(transformation(extent={{20,24},{40,44}})));
   Sensors.GPS gPS annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -68,11 +66,29 @@ model DC_DCPM_Battery_1kg "Drone that weighs 1kg"
   Blocks.Routing.RealExtendMultiple realExtendMultiple
     annotation (Placement(transformation(extent={{-88,-10},{-68,10}})));
 
-  Electrical.Sources.Battery battery(
-    internal_ground=false,
-    ns=3)
-    annotation (Placement(transformation(extent={{14,30},{-10,54}})));
   parameter Boolean animation=true "= true, if animation shall be enabled";
+  Modelica.Electrical.Analog.Basic.Ground ground
+    annotation (Placement(transformation(extent={{18,24},{38,44}})));
+  Modelica.Electrical.Batteries.BatteryStacks.CellRCStack battery2(
+    Ns=3,
+    Np=1,
+    cellData=cellData2,
+    useHeatPort=false,
+    SOC(fixed=true, start=0.95)) annotation (Placement(transformation(
+        extent={{-10,10},{10,-10}},
+        rotation=0,
+        origin={2,48})));
+  parameter Modelica.Electrical.Batteries.ParameterRecords.TransientData.ExampleData cellData2(
+    Qnom=18000,
+    useLinearSOCDependency=false,
+    Ri=cellData2.OCVmax/1200,
+    Idis=0.1,
+    nRC=2,
+    rcData={Modelica.Electrical.Batteries.ParameterRecords.TransientData.RCData(
+        R=0.2*cellData2.Ri, C=60/(0.2*cellData2.Ri)),
+        Modelica.Electrical.Batteries.ParameterRecords.TransientData.RCData(R=
+        0.1*cellData2.Ri, C=10/(0.1*cellData2.Ri))})
+    annotation (Placement(transformation(extent={{22,64},{42,84}})));
 equation
   gPS.y[1] = xgps;
   gPS.y[2] = ygps;
@@ -128,10 +144,6 @@ equation
           {-96,80},{-120,80}}, color={0,0,127}));
   connect(realExtendMultiple.u2, zcoord) annotation (Line(points={{-88,-6},{-96,
           -6},{-96,-80},{-120,-80}}, color={0,0,127}));
-  connect(battery.pin_n, ground.p) annotation (Line(points={{6,52},{6,56},{30,
-          56},{30,44}},         color={0,0,255}));
-  connect(battery.pin_p, propeller_DCMachine_Power.p1) annotation (Line(points={{-2,52},
-          {-2,56},{-16,56},{-16,22},{-8.4,22}},                  color={0,0,255}));
   connect(propeller_DCMachine_Power.position, controlModule_Synchronous2_1.y1)
     annotation (Line(points={{-10,16},{-24,16},{-24,6},{-37.0909,6}}, color={0,
           0,127}));
@@ -143,6 +155,10 @@ equation
   connect(controlModule_Synchronous2_1.y3, propeller_DCMachine_Power3.position)
     annotation (Line(points={{-37.0909,-6},{-24,-6},{-24,-24},{-10,-24}}, color=
          {0,0,127}));
+  connect(battery2.n, ground.p)
+    annotation (Line(points={{12,48},{28,48},{28,44}}, color={0,0,255}));
+  connect(battery2.p, propeller_DCMachine_Power.p1) annotation (Line(points={{
+          -8,48},{-16,48},{-16,22},{-8.4,22}}, color={0,0,255}));
 annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},
