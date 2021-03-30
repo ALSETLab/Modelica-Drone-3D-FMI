@@ -101,8 +101,6 @@ equation
       points={{28,28},{42,28},{42,4},{44,4}},
       color={95,95,95},
       thickness=0.5));
-  connect(controlModule.Height, const1.y) annotation (Line(points={{-14,-12},
-          {-12,-12},{-12,-40},{-11,-40}}, color={0,0,127}));
   connect(droneChassis1.frame_a4, frame_a) annotation (Line(
       points={{69,-12},{70,-12},{70,-100}},
       color={95,95,95},

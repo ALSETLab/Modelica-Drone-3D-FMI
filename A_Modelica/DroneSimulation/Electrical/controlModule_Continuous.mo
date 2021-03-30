@@ -1,6 +1,6 @@
 within DroneSimulation.Electrical;
 model controlModule_Continuous
-
+  parameter Modelica.Units.SI.Time samplePeriod=0.01;
   Modelica.Blocks.Interfaces.RealOutput y annotation (Placement(transformation(
           extent={{140,10},{160,30}}), iconTransformation(extent={{140,10},{160,
             30}})));
@@ -30,9 +30,10 @@ model controlModule_Continuous
         rotation=90,
         origin={0,-120})));
   Blocks.Control.continuousPID               continuousPID4(
-    Ti=z_Ti,
-    Td=z_Td,
-    kp=z_kp)
+    ki=z_ki,
+    kd=z_kd,
+    kp=z_kp,
+    samplePeriod=samplePeriod)
     annotation (Placement(transformation(extent={{-38,-40},{-18,-20}})));
   DroneSimulation.Blocks.Routing.RealExtract realExtract(index=1)
     annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
@@ -45,13 +46,15 @@ model controlModule_Continuous
     annotation (Placement(transformation(extent={{-80,-40},{-60,-20}})));
   Blocks.Control.continuousPID               continuousPID3(
     kp=y_kp,
-    Ti=y_Ti,
-    Td=y_Td)
+    kd=y_kd,
+    samplePeriod=samplePeriod,
+    ki=y_ki)
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
   Blocks.Control.continuousPID               continuousPID1(
+    kd=gyro_x_kd,
     kp=gyro_x_kp,
-    Ti=gyro_x_Ti,
-    Td=gyro_x_Td)
+    samplePeriod=samplePeriod,
+    ki=gyro_x_ki)
             annotation (Placement(transformation(extent={{46,20},{66,40}})));
   DroneSimulation.Blocks.Routing.RealExtract realExtract3(index=2)
     annotation (Placement(transformation(
@@ -63,10 +66,11 @@ model controlModule_Continuous
   parameter Real maxTilt=2 "Upper limits of input signals";
   DroneSimulation.Blocks.Routing.RealExtract realExtract5
     annotation (Placement(transformation(extent={{-44,-76},{-36,-68}})));
-  Blocks.Control.continuousPID               continuousPID(
+  Blocks.Control.continuousPID               continuousPID2(
+    kd=x_kd,
     kp=x_kp,
-    Ti=x_Ti,
-    Td=x_Td)
+    samplePeriod=samplePeriod,
+    ki=x_ki)
     annotation (Placement(transformation(extent={{-40,20},{-20,40}})));
   Modelica.Blocks.Nonlinear.Limiter limiter(uMax=0.523)
     annotation (Placement(transformation(extent={{0,20},{20,40}})));
@@ -75,9 +79,10 @@ model controlModule_Continuous
   Modelica.Blocks.Nonlinear.Limiter limiter1(uMax=0.523)
     annotation (Placement(transformation(extent={{0,-10},{20,10}})));
   Blocks.Control.continuousPID               continuousPID5(
+    kd=gyro_y_kd,
     kp=gyro_y_kp,
-    Ti=gyro_y_Ti,
-    Td=gyro_y_Td)
+    samplePeriod=samplePeriod,
+    ki=gyro_y_ki)
             annotation (Placement(transformation(extent={{32,-10},{52,10}})));
   DroneSimulation.Blocks.Routing.RealExtract realExtract7(index=1)
     annotation (Placement(transformation(
@@ -89,10 +94,11 @@ model controlModule_Continuous
         extent={{-4,-4},{4,4}},
         rotation=90,
         origin={-28,58})));
-  Blocks.Control.continuousPID               continuousPID2(
+  Blocks.Control.continuousPID               continuousPID(
+    kd=Yaw_kd,
     kp=Yaw_kp,
-    Ti=Yaw_Ti,
-    Td=Yaw_Td)
+    ki=Yaw_ki,
+    samplePeriod=samplePeriod)
     annotation (Placement(transformation(extent={{-38,70},{-18,90}})));
   Modelica.Blocks.Nonlinear.Limiter limiter2(uMax=0.1)
     annotation (Placement(transformation(extent={{-2,70},{18,90}})));
@@ -101,28 +107,28 @@ model controlModule_Continuous
         iconTransformation(extent={{-140,60},{-100,100}})));
   Modelica.Blocks.Math.Gain gain(k=-1)
     annotation (Placement(transformation(extent={{-14,-2},{-8,4}})));
-  parameter Real Yaw_Ti=0 "I time constant for yaw" annotation (Dialog(group="Yaw PID"));
-  parameter Real Yaw_Td=0.08 "D time constant for yaw" annotation (Dialog(group="Yaw PID"));
+  parameter Real Yaw_ki=0 "I gain for yaw" annotation (Dialog(group="Yaw PID"));
+  parameter Real Yaw_kd=0.08 "D gain for yaw" annotation (Dialog(group="Yaw PID"));
   parameter Real Yaw_kp=0.04 "P gain for yaw" annotation (Dialog(group="Yaw PID"));
-  parameter Real x_Ti=0.03 "I time constant for x position" annotation (Dialog(group="X position PID"));
-  parameter Real x_Td=0.1 "D time constant for x position" annotation (Dialog(group="X position PID"));
-  parameter Real x_kp=0.1 "P gain for x position" annotation (Dialog(group="X position PID"));
-  parameter Real y_Ti=0.03 "I time constant for y position" annotation (Dialog(group="Y position PID"));
-  parameter Real y_Td=0.1 "D time constant for y position" annotation (Dialog(group="Y position PID"));
+  parameter Real x_ki=0.03 "I gain for x position" annotation (Dialog(group="X position PID"));
+  parameter Real x_kd=0.1 "D gain for x position" annotation (Dialog(group="X position PID"));
+  parameter Real x_kp=0.1 "P gainfor x position" annotation (Dialog(group="X position PID"));
+  parameter Real y_ki=0.03 "I gain for y position" annotation (Dialog(group="Y position PID"));
+  parameter Real y_kd=0.1 "D gain for y position" annotation (Dialog(group="Y position PID"));
   parameter Real y_kp=0.1 "P gain for y position" annotation (Dialog(group="Y position PID"));
-  parameter Real z_Ti=1 "I time constant for z position" annotation (Dialog(group="Z position PID"));
-  parameter Real z_Td=0.8 "D time constant for z position" annotation (Dialog(group="Z position PID"));
+  parameter Real z_ki=1 "I gain for z position" annotation (Dialog(group="Z position PID"));
+  parameter Real z_kd=0.8 "D gain for z position" annotation (Dialog(group="Z position PID"));
   parameter Real z_kp=1.5 "P gain for z position" annotation (Dialog(group="Z position PID"));
-  parameter Real gyro_x_Ti=0.3
-    "I time constant for gyroscope measurements in the x direction" annotation (Dialog(group="Gyroscope PID"));
-  parameter Real gyro_x_Td=1
-    "D time constant for the gyroscope measurements in the x direction" annotation (Dialog(group="Gyroscope PID"));
+  parameter Real gyro_x_ki=0.3
+    "I gain for gyroscope measurements in the x direction" annotation (Dialog(group="Gyroscope PID"));
+  parameter Real gyro_x_kd=1
+    "D gain for the gyroscope measurements in the x direction" annotation (Dialog(group="Gyroscope PID"));
   parameter Real gyro_x_kp=1
-    "P gain for the gyroscope measurements in the x direction" annotation (Dialog(group="Gyroscope PID"));
-  parameter Real gyro_y_Ti=0.1
-    "I time constant for the gyroscope measurements in the y direction" annotation (Dialog(group="Gyroscope PID"));
-  parameter Real gyro_y_Td=1
-    "D time constant for the gyroscope measurements in the y direction" annotation (Dialog(group="Gyroscope PID"));
+    "P gain for the gyroscope measurements in the x dire3ction" annotation (Dialog(group="Gyroscope PID"));
+  parameter Real gyro_y_ki=0.1
+    "I gain for the gyroscope measurements in the y direction" annotation (Dialog(group="Gyroscope PID"));
+  parameter Real gyro_y_kd=1
+    "D gain for the gyroscope measurements in the y direction" annotation (Dialog(group="Gyroscope PID"));
   parameter Real gyro_y_kp=1
     "P gain for the gyroscope measurements in the y direction" annotation (Dialog(group="Gyroscope PID"));
   Modelica.Blocks.Math.Add3 add3_2
@@ -182,13 +188,13 @@ equation
     annotation (Line(points={{0,-100},{0,-72},{10,-72}}, color={0,0,127}));
   connect(continuousPID1.u, limiter.y)
     annotation (Line(points={{46,30},{21,30}}, color={0,0,127}));
-  connect(realExtract.y, continuousPID.u)
+  connect(realExtract.y, continuousPID2.u)
     annotation (Line(points={{-59,30},{-40,30}}, color={0,0,127}));
   connect(realExtract6.u, GPS)
     annotation (Line(points={{-60,-56},{-60,-100}}, color={0,0,127}));
-  connect(realExtract6.y, continuousPID.u1) annotation (Line(points={{-51.6,-56},
+  connect(realExtract6.y, continuousPID2.u1) annotation (Line(points={{-51.6,-56},
           {-46,-56},{-46,20},{-30,20}}, color={0,0,127}));
-  connect(continuousPID.y, limiter.u)
+  connect(continuousPID2.y, limiter.u)
     annotation (Line(points={{-19,30},{-2,30}}, color={0,0,127}));
   connect(limiter1.y, continuousPID5.u)
     annotation (Line(points={{21,0},{32,0}}, color={0,0,127}));
@@ -198,11 +204,11 @@ equation
     annotation (Line(points={{18.4,-60},{42,-60},{42,-10}}, color={0,0,127}));
   connect(realExtract8.u, Gyero) annotation (Line(points={{-28,54},{-14,54},
           {-14,-100},{0,-100}}, color={0,0,127}));
-  connect(continuousPID2.y, limiter2.u)
+  connect(continuousPID.y, limiter2.u)
     annotation (Line(points={{-17,80},{-4,80}}, color={0,0,127}));
-  connect(continuousPID2.u1, realExtract8.y)
+  connect(continuousPID.u1, realExtract8.y)
     annotation (Line(points={{-28,70},{-28,62.4}}, color={0,0,127}));
-  connect(yaw, continuousPID2.u) annotation (Line(points={{-120,80},{-80,80},{-80,
+  connect(yaw, continuousPID.u) annotation (Line(points={{-120,80},{-80,80},{-80,
           80},{-38,80}}, color={0,0,127}));
   connect(continuousPID3.y, gain.u) annotation (Line(points={{-19,0},{-18,0},{-18,
           1},{-14.6,1}}, color={0,0,127}));
