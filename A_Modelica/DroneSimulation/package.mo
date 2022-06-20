@@ -8,9 +8,10 @@ annotation (Documentation, uses(
     VeSyMA(version="2020.3"),
     Claytex(version="2020.3"),
     BrushlessDCDrives(version="1.1.2"),
-    Modelon(version="3.3"),
-    Battery(version="2.2.0")),
-  version="3",
+    Battery(version="2.2.0"),
+    Modelon(version="3.6")),
+  version="4",
   conversion(from(version={"2","1"}, script=
-          "modelica://DroneSimulation/ConvertFromDroneSimulation_2.mos")));
+          "modelica://DroneSimulation/ConvertFromDroneSimulation_2.mos"),
+      noneFromVersion="3"));
 end DroneSimulation;

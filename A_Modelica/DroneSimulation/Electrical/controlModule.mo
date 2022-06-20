@@ -117,15 +117,15 @@ model controlModule
   parameter Real y_kd=0.1 "D gain for y position" annotation (Dialog(group="Y position PID"));
   parameter Real y_kp=0.1 "P gain for y position" annotation (Dialog(group="Y position PID"));
   parameter Real z_ki=1 "I gain for z position" annotation (Dialog(group="Z position PID"));
-  parameter Real z_kd=0.8 "D gain for z position" annotation (Dialog(group="Z position PID"));
+  parameter Real z_kd=2 "D gain for z position" annotation (Dialog(group="Z position PID"));
   parameter Real z_kp=1.5 "P gain for z position" annotation (Dialog(group="Z position PID"));
-  parameter Real gyro_x_ki=0.3
+  parameter Real gyro_x_ki=2
     "I gain for gyroscope measurements in the x direction" annotation (Dialog(group="Gyroscope PID"));
   parameter Real gyro_x_kd=1
     "D gain for the gyroscope measurements in the x direction" annotation (Dialog(group="Gyroscope PID"));
   parameter Real gyro_x_kp=1
     "P gain for the gyroscope measurements in the x dire3ction" annotation (Dialog(group="Gyroscope PID"));
-  parameter Real gyro_y_ki=0.1
+  parameter Real gyro_y_ki=2
     "I gain for the gyroscope measurements in the y direction" annotation (Dialog(group="Gyroscope PID"));
   parameter Real gyro_y_kd=1
     "D gain for the gyroscope measurements in the y direction" annotation (Dialog(group="Gyroscope PID"));
