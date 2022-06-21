@@ -37,7 +37,7 @@ All sub-systems and simulation cases are contained within the ``./DroneSimulatio
 
 How to simulate it?
 
-1. Open ``./A_Modelica/DroneSimulation.mo``
+1. Open ``./A_Modelica/package.mo``
 2. The package structure is set up with the following sub-packages:
 	- Examples
 	- Blocks
@@ -47,7 +47,7 @@ How to simulate it?
 	- Gyroscope
 	- Visualization
 	- Tests
-3. Under the Examples/DroneWithIdealPowerSystem package, open the model ``DroneTest.mo`` and select it as ``Simulation model``. This has inputs that act as change in x, y, z coordinates of the drone and outputs x, y, z from the pseudo-GPS modeled within.
+3. Under the Examples/DroneWithIdealPowerSystem package, open the model ``TestSystem.mo`` and select it as ``Simulation model``. This has inputs that act as change in x, y, z coordinates of the drone and outputs x, y, z from the pseudo-GPS modeled within.
 4. Go to simulation tab of your tool and change the simulation time to 10s then click simulate button.
 5. This simulation should result with the z-coordinate approaching 5 meters, and the other coordinates (x,y) should be around zero. To verify, plot the variables ``.xgps``, ``.ygps`` and ``.zgps`` of the model by running the Modelica script ``drone_simulation_setup.mos``. You should obtain the result below.
 ![Alt text](/D_Pics/sim.png "Simulation Results")
