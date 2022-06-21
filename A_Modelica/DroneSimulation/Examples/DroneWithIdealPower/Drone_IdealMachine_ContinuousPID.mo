@@ -16,23 +16,6 @@ model Drone_IdealMachine_ContinuousPID
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
   Modelica.Blocks.Interfaces.RealOutput zgps
     annotation (Placement(transformation(extent={{100,-90},{120,-70}})));
-  Electrical.controlModule_Continuous controlModule_Continuious(
-    maxTilt=0.05,
-    Yaw_Ti=100,
-    Yaw_Td=20,
-    Yaw_kp=0.001,
-    x_Ti=3,
-    x_Td=1,
-    x_kp=0.01,
-    y_Ti=30,
-    y_Td=10,
-    y_kp=0.01,
-    z_Ti=1.5,
-    z_Td=0.5,
-    gyro_x_Ti=10/3,
-    gyro_x_Td=1,
-    gyro_y_Ti=10)
-    annotation (Placement(transformation(extent={{-30,-8},{-10,12}})));
   Mechanical.Chassis.Examples.droneChassis droneChassis1(length=0.25, m=0.5,
     animation=animation)
     annotation (Placement(transformation(extent={{44,-12},{94,8}})));
@@ -59,29 +42,26 @@ model Drone_IdealMachine_ContinuousPID
         rotation=0,
         origin={-44,8})));
   parameter Boolean animation=true "= true, if animation shall be enabled";
+  Electrical.controlModule_Continuous
+                           controlModule_Continuous(
+    maxTilt=0.05,
+    samplePeriod=0.001,
+    z_kd=2,
+    gyro_x_ki=2,
+    gyro_y_ki=2)
+    annotation (Placement(transformation(extent={{-26,-14},{-6,6}})));
 equation
   gPS.y[1] = xgps;
   gPS.y[2] = ygps;
   gPS.y[3] = zgps;
-  connect(propeller.position, controlModule_Continuious.y1) annotation (Line(
-        points={{7.8,17.2},{-2,17.2},{-2,8},{-9.16667,8}}, color={0,0,127}));
-  connect(controlModule_Continuious.position, realExtendMultiple.y)
-    annotation (Line(points={{-31.6667,2},{-42,2},{-42,0},{-53,0}},
-                                                    color={0,0,127}));
   connect(gPS.frame_a,droneChassis1. frame_a3) annotation (Line(
       points={{30,-62},{36,-62},{36,-8},{44,-8}},
       color={95,95,95},
       thickness=0.5));
-  connect(gPS.y,controlModule_Continuious. GPS) annotation (Line(points={{9,-62},
-          {-26.6667,-62},{-26.6667,-10}}, color={0,0,127}));
   connect(accelerometer.frame_a,droneChassis1. frame_a3) annotation (Line(
       points={{30,-82},{36,-82},{36,-8},{44,-8}},
       color={95,95,95},
       thickness=0.5));
-  connect(accelerometer.y,controlModule_Continuious. Gyero) annotation (Line(
-        points={{9,-82},{-21.6667,-82},{-21.6667,-10}}, color={0,0,127}));
-  connect(propeller2.position, controlModule_Continuious.y) annotation (Line(
-        points={{7.8,5.2},{-0.1,5.2},{-0.1,4},{-9.16667,4}}, color={0,0,127}));
   connect(propeller.Airframe, droneChassis1.frame_a1) annotation (Line(
       points={{30.2,16.4},{37.1,16.4},{37.1,4},{44,4}},
       color={95,95,95},
@@ -98,19 +78,28 @@ equation
       points={{30.2,-15.6},{36,-15.6},{36,-8},{44,-8}},
       color={95,95,95},
       thickness=0.5));
-  connect(propeller1.position, controlModule_Continuious.y3) annotation (Line(
-        points={{7.8,-14.8},{-9.16667,-14.8},{-9.16667,-4}}, color={0,0,127}));
-  connect(controlModule_Continuious.yaw, const.y)
-    annotation (Line(points={{-31.6667,10},{-36,10},{-36,8},{-39.6,8}},
-                                                      color={0,0,127}));
    connect(realExtendMultiple.u, xcoord) annotation (Line(points={{-74,6},{-88,
            6},{-88,80},{-120,80}}, color={0,0,127}));
    connect(realExtendMultiple.u1, ycoord)
      annotation (Line(points={{-74,0},{-120,0}}, color={0,0,127}));
    connect(realExtendMultiple.u2, zcoord) annotation (Line(points={{-74,-6},{
            -90,-6},{-90,-80},{-120,-80}}, color={0,0,127}));
-  connect(propeller3.position, controlModule_Continuious.y2) annotation (Line(
-        points={{7.8,-4.8},{-0.1,-4.8},{-0.1,0},{-9.16667,0}}, color={0,0,127}));
+  connect(controlModule_Continuous.yaw, const.y) annotation (Line(points={{
+          -27.6667,4},{-34,4},{-34,8},{-39.6,8}}, color={0,0,127}));
+  connect(realExtendMultiple.y, controlModule_Continuous.position) annotation (
+      Line(points={{-53,0},{-34,0},{-34,-4},{-27.6667,-4}}, color={0,0,127}));
+  connect(gPS.y, controlModule_Continuous.GPS) annotation (Line(points={{9,-62},
+          {-22,-62},{-22,-16},{-22.6667,-16}}, color={0,0,127}));
+  connect(accelerometer.y, controlModule_Continuous.Gyero) annotation (Line(
+        points={{9,-82},{-17.6667,-82},{-17.6667,-16}}, color={0,0,127}));
+  connect(propeller.position, controlModule_Continuous.y1) annotation (Line(
+        points={{7.8,17.2},{7.8,16},{0,16},{0,2},{-5.16667,2}}, color={0,0,127}));
+  connect(propeller2.position, controlModule_Continuous.y) annotation (Line(
+        points={{7.8,5.2},{7.8,-2},{-5.16667,-2}}, color={0,0,127}));
+  connect(propeller3.position, controlModule_Continuous.y2) annotation (Line(
+        points={{7.8,-4.8},{0,-4.8},{0,-6},{-5.16667,-6}}, color={0,0,127}));
+  connect(propeller1.position, controlModule_Continuous.y3) annotation (Line(
+        points={{7.8,-14.8},{0,-14.8},{0,-10},{-5.16667,-10}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},
