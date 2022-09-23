@@ -7,5 +7,8 @@ model Battery
   parameter Integer ns=1 "Number of cells connected in series"
     annotation (Dialog(tab="Conditional"));
   annotation (Diagram(coordinateSystem(extent={{-120,-120},{120,120}})), Icon(
-        coordinateSystem(extent={{-120,-120},{120,120}})));
+        coordinateSystem(extent={{-120,-120},{120,120}})),
+    Documentation(info="<html>
+<p>This is a battery model that is dependent on the Modelon standard library.</p>
+</html>"));
 end Battery;

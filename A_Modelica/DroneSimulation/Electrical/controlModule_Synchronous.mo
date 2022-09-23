@@ -286,5 +286,8 @@ equation
         bottomTitle="Time (s)",
         colors={{28,108,200},{238,46,47},{0,140,72}},
         patterns={LinePattern.Solid,LinePattern.Dash,LinePattern.Dot},
-        thicknesses={1.0,1.0,1.0})} "CreateThrust"));
+        thicknesses={1.0,1.0,1.0})} "CreateThrust"),
+    Documentation(info="<html>
+<p>This is a PID controller using the Modelica Synchronous library to model the PID blocks. It has inputs that account for the dictated position of the quadcopter and yaw. It compares the actual XYZ position of the quadcopter to the commanded XYZ position and controls the current applied to each of the motors as a result.</p>
+</html>"));
 end controlModule_Synchronous;

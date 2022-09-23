@@ -103,8 +103,6 @@ equation
           smooth=Smooth.None)}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
-<p>The architecture of the CHEETA electrical system is shown below:</p>
-<p><br><img src=\"modelica://CHEETA/Images/Electrical/CHEETASystem.PNG\"/></p>
 </html>"),
     experiment(StopTime=0.5));
 end AuxiliaryPowerSystem_Battery;

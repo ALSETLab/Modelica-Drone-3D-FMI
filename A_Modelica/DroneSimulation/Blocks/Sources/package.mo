@@ -20,5 +20,7 @@ package Sources
           fillColor = {128,128,128},
           pattern = LinePattern.None,
           fillPattern = FillPattern.Solid,
-          extent = {{-70,-4.5},{0,4.5}})}));
+          extent = {{-70,-4.5},{0,4.5}})}), Documentation(info="<html>
+<p>This package contains the models for flight paths that can be applied to the quadcopter.</p>
+</html>"));
 end Sources;

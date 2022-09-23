@@ -43,5 +43,8 @@ equation
           extent={{-62,28},{74,-20}},
           lineColor={28,108,200},
           textString="motor")}),                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)),
+    Documentation(info="<html>
+<p>This is a simple representation of a motor that is only dependent on current. All losses are neglected from the motor.</p>
+</html>"));
 end SimpleDCmotor;
