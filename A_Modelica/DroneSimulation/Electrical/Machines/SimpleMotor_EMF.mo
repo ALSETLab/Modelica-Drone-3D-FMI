@@ -61,5 +61,8 @@ equation
           extent={{-62,28},{74,-20}},
           lineColor={28,108,200},
           textString="motor")}),                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)),
+    Documentation(info="<html>
+<p>This motor model considers losses in the system by including hysteresis and transfer losses.</p>
+</html>"));
 end SimpleMotor_EMF;

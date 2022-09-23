@@ -28,8 +28,6 @@ equation
           fillColor={0,0,0},
           fillPattern=FillPattern.Solid)}),
                     Documentation(info="<html>
-<p>
-Passes a Real signal through without modification.  Enables signals to be read out of one bus, have their name changed and be sent back to a bus.
-</p>
+<p>This block passes a Real signal through without modification. Enables signals to be read out of one bus, have their name changed and be sent back to a bus. </p>
 </html>"));
 end RealExtract;

@@ -70,5 +70,7 @@ Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
           color={0,0,0},
           thickness=1,
           smooth=Smooth.Bezier,
-          arrow={Arrow.Filled,Arrow.None})}));
+          arrow={Arrow.Filled,Arrow.None})}), Documentation(info="<html>
+<p>This applies a circular path along two axises.</p>
+</html>"));
 end circlePath;

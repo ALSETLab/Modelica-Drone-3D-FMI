@@ -34,5 +34,8 @@ equation
           points={{-94,0},{104,0}},
           color={255,0,0},
           thickness=1)}),                                        Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)),
+    Documentation(info="<html>
+<p>This </p>
+</html>"));
 end multiphtoabc;

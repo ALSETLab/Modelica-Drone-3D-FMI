@@ -19,9 +19,7 @@ equation
                                                                  color={28,
               108,200})}),
                     Documentation(info="<html>
-<p>
-Passes a Real signal through without modification. 
-This enables a single input to enter the system, then translates the signal into an array.
-</p>
+<p>Passes a Real signal through without modification. This enables a single input to enter the system, then translates the signal into an array. </p>
+<p>For example, an input of u=x will have an output of y = [0,0,x].</p>
 </html>"));
 end RealExtend;

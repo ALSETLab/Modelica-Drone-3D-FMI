@@ -278,5 +278,9 @@ equation
           lineColor={0,0,0},
           fillColor={0,0,0},
           fillPattern=FillPattern.None)}), Diagram(coordinateSystem(
-          preserveAspectRatio=false, extent={{-100,-100},{140,100}})));
+          preserveAspectRatio=false, extent={{-100,-100},{140,100}})),
+    Documentation(info="<html>
+<p>This is a discrete PID controller. It has inputs that account for the dictated position of the quadcopter and yaw. It compares the actual XYZ position of the quadcopter to the commanded XYZ position and controls the current applied to each of the motors as a result.</p>
+<h4>This controller has an electrical input to estimate the power consumption.</h4>
+</html>"));
 end controlModule_Power;

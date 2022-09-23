@@ -20,8 +20,7 @@ equation
         Line(points={{-80,0},{0,60},{100,60}}, color={28,108,200}),
         Line(points={{-80,0},{100,0},{100,-60},{0,-60},{-80,0}}, color={28,108,200})}),
                     Documentation(info="<html>
-<p>
-Passes a Real signal through without modification.  Enables signals to be read out of one bus, have their name changed and be sent back to a bus.
-</p>
+<p>Passes a Real signal through without modification. Enables signals to be read out of one bus, have their name changed and be sent back to a bus. </p>
+<p>This block tables inputs u1, u2, and u3 to produce output y = [u1,u2,u3].</p>
 </html>"));
 end RealExtendMultiple;

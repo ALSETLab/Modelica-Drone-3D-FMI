@@ -34,5 +34,8 @@ equation
     annotation (Line(points={{91,0},{110,0}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
         coordinateSystem(preserveAspectRatio=false)),
-    uses(Modelica(version="3.2.3")));
+    uses(Modelica(version="3.2.3")),
+    Documentation(info="<html>
+<p>This applies a ramp path along an axis to control the quadcopter in a line.</p>
+</html>"));
 end linePath;
