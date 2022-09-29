@@ -6,7 +6,7 @@ model SimpleDCmotor
 
   parameter Modelica.Units.SI.Inertia Jp=0.002 "Propeller inertia";
   parameter motorK Kt = 2 "Motor current to torque constant";
-  parameter aeroFriction bp = 3.5e-2 "Propeller friction force";
+  parameter aeroFriction bp = 2e-2 "Propeller friction force";
   parameter propellerK Ke= 0.0015 "Propeller constant";
 
   Modelica.Units.SI.Torque tout "Output torque";
