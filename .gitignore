@@ -1,0 +1,17 @@
+*.mat
+*~
+buildlog.txt
+dsfinal.txt
+dsin.txt
+dslog.txt
+dsmodelext1.c
+dsmodel.c
+dymosim.exe
+dymosim.exp
+dymosim.lib
+dymosim
+*.h
+*.bak-mo
+*.moe
+*.mol
+.DS_Store
