@@ -1,20 +1,8 @@
 within DroneSimulation.Mechanical.Blades.Examples;
 model Phantom
-  Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape5(
-    m=0.010,
-    r={-0.2,0,0},
-    I_33=0.001)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=270,
-        origin={66,-10})));
-  Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape4(
-    m=0.01,
-    r={0.2,0,0},
-    I_33=0.001,
-    shapeType="cylinder")
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=90,
-        origin={66,10})));
+
+  extends DroneSimulation.Mechanical.Blades.Templates.Blades(bodyShape4(m=0.010,
+    r={-0.2,0,0},I_33=0.001),bodyShape5(m=0.01,r={0.2,0,0},I_33=0.001));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Input
     "Input from motor connecting the propeller blades to the motor"
     annotation (Placement(transformation(extent={{-120,-16},{-88,16}}),

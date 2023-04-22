@@ -14,14 +14,14 @@ package Tests
      annotation (Placement(transformation(extent={{-58,-2},{-38,18}})));
    Modelica.Blocks.Sources.Step step1(startTime=2)
      annotation (Placement(transformation(extent={{-76,-46},{-56,-26}})));
-   Electrical.propeller                 propellerRev1
+    Mechanical.Propeller.Examples.propellerVR propellerRev1
       annotation (Placement(transformation(extent={{-10,-76},{10,-56}})));
    Modelica.Mechanics.MultiBody.Parts.Fixed fixed1(r={0.5,0,0}) annotation (
        Placement(transformation(
          extent={{-10,-10},{10,10}},
          rotation=180,
          origin={54,-66})));
-   Electrical.propeller                 propellerRev2
+    Mechanical.Propeller.Examples.propellerVR propellerRev2
       annotation (Placement(transformation(extent={{-10,-44},{10,-24}})));
  equation
    connect(step.y, feedback.u1)
@@ -668,14 +668,14 @@ package Tests
      annotation (Placement(transformation(extent={{-30,8},{-10,28}})));
     Mechanical.Chassis.Examples.droneChassis droneChassis1(length=0.25, m=0.5)
       annotation (Placement(transformation(extent={{46,6},{96,26}})));
-   Electrical.propeller propellerRev(k=1)
-     annotation (Placement(transformation(extent={{8,38},{28,58}})));
-   Electrical.propeller propellerRev3(k=1)
-     annotation (Placement(transformation(extent={{8,-4},{28,16}})));
-   Electrical.propeller propellerRev1
-     annotation (Placement(transformation(extent={{8,16},{28,36}})));
-   Electrical.propeller propellerRev2
-     annotation (Placement(transformation(extent={{8,-24},{28,-4}})));
+    Mechanical.Propeller.Examples.propellerVR propellerRev(k=1)
+      annotation (Placement(transformation(extent={{8,38},{28,58}})));
+    Mechanical.Propeller.Examples.propellerVR propellerRev3(k=1)
+      annotation (Placement(transformation(extent={{8,-4},{28,16}})));
+    Mechanical.Propeller.Examples.propellerVR propellerRev1
+      annotation (Placement(transformation(extent={{8,16},{28,36}})));
+    Mechanical.Propeller.Examples.propellerVR propellerRev2
+      annotation (Placement(transformation(extent={{8,-24},{28,-4}})));
    inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
        -1})
      annotation (Placement(transformation(extent={{60,60},{80,80}})));
@@ -767,14 +767,14 @@ package Tests
      annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
     Mechanical.Chassis.Examples.droneChassis droneChassis1(length=0.25, m=0.5)
       annotation (Placement(transformation(extent={{44,-12},{94,8}})));
-   Electrical.propeller propellerRev(k=1)
-     annotation (Placement(transformation(extent={{8,18},{28,38}})));
-   Electrical.propeller propellerRev3(k=1)
-     annotation (Placement(transformation(extent={{8,-22},{28,-2}})));
-   Electrical.propeller propellerRev1(k=-1)
-     annotation (Placement(transformation(extent={{8,-2},{28,18}})));
-   Electrical.propeller propellerRev2(k=-1)
-     annotation (Placement(transformation(extent={{8,-42},{28,-22}})));
+    Mechanical.Propeller.Examples.propellerVR propellerRev(k=1)
+      annotation (Placement(transformation(extent={{8,18},{28,38}})));
+    Mechanical.Propeller.Examples.propellerVR propellerRev3(k=1)
+      annotation (Placement(transformation(extent={{8,-22},{28,-2}})));
+    Mechanical.Propeller.Examples.propellerVR propellerRev1(k=-1)
+      annotation (Placement(transformation(extent={{8,-2},{28,18}})));
+    Mechanical.Propeller.Examples.propellerVR propellerRev2(k=-1)
+      annotation (Placement(transformation(extent={{8,-42},{28,-22}})));
    inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
        -1})
      annotation (Placement(transformation(extent={{60,60},{80,80}})));

@@ -55,5 +55,8 @@ equation
           color={95,95,95},
           smooth=Smooth.Bezier,
           thickness=1)}),                                        Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+        coordinateSystem(preserveAspectRatio=false)),
+    Documentation(info="<html>
+<p>This is a block used to model the PID functions in the continuous controller.</p>
+</html>"));
 end continuousPID;

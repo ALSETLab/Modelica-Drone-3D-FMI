@@ -1,17 +1,16 @@
 within DroneSimulation.Mechanical.Propeller.Templates;
 partial model Propeller
   replaceable
-  Motor.DCMotor
+  DroneSimulation.Mechanical.Motor.Templates.DCMotor
           DCMotor(k=PropellerGain)
     annotation (Placement(transformation(extent={{-80,-20},{-40,20}})));
   Modelica.Blocks.Interfaces.RealInput position
     annotation (Placement(transformation(extent={{-142,-20},{-102,20}})));
-  replaceable Rotor.Examples.rotor rotor1
+  replaceable DroneSimulation.Mechanical.Rotor.Templates.rotor rotor1
     annotation (Placement(transformation(extent={{-16,20},{26,-20}})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
     annotation (Placement(transformation(extent={{86,-26},{118,6}})));
-  replaceable Blades.Templates.Blades blades constrainedby
-    Blades.Examples.Blades
+  replaceable Blades.Templates.Blades blades
     annotation (Placement(transformation(extent={{50,6},{92,46}})));
   parameter Real PropellerGain=-1
     "Propeller gain. Set to 1 for clockwise, -1 for counterclockwise";

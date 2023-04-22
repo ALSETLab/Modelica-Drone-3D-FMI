@@ -16,7 +16,8 @@ model TestSystem
     annotation (Placement(transformation(extent={{-48,-18},{-38,-8}})));
    inner Modelica.Blocks.Noise.GlobalSeed globalSeed
      annotation (Placement(transformation(extent={{-36,-36},{-26,-26}})));
-  Drone_IdealMachine               drone
+  replaceable Drone_IdealMachine                                    drone
+    constrainedby DroneSimulation.Examples.Drone_Template
     annotation (Placement(transformation(extent={{-12,-2},{8,18}})));
   Modelica.Blocks.Sources.Constant const1(k=0)
     annotation (Placement(transformation(extent={{-82,20},{-62,40}})));

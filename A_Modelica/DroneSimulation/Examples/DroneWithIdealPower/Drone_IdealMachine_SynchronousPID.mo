@@ -1,6 +1,9 @@
 within DroneSimulation.Examples.DroneWithIdealPower;
 model Drone_IdealMachine_SynchronousPID
   "Drone with ideal machine and a synchronous PID controller using synchronous library"
+
+  extends DroneSimulation.Examples.Drone_Template;
+
   parameter Boolean animation=true "= true, if animation shall be enabled";
   Mechanical.Propeller.Examples.Propeller
     propeller_DCMachine_Power(animation=animation, PropellerGain=1)
@@ -37,18 +40,6 @@ model Drone_IdealMachine_SynchronousPID
     annotation (Placement(transformation(extent={{-88,-10},{-68,10}})));
   Modelica.Blocks.Sources.Ramp     ramp(height=2.5, duration=0)
     annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
-  Modelica.Blocks.Interfaces.RealInput xcoord
-    annotation (Placement(transformation(extent={{-140,60},{-100,100}})));
-  Modelica.Blocks.Interfaces.RealInput zcoord
-    annotation (Placement(transformation(extent={{-140,-100},{-100,-60}})));
-  Modelica.Blocks.Interfaces.RealInput ycoord
-    annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
-  Modelica.Blocks.Interfaces.RealOutput xgps
-    annotation (Placement(transformation(extent={{100,70},{120,90}})));
-  Modelica.Blocks.Interfaces.RealOutput ygps
-    annotation (Placement(transformation(extent={{100,-10},{120,10}})));
-  Modelica.Blocks.Interfaces.RealOutput zgps
-    annotation (Placement(transformation(extent={{100,-90},{120,-70}})));
 equation
   gPS.y[1] = xgps;
   gPS.y[2] = ygps;
@@ -89,12 +80,6 @@ equation
         points={{-13,-74},{-48.9091,-74},{-48.9091,-12}}, color={0,0,127}));
   connect(controlModule_Synchronous2_1.position,realExtendMultiple. y)
     annotation (Line(points={{-59.8182,0},{-67,0}}, color={0,0,127}));
-  connect(realExtendMultiple.u1,ycoord)
-    annotation (Line(points={{-88,0},{-120,0}}, color={0,0,127}));
-  connect(realExtendMultiple.u,xcoord)  annotation (Line(points={{-88,6},{-98,6},
-          {-98,80},{-120,80}}, color={0,0,127}));
-  connect(realExtendMultiple.u2,zcoord)  annotation (Line(points={{-88,-6},{-96,
-          -6},{-96,-80},{-120,-80}}, color={0,0,127}));
   connect(propeller_DCMachine_Power.position,controlModule_Synchronous2_1. y1)
     annotation (Line(points={{-10.2,18},{-24,18},{-24,6},{-37.0909,6}},
                                                                       color={0,
@@ -110,6 +95,12 @@ equation
     annotation (Line(points={{-10.2,-22},{-23,-22},{-23,-6},{-37.0909,-6}},
                                                                           color=
          {0,0,127}));
+  connect(xcoord, realExtendMultiple.u) annotation (Line(points={{-120,80},{-94,
+          80},{-94,6},{-88,6}}, color={0,0,127}));
+  connect(realExtendMultiple.u1, ycoord)
+    annotation (Line(points={{-88,0},{-120,0}}, color={0,0,127}));
+  connect(realExtendMultiple.u2, zcoord) annotation (Line(points={{-88,-6},{-96,
+          -6},{-96,-80},{-120,-80}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},
