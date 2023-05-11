@@ -1,5 +1,5 @@
 within DroneSimulation.Mechanical.Rotor.Templates;
-model rotor
+partial model rotor
 
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
     annotation (Placement(transformation(extent={{86,36},{118,68}})));

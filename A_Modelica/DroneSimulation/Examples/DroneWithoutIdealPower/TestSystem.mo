@@ -13,9 +13,11 @@ model TestSystem
     annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
   Modelica.Blocks.Math.Add add
     annotation (Placement(transformation(extent={{-48,-20},{-38,-10}})));
-  Drone_DCPM_ConstantVoltage
-                      drone(V=12.1, animation=true)
-    annotation (Placement(transformation(extent={{-2,-38},{90,48}})));
+
+  replaceable Drone_DCPM_ConstantVoltage   drone(V=12.1, animation=true)
+    constrainedby DroneSimulation.Examples.Drone_Template
+    annotation (Placement(transformation(extent={{42,20},{62,40}})));
+
   Modelica.Blocks.Sources.Ramp ramp2(
     duration=5,
     height=0,
@@ -32,13 +34,12 @@ equation
                  color={0,0,127}));
   connect(add.u2, ramp2.y) annotation (Line(points={{-49,-18},{-54,-18},{-54,
           -72},{-61,-72}}, color={0,0,127}));
-  connect(const1.y, drone.xcoord) annotation (Line(points={{-59,70},{-40,70},{
-          -40,40},{-11.2,40},{-11.2,39.4}},
-                                      color={0,0,127}));
-  connect(const.y, drone.ycoord) annotation (Line(points={{-59,30},{-34.5,30},{
-          -34.5,5},{-11.2,5}}, color={0,0,127}));
-  connect(add.y, drone.zcoord) annotation (Line(points={{-37.5,-15},{-25.75,-15},
-          {-25.75,-29.4},{-11.2,-29.4}}, color={0,0,127}));
+  connect(const1.y, drone.xcoord) annotation (Line(points={{-59,70},{34,70},{34,
+          38},{40,38}},               color={0,0,127}));
+  connect(const.y, drone.ycoord) annotation (Line(points={{-59,30},{40,30}},
+                               color={0,0,127}));
+  connect(add.y, drone.zcoord) annotation (Line(points={{-37.5,-15},{34,-15},{
+          34,22},{40,22}},               color={0,0,127}));
   annotation (experiment(
       StopTime=30,
       __Dymola_NumberOfIntervals=5000,
