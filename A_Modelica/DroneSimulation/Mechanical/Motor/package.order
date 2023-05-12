@@ -3,7 +3,5 @@ Templates
 DCMotor
 DCMotor_DCMachine
 DCMotor_EMF
-DCMotor_DCPM
 DCMotor_Averaged_Machine
-DCMotor_DCSE
-DCMotor_DCPM2
+DCMotor_DCPM

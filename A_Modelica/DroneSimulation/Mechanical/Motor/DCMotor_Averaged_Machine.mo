@@ -1,9 +1,6 @@
 within DroneSimulation.Mechanical.Motor;
 model DCMotor_Averaged_Machine "DC motor using DC machine from MSL"
-
-  Modelica.Blocks.Interfaces.RealInput position
-    annotation (Placement(transformation(extent={{-140,-20},{-100,20}}),
-        iconTransformation(extent={{-140,-20},{-100,20}})));
+extends DroneSimulation.Mechanical.Motor.Templates.DCMotor;
   parameter Real k=-1
     "Propeller gain. Set to 1 for clockwise, -1 for counterclockwise";
   Modelica.Blocks.Nonlinear.Limiter limiter(uMax=1e8,
@@ -41,9 +38,6 @@ model DCMotor_Averaged_Machine "DC motor using DC machine from MSL"
     "Coordinate system b fixed to the component with one cut-force and cut-torque"
     annotation (Placement(transformation(extent={{84,-16},{116,16}}),
         iconTransformation(extent={{84,-16},{116,16}})));
-  Modelica.Mechanics.MultiBody.Interfaces.Frame_a force_out
-    annotation (Placement(transformation(extent={{84,46},{116,78}}),
-        iconTransformation(extent={{84,46},{116,78}})));
   parameter Real V=V "Reference voltage";
   parameter Real R=R "reference resistance";
 
@@ -65,27 +59,12 @@ model DCMotor_Averaged_Machine "DC motor using DC machine from MSL"
         rotation=90,
         origin={-72,-32})));
 equation
-  connect(position, limiter.u)
-    annotation (Line(points={{-120,0},{-90,0},{-90,-11.2}},
-                                                  color={0,0,127}));
-  connect(force_out,force. frame_b) annotation (Line(
-      points={{100,62},{74,62},{74,42}},
-      color={95,95,95},
-      thickness=0.5));
-  connect(torque.frame_b,torque_1)  annotation (Line(
-      points={{66,-52},{66,0},{100,0}},
-      color={95,95,95},
-      thickness=0.5));
   connect(torque.torque, realExtend1.y)
     annotation (Line(points={{54,-68},{44.4,-68}}, color={0,0,127}));
   connect(force.force, realExtend.y)
     annotation (Line(points={{74,20},{74,4},{60.4,4}}, color={0,0,127}));
   connect(realExtend1.u, gain1.y)
     annotation (Line(points={{35.2,-68},{31,-68}}, color={0,0,127}));
-  connect(torque.frame_a, torque_2) annotation (Line(
-      points={{66,-72},{66,-80},{80,-80},{80,-60},{100,-60}},
-      color={95,95,95},
-      thickness=0.5));
   connect(torqueSensor.tau, gain1.u) annotation (Line(points={{-5,-52},{4,-52},
           {4,-68},{8,-68}}, color={0,0,127}));
   connect(torqueSensor.flange_b, fixed.flange)
@@ -102,6 +81,24 @@ equation
           -62,-40},{-62,-42},{-72,-42}}, color={0,0,255}));
   connect(limiter.y, signalVoltage.v) annotation (Line(points={{-90,-20.4},{-90,
           -32},{-84,-32}}, color={0,0,127}));
+  connect(position, limiter.u) annotation (Line(points={{-122,0},{-90,0},{-90,
+          -11.2},{-90,-11.2}}, color={0,0,127}));
+  connect(force_out, force_out) annotation (Line(
+      points={{100,62},{100,62}},
+      color={95,95,95},
+      thickness=0.5));
+  connect(force_out, force.frame_b) annotation (Line(
+      points={{100,62},{86,62},{86,56},{74,56},{74,42}},
+      color={95,95,95},
+      thickness=0.5));
+  connect(torque_1, torque.frame_b) annotation (Line(
+      points={{100,0},{66,0},{66,-52}},
+      color={95,95,95},
+      thickness=0.5));
+  connect(torque_2, torque.frame_a) annotation (Line(
+      points={{100,-60},{90,-60},{90,-86},{68,-86},{68,-72},{66,-72}},
+      color={95,95,95},
+      thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
             -100,-100},{100,100}}),                             graphics={
           Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
