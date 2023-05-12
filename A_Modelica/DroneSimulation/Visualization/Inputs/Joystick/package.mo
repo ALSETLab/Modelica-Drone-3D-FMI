@@ -145,5 +145,4 @@ package Joystick
           InlineOrder=2,
           InlineFixedStep=0.001)));
   end JoyStickInputs_Dymola;
-
 end Joystick;

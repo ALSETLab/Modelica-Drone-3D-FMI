@@ -494,5 +494,4 @@ package Keyboard
          InlineOrder=2,
          InlineFixedStep=0.01)));
   end KeyboardInputs_Dymola;
-
 end Keyboard;

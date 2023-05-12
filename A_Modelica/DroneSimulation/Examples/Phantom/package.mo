@@ -113,5 +113,4 @@ package Phantom
           "drone_animation_setup"),
       experiment(StopTime=10, __Dymola_Algorithm="Dassl"));
   end controlModuleTest;
-
 end Phantom;

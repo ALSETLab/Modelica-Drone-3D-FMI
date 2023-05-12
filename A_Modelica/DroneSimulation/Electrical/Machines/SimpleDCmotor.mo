@@ -1,13 +1,10 @@
 within DroneSimulation.Electrical.Machines;
 model SimpleDCmotor
-  type motorK = Real(quantity = "Torque constant", unit = "Nm/A", min=0);
-  type aeroFriction = Real(quantity = "Propeller friction", unit = "Nms", min=0);
-  type propellerK = Real(quantity = "Propeller constant", unit = "Ns", min=0);
 
   parameter Modelica.Units.SI.Inertia Jp=0.002 "Propeller inertia";
-  parameter motorK Kt = 2 "Motor current to torque constant";
-  parameter aeroFriction bp = 2e-2 "Propeller friction force";
-  parameter propellerK Ke= 0.0015 "Propeller constant";
+  parameter Modelica.Units.SI.ElectricalTorqueConstant Kt = 2 "Motor current to torque constant";
+  parameter Modelica.Units.SI.Impulse bp = 2e-2 "Propeller friction force";
+  parameter Modelica.Units.SI.AngularImpulse Ke= 0.0015 "Propeller constant";
 
   Modelica.Units.SI.Torque tout "Output torque";
   Modelica.Units.SI.Force fout "Output force";
