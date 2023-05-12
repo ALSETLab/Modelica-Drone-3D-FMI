@@ -23,7 +23,7 @@ model Propeller_DCMachine_Power
                            "pin to be measured"
     annotation (Placement(transformation(extent={{-114,30},{-94,50}})));
 
-  Motor.DCMotor_DCPM2 dCMotor_DCMachine_Power(
+  Motor.DCMotor_DCPM dCMotor_DCMachine_Power(
     k=PropellerGain,
     VaNominal=VaNominal,
     IaNominal=IaNominal,
