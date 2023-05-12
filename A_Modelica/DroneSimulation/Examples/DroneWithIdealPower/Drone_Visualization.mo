@@ -1,20 +1,10 @@
 within DroneSimulation.Examples.DroneWithIdealPower;
 model Drone_Visualization "Model to use for animation and visualization."
+  extends DroneSimulation.Examples.Drone_Template;
+
   inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
       -1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
-  Modelica.Blocks.Interfaces.RealInput xcoord
-    annotation (Placement(transformation(extent={{-140,60},{-100,100}})));
-  Modelica.Blocks.Interfaces.RealInput zcoord
-    annotation (Placement(transformation(extent={{-140,-100},{-100,-60}})));
-  Modelica.Blocks.Interfaces.RealInput ycoord
-    annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
-  Modelica.Blocks.Interfaces.RealOutput xgps
-    annotation (Placement(transformation(extent={{100,70},{120,90}})));
-  Modelica.Blocks.Interfaces.RealOutput ygps
-    annotation (Placement(transformation(extent={{100,-10},{120,10}})));
-  Modelica.Blocks.Interfaces.RealOutput zgps
-    annotation (Placement(transformation(extent={{100,-90},{120,-70}})));
   Electrical.controlModule_Synchronous
                            controlModule_Synchronous(
                                          maxTilt=0.05, samplePeriod=0.001)
@@ -108,16 +98,16 @@ equation
           {-9.09091,-6}},        color={0,0,127}));
   connect(controlModule_Synchronous.yaw, const.y)
     annotation (Line(points={{-31.8182,8},{-39.6,8}}, color={0,0,127}));
-   connect(realExtendMultiple.u, xcoord) annotation (Line(points={{-74,6},{-88,
-           6},{-88,80},{-120,80}}, color={0,0,127}));
-   connect(realExtendMultiple.u1, ycoord)
-     annotation (Line(points={{-74,0},{-120,0}}, color={0,0,127}));
-   connect(realExtendMultiple.u2, zcoord) annotation (Line(points={{-74,-6},{
-           -90,-6},{-90,-80},{-120,-80}}, color={0,0,127}));
   connect(droneChassis_Visualization.frame_a4, frame_a1) annotation (Line(
       points={{69,-12},{70,-12},{70,-102}},
       color={95,95,95},
       thickness=0.5));
+  connect(xcoord, realExtendMultiple.u) annotation (Line(points={{-120,80},{-80,
+          80},{-80,6},{-74,6}}, color={0,0,127}));
+  connect(realExtendMultiple.u1, ycoord)
+    annotation (Line(points={{-74,0},{-120,0}}, color={0,0,127}));
+  connect(realExtendMultiple.u2, zcoord) annotation (Line(points={{-74,-6},{-94,
+          -6},{-94,-80},{-120,-80}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
         Rectangle(
           extent={{-100,100},{100,-100}},
