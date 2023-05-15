@@ -30,7 +30,7 @@ model droneChassis_Visualization
         origin={0,-100})));
   parameter Modelica.Units.SI.Length length=0.25 "Length of cylinder";
   parameter Modelica.Units.SI.Mass m=1 "Mass of rigid body";
-  Visualization.Shapes.FileShape                      shape(
+  Visualization.Shapes.FileShape shape(
     r_shape={0,0,0},
     lengthDirection(displayUnit="1") = {1,0,0},
     filename="modelica://DroneSimulation/Images/9.stl",
@@ -70,6 +70,5 @@ equation
           Text(
           extent={{-68,26},{70,-26}},
           lineColor={28,108,200},
-          textString="droneChassis")}), Diagram(coordinateSystem(
-          preserveAspectRatio=false)));
+          textString="droneChassis")}));
 end droneChassis_Visualization;

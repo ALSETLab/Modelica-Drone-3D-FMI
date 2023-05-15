@@ -38,7 +38,7 @@ model DroneTest_FMU_Battery_noconverter
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power1(
     VaNominal=15,
-    IaNominal=50,                            V=V,
+    IaNominal=50, V=V,
     animation=animation)
     annotation (Placement(transformation(extent={{-8,0},{12,10}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
@@ -52,7 +52,7 @@ model DroneTest_FMU_Battery_noconverter
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power3(
     VaNominal=15,
-    IaNominal=50,                            V=V,
+    IaNominal=50, V=V,
     animation=animation)
     annotation (Placement(transformation(extent={{-8,-26},{12,-16}})));
   Mechanical.Chassis.Examples.droneChassis droneChassis2(
@@ -87,7 +87,7 @@ equation
   connect(gPS_collision.y, controlModule_Power.GPS) annotation (Line(points={{-9,-40},{-54.6667,-40},{-54.6667,-12}},
                                                   color={0,0,127}));
   connect(propeller_DCMachine_Power1.p1,propeller_DCMachine_Power. p1)
-    annotation (Line(points={{-8.4,8},{-16,8},{-16,22},{-8.4,22}},   color={0,0,
+    annotation (Line(points={{-8.4,8},{-16,8},{-16,22},{-8.4,22}}, color={0,0,
           255}));
   connect(propeller_DCMachine_Power2.position, controlModule_Power.y2)
     annotation (Line(points={{-10,-10},{-24,-10},{-24,-2},{-37.1667,-2}}, color=
@@ -155,14 +155,12 @@ equation
   connect(battery.pin_p, propeller_DCMachine_Power.p1) annotation (Line(points=
           {{-67,-74},{-16,-18},{-16,22},{-8.4,22}}, color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -120},{100,100}}),                                  graphics={
+            -120},{100,100}}), graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},
           lineColor={215,215,215},
           lineThickness=1), Bitmap(
           extent={{-98,-98},{98,98}}, fileName="modelica://DroneSimulation/Resources/Images/dronepic.jpg")}),
-                                                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
-            100}})),
+
     __Dymola_Commands(file="drone_animation_setup.mos" "drone_animation_setup"));
 end DroneTest_FMU_Battery_noconverter;

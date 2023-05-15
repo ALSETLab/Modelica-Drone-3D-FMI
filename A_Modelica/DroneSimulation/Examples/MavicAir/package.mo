@@ -1,8 +1,6 @@
 within DroneSimulation.Examples;
 package MavicAir
 
-
-
   model controlModuleTest
     Electrical.controlModule_Synchronous
                              controlModuleSpeed(maxTilt=0.15,
@@ -23,7 +21,7 @@ package MavicAir
       annotation (Placement(transformation(extent={{60,60},{80,80}})));
     Blocks.Routing.RealExtendMultiple realExtendMultiple
       annotation (Placement(transformation(extent={{-58,8},{-38,28}})));
-    Modelica.Blocks.Sources.Ramp ramp(          duration=0.5, height=5)
+    Modelica.Blocks.Sources.Ramp ramp( duration=0.5, height=5)
       annotation (Placement(transformation(extent={{-10,-10},{10,10}},
           rotation=90,
           origin={-80,-50})));
@@ -78,7 +76,7 @@ package MavicAir
            points={{7,-66},{-20.9091,-66},{-20.9091,6}},
                                                color={0,0,127}));
     connect(ramp.y, firstOrder1.u)
-      annotation (Line(points={{-80,-39},{-80,-32}},   color={0,0,127}));
+      annotation (Line(points={{-80,-39},{-80,-32}}, color={0,0,127}));
      connect(controlModuleSpeed.yaw, const.y) annotation (Line(points={{
           -31.8182,26},{-36,26},{-36,46},{-71,46}},
                                               color={0,0,127}));
@@ -107,8 +105,7 @@ package MavicAir
       points={{28.2,-5},{36,-5},{36,10},{42,10}},
       color={95,95,95},
       thickness=0.5));
-    annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-          coordinateSystem(preserveAspectRatio=false)),
+    annotation (
       __Dymola_Commands(file="drone_animation_setup.mos"
           "drone_animation_setup"),
       experiment(StopTime=10, __Dymola_Algorithm="Dassl"));

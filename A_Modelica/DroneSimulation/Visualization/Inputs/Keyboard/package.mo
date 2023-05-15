@@ -76,7 +76,7 @@ package Keyboard
      annotation (Line(points={{32.25,-30},{72,-30},{72,-50},{110,-50}},
                                                      color={0,0,127}));
    annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-             -100},{100,100}}), graphics={             Polygon(
+             -100},{100,100}}), graphics={ Polygon(
             points={{0,-100},{-80,-100},{-88,-98},{-94,-94},{-98,-88},{-100,-80},
                 {-100,80},{-98,88},{-94,94},{-88,98},{-80,100},{80,100},{88,98},{
                 94,94},{98,88},{100,80},{100,-80},{98,-88},{94,-94},{88,-98},{80,
@@ -214,9 +214,7 @@ package Keyboard
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={95,95,95},
-            fillPattern=FillPattern.Solid)}),                     Diagram(
-         coordinateSystem(preserveAspectRatio=false, extent={{-100,
-             -100},{100,100}})));
+            fillPattern=FillPattern.Solid)}));
   end KeyboardInputs_SimVis;
 
   model Keyboard_Conversion
@@ -330,7 +328,7 @@ package Keyboard
    connect(keyboardKeyInput3.keyState, x.Direction_Neg)
      annotation (Line(points={{-25.5,-5},{7.5,-5}}, color={255,0,255}));
    connect(keyboardKeyInput2.keyState, x.Direction_Pos)
-     annotation (Line(points={{-25.5,5},{7.5,5}},   color={255,0,255}));
+     annotation (Line(points={{-25.5,5},{7.5,5}}, color={255,0,255}));
    connect(keyboardKeyInput4.keyState, z.Direction_Pos)
      annotation (Line(points={{-25.5,-25},{7.5,-25}}, color={255,0,255}));
    connect(keyboardKeyInput5.keyState, z.Direction_Neg)
@@ -344,7 +342,7 @@ package Keyboard
       annotation (Line(points={{32.25,30},{72,30},{72,50},{110,50}},
                                                     color={0,0,127}));
    annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-             -100},{100,100}}), graphics={             Polygon(
+             -100},{100,100}}), graphics={ Polygon(
             points={{0,-100},{-80,-100},{-88,-98},{-94,-94},{-98,-88},{-100,-80},
                 {-100,80},{-98,88},{-94,94},{-88,98},{-80,100},{80,100},{88,98},{
                 94,94},{98,88},{100,80},{100,-80},{98,-88},{94,-94},{88,-98},{80,
@@ -482,9 +480,7 @@ package Keyboard
             lineColor={0,0,255},
             pattern=LinePattern.None,
             fillColor={95,95,95},
-            fillPattern=FillPattern.Solid)}),                     Diagram(
-         coordinateSystem(preserveAspectRatio=false, extent={{-100,
-             -100},{100,100}})),
+            fillPattern=FillPattern.Solid)}),
      experiment(
        StopTime=100,
        __Dymola_fixedstepsize=0.01,

@@ -40,7 +40,7 @@ model Drone_DCPM_Battery_Switching
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power1(
     VaNominal=15,
-    IaNominal=50,                            V=V,
+    IaNominal=50, V=V,
     animation=animation)
     annotation (Placement(transformation(extent={{-8,0},{12,10}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
@@ -54,7 +54,7 @@ model Drone_DCPM_Battery_Switching
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power3(
     VaNominal=15,
-    IaNominal=50,                            V=V,
+    IaNominal=50, V=V,
     animation=animation)
     annotation (Placement(transformation(extent={{-8,-26},{12,-16}})));
   Mechanical.Chassis.Examples.droneChassis droneChassis2(length=0.25, m=0.5,
@@ -71,7 +71,6 @@ model Drone_DCPM_Battery_Switching
                                                          dcdc annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={-44,-80})));
   Modelica.Electrical.PowerConverters.DCDC.Control.SignalPWM pwm(
       constantDutyCycle=0.4, f(displayUnit="kHz") = 1000)
@@ -84,7 +83,6 @@ model Drone_DCPM_Battery_Switching
     useHeatPort=false,
     SOC(fixed=true, start=0.95)) annotation (Placement(transformation(
         extent={{10,10},{-10,-10}},
-        rotation=0,
         origin={-78,-74})));
   parameter Modelica.Electrical.Batteries.ParameterRecords.TransientData.ExampleData cellData2(
     Qnom=18000,
@@ -104,7 +102,7 @@ equation
   connect(gPS_collision.y, controlModule_Power.GPS) annotation (Line(points={{-9,-40},{-54.6667,-40},{-54.6667,-12}},
                                                   color={0,0,127}));
   connect(propeller_DCMachine_Power1.p1,propeller_DCMachine_Power. p1)
-    annotation (Line(points={{-8.4,8},{-16,8},{-16,22},{-8.4,22}},   color={0,0,
+    annotation (Line(points={{-8.4,8},{-16,8},{-16,22},{-8.4,22}}, color={0,0,
           255}));
   connect(propeller_DCMachine_Power2.position, controlModule_Power.y2)
     annotation (Line(points={{-10,-10},{-24,-10},{-24,-2},{-37.1667,-2}}, color=
@@ -188,6 +186,6 @@ equation
           extent={{-100,100},{100,-100}},
           lineColor={215,215,215},
           lineThickness=1), Bitmap(
-          extent={{-98,-98},{98,98}},  fileName="modelica://DroneSimulation/Resources/Images/Otus.jpg")}),
+          extent={{-98,-98},{98,98}}, fileName="modelica://DroneSimulation/Resources/Images/Otus.jpg")}),
     __Dymola_Commands(file="drone_animation_setup.mos" "drone_animation_setup"));
 end Drone_DCPM_Battery_Switching;

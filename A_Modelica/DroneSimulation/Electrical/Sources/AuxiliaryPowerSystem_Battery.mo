@@ -1,14 +1,13 @@
 within DroneSimulation.Electrical.Sources;
 model AuxiliaryPowerSystem_Battery "Auxiliary power system for drone"
-  PowerElectronics.Converters.DCDC.BuckConverter         dcdc annotation (
+  PowerElectronics.Converters.DCDC.BuckConverter dcdc annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={-50,0})));
   Modelica.Electrical.PowerConverters.DCDC.Control.SignalPWM pwm(
       constantDutyCycle=0.5, f(displayUnit="kHz") = 100000)
     annotation (Placement(transformation(extent={{-60,-40},{-40,-20}})));
-  Battery                                                battery(
+  Battery battery(
     redeclare Modelon.Electrical.EnergyStorage.Components.BatteryPackEMF
       stackVoltage,
     V_min=V_min,
@@ -101,7 +100,7 @@ equation
           points={{60,-58},{60,22}},
           color={95,95,95},
           smooth=Smooth.None)}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+
     Documentation(info="<html>
 </html>"),
     experiment(StopTime=0.5));

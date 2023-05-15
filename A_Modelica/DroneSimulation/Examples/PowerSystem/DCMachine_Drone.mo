@@ -1875,8 +1875,7 @@ equation
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{120,
             100}})),
-    Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{
-            100,100}})),
+
     experiment(StopTime=10),
-    __Dymola_experimentSetupOutput,Documentation(revisions="<html><hr><p><font class=\"copyright_bold\">Copyright &copy; 2004-2019, MODELON AB</font> <font class=\"copyright_base\">The use of this software component is regulated by the licensing conditions for the Electrification Library. This copyright notice must, unaltered, accompany all components that are derived from, copied from, or by other means have their origin from the Electrification Library. </font></p></html>"));
+Documentation(revisions="<html><hr><p><font class=\"copyright_bold\">Copyright &copy; 2004-2019, MODELON AB</font> <font class=\"copyright_base\">The use of this software component is regulated by the licensing conditions for the Electrification Library. This copyright notice must, unaltered, accompany all components that are derived from, copied from, or by other means have their origin from the Electrification Library. </font></p></html>"));
 end DCMachine_Drone;

@@ -33,7 +33,6 @@ model Drone_IdealMachine
     annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-4,-4},{4,4}},
-        rotation=0,
         origin={-44,8})));
   parameter Boolean animation=true "= true, if animation shall be enabled";
 equation
@@ -97,8 +96,7 @@ equation
           lineColor={215,215,215},
           lineThickness=1), Bitmap(
           extent={{-98,-98},{98,98}}, fileName="modelica://DroneSimulation/Resources/Images/Otus.jpg")}),
-                                                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+
     __Dymola_Commands(file="drone_animation_setup.mos" "drone_animation_setup"),
      experiment(StopTime=10));
 end Drone_IdealMachine;

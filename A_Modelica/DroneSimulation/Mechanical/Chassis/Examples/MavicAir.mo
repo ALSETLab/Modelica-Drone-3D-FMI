@@ -8,9 +8,8 @@ model MavicAir
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape1(
     r={0.101,0,0},
     r_CM={0.175,0,0},
-    m=0.5)            annotation (Placement(transformation(
+    m=0.5) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={-26,16})));
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape2(
     m=0.5,
@@ -22,7 +21,6 @@ model MavicAir
     r={-0.101,0,0},
     r_CM={-0.175,0,0}) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={-12,-48})));
   Modelica.Mechanics.MultiBody.Parts.BodyCylinder bodyCylinder(
     density=0,
@@ -97,6 +95,5 @@ equation
           Text(
           extent={{-68,26},{70,-26}},
           lineColor={28,108,200},
-          textString="droneChassis")}), Diagram(coordinateSystem(
-          preserveAspectRatio=false)));
+          textString="droneChassis")}));
 end MavicAir;

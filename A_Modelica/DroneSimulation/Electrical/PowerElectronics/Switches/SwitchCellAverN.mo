@@ -11,7 +11,7 @@ model SwitchCellAverN "Switching cell average n"
   Modelica.Electrical.Analog.Interfaces.NegativePin pin_n
     annotation (Placement(transformation(extent={{-130,-80},{-110,-60}}),
         iconTransformation(extent={{-130,-80},{-110,-60}})));
-  Modelica.Electrical.Analog.Sources.SignalCurrent   signalCurrent
+  Modelica.Electrical.Analog.Sources.SignalCurrent signalCurrent
     annotation (Placement(transformation(
         extent={{10,-10},{-10,10}},
         rotation=-90,
@@ -52,7 +52,7 @@ equation
     annotation (Line(points={{-132,10},{-132,50},{-132,90},{-120,90}},
                                                    color={0,0,255}));
   connect(gain2.u, DutyCycle) annotation (Line(points={{-7,41},{-5.5,41},{-5.5,
-          50},{10,50}},      color={0,0,127}));
+          50},{10,50}}, color={0,0,127}));
   connect(gain2.y, add.u1) annotation (Line(points={{-18.5,41},{-20,41},{
           -20,40},{-22,40},{-22,38},{-25,38}}, color={0,0,127}));
   connect(const.y, add.u2) annotation (Line(points={{-16.6,22},{-20,22},{
@@ -68,7 +68,7 @@ equation
   connect(division.y, product.u1) annotation (Line(points={{-84.6,20},{-86,
           20},{-86,3.6},{-88.8,3.6}}, color={0,0,127}));
   connect(current, product.u2) annotation (Line(points={{10,-30},{-34,-30},{-34,
-          -3.6},{-88.8,-3.6}},      color={0,0,127}));
+          -3.6},{-88.8,-3.6}}, color={0,0,127}));
   connect(product.y, signalCurrent.i)
     annotation (Line(points={{-102.6,0},{-120,0}}, color={0,0,127}));
   connect(signalCurrent.p, resistor.p)

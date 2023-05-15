@@ -14,7 +14,6 @@ model rotor3
   Blocks.Routing.RealExtend realExtend1 annotation (Placement(
         transformation(
         extent={{-6,-6},{6,6}},
-        rotation=0,
         origin={-18,-76})));
   Modelica.Mechanics.MultiBody.Forces.WorldTorque torque
     annotation (Placement(transformation(extent={{4,-66},{24,-86}})));
@@ -31,7 +30,7 @@ equation
       color={95,95,95},
       thickness=0.5));
   connect(realExtend1.y, torque.torque)
-    annotation (Line(points={{-11.4,-76},{2,-76}},           color={0,0,127}));
+    annotation (Line(points={{-11.4,-76},{2,-76}}, color={0,0,127}));
   connect(aero_torque.y, gain.u)
     annotation (Line(points={{-71,-76},{-52.8,-76}}, color={0,0,127}));
   connect(gain.y, realExtend1.u)
@@ -65,6 +64,5 @@ equation
           Text(
           extent={{-72,22},{76,-20}},
           lineColor={28,108,200},
-          textString="Rotor")}),      Diagram(coordinateSystem(
-          preserveAspectRatio=false)));
+          textString="Rotor")}));
 end rotor3;

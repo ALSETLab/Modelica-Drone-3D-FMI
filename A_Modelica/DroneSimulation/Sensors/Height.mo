@@ -24,5 +24,5 @@ equation
           fillColor={0,0,0},
           fillPattern=FillPattern.None,
           textString="Height
-")}), Diagram(coordinateSystem(preserveAspectRatio=false)));
+")}));
 end Height;

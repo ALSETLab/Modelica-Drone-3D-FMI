@@ -11,7 +11,7 @@ package Runs
    inner Visualization.UpdateVisualization updateVisualization(
        displayMultiBodyStructure=false) annotation (Placement(
          transformation(extent={{16,24},{36,44}})));
-   Visualization.Shapes.FileShape       shape(
+   Visualization.Shapes.FileShape shape(
      rotationType=Visualization.Internal.Types.RotationTypes.RotationAxis,
      axis(displayUnit="1") = {1,0,0},
      angle=-90,
@@ -44,13 +44,13 @@ package Runs
      filename=Visualization.Utilities.RootDir + "/Extras/Bitmaps/Skymap/skymap2/skymap2_negx.png")
      annotation (Placement(transformation(extent={{-72,20},{-52,40}})));
 
-   Visualization.Cameras.FreeCamera     camera1(windowMode=Visualization.Cameras.Internal.Types.WindowMode.Window,
+   Visualization.Cameras.FreeCamera camera1(windowMode=Visualization.Cameras.Internal.Types.WindowMode.Window,
        startDistanceToCenter={0,-3,0})
      annotation (Placement(transformation(extent={{-2,-36},{18,-16}})));
    replaceable Inputs.Keyboard.KeyboardInputs_SimVis inputDevice_SimVis
     constrainedby Interfaces.InputDevice_SimVis
      annotation (Placement(transformation(extent={{-32,-10},{-12,10}})));
-   Visualization.Cameras.FreeCamera     camera2(windowMode=Visualization.Cameras.Internal.Types.WindowMode.OpenVR_seated,
+   Visualization.Cameras.FreeCamera camera2(windowMode=Visualization.Cameras.Internal.Types.WindowMode.OpenVR_seated,
       startDistanceToCenter={0,-3,0})
      annotation (Placement(transformation(extent={{-2,-54},{18,-34}})));
  equation
@@ -71,7 +71,7 @@ package Runs
      annotation (Line(points={{-11,5},{-0.16665,5},{-0.16665,8},{10,8}},
                     color={0,0,127}));
    connect(inputDevice_SimVis.Y, controlModuleTest_fmu_inputs1.ycoord)
-     annotation (Line(points={{-11,0},{10,0}},      color={0,0,127}));
+     annotation (Line(points={{-11,0},{10,0}}, color={0,0,127}));
    connect(inputDevice_SimVis.Z, controlModuleTest_fmu_inputs1.zcoord)
      annotation (Line(points={{-11,-5},{-0.16665,-5},{-0.16665,-8},{10,-8}},
                      color={0,0,127}));
@@ -120,7 +120,7 @@ package Runs
   end ModuleTest_Dymola;
 
  model ModuleTest_NoInput
-   Modelica.Blocks.Sources.Ramp     ramp(
+   Modelica.Blocks.Sources.Ramp ramp(
      height=2,
      duration=4,
      startTime=0)
@@ -134,7 +134,7 @@ package Runs
    connect(ramp.y, controlModuleTest_fmu_inputs1.xcoord) annotation (
        Line(points={{-45,28},{-28,28},{-28,29},{-23,29}}, color={0,0,127}));
    connect(controlModuleTest_fmu_inputs1.zcoord, const1.y) annotation (
-       Line(points={{-23,-11},{-44.9,-11}},                   color={0,0,
+       Line(points={{-23,-11},{-44.9,-11}}, color={0,0,
            127}));
    connect(ramp.y, controlModuleTest_fmu_inputs1.ycoord) annotation (
        Line(points={{-45,28},{-36,28},{-36,9},{-23,9}}, color={0,0,127}));

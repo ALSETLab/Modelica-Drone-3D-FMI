@@ -30,13 +30,13 @@ model simpleHoverTest
      annotation (Placement(transformation(extent={{-58,-6},{-46,6}})));
   Modelica.Blocks.Math.Feedback feedback
     annotation (Placement(transformation(extent={{-86,-10},{-66,10}})));
-  Mechanical.Propeller                 propellerRev(PropellerGain=1)
+  Mechanical.Propeller propellerRev(PropellerGain=1)
      annotation (Placement(transformation(extent={{-20,40},{0,60}})));
-  Mechanical.Propeller                 propellerRev1
+  Mechanical.Propeller propellerRev1
      annotation (Placement(transformation(extent={{-20,10},{0,30}})));
-  Mechanical.Propeller                 propellerRev3
+  Mechanical.Propeller propellerRev3
      annotation (Placement(transformation(extent={{-20,-16},{0,4}})));
-  Mechanical.Propeller                 propellerRev2
+  Mechanical.Propeller propellerRev2
      annotation (Placement(transformation(extent={{-20,-40},{0,-20}})));
 equation
   connect(relativePosition.frame_b, droneChassis1.frame_a3) annotation (
@@ -81,7 +81,7 @@ equation
    connect(propellerRev1.position, propellerRev3.position) annotation (Line(
          points={{-22.2,20},{-30,20},{-30,-6},{-22.2,-6}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
-            -120,-100},{100,100}})),                             Diagram(
+            -120,-100},{100,100}})), Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{
             100,100}})));
 end simpleHoverTest;

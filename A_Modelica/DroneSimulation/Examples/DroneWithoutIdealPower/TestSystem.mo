@@ -7,7 +7,6 @@ model TestSystem
     offset=0,
     startTime=0)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={-70,0})));
   Modelica.Blocks.Sources.Constant const(k=-0.25)
     annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
@@ -21,7 +20,6 @@ model TestSystem
     height=0,
     startTime=20)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={-72,-72})));
   Modelica.Blocks.Sources.Constant const1(k=0)
     annotation (Placement(transformation(extent={{-80,60},{-60,80}})));
@@ -43,7 +41,7 @@ equation
       StopTime=30,
       __Dymola_NumberOfIntervals=5000,
       Tolerance=0.001,
-      __Dymola_Algorithm="Dassl"),     __Dymola_Commands(executeCall(
+      __Dymola_Algorithm="Dassl"), __Dymola_Commands(executeCall(
           ensureSimulated=true) = {createPlot(
         id=1,
         position={15,10,584,420},

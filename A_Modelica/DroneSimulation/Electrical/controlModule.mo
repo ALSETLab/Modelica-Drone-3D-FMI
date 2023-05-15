@@ -59,7 +59,6 @@ model controlModule
   DroneSimulation.Blocks.Routing.RealExtract realExtract3(index=2)
     annotation (Placement(transformation(
         extent={{-4,-4},{4,4}},
-        rotation=0,
         origin={14,-72})));
   DroneSimulation.Blocks.Routing.RealExtract realExtract4(index=2)
     annotation (Placement(transformation(extent={{-52,-68},{-44,-60}})));
@@ -87,7 +86,6 @@ model controlModule
   DroneSimulation.Blocks.Routing.RealExtract realExtract7(index=1)
     annotation (Placement(transformation(
         extent={{-4,-4},{4,4}},
-        rotation=0,
         origin={14,-60})));
   DroneSimulation.Blocks.Routing.RealExtract realExtract8(index=3)
     annotation (Placement(transformation(
@@ -169,7 +167,7 @@ equation
   connect(position, realExtract1.u)
     annotation (Line(points={{-120,0},{-80,0}}, color={0,0,127}));
   connect(position, realExtract2.u) annotation (Line(points={{-120,0},{-90,0},
-          {-90,-30},{-80,-30}},    color={0,0,127}));
+          {-90,-30},{-80,-30}}, color={0,0,127}));
   connect(realExtract2.y, discretePID.u)
     annotation (Line(points={{-59,-30},{-38,-30}}, color={0,0,127}));
   connect(realExtract1.y, discretePID1.u)
@@ -177,7 +175,7 @@ equation
   connect(GPS, realExtract4.u) annotation (Line(points={{-60,-100},{-60,-64},
           {-52,-64}}, color={0,0,127}));
   connect(realExtract3.y, discretePID2.u1) annotation (Line(points={{18.4,-72},
-          {56,-72},{56,20}},      color={0,0,127}));
+          {56,-72},{56,20}}, color={0,0,127}));
   connect(realExtract4.y, discretePID1.u1) annotation (Line(points={{-43.6,
           -64},{-4,-64},{-4,-16},{-30,-16},{-30,-10}}, color={0,0,127}));
   connect(GPS, realExtract5.u) annotation (Line(points={{-60,-100},{-60,-72},
@@ -212,11 +210,11 @@ equation
     annotation (Line(points={{-120,80},{-80,80},{-80,80},{-38,80}},
                                                   color={0,0,127}));
   connect(discretePID1.y, gain.u) annotation (Line(points={{-19,0},{-18,0},{-18,
-          1},{-14.6,1}},        color={0,0,127}));
+          1},{-14.6,1}}, color={0,0,127}));
   connect(limiter1.u, gain.y)
-    annotation (Line(points={{-2,0},{-2,1},{-7.7,1}},   color={0,0,127}));
+    annotation (Line(points={{-2,0},{-2,1},{-7.7,1}}, color={0,0,127}));
   connect(realExpression3.y,add3_2. u2)
-    annotation (Line(points={{97,20},{116.8,20}},  color={0,0,127}));
+    annotation (Line(points={{97,20},{116.8,20}}, color={0,0,127}));
   connect(add3_2.u1,realExpression4. y) annotation (Line(points={{116.8,24.8},{
           106,24.8},{106,29},{97,29}},
                                     color={0,0,127}));
@@ -224,7 +222,7 @@ equation
           106,15.2},{106,11},{97,11}},
                                   color={0,0,127}));
   connect(realExpression6.y,add3_3. u2)
-    annotation (Line(points={{99,-20},{112.8,-20}},  color={0,0,127}));
+    annotation (Line(points={{99,-20},{112.8,-20}}, color={0,0,127}));
   connect(add3_3.u1,realExpression7. y) annotation (Line(points={{112.8,-15.2},
           {106,-15.2},{106,-11},{99,-11}}, color={0,0,127}));
   connect(add3_3.u3,realExpression8. y) annotation (Line(points={{112.8,-24.8},
@@ -252,7 +250,7 @@ equation
   connect(add3_4.y, y3) annotation (Line(points={{128.6,-60},{140,-60},{140,-60},
           {150,-60}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{140,100}}),                                  graphics={Text(
+            -100},{140,100}}), graphics={Text(
           extent={{-44,30},{86,-32}},
           lineColor={0,0,0},
           fillColor={0,0,0},

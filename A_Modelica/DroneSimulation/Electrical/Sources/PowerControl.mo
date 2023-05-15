@@ -39,7 +39,7 @@ model PowerControl
   Real power;
   Modelica.Blocks.Sources.RealExpression realExpression(y=3)
     annotation (Placement(transformation(extent={{-72,-46},{-52,-26}})));
-  Modelica.Electrical.Analog.Sensors.CurrentSensor   currentSensor
+  Modelica.Electrical.Analog.Sensors.CurrentSensor currentSensor
     annotation (Placement(transformation(extent={{10,10},{-10,-10}},
         rotation=90,
         origin={80,38})));
@@ -48,7 +48,7 @@ equation
   connect(product.u1,potentialSensor. phi)
     annotation (Line(points={{-10,40},{-23,40}}, color={0,0,127}));
   connect(product.y,division. u1) annotation (Line(points={{13,46},{18,46},{18,18},
-          {24,18}},    color={0,0,127}));
+          {24,18}}, color={0,0,127}));
   connect(const.y,division. u2)
     annotation (Line(points={{-13,6},{24,6}}, color={0,0,127}));
   connect(signalCurrent.n, ground1.p)
@@ -76,6 +76,5 @@ equation
           extent={{-94,42},{100,-38}},
           lineColor={28,108,200},
           textString="Speed
-Controller")}),                                                  Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+Controller")}));
 end PowerControl;

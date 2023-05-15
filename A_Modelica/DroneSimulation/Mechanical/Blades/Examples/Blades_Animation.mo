@@ -17,6 +17,5 @@ equation
       points={{-24,0},{-104,0}},
       color={95,95,95},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+
 end Blades_Animation;

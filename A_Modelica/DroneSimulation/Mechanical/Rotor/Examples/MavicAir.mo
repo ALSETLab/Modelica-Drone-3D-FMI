@@ -93,6 +93,5 @@ equation
           Text(
           extent={{-72,22},{76,-20}},
           lineColor={28,108,200},
-          textString="Rotor")}),      Diagram(coordinateSystem(
-          preserveAspectRatio=false)));
+          textString="Rotor")}));
 end MavicAir;

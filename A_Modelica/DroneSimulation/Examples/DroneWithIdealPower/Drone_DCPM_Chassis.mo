@@ -11,10 +11,10 @@ model Drone_DCPM_Chassis
                                          maxTilt=0.05, samplePeriod=0.001)
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
   Mechanical.Chassis.Examples.droneChassis droneChassis1(
-    animation=animation,                                 length=0.25, m=0.5)
+    animation=animation, length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{44,-10},{94,10}})));
   Mechanical.Propeller.Examples.DCMachine propeller_DCMachine(animation=
-        animation,                                            PropellerGain=1)
+        animation, PropellerGain=1)
     annotation (Placement(transformation(extent={{10,14},{30,22}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple
     annotation (Placement(transformation(extent={{-74,-10},{-54,10}})));
@@ -28,14 +28,13 @@ model Drone_DCPM_Chassis
         animation)
     annotation (Placement(transformation(extent={{10,4},{30,12}})));
   Mechanical.Propeller.Examples.DCMachine propeller_DCMachine2(animation=
-        animation,                                             PropellerGain=1)
+        animation, PropellerGain=1)
     annotation (Placement(transformation(extent={{10,-6},{30,2}})));
   Mechanical.Propeller.Examples.DCMachine propeller_DCMachine3(animation=
         animation)
     annotation (Placement(transformation(extent={{10,-16},{30,-8}})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-4,-4},{4,4}},
-        rotation=0,
         origin={-44,8})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a1 annotation (
       Placement(transformation(
@@ -116,8 +115,7 @@ equation
           lineColor={215,215,215},
           lineThickness=1), Bitmap(
           extent={{-98,-98},{98,98}}, fileName="modelica://DroneSimulation/Resources/Images/Otus.jpg")}),
-                                                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+
     __Dymola_Commands(file="drone_animation_setup.mos" "drone_animation_setup"),
      experiment(StopTime=10));
 end Drone_DCPM_Chassis;

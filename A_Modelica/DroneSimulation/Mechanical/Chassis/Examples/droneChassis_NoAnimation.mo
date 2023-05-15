@@ -16,7 +16,6 @@ model droneChassis_NoAnimation
   useQuaternions=false)
                       annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={-12,14})));
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape2(
     animation=true,
@@ -33,7 +32,6 @@ model droneChassis_NoAnimation
   useQuaternions=false)
                        annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={-12,-48})));
   Modelica.Mechanics.MultiBody.Parts.BodyCylinder bodyCylinder(
     animation=false,
@@ -109,6 +107,5 @@ equation
           Text(
           extent={{-68,26},{70,-26}},
           lineColor={28,108,200},
-          textString="droneChassis")}), Diagram(coordinateSystem(
-          preserveAspectRatio=false)));
+          textString="droneChassis")}));
 end droneChassis_NoAnimation;

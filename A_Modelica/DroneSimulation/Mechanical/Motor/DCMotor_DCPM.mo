@@ -3,7 +3,7 @@ model DCMotor_DCPM "DC motor using DC machine from MSL"
 extends DroneSimulation.Mechanical.Motor.Templates.DCMotor_Power;
   parameter Real k=-1
     "Propeller gain. Set to 1 for clockwise, -1 for counterclockwise";
-  Modelica.Blocks.Nonlinear.Limiter limiter(uMax=V,   uMin=0)
+  Modelica.Blocks.Nonlinear.Limiter limiter(uMax=V, uMin=0)
     annotation (Placement(transformation(extent={{-4,-4},{4,4}},
         rotation=270,
         origin={-56,36})));
@@ -24,8 +24,7 @@ extends DroneSimulation.Mechanical.Motor.Templates.DCMotor_Power;
   Modelica.Electrical.Analog.Basic.Ground ground annotation (Placement(
         transformation(
         origin={-77,-19},
-        extent={{-5,-5},{5,5}},
-        rotation=0)));
+        extent={{-5,-5},{5,5}})));
   parameter Modelica.Units.SI.Voltage VaNominal=5
     "Nominal armature voltage for motor";
   parameter Modelica.Units.SI.Current IaNominal=0.1
@@ -50,7 +49,6 @@ extends DroneSimulation.Mechanical.Motor.Templates.DCMotor_Power;
     resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={36,0})));
   Blocks.Routing.RealExtend realExtend1
     annotation (Placement(transformation(extent={{26,-70},{46,-50}})));
@@ -78,7 +76,7 @@ equation
     annotation (Line(points={{-77,-14},{-72,-14},{-72,-16},{-68,-16}},
                                                    color={0,0,255}));
   connect(limiter.y, powerControl.Position) annotation (Line(points={{-56,31.6},
-          {-56,22.2}},          color={0,0,127}));
+          {-56,22.2}}, color={0,0,127}));
   connect(powerControl.n1, dcpm.pin_an)
     annotation (Line(points={{-68,1.77636e-15},{-68,-16}},
                                                     color={0,0,255}));
@@ -117,11 +115,10 @@ equation
   connect(p1, powerControl.Battery) annotation (Line(points={{-100,40},{-88,40},
           {-88,26},{-68.2,26},{-68.2,20}}, color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}),                                  graphics={
+            -100},{100,100}}), graphics={
           Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
           Text(
           extent={{-72,22},{76,-20}},
           lineColor={28,108,200},
-          textString="Motor")}),      Diagram(coordinateSystem(
-          preserveAspectRatio=false, extent={{-100,-100},{100,100}})));
+          textString="Motor")}));
 end DCMotor_DCPM;

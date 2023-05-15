@@ -56,7 +56,6 @@ model DCAC_HalfBridgeAverage
         origin={24,56})));
   Modelica.Blocks.Sources.Constant const(k=1)
     annotation (Placement(transformation(extent={{4,-4},{-4,4}},
-        rotation=0,
         origin={40,50})));
   Modelica.Electrical.Analog.Interfaces.Pin pin1 annotation (Placement(
         transformation(extent={{-100,50},{-80,70}}), iconTransformation(extent=
@@ -71,19 +70,19 @@ model DCAC_HalfBridgeAverage
     parameter Real Vd "DC voltage";
 equation
   connect(switch1.pin_n, signalVoltage.n)
-    annotation (Line(points={{-48,13},{-48,0},{54,0}},   color={0,0,255}));
+    annotation (Line(points={{-48,13},{-48,0},{54,0}}, color={0,0,255}));
   connect(product2.y, signalVoltage.v) annotation (Line(points={{64,19.6},{64,
-          12}},                   color={0,0,127}));
+          12}}, color={0,0,127}));
   connect(DutyCycle, switch1.DutyCycle) annotation (Line(points={{24,90},{24,66},
-          {14,66},{14,25},{-35,25}},                 color={0,0,127}));
+          {14,66},{14,25},{-35,25}}, color={0,0,127}));
   connect(signalVoltage.p, ac)
     annotation (Line(points={{74,0},{90,0}}, color={0,0,255}));
   connect(DutyCycle, gain2.u)
     annotation (Line(points={{24,90},{24,60.8}}, color={0,0,127}));
   connect(gain2.y, add.u1) annotation (Line(points={{24,51.6},{24,33.6},{45.2,
-          33.6}},             color={0,0,127}));
+          33.6}}, color={0,0,127}));
   connect(add.y, product2.u1) annotation (Line(points={{54.4,36},{61.6,36},{
-          61.6,28.8}},  color={0,0,127}));
+          61.6,28.8}}, color={0,0,127}));
   connect(switch1.pin, pin1)
     annotation (Line(points={{-48,29},{-48,60},{-90,60}}, color={0,0,255}));
   connect(switch4.pin_n, pin_n1) annotation (Line(points={{-48,-39},{-48,
@@ -156,6 +155,6 @@ equation
         Text(
           extent={{-12,-38},{88,-58}},
           lineColor={0,0,127},
-          textString="AC")}),  Diagram(coordinateSystem(preserveAspectRatio=
+          textString="AC")}), Diagram(coordinateSystem(preserveAspectRatio=
             false, extent={{-80,-80},{80,80}})));
 end DCAC_HalfBridgeAverage;

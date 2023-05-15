@@ -67,7 +67,6 @@ equation
           Text(
           extent={{-86,30},{80,-34}},
           lineColor={28,108,200},
-          textString="Modulated Signal 
-Controller")}),                                                  Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+          textString="Modulated Signal
+Controller")}));
 end ModulatedSignalController;

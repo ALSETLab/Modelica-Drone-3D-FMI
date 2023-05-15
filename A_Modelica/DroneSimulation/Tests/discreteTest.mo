@@ -8,9 +8,8 @@ model discreteTest
     annotation (Placement(transformation(extent={{48,-10},{68,10}})));
 equation
   connect(ramp.y, sampler.u)
-    annotation (Line(points={{-41,0},{-16,0}},  color={0,0,127}));
+    annotation (Line(points={{-41,0},{-16,0}}, color={0,0,127}));
   connect(sampler.y, zeroOrderHold.u)
-    annotation (Line(points={{7,0},{46,0}},    color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+    annotation (Line(points={{7,0},{46,0}}, color={0,0,127}));
+
 end discreteTest;

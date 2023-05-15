@@ -12,7 +12,7 @@ equation
    annotation (Line(points={{-7,5},{-3.5,5},{-3.5,8},{10,8}},
                   color={0,0,127}));
  connect(inputDevice.Y, controlModuleTest_fmu_inputs1.ycoord)
-   annotation (Line(points={{-7,0},{10,0}},       color={0,0,127}));
+   annotation (Line(points={{-7,0},{10,0}}, color={0,0,127}));
  connect(inputDevice.Z, controlModuleTest_fmu_inputs1.zcoord)
    annotation (Line(points={{-7,-5},{-4,-5},{-4,-8},{10,-8}},
                    color={0,0,127}));

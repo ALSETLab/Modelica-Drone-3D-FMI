@@ -1,6 +1,6 @@
 within DroneSimulation.Examples.Visualization;
 model ModuleTest_NoInput
-  Modelica.Blocks.Sources.Ramp     ramp(
+  Modelica.Blocks.Sources.Ramp ramp(
     height=2,
     duration=4,
     startTime=0)
@@ -14,7 +14,7 @@ equation
   connect(ramp.y, controlModuleTest_fmu_inputs1.xcoord) annotation (
       Line(points={{-45,28},{-28,28},{-28,29},{-23,29}}, color={0,0,127}));
   connect(controlModuleTest_fmu_inputs1.zcoord, const1.y) annotation (
-      Line(points={{-23,-11},{-44.9,-11}},                   color={0,0,
+      Line(points={{-23,-11},{-44.9,-11}}, color={0,0,
           127}));
   connect(ramp.y, controlModuleTest_fmu_inputs1.ycoord) annotation (
       Line(points={{-45,28},{-36,28},{-36,9},{-23,9}}, color={0,0,127}));

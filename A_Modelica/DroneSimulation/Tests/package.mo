@@ -1,17 +1,6 @@
 within DroneSimulation;
 package Tests
 
-
-
-
-
-
-
-
-
-
-
-
  annotation (Icon(graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},

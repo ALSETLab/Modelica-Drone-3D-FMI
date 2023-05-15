@@ -9,7 +9,7 @@ model Drone_IdealMachine_ContinuousPID
   Mechanical.Chassis.Examples.droneChassis droneChassis1(length=0.25, m=0.5,
     animation=animation)
     annotation (Placement(transformation(extent={{44,-12},{94,8}})));
-  Mechanical.Propeller.Examples.Propeller propeller(   PropellerGain=1,
+  Mechanical.Propeller.Examples.Propeller propeller( PropellerGain=1,
       animation=animation)
     annotation (Placement(transformation(extent={{10,14},{30,22}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple
@@ -22,14 +22,13 @@ model Drone_IdealMachine_ContinuousPID
     annotation (Placement(transformation(extent={{10,-92},{30,-72}})));
   Mechanical.Propeller.Examples.Propeller propeller2(animation=animation)
     annotation (Placement(transformation(extent={{10,2},{30,10}})));
-  Mechanical.Propeller.Examples.Propeller propeller3(   PropellerGain=1,
+  Mechanical.Propeller.Examples.Propeller propeller3( PropellerGain=1,
       animation=animation)
     annotation (Placement(transformation(extent={{10,-8},{30,0}})));
   Mechanical.Propeller.Examples.Propeller propeller1(animation=animation)
     annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-4,-4},{4,4}},
-        rotation=0,
         origin={-44,8})));
   parameter Boolean animation=true "= true, if animation shall be enabled";
   Electrical.controlModule_Continuous
@@ -101,8 +100,7 @@ equation
           lineColor={215,215,215},
           lineThickness=1), Bitmap(
           extent={{-98,-98},{98,98}}, fileName="modelica://DroneSimulation/Resources/Images/Otus.jpg")}),
-                                                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+
     __Dymola_Commands(file="drone_animation_setup.mos" "drone_animation_setup"),
      experiment(StopTime=10));
 end Drone_IdealMachine_ContinuousPID;

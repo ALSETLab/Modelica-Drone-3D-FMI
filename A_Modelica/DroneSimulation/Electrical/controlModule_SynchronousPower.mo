@@ -29,7 +29,7 @@ model controlModule_SynchronousPower
         extent={{-20,-20},{20,20}},
         rotation=90,
         origin={0,-120})));
-  Blocks.Control.discreteTF                  discreteTF4(
+  Blocks.Control.discreteTF discreteTF4(
     ki=z_ki,
     kd=z_kd,
     kp=z_kp,
@@ -44,13 +44,13 @@ model controlModule_SynchronousPower
     annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));
   DroneSimulation.Blocks.Routing.RealExtract realExtract2(index=3)
     annotation (Placement(transformation(extent={{-80,-40},{-60,-20}})));
-  Blocks.Control.discreteTF                  discreteTF3(
+  Blocks.Control.discreteTF discreteTF3(
     kp=y_kp,
     kd=y_kd,
     samplePeriod=samplePeriod,
     ki=y_ki)
     annotation (Placement(transformation(extent={{-40,-10},{-20,10}})));
-  Blocks.Control.discreteTF                  discreteTF2(
+  Blocks.Control.discreteTF discreteTF2(
     kd=gyro_x_kd,
     kp=gyro_x_kp,
     samplePeriod=samplePeriod,
@@ -59,14 +59,13 @@ model controlModule_SynchronousPower
   DroneSimulation.Blocks.Routing.RealExtract realExtract3(index=2)
     annotation (Placement(transformation(
         extent={{-4,-4},{4,4}},
-        rotation=0,
         origin={14,-72})));
   DroneSimulation.Blocks.Routing.RealExtract realExtract4(index=2)
     annotation (Placement(transformation(extent={{-52,-68},{-44,-60}})));
   parameter Real maxTilt=2 "Upper limits of input signals";
   DroneSimulation.Blocks.Routing.RealExtract realExtract5
     annotation (Placement(transformation(extent={{-44,-76},{-36,-68}})));
-  Blocks.Control.discreteTF                  discreteTF1(
+  Blocks.Control.discreteTF discreteTF1(
     kd=x_kd,
     kp=x_kp,
     samplePeriod=samplePeriod,
@@ -78,7 +77,7 @@ model controlModule_SynchronousPower
     annotation (Placement(transformation(extent={{-60,-60},{-52,-52}})));
   Modelica.Blocks.Nonlinear.Limiter limiter1(uMax=0.523)
     annotation (Placement(transformation(extent={{0,-10},{20,10}})));
-  Blocks.Control.discreteTF                  discreteTF5(
+  Blocks.Control.discreteTF discreteTF5(
     kd=gyro_y_kd,
     kp=gyro_y_kp,
     samplePeriod=samplePeriod,
@@ -87,14 +86,13 @@ model controlModule_SynchronousPower
   DroneSimulation.Blocks.Routing.RealExtract realExtract7(index=1)
     annotation (Placement(transformation(
         extent={{-4,-4},{4,4}},
-        rotation=0,
         origin={14,-60})));
   DroneSimulation.Blocks.Routing.RealExtract realExtract8(index=3)
     annotation (Placement(transformation(
         extent={{-4,-4},{4,4}},
         rotation=90,
         origin={-28,58})));
-  Blocks.Control.discreteTF                  discreteTF(
+  Blocks.Control.discreteTF discreteTF(
     kd=Yaw_kd,
     kp=Yaw_kp,
     ki=Yaw_ki,
@@ -177,13 +175,12 @@ model controlModule_SynchronousPower
   parameter Modelica.Units.SI.Voltage V=V "Voltage of the controller";
 equation
 
-
   connect(position, realExtract.u) annotation (Line(points={{-120,0},{-90,0},
           {-90,30},{-80,30}}, color={0,0,127}));
   connect(position, realExtract1.u)
     annotation (Line(points={{-120,0},{-80,0}}, color={0,0,127}));
   connect(position, realExtract2.u) annotation (Line(points={{-120,0},{-90,0},
-          {-90,-30},{-80,-30}},    color={0,0,127}));
+          {-90,-30},{-80,-30}}, color={0,0,127}));
   connect(realExtract2.y,discreteTF4. u)
     annotation (Line(points={{-59,-30},{-38,-30}}, color={0,0,127}));
   connect(realExtract1.y, discreteTF3.u)
@@ -227,19 +224,19 @@ equation
   connect(discreteTF3.y, gain.u) annotation (Line(points={{-19,0},{-18,0},{-18,
           1},{-14.6,1}}, color={0,0,127}));
   connect(limiter1.u, gain.y)
-    annotation (Line(points={{-2,0},{-2,1},{-7.7,1}},   color={0,0,127}));
+    annotation (Line(points={{-2,0},{-2,1},{-7.7,1}}, color={0,0,127}));
   connect(realExpression3.y,add3_2. u2)
-    annotation (Line(points={{97,20},{116.8,20}},  color={0,0,127}));
+    annotation (Line(points={{97,20},{116.8,20}}, color={0,0,127}));
   connect(add3_2.u1,realExpression4. y) annotation (Line(points={{116.8,24.8},{106,
-          24.8},{106,29},{97,29}},  color={0,0,127}));
+          24.8},{106,29},{97,29}}, color={0,0,127}));
   connect(add3_2.u3,realExpression5. y) annotation (Line(points={{116.8,15.2},{106,
           15.2},{106,11},{97,11}},color={0,0,127}));
   connect(realExpression6.y,add3_3. u2)
-    annotation (Line(points={{99,-20},{112.8,-20}},  color={0,0,127}));
+    annotation (Line(points={{99,-20},{112.8,-20}}, color={0,0,127}));
   connect(add3_3.u1,realExpression7. y) annotation (Line(points={{112.8,-15.2},{
-          106,-15.2},{106,-11},{99,-11}},  color={0,0,127}));
+          106,-15.2},{106,-11},{99,-11}}, color={0,0,127}));
   connect(add3_3.u3,realExpression8. y) annotation (Line(points={{112.8,-24.8},{
-          106,-24.8},{106,-29},{99,-29}},  color={0,0,127}));
+          106,-24.8},{106,-29},{99,-29}}, color={0,0,127}));
   connect(realExpression9.y,add3_4. u2)
     annotation (Line(points={{101,-60},{114.8,-60}}, color={0,0,127}));
   connect(add3_4.u1,realExpression10. y) annotation (Line(points={{114.8,-55.2},
@@ -265,7 +262,7 @@ equation
   connect(y3, add3_4.y)
     annotation (Line(points={{150,-60},{128.6,-60}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},
-            {140,100}}),                                        graphics={Text(
+            {140,100}}), graphics={Text(
           extent={{-44,30},{86,-32}},
           lineColor={0,0,0},
           fillColor={0,0,0},

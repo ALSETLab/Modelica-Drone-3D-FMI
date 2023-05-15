@@ -6,10 +6,10 @@ model SimpleMotor_EMF "Simplified DC motor model with EMF"
     annotation (Placement(transformation(extent={{-10,8},{10,28}})));
 
   Modelica.Electrical.Analog.Basic.Resistor resistor(R=R_trs)
-    "Effective resistance for transport  ac loss"
+    "Effective resistance for transport ac loss"
     annotation (Placement(transformation(extent={{-50,8},{-30,28}})));
   parameter Modelica.Units.SI.Resistance R_trs=1e-6
-    "Effective resistance for transport  ac loss";
+    "Effective resistance for transport ac loss";
   parameter Modelica.Units.SI.Inductance X_s=0.041 "Reactance";
   Modelica.Electrical.Analog.Basic.Resistor hysteresis(R=R_hyst)
     "Effective resistance for hysteresis ac loss" annotation (Placement(
@@ -60,8 +60,7 @@ equation
         Text(
           extent={{-62,28},{74,-20}},
           lineColor={28,108,200},
-          textString="motor")}),                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+          textString="motor")}),
     Documentation(info="<html>
 <p>This motor model considers losses in the system by including hysteresis and transfer losses.</p>
 </html>"));

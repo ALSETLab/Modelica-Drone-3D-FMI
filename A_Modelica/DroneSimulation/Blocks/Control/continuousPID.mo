@@ -6,7 +6,6 @@ model continuousPID
     parameter Modelica.Units.SI.Time samplePeriod=0.01
   "Sample period of component";
 
-
   Modelica.Blocks.Interfaces.RealInput u
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));
   Modelica.Blocks.Interfaces.RealOutput y
@@ -20,8 +19,7 @@ model continuousPID
         rotation=90,
         origin={0,-100})));
 
-
-Modelica.Blocks.Continuous.TransferFunction            transferFunction1(
+Modelica.Blocks.Continuous.TransferFunction transferFunction1(
     b={(kp + ki*2 + kd),(-kp + ki*2 - 2*kd),kd},
     a={1,-1,0},
     x(fixed=true))
@@ -54,8 +52,7 @@ equation
               113.485},{-65.374,-61.217},{-78.061,-78.184}},
           color={95,95,95},
           smooth=Smooth.Bezier,
-          thickness=1)}),                                        Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+          thickness=1)}),
     Documentation(info="<html>
 <p>This is a block used to model the PID functions in the continuous controller.</p>
 </html>"));

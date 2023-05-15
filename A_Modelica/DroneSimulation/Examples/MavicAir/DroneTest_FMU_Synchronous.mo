@@ -41,7 +41,6 @@ model DroneTest_FMU_Synchronous
     annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-4,-4},{4,4}},
-        rotation=0,
         origin={-44,8})));
 equation
   gPS.y[1] = xgps;
@@ -57,7 +56,7 @@ equation
   connect(accelerometer.y, controlModule_Synchronous.Gyero) annotation (Line(
         points={{9,-70},{-20.9091,-70},{-20.9091,-12}}, color={0,0,127}));
   connect(controlModule_Synchronous.Height, const1.y) annotation (Line(points={{
-          -16.6667,-12},{-16.6667,-36},{-10.6,-36}},  color={0,0,127}));
+          -16.6667,-12},{-16.6667,-36},{-10.6,-36}}, color={0,0,127}));
   connect(mavicAir_propeller1.position, controlModule_Synchronous.y)
     annotation (Line(points={{7.8,5.2},{-0.1,5.2},{-0.1,2},{-9.09091,2}}, color=
          {0,0,127}));
@@ -110,7 +109,6 @@ equation
           lineColor={215,215,215},
           lineThickness=1), Bitmap(
           extent={{-98,-98},{98,98}}, fileName="modelica://DroneSimulation/Resources/Images/dronepic.jpg")}),
-                                                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+
     __Dymola_Commands(file="drone_animation_setup.mos" "drone_animation_setup"));
 end DroneTest_FMU_Synchronous;

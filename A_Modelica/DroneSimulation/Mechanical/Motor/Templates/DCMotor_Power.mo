@@ -32,11 +32,10 @@ model DCMotor_Power "DC motor using DC machine from MSL"
 equation
 
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}),                                  graphics={
+            -100},{100,100}}), graphics={
           Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
           Text(
           extent={{-72,22},{76,-20}},
           lineColor={28,108,200},
-          textString="Motor")}),      Diagram(coordinateSystem(
-          preserveAspectRatio=false, extent={{-100,-100},{100,100}})));
+          textString="Motor")}));
 end DCMotor_Power;

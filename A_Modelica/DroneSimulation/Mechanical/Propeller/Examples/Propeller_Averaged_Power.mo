@@ -51,8 +51,8 @@ equation
       color={95,95,95},
       thickness=0.5));
   connect(dCMotor_DCMachine_SeriesExcited.position, position) annotation (Line(
-        points={{-72.4,0},{-90,0},{-90,-20},{-120,-20}},     color={0,0,127}));
+        points={{-72.4,0},{-90,0},{-90,-20},{-120,-20}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -40},{100,60}})),                                    Diagram(
+            -40},{100,60}})), Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-40},{100,60}})));
 end Propeller_Averaged_Power;

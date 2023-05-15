@@ -15,7 +15,6 @@ model propellerTest
        resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
      annotation (Placement(transformation(
          extent={{-10,-10},{10,10}},
-         rotation=0,
          origin={-34,24})));
 
   Modelica.Blocks.Sources.Constant torque1
@@ -29,7 +28,6 @@ model propellerTest
     r={0.25,0,0},
     r_CM={0.175,0,0}) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={0,24})));
    Modelica.Mechanics.MultiBody.Forces.WorldForce force2(color={244,0,4},
        resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
@@ -49,7 +47,6 @@ model propellerTest
        resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
      annotation (Placement(transformation(
          extent={{-10,-10},{10,10}},
-         rotation=0,
          origin={-34,-38})));
 
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape3(
@@ -57,7 +54,6 @@ model propellerTest
     r={-0.25,0,0},
     r_CM={-0.175,0,0}) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={0,-38})));
   Modelica.Mechanics.MultiBody.Parts.BodyCylinder bodyCylinder(
     density=0,
@@ -176,7 +172,7 @@ equation
       color={95,95,95},
       thickness=0.5));
   connect(torque.torque, torque1.y) annotation (Line(points={{-6,116},{-28,
-          116},{-28,80},{-109,80}},  color={0,0,127}));
+          116},{-28,80},{-109,80}}, color={0,0,127}));
   connect(revolute.frame_a, bodyShape.frame_a) annotation (Line(
       points={{-8,82},{-20,82},{-20,56},{-10,56}},
       color={95,95,95},
@@ -238,7 +234,7 @@ equation
   connect(gain.u, feedback.y)
     annotation (Line(points={{-148,48},{-157,48}}, color={0,0,127}));
   connect(feedback.u2, realExtract.y) annotation (Line(points={{-166,40},{
-          -166,-115},{-156.7,-115}},           color={0,0,127}));
+          -166,-115},{-156.7,-115}}, color={0,0,127}));
   connect(integrator.u, feedback.y) annotation (Line(points={{-146,-72},{
           -156,-72},{-156,48},{-157,48}},
                                      color={0,0,127}));
@@ -253,7 +249,7 @@ equation
   connect(realDer.u, feedback.y) annotation (Line(points={{-146,-40},{-156,
           -40},{-156,48},{-157,48}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
-            -220,-260},{280,120}})),                             Diagram(
+            -220,-260},{280,120}})), Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-220,-260},{
             280,120}})));
 end propellerTest;

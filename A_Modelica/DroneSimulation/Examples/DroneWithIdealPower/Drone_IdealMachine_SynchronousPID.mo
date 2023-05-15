@@ -38,7 +38,7 @@ model Drone_IdealMachine_SynchronousPID
     annotation (Placement(transformation(extent={{-12,-84},{8,-64}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple
     annotation (Placement(transformation(extent={{-88,-10},{-68,10}})));
-  Modelica.Blocks.Sources.Ramp     ramp(height=2.5, duration=0)
+  Modelica.Blocks.Sources.Ramp ramp(height=2.5, duration=0)
     annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
 equation
   gPS.y[1] = xgps;
@@ -112,8 +112,7 @@ equation
           lineColor={215,215,215},
           lineThickness=1), Bitmap(
           extent={{-98,-98},{98,98}}, fileName="modelica://DroneSimulation/Resources/Images/Otus.jpg")}),
-                                                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+
     __Dymola_Commands(file="drone_animation_setup.mos" "drone_animation_setup"),
      experiment(StopTime=10));
 end Drone_IdealMachine_SynchronousPID;

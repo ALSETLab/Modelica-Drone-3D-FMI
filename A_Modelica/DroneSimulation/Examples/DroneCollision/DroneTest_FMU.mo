@@ -40,7 +40,6 @@ model DroneTest_FMU
     annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-4,-4},{4,4}},
-        rotation=0,
         origin={-44,8})));
   parameter Boolean animation=true "= true, if animation shall be enabled";
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a1 annotation (
@@ -84,7 +83,7 @@ equation
        color={95,95,95},
        thickness=0.5));
   connect(propellerRev2.position, controlModule_Synchronous.y2) annotation (
-      Line(points={{7.8,-4.8},{-9.16667,-4.8},{-9.16667,0}},  color={0,0,127}));
+      Line(points={{7.8,-4.8},{-9.16667,-4.8},{-9.16667,0}}, color={0,0,127}));
    connect(propellerRev3.Airframe,droneChassis1. frame_a3) annotation (Line(
        points={{30.2,-15.6},{36,-15.6},{36,-8},{44,-8}},
        color={95,95,95},
@@ -105,14 +104,12 @@ equation
       color={95,95,95},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{100,100}}),                                  graphics={
+            -100},{100,100}}), graphics={
           Rectangle(
           extent={{-100,100},{100,-100}},
           lineColor={215,215,215},
           lineThickness=1), Bitmap(
           extent={{-98,-98},{98,98}}, fileName="modelica://DroneSimulation/Resources/Images/dronepic.jpg")}),
-                                                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false, extent={{-100,-100},{100,
-            100}})),
+
     __Dymola_Commands(file="drone_animation_setup.mos" "drone_animation_setup"));
 end DroneTest_FMU;

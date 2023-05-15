@@ -1,42 +1,42 @@
 within DroneSimulation.Gyroscope.Components;
 model RotorLiftForce "Generator for periodic impulses."
-  Modelica.Blocks.Sources.Constant const(k = 0) annotation(Placement(visible = true, transformation(origin = {-70, 50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.Pulse pulse(period = 2 * 3.1415927 / angularVelocity, width = duty, amplitude = magnitude, startTime = phase / angularVelocity + liftStart, offset = magnitudeOffset, nperiod = 8) annotation(Placement(visible = true, transformation(origin = {-70, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Blocks.Sources.Constant const1(k = 0) annotation(Placement(visible = true, transformation(origin = {-70, -50}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Mechanics.MultiBody.Forces.WorldForce force(resolveInFrame = Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b, color = {0, 0, 200}) annotation(Placement(visible = true, transformation(origin = {10, 0}, extent = {{-10, -10}, {10, 10}}, rotation = -360)));
+  Modelica.Blocks.Sources.Constant const(k = 0) annotation(Placement(transformation(origin = {-70, 50}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Sources.Pulse pulse(period = 2 * 3.1415927 / angularVelocity, width = duty, amplitude = magnitude, startTime = phase / angularVelocity + liftStart, offset = magnitudeOffset, nperiod = 8) annotation(Placement(transformation(origin = {-70, 0}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Blocks.Sources.Constant const1(k = 0) annotation(Placement(transformation(origin = {-70, -50}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.MultiBody.Forces.WorldForce force(resolveInFrame = Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b, color = {0, 0, 200}) annotation(Placement(transformation(origin = {10, 0}, extent = {{-10, -10}, {10, 10}}, rotation = -360)));
   parameter Modelica.Units.SI.AngularVelocity angularVelocity
     "Velocity of the rotor blade.";
   parameter Modelica.Units.SI.Angle phase "Phase ofset of the rotor blade.";
   parameter Modelica.Units.SI.Period duty "Force duty.";
   parameter Modelica.Units.SI.Force magnitude "Force magnitude.";
-  Modelica.Mechanics.MultiBody.Interfaces.Frame_b frame_b annotation(Placement(visible = true, transformation(origin = {60, 0}, extent = {{-16, -16}, {16, 16}}, rotation = 0), iconTransformation(origin = {100, 0}, extent = {{-16, -16}, {16, 16}}, rotation = 0)));
+  Modelica.Mechanics.MultiBody.Interfaces.Frame_b frame_b annotation(Placement(transformation(origin = {60, 0}, extent = {{-16, -16}, {16, 16}}), iconTransformation(origin = {100, 0}, extent = {{-16, -16}, {16, 16}})));
   parameter Modelica.Units.SI.Force magnitudeOffset "Force ofset.";
   parameter Modelica.Units.SI.Force liftStart "Start force";
 equation
-  connect(force.frame_b, frame_b) annotation(Line(visible = true, origin = {40, 0}, points = {{-20, 0}, {20, 0}}, color = {95, 95, 95}));
-  connect(const1.y, force.force[3]) annotation(Line(visible = true, origin = {-32.75, -25}, points={{-26.25,
-          -25},{12.75,-25},{12.75,26.3333},{30.75,26.3333}},                                                                                                  color = {1, 37, 163}));
-  connect(pulse.y, force.force[2]) annotation(Line(visible = true, origin = {-30.5, 0}, points = {{-28.5, 0}, {28.5, 0}}, color = {1, 37, 163}));
-  connect(const.y, force.force[1]) annotation(Line(visible = true, origin = {-32.75, 25}, points={{-26.25,
-          25},{12.75,25},{12.75,-26.3333},{30.75,-26.3333}},                                                                                                color = {1, 37, 163}));
+  connect(force.frame_b, frame_b) annotation(Line(origin = {40, 0}, points = {{-20, 0}, {20, 0}}, color = {95, 95, 95}));
+  connect(const1.y, force.force[3]) annotation(Line(origin = {-32.75, -25}, points={{-26.25,
+          -25},{12.75,-25},{12.75,26.3333},{30.75,26.3333}}, color = {1, 37, 163}));
+  connect(pulse.y, force.force[2]) annotation(Line(origin = {-30.5, 0}, points = {{-28.5, 0}, {28.5, 0}}, color = {1, 37, 163}));
+  connect(const.y, force.force[1]) annotation(Line(origin = {-32.75, 25}, points={{-26.25,
+          25},{12.75,25},{12.75,-26.3333},{30.75,-26.3333}}, color = {1, 37, 163}));
   annotation(Documentation(info = "<html><!--WSMINSERTIONTAGSTART rotorLiftForce -->
    <head>
    <style type=\"text/css\">
-   
+
   body {
    padding: 0px;
    margin: 0px;
   }
-  
+
   a {
    color: #cf1d24;
   }
-  
+
   a.target {
    padding-top: 40px;
    margin-top: -40px;
   }
-  
+
   p {
    font-family: arial;
    font-size: 13;
@@ -45,7 +45,7 @@ equation
    color: #555555;
    max-width: 800px;
   }
-  
+
   h1 {
    font-size: 30;
    color: #cf1d24;
@@ -56,7 +56,7 @@ equation
    margin-right: 20px;
    padding-top: 0px;
   }
-  
+
   h2 {
    font-size: 20;
    color: #cf1d24;
@@ -66,7 +66,7 @@ equation
    margin-top: 5px;
    margin-bottom: 9px;
   }
-  
+
   h3 {
    background: url('DocumentationFiles/dingbat3.png') no-repeat 0 0;
    font-size: 14px;
@@ -79,7 +79,7 @@ equation
    margin-top: 12px;
    margin-bottom: 8px;
   }
-  
+
   ul {
    font-family: arial;
    font-size: 13;
@@ -89,7 +89,7 @@ equation
    max-width: 800px;
    list-style-type: square;
   }
-  
+
   li {
    margin-left: 0px;
    margin-top: 4px;
@@ -103,7 +103,7 @@ equation
    margin-top: 35px;
    background-color: #871613;
   }
-  
+
   .headerspan {
    font-family: arial;
    text-decoration: none;
@@ -116,7 +116,7 @@ equation
    margin: 0px;
    margin-left: 20px;
   }
-  
+
   .headera {
    font-family: arial;
    text-decoration: none;
@@ -127,7 +127,7 @@ equation
    vertical-align: middle;
    margin: 0px;
   }
-  
+
   .headerlinkdiv {
    background: black;
    padding: 0px;
@@ -135,7 +135,7 @@ equation
    margin: 0px;
    position: fixed; top: 0px; left: 0px; width: 100%;
   }
-  
+
   .contenttable {
    -webkit-box-shadow: 3px 3px 3px #DDDDDD;
    border-top: 3px solid #cf1d24;
@@ -144,45 +144,45 @@ equation
    margin: 15px 15px 0px 20px;
    padding: 6px 10px 3px 10px;
   }
-  
+
   .contenttableheader {
    color: #a4a4a4;
    font-size: 14px;
    font-family: arial;
   }
-  
+
   .contenttabletable {
    border: 0px solid #FFFFFF;
    padding: 0px;
    padding-left: 20px;
   }
-  
+
   .contenttable tr td {
    padding: 3px;
    min-width: 200px;
   }
-  
+
   .contenttable tr td a {
    color: #555555;
    text-decoration: none;
    font-size: 13px;
    font-family: arial;
   }
-  
+
   .hacek {
    color: #cf1d24;
    font-size: 25px;
    font-weight: plain;
    vertical-align: -40%;
   }
-  
+
   .mathematicapointerwrapper {
    border: 0px solid #DDDDDD;
    margin: 15px 15px 15px 40px;
    padding: 0px;
    max-width: 500px;
   }
-  
+
   .mathematicapointertop {
    border: 1px solid #DDDDDD;
    background-color: #F2F2F2;
@@ -190,9 +190,9 @@ equation
    max-width: 500px;
    height: 4px;
   }
-  
+
   .mathematicapointerdiv {
-   background: url('./DocumentationFiles/mathematicabook.png') no-repeat  left center;
+   background: url('./DocumentationFiles/mathematicabook.png') no-repeat left center;
    border: 1px solid #DDDDDD;
    background-color: #FFFFFF;
    margin: 0px;
@@ -200,13 +200,13 @@ equation
    max-width: 500px;
    min-height: 67px;
   }
-  
+
   p.mathematicapointer {
    padding: 0px;
    margin: 0px;
    font-size: 12px;
   }
-  
+
   .infoboxwrapper {
    border: 0px solid #DDDDDD;
    -webkit-box-shadow: 3px 3px 3px #DDDDDD;
@@ -214,7 +214,7 @@ equation
    padding: 0px;
    max-width: 500px;
   }
-  
+
   .infoboxtop {
    background: url('./DocumentationFiles/infotick.png') no-repeat left center;
    border: 1px solid #DDDDDD;
@@ -223,7 +223,7 @@ equation
    max-width: 500px;
    height: 37px;
   }
-  
+
   div.infobox {
    border: 1px solid #DDDDDD;
    background-color: #FFFFFF;
@@ -231,13 +231,13 @@ equation
    padding: 15px;
    max-width: 500px;
   }
-  
+
   p.infobox {
    padding: 0px;
    margin: 0px;
    font-size: 12px;
   }
-  
+
   h2.legal {
    font-family: arial;
    font-size: 14;
@@ -245,7 +245,7 @@ equation
    margin: 15px 15px 15px 20px;
    font-weight: bold;
   }
-  
+
   h3.legal {
    background: url('./DocumentationFiles/dingbat3.png') no-repeat 0 0;
    font-family: arial;
@@ -255,14 +255,14 @@ equation
    padding-left: 12px;
    font-weight: bold;
   }
-  
+
   ul.legal {
    font-size: 10px;
    font-family: arial;
    color: #555555;
    margin-left: 28px;
   }
-  
+
   ul.legal li {
    margin-left: 0px;
    margin-top: 4px;
@@ -277,38 +277,38 @@ equation
    padding-left: 30px;
    list-style-type: none;
   }
-  
+
   p.legallarge {
    font-size: 12px;
    margin-left: 38px;
   }
-  
+
   p.legalsmall {
    font-size: 11px;
    margin-left: 38px;
    padding-left: 12px;
   }
-  
+
   .legalend {
    height: 10px;
   }
-  
+
   .variablename {
    font-family: Courier New, Courier;
   }
-  
+
   .dialogelement {
    font-weight: bold;
   }
-  
+
   .menuitem {
    font-weight: bold;
   }
-  
+
   .mr {
    font-family: Courier New, Courier;
   }
-  
+
   .ttable {
         border-collapse: collapse;
     width: 100%;
@@ -323,13 +323,13 @@ equation
         .ttable tr:nth-child(even) {
                 background-color: #dddddd;
         }
-  
+
    </style>
    </head>
    <body>
-   
+
   <div class=\"headerlinkdiv\">
-  
+
    <span class=\"headerspan\" style=\"background: url(DocumentationFiles/examples.png) no-repeat 0 0;
    padding-left: 24px;
    \"
@@ -341,7 +341,7 @@ equation
            this.style.color = 'gray';
            this.style.background = 'url(DocumentationFiles/examples.png) no-repeat 0 0';
    \"><a href=\"https://www.wolfram.com/system-modeler/examples/\" class=\"headera\">More Examples</a></span>
-  
+
    <span class=\"headerspan\" style=\"background: url(DocumentationFiles/video.png) no-repeat 0 0;
    padding-left: 29px;
    \"
@@ -353,7 +353,7 @@ equation
            this.style.color = 'gray';
            this.style.background = 'url(DocumentationFiles/video.png) no-repeat 0 0';
    \"><a href=\"http://www.wolfram.com/system-modeler/resources/get-started/\" class=\"headera\">Introductory Videos</a></span>
-  
+
    <span class=\"headerspan\" style=\"background: url(DocumentationFiles/docs.png) no-repeat 0 0;
    padding-left: 20px;
    \"
@@ -365,7 +365,7 @@ equation
            this.style.color = 'gray';
            this.style.background = 'url(DocumentationFiles/docs.png) no-repeat 0 0';
    \"><a href=\"http://reference.wolfram.com/system-modeler\" class=\"headera\">Documentation</a></span>
-  
+
    <span class=\"headerspan\" style=\"background: url(DocumentationFiles/contact.png) no-repeat 0 0;
    padding-left: 24px;
    \"
@@ -406,6 +406,6 @@ The full legal code can be found at:<br>
         <a href=\"http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode\">http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode</a>
 </p></span></span><div class=\"legalend\">&nbsp;</div>
    </body>
-   <!--WSMINSERTIONTAGEND rotorLiftForce --></html>", revisions = ""), Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, initialScale = 0.1, grid = {10, 10}), graphics={  Rectangle(visible = true, fillColor = {255, 255, 255},
-            fillPattern =                                                                                                                                                                                                        FillPattern.Solid, extent = {{-100, -100}, {100, 100}}), Text(visible = true, origin = {-1.75, 4.699}, extent = {{-91.75, -29.958}, {91.75, 29.958}}, textString = "Rotor Lift")}), Diagram(coordinateSystem(extent = {{-148.5, -105}, {148.5, 105}}, preserveAspectRatio = true, initialScale = 0.1, grid = {5, 5})));
+   <!--WSMINSERTIONTAGEND rotorLiftForce --></html>", revisions = ""), Icon(coordinateSystem(extent = {{-100, -100}, {100, 100}}, preserveAspectRatio = true, grid = {10, 10}), graphics={ Rectangle(fillColor = {255, 255, 255},
+            fillPattern = FillPattern.Solid, extent = {{-100, -100}, {100, 100}}), Text(origin = {-1.75, 4.699}, extent = {{-91.75, -29.958}, {91.75, 29.958}}, textString = "Rotor Lift")}), Diagram(coordinateSystem(extent = {{-148.5, -105}, {148.5, 105}}, preserveAspectRatio = true, grid = {5, 5})));
 end RotorLiftForce;

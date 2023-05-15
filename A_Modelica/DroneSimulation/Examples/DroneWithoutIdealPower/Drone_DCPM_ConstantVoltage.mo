@@ -39,7 +39,7 @@ model Drone_DCPM_ConstantVoltage
     propeller_DCMachine_Power1(
     IaNominal=50,
     animation=animation,
-    VaNominal=15.2,                          V=V)
+    VaNominal=15.2, V=V)
     annotation (Placement(transformation(extent={{-8,2},{12,12}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power2(
@@ -52,10 +52,10 @@ model Drone_DCPM_ConstantVoltage
     propeller_DCMachine_Power3(
     IaNominal=50,
     animation=animation,
-    VaNominal=15.2,                          V=V)
+    VaNominal=15.2, V=V)
     annotation (Placement(transformation(extent={{-8,-26},{12,-16}})));
   Mechanical.Chassis.Examples.droneChassis droneChassis2(
-    animation=animation,                                 length=0.25, m=0.5)
+    animation=animation, length=0.25, m=0.5)
     annotation (Placement(transformation(extent={{48,-12},{98,8}})));
   inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,-1})
     annotation (Placement(transformation(extent={{62,52},{82,72}})));
@@ -65,7 +65,7 @@ model Drone_DCPM_ConstantVoltage
     annotation (Placement(transformation(extent={{-88,-10},{-68,10}})));
 
   parameter Boolean animation=true "= true, if animation shall be enabled";
-  Modelica.Blocks.Sources.Ramp     ramp(height=2.5, duration=0)
+  Modelica.Blocks.Sources.Ramp ramp(height=2.5, duration=0)
     annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
 equation
   gPS.y[1] = xgps;
@@ -150,7 +150,6 @@ equation
           lineColor={215,215,215},
           lineThickness=1), Bitmap(
           extent={{-98,-98},{98,98}}, fileName="modelica://DroneSimulation/Resources/Images/Otus.jpg")}),
-                                                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+
     __Dymola_Commands(file="drone_animation_setup.mos" "drone_animation_setup"));
 end Drone_DCPM_ConstantVoltage;

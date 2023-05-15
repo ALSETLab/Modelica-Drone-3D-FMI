@@ -39,16 +39,15 @@ model controlModuleTest_fmu_inputs2
     annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-4,-4},{4,4}},
-        rotation=0,
         origin={-44,8})));
 equation
   gPS.y[1] = xgps;
   gPS.y[2] = ygps;
   gPS.y[3] = zgps;
   connect(propellerRev.position,controlModule. y1) annotation (Line(points={{7.8,
-           15.2},{-2,15.2},{-2,6},{-9,6}},    color={0,0,127}));
+           15.2},{-2,15.2},{-2,6},{-9,6}}, color={0,0,127}));
   connect(controlModule.position,realExtendMultiple. y) annotation (Line(
-        points={{-31.6667,0},{-53,0}},                color={0,0,127}));
+        points={{-31.6667,0},{-53,0}}, color={0,0,127}));
   connect(gPS.frame_a,droneChassis1. frame_a3) annotation (Line(
       points={{30,-50},{36,-50},{36,-8},{44,-8}},
       color={95,95,95},
@@ -65,7 +64,7 @@ equation
            -14,-36},{-10.6,-36}},
                                 color={0,0,127}));
    connect(propellerRev1.position,controlModule. y) annotation (Line(points={{7.8,5.2},
-           {-0.1,5.2},{-0.1,2},{-9,2}},              color={0,0,127}));
+           {-0.1,5.2},{-0.1,2},{-9,2}}, color={0,0,127}));
    connect(propellerRev.Airframe,droneChassis1. frame_a1) annotation (Line(
        points={{30.2,14.4},{37.1,14.4},{37.1,4},{44,4}},
        color={95,95,95},
@@ -79,7 +78,7 @@ equation
        color={95,95,95},
        thickness=0.5));
    connect(propellerRev2.position,controlModule. y2) annotation (Line(points={{7.8,
-           -4.8},{-9,-4.8},{-9,-2}},      color={0,0,127}));
+           -4.8},{-9,-4.8},{-9,-2}}, color={0,0,127}));
    connect(propellerRev3.Airframe,droneChassis1. frame_a3) annotation (Line(
        points={{30.2,-15.6},{36,-15.6},{36,-8},{44,-8}},
        color={95,95,95},
@@ -102,7 +101,6 @@ equation
           lineColor={215,215,215},
           lineThickness=1), Bitmap(
           extent={{-98,-98},{98,98}}, fileName="modelica://DroneSimulation/Resources/Images/dronepic.jpg")}),
-                                                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+
     __Dymola_Commands(file="drone_animation_setup.mos" "drone_animation_setup"));
 end controlModuleTest_fmu_inputs2;

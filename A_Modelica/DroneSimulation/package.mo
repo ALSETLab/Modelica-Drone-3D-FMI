@@ -1,6 +1,6 @@
 within ;
 package DroneSimulation
-annotation (Documentation, uses(
+annotation (uses(
     Visualization(version="1.5.1"),
     IdealizedContact(version="0.2.0"),
     ModelicaServices(version="4.0.0"),

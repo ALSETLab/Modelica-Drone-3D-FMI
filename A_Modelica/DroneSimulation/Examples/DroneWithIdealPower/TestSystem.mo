@@ -3,7 +3,6 @@ model TestSystem
   Modelica.Blocks.Sources.Ramp ramp(duration=5, height=5,
     startTime=0)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={-70,0})));
   Modelica.Blocks.Sources.Constant const(k=0.25)
     annotation (Placement(transformation(extent={{-56,38},{-36,58}})));
@@ -16,7 +15,7 @@ model TestSystem
     annotation (Placement(transformation(extent={{-48,-18},{-38,-8}})));
    inner Modelica.Blocks.Noise.GlobalSeed globalSeed
      annotation (Placement(transformation(extent={{-36,-36},{-26,-26}})));
-  replaceable Drone_IdealMachine                                    drone
+  replaceable Drone_IdealMachine drone
     constrainedby DroneSimulation.Examples.Drone_Template
     annotation (Placement(transformation(extent={{-12,-2},{8,18}})));
   Modelica.Blocks.Sources.Constant const1(k=0)
@@ -27,7 +26,7 @@ equation
   connect(add.u2, uniformNoise.y) annotation (Line(points={{-49,-16},{-49,
           -30},{-59,-30}}, color={0,0,127}));
   connect(drone.ycoord, const1.y) annotation (Line(points={{-14,8},{-36,8},{-36,
-          30},{-61,30}},     color={0,0,127}));
+          30},{-61,30}}, color={0,0,127}));
   connect(drone.xcoord, const.y) annotation (Line(points={{-14,16},{-24,16},{
           -24,48},{-35,48}}, color={0,0,127}));
   connect(drone.zcoord, ramp.y) annotation (Line(points={{-14,0},{-59,0}},

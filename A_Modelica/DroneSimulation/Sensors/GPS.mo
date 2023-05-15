@@ -41,6 +41,5 @@ equation
           fillColor={0,0,0},
           fillPattern=FillPattern.None,
           textString="GPS
-")}),
-Diagram(coordinateSystem(preserveAspectRatio=false)));
+")}));
 end GPS;

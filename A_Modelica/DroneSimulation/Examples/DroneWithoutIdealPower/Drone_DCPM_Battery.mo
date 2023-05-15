@@ -41,7 +41,7 @@ model Drone_DCPM_Battery
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power1(
     VaNominal=15,
-    IaNominal=50,                            V=V,
+    IaNominal=50, V=V,
     animation=animation)
     annotation (Placement(transformation(extent={{-8,0},{12,10}})));
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
@@ -55,7 +55,7 @@ model Drone_DCPM_Battery
   Mechanical.Propeller.Examples.Propeller_DCMachine_Power
     propeller_DCMachine_Power3(
     VaNominal=15,
-    IaNominal=50,                            V=V,
+    IaNominal=50, V=V,
     animation=animation)
     annotation (Placement(transformation(extent={{-8,-26},{12,-16}})));
   Mechanical.Chassis.Examples.droneChassis droneChassis2(length=0.25,
@@ -1075,7 +1075,6 @@ model Drone_DCPM_Battery
     useHeatPort=false,
     SOC(fixed=true, start=0.95)) annotation (Placement(transformation(
         extent={{-10,10},{10,-10}},
-        rotation=0,
         origin={4,48})));
   parameter Modelica.Electrical.Batteries.ParameterRecords.TransientData.ExampleData cellData2(
     Qnom=18000,
@@ -1095,7 +1094,7 @@ equation
   connect(gPS.y, controlModule_Synchronous2_1.GPS) annotation (Line(points={{-13,-66},{-54.3636,-66},{-54.3636,-12}},
                                                    color={0,0,127}));
   connect(propeller_DCMachine_Power1.p1,propeller_DCMachine_Power. p1)
-    annotation (Line(points={{-8.4,8},{-16,8},{-16,22},{-8.4,22}},   color={0,0,
+    annotation (Line(points={{-8.4,8},{-16,8},{-16,22},{-8.4,22}}, color={0,0,
           255}));
   connect(propeller_DCMachine_Power3.p1,propeller_DCMachine_Power. p1)
     annotation (Line(points={{-8.4,-18},{-16,-18},{-16,22},{-8.4,22}},
@@ -1169,7 +1168,6 @@ annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
           lineColor={215,215,215},
           lineThickness=1), Bitmap(
           extent={{-98,-98},{98,98}}, fileName="modelica://DroneSimulation/Resources/Images/Otus.jpg")}),
-                                                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+
     __Dymola_Commands(file="drone_animation_setup.mos" "drone_animation_setup"));
 end Drone_DCPM_Battery;

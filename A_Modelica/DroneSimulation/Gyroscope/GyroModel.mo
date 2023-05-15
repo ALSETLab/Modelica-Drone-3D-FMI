@@ -1,34 +1,33 @@
 within DroneSimulation.Gyroscope;
 model GyroModel "Example of how gyroscopic precession works on a simple gyro."
   extends Modelica.Icons.Example;
-  inner Modelica.Mechanics.MultiBody.World world(animateWorld = false, animateGravity = false) "world component" annotation(Placement(visible = true, transformation(origin = {-132.021, -80}, extent = {{-10, -10}, {10, 10}}, rotation = -720)));
-  Modelica.Mechanics.MultiBody.Parts.BodyCylinder mount(r = {0, 0.002, 0}, color = {155, 155, 155}, diameter = 0.08, specularCoefficient = 1) "mount of the gyro" annotation(Placement(visible = true, transformation(origin = {-70, -80}, extent = {{-10, -10}, {10, 10}}, rotation = -720)));
+  inner Modelica.Mechanics.MultiBody.World world(animateWorld = false, animateGravity = false) "world component" annotation(Placement(transformation(origin = {-132.021, -80}, extent = {{-10, -10}, {10, 10}}, rotation = -720)));
+  Modelica.Mechanics.MultiBody.Parts.BodyCylinder mount(r = {0, 0.002, 0}, color = {155, 155, 155}, diameter = 0.08, specularCoefficient = 1) "mount of the gyro" annotation(Placement(transformation(origin = {-70, -80}, extent = {{-10, -10}, {10, 10}}, rotation = -720)));
   parameter Modelica.Units.SI.AngularVelocity spin=500
     "Angular velocity of inner rotor.";
   parameter Modelica.Units.SI.Force forceMagnitude=0.3
     "Magnitude of applied force.";
-  Modelica.Mechanics.MultiBody.Visualizers.VoluminousWheel outerRing(rRim = 0.041, width = 0.005, color = {155, 155, 155}, specularCoefficient = 1, rTire = 0.045, rCurvature = 0.040) "outer ring of the gyro" annotation(Placement(visible = true, transformation(origin = {100.85, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation(r = {0, 0.041, 0}, animation = false) "distance from the outer ring to the center of the gyro" annotation(Placement(visible = true, transformation(origin = {0, -40}, extent = {{-10, -10}, {10, 10}}, rotation = -270)));
-  Modelica.Mechanics.MultiBody.Parts.FixedRotation outerRinFixedgRotation(animation = false, angle = 90) "fixed rotation to line up the outer ring initially" annotation(Placement(visible = true, transformation(origin = {70, 0}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Mechanics.MultiBody.Visualizers.VoluminousWheel innerRing(rRim = 0.036, rTire = 0.040, width = 0.005, color = {155, 155, 155}, specularCoefficient = 1, rCurvature = 0.035) "inner ring of the gyro" annotation(Placement(visible = true, transformation(origin = {100.85, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Mechanics.MultiBody.Parts.FixedRotation innerRingFixedRotation(animation = false, angle = 90) "fixed rotation to line up the inner ring initially" annotation(Placement(visible = true, transformation(origin = {69.15, 30}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation1(r = {0, 0.005, 0}, animation = true, width = 0.003, color = {155, 155, 155}, specularCoefficient = 1) "distance from the mount to the outer ring" annotation(Placement(visible = true, transformation(origin = {0, -65}, extent = {{-10, -10}, {10, 10}}, rotation = -270)));
-  Modelica.Mechanics.MultiBody.Parts.BodyCylinder rotor(diameter = 0.07, r = {0.0025, 0, 0}, r_shape = {-0.0025, 0, 0}, color = {100, 100, 100}, specularCoefficient = 1) "the rotor of the gyro" annotation(Placement(visible = true, transformation(origin = {100, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Mechanics.MultiBody.Parts.FixedRotation rotorFixedRotation(animation = false, angle = 90, n = {0, 1, 0}) "fixed rotation to line up the rotor initially" annotation(Placement(visible = true, transformation(origin = {70, 60}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Mechanics.MultiBody.Joints.Revolute revoluteX(n = {1, 0, 0}, animation = false) "revolution around the x-axis" annotation(Placement(visible = true, transformation(origin = {0, 15}, extent = {{-10, -10}, {10, 10}}, rotation = -270)));
+  Modelica.Mechanics.MultiBody.Visualizers.VoluminousWheel outerRing(rRim = 0.041, width = 0.005, color = {155, 155, 155}, specularCoefficient = 1, rTire = 0.045, rCurvature = 0.040) "outer ring of the gyro" annotation(Placement(transformation(origin = {100.85, 0}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation(r = {0, 0.041, 0}, animation = false) "distance from the outer ring to the center of the gyro" annotation(Placement(transformation(origin = {0, -40}, extent = {{-10, -10}, {10, 10}}, rotation = -270)));
+  Modelica.Mechanics.MultiBody.Parts.FixedRotation outerRinFixedgRotation(animation = false, angle = 90) "fixed rotation to line up the outer ring initially" annotation(Placement(transformation(origin = {70, 0}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.MultiBody.Visualizers.VoluminousWheel innerRing(rRim = 0.036, rTire = 0.040, width = 0.005, color = {155, 155, 155}, specularCoefficient = 1, rCurvature = 0.035) "inner ring of the gyro" annotation(Placement(transformation(origin = {100.85, 30}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.MultiBody.Parts.FixedRotation innerRingFixedRotation(animation = false, angle = 90) "fixed rotation to line up the inner ring initially" annotation(Placement(transformation(origin = {69.15, 30}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.MultiBody.Parts.FixedTranslation fixedTranslation1(r = {0, 0.005, 0}, animation = true, width = 0.003, color = {155, 155, 155}, specularCoefficient = 1) "distance from the mount to the outer ring" annotation(Placement(transformation(origin = {0, -65}, extent = {{-10, -10}, {10, 10}}, rotation = -270)));
+  Modelica.Mechanics.MultiBody.Parts.BodyCylinder rotor(diameter = 0.07, r = {0.0025, 0, 0}, r_shape = {-0.0025, 0, 0}, color = {100, 100, 100}, specularCoefficient = 1) "the rotor of the gyro" annotation(Placement(transformation(origin = {100, 60}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.MultiBody.Parts.FixedRotation rotorFixedRotation(animation = false, angle = 90, n = {0, 1, 0}) "fixed rotation to line up the rotor initially" annotation(Placement(transformation(origin = {70, 60}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.MultiBody.Joints.Revolute revoluteX(n = {1, 0, 0}, animation = false) "revolution around the x-axis" annotation(Placement(transformation(origin = {0, 15}, extent = {{-10, -10}, {10, 10}}, rotation = -270)));
   Modelica.Mechanics.MultiBody.Joints.Revolute revoluteZ(n = {0, 0, 1}, animation = false,
-    w(                                                                                     start =   spin))
-                                                                                                           "revolution around the Z-axis" annotation(Placement(visible = true, transformation(origin = {0, 45}, extent = {{-10, -10}, {10, 10}}, rotation = -270)));
-  Modelica.Mechanics.MultiBody.Joints.Revolute revoluteY(n = {0, 1, 0}, animation = false) "revolution around the Y-axis" annotation(Placement(visible = true, transformation(origin = {0, -15}, extent = {{-10, -10}, {10, 10}}, rotation = -270)));
-  Modelica.Mechanics.MultiBody.Visualizers.FixedShape rotationIndicator(color = {255, 255, 0}, length = 0.002, width = 0.04, height = 0.002, specularCoefficient = 1) "indicator of the orientation of the rotor" annotation(Placement(visible = true, transformation(origin = {130, 85}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Mechanics.MultiBody.Parts.FixedTranslation rotationIndicatorOrientator(r = {-0.003, 0, 0}, animation = false) "placement for the indicator of the rotor orientation" annotation(Placement(visible = true, transformation(origin = {100, 85}, extent = {{-10, -10}, {10, 10}}, rotation = -360)));
+    w( start = spin))
+                                                                                                           "revolution around the Z-axis" annotation(Placement(transformation(origin = {0, 45}, extent = {{-10, -10}, {10, 10}}, rotation = -270)));
+  Modelica.Mechanics.MultiBody.Joints.Revolute revoluteY(n = {0, 1, 0}, animation = false) "revolution around the Y-axis" annotation(Placement(transformation(origin = {0, -15}, extent = {{-10, -10}, {10, 10}}, rotation = -270)));
+  Modelica.Mechanics.MultiBody.Visualizers.FixedShape rotationIndicator(color = {255, 255, 0}, length = 0.002, width = 0.04, height = 0.002, specularCoefficient = 1) "indicator of the orientation of the rotor" annotation(Placement(transformation(origin = {130, 85}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.MultiBody.Parts.FixedTranslation rotationIndicatorOrientator(r = {-0.003, 0, 0}, animation = false) "placement for the indicator of the rotor orientation" annotation(Placement(transformation(origin = {100, 85}, extent = {{-10, -10}, {10, 10}}, rotation = -360)));
   Modelica.Mechanics.MultiBody.Forces.WorldForce force1(resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
-    "external force" annotation (Placement(visible=true, transformation(
+    "external force" annotation (Placement(transformation(
         origin={70,-80},
-        extent={{-10,-10},{10,10}},
-        rotation=0)));
-  Modelica.Blocks.Sources.Pulse pulse1[3](amplitude = {0, 0, -forceMagnitude}, period = 100, width = 3, startTime = 1, nperiod = 1) "signal to external force" annotation(Placement(visible = true, transformation(origin = {30, -80}, extent = {{-10, -10}, {10, 10}}, rotation = 0)));
-  Modelica.Mechanics.MultiBody.Visualizers.FixedShape baseOrientationIndicator(color = {0, 0, 200}, length = 0.002, width = 0.0012, height = 0.06, specularCoefficient = 1) "indicator of the orientation of the mount" annotation(Placement(visible = true, transformation(origin = {-70, -50}, extent = {{-10, -10}, {10, 10}}, rotation = -180)));
+        extent={{-10,-10},{10,10}})));
+  Modelica.Blocks.Sources.Pulse pulse1[3](amplitude = {0, 0, -forceMagnitude}, period = 100, width = 3, startTime = 1, nperiod = 1) "signal to external force" annotation(Placement(transformation(origin = {30, -80}, extent = {{-10, -10}, {10, 10}})));
+  Modelica.Mechanics.MultiBody.Visualizers.FixedShape baseOrientationIndicator(color = {0, 0, 200}, length = 0.002, width = 0.0012, height = 0.06, specularCoefficient = 1) "indicator of the orientation of the mount" annotation(Placement(transformation(origin = {-70, -50}, extent = {{-10, -10}, {10, 10}}, rotation = -180)));
   parameter Modelica.Units.NonSI.Angle_deg degreeOfForce=45
     "Angle of applied force.";
   Modelica.Mechanics.MultiBody.Parts.FixedRotation forceOrientator(
@@ -37,47 +36,46 @@ model GyroModel "Example of how gyroscopic precession works on a simple gyro."
     r={0.038*cos(Modelica.Units.Conversions.from_deg(degreeOfForce)),0.038*sin(
         Modelica.Units.Conversions.from_deg(degreeOfForce)),0},
     n={0,0,1}) "displacement showing where to put the external force"
-    annotation (Placement(visible=true, transformation(
+    annotation (Placement(transformation(
         origin={70,-25},
-        extent={{-10,-10},{10,10}},
-        rotation=0)));
+        extent={{-10,-10},{10,10}})));
 equation
-  connect(mount.frame_a, world.frame_b) annotation(Line(visible = true, origin = {-101.01, -80}, points = {{21.01, 0}, {-21.011, 0}}, color = {95, 95, 95}));
-  connect(outerRinFixedgRotation.frame_b, outerRing.frame_a) annotation(Line(visible = true, origin = {85.425, 0}, points = {{-5.425, 0}, {5.425, 0}}, color = {95, 95, 95}));
-  connect(innerRingFixedRotation.frame_b, innerRing.frame_a) annotation(Line(visible = true, origin = {85, 30}, points = {{-5.85, 0}, {5.85, 0}}, color = {95, 95, 95}));
-  connect(fixedTranslation1.frame_b, fixedTranslation.frame_a) annotation(Line(visible = true, origin = {0, -52.5}, points = {{0, -2.5}, {0, 2.5}}, color = {95, 95, 95}));
-  connect(fixedTranslation1.frame_a, mount.frame_b) annotation(Line(visible = true, origin = {-20, -78.333}, points = {{20, 3.333}, {20, -1.667}, {-40, -1.667}}, color = {95, 95, 95}));
-  connect(rotor.frame_a, rotorFixedRotation.frame_b) annotation(Line(visible = true, origin = {85, 60}, points = {{5, 0}, {-5, 0}}, color = {95, 95, 95}));
-  connect(revoluteX.frame_b, innerRingFixedRotation.frame_a) annotation(Line(visible = true, origin = {19.717, 28.333}, points = {{-19.717, -3.333}, {-19.717, 1.667}, {39.433, 1.667}}, color = {95, 95, 95}));
-  connect(revoluteX.frame_b, revoluteZ.frame_a) annotation(Line(visible = true, origin = {0, 30}, points = {{0, -5}, {0, 5}}, color = {95, 95, 95}));
-  connect(revoluteZ.frame_b, rotorFixedRotation.frame_a) annotation(Line(visible = true, origin = {20, 58.333}, points = {{-20, -3.333}, {-20, 1.667}, {40, 1.667}}, color = {95, 95, 95}));
-  connect(fixedTranslation.frame_b, revoluteY.frame_a) annotation(Line(visible = true, origin = {0, -27.5}, points = {{0, -2.5}, {0, 2.5}}, color = {95, 95, 95}));
-  connect(revoluteY.frame_b, revoluteX.frame_a) annotation(Line(visible = true, points = {{0, -5}, {0, 5}}, color = {95, 95, 95}));
-  connect(revoluteY.frame_b, outerRinFixedgRotation.frame_a) annotation(Line(visible = true, origin = {20, -1.667}, points = {{-20, -3.333}, {-20, 1.667}, {40, 1.667}}, color = {95, 95, 95}));
-  connect(rotationIndicatorOrientator.frame_a, rotor.frame_a) annotation(Line(visible = true, origin = {85.506, 72.5}, points = {{4.494, 12.5}, {-0.506, 12.5}, {-0.506, -12.5}, {4.494, -12.5}}, color = {95, 95, 95}));
-  connect(rotationIndicatorOrientator.frame_b, rotationIndicator.frame_a) annotation(Line(visible = true, origin = {115, 85}, points = {{-5, 0}, {5, 0}}, color = {95, 95, 95}));
-  connect(pulse1.y, force1.force) annotation(Line(visible = true, origin = {49.5, -80}, points = {{-8.5, 0}, {8.5, 0}}, color = {1, 37, 163}));
-  connect(baseOrientationIndicator.frame_a, mount.frame_b) annotation(Line(visible = true, origin = {-41.613, -65}, points = {{-18.387, 15}, {1.613, 15}, {1.613, -15}, {-18.387, -15}}, color = {95, 95, 95}));
-  connect(forceOrientator.frame_a, innerRingFixedRotation.frame_a) annotation(Line(visible = true, origin = {36.294, 2.5}, points = {{23.706, -27.5}, {-6.294, -27.5}, {-6.294, 27.5}, {22.856, 27.5}}, color = {95, 95, 95}));
-  connect(forceOrientator.frame_b, force1.frame_b) annotation(Line(visible = true, origin = {93.5, -65}, points = {{-13.5, 40}, {6.5, 40}, {6.5, -15}, {-13.5, -15}}, color = {95, 95, 95}));
+  connect(mount.frame_a, world.frame_b) annotation(Line(origin = {-101.01, -80}, points = {{21.01, 0}, {-21.011, 0}}, color = {95, 95, 95}));
+  connect(outerRinFixedgRotation.frame_b, outerRing.frame_a) annotation(Line(origin = {85.425, 0}, points = {{-5.425, 0}, {5.425, 0}}, color = {95, 95, 95}));
+  connect(innerRingFixedRotation.frame_b, innerRing.frame_a) annotation(Line(origin = {85, 30}, points = {{-5.85, 0}, {5.85, 0}}, color = {95, 95, 95}));
+  connect(fixedTranslation1.frame_b, fixedTranslation.frame_a) annotation(Line(origin = {0, -52.5}, points = {{0, -2.5}, {0, 2.5}}, color = {95, 95, 95}));
+  connect(fixedTranslation1.frame_a, mount.frame_b) annotation(Line(origin = {-20, -78.333}, points = {{20, 3.333}, {20, -1.667}, {-40, -1.667}}, color = {95, 95, 95}));
+  connect(rotor.frame_a, rotorFixedRotation.frame_b) annotation(Line(origin = {85, 60}, points = {{5, 0}, {-5, 0}}, color = {95, 95, 95}));
+  connect(revoluteX.frame_b, innerRingFixedRotation.frame_a) annotation(Line(origin = {19.717, 28.333}, points = {{-19.717, -3.333}, {-19.717, 1.667}, {39.433, 1.667}}, color = {95, 95, 95}));
+  connect(revoluteX.frame_b, revoluteZ.frame_a) annotation(Line(origin = {0, 30}, points = {{0, -5}, {0, 5}}, color = {95, 95, 95}));
+  connect(revoluteZ.frame_b, rotorFixedRotation.frame_a) annotation(Line(origin = {20, 58.333}, points = {{-20, -3.333}, {-20, 1.667}, {40, 1.667}}, color = {95, 95, 95}));
+  connect(fixedTranslation.frame_b, revoluteY.frame_a) annotation(Line(origin = {0, -27.5}, points = {{0, -2.5}, {0, 2.5}}, color = {95, 95, 95}));
+  connect(revoluteY.frame_b, revoluteX.frame_a) annotation(Line(points = {{0, -5}, {0, 5}}, color = {95, 95, 95}));
+  connect(revoluteY.frame_b, outerRinFixedgRotation.frame_a) annotation(Line(origin = {20, -1.667}, points = {{-20, -3.333}, {-20, 1.667}, {40, 1.667}}, color = {95, 95, 95}));
+  connect(rotationIndicatorOrientator.frame_a, rotor.frame_a) annotation(Line(origin = {85.506, 72.5}, points = {{4.494, 12.5}, {-0.506, 12.5}, {-0.506, -12.5}, {4.494, -12.5}}, color = {95, 95, 95}));
+  connect(rotationIndicatorOrientator.frame_b, rotationIndicator.frame_a) annotation(Line(origin = {115, 85}, points = {{-5, 0}, {5, 0}}, color = {95, 95, 95}));
+  connect(pulse1.y, force1.force) annotation(Line(origin = {49.5, -80}, points = {{-8.5, 0}, {8.5, 0}}, color = {1, 37, 163}));
+  connect(baseOrientationIndicator.frame_a, mount.frame_b) annotation(Line(origin = {-41.613, -65}, points = {{-18.387, 15}, {1.613, 15}, {1.613, -15}, {-18.387, -15}}, color = {95, 95, 95}));
+  connect(forceOrientator.frame_a, innerRingFixedRotation.frame_a) annotation(Line(origin = {36.294, 2.5}, points = {{23.706, -27.5}, {-6.294, -27.5}, {-6.294, 27.5}, {22.856, 27.5}}, color = {95, 95, 95}));
+  connect(forceOrientator.frame_b, force1.frame_b) annotation(Line(origin = {93.5, -65}, points = {{-13.5, 40}, {6.5, 40}, {6.5, -15}, {-13.5, -15}}, color = {95, 95, 95}));
   annotation(experiment(StopTime = 10.0, __Wolfram_SynchronizeWithRealTime = false), preferredView = "diagram", __Wolfram(PlotSet(plots = {Plot(name = "RevolutionAngles", preferred = true, subPlots = {SubPlot(curves = {Curve(x = time, y = revoluteX.angle, legend = "Revolute X angle"), Curve(x = time, y = revoluteY.angle, legend = "Revolute Y angle")})}), Plot(name = "AppliedForce", subPlots = {SubPlot(curves = {Curve(x = time, y = force1.force[3], legend = "Applied Force")})})})), Documentation(info = "<html><!--WSMINSERTIONTAGSTART gyroModel -->
    <head>
    <style type=\"text/css\">
-   
+
   body {
    padding: 0px;
    margin: 0px;
   }
-  
+
   a {
    color: #cf1d24;
   }
-  
+
   a.target {
    padding-top: 40px;
    margin-top: -40px;
   }
-  
+
   p {
    font-family: arial;
    font-size: 13;
@@ -86,7 +84,7 @@ equation
    color: #555555;
    max-width: 800px;
   }
-  
+
   h1 {
    font-size: 30;
    color: #cf1d24;
@@ -97,7 +95,7 @@ equation
    margin-right: 20px;
    padding-top: 0px;
   }
-  
+
   h2 {
    font-size: 20;
    color: #cf1d24;
@@ -107,7 +105,7 @@ equation
    margin-top: 5px;
    margin-bottom: 9px;
   }
-  
+
   h3 {
    background: url('DocumentationFiles/dingbat3.png') no-repeat 0 0;
    font-size: 14px;
@@ -120,7 +118,7 @@ equation
    margin-top: 12px;
    margin-bottom: 8px;
   }
-  
+
   ul {
    font-family: arial;
    font-size: 13;
@@ -130,7 +128,7 @@ equation
    max-width: 800px;
    list-style-type: square;
   }
-  
+
   li {
    margin-left: 0px;
    margin-top: 4px;
@@ -144,7 +142,7 @@ equation
    margin-top: 35px;
    background-color: #871613;
   }
-  
+
   .headerspan {
    font-family: arial;
    text-decoration: none;
@@ -157,7 +155,7 @@ equation
    margin: 0px;
    margin-left: 20px;
   }
-  
+
   .headera {
    font-family: arial;
    text-decoration: none;
@@ -168,7 +166,7 @@ equation
    vertical-align: middle;
    margin: 0px;
   }
-  
+
   .headerlinkdiv {
    background: black;
    padding: 0px;
@@ -176,7 +174,7 @@ equation
    margin: 0px;
    position: fixed; top: 0px; left: 0px; width: 100%;
   }
-  
+
   .contenttable {
    -webkit-box-shadow: 3px 3px 3px #DDDDDD;
    border-top: 3px solid #cf1d24;
@@ -185,45 +183,45 @@ equation
    margin: 15px 15px 0px 20px;
    padding: 6px 10px 3px 10px;
   }
-  
+
   .contenttableheader {
    color: #a4a4a4;
    font-size: 14px;
    font-family: arial;
   }
-  
+
   .contenttabletable {
    border: 0px solid #FFFFFF;
    padding: 0px;
    padding-left: 20px;
   }
-  
+
   .contenttable tr td {
    padding: 3px;
    min-width: 200px;
   }
-  
+
   .contenttable tr td a {
    color: #555555;
    text-decoration: none;
    font-size: 13px;
    font-family: arial;
   }
-  
+
   .hacek {
    color: #cf1d24;
    font-size: 25px;
    font-weight: plain;
    vertical-align: -40%;
   }
-  
+
   .mathematicapointerwrapper {
    border: 0px solid #DDDDDD;
    margin: 15px 15px 15px 40px;
    padding: 0px;
    max-width: 500px;
   }
-  
+
   .mathematicapointertop {
    border: 1px solid #DDDDDD;
    background-color: #F2F2F2;
@@ -231,9 +229,9 @@ equation
    max-width: 500px;
    height: 4px;
   }
-  
+
   .mathematicapointerdiv {
-   background: url('./DocumentationFiles/mathematicabook.png') no-repeat  left center;
+   background: url('./DocumentationFiles/mathematicabook.png') no-repeat left center;
    border: 1px solid #DDDDDD;
    background-color: #FFFFFF;
    margin: 0px;
@@ -241,13 +239,13 @@ equation
    max-width: 500px;
    min-height: 67px;
   }
-  
+
   p.mathematicapointer {
    padding: 0px;
    margin: 0px;
    font-size: 12px;
   }
-  
+
   .infoboxwrapper {
    border: 0px solid #DDDDDD;
    -webkit-box-shadow: 3px 3px 3px #DDDDDD;
@@ -255,7 +253,7 @@ equation
    padding: 0px;
    max-width: 500px;
   }
-  
+
   .infoboxtop {
    background: url('./DocumentationFiles/infotick.png') no-repeat left center;
    border: 1px solid #DDDDDD;
@@ -264,7 +262,7 @@ equation
    max-width: 500px;
    height: 37px;
   }
-  
+
   div.infobox {
    border: 1px solid #DDDDDD;
    background-color: #FFFFFF;
@@ -272,13 +270,13 @@ equation
    padding: 15px;
    max-width: 500px;
   }
-  
+
   p.infobox {
    padding: 0px;
    margin: 0px;
    font-size: 12px;
   }
-  
+
   h2.legal {
    font-family: arial;
    font-size: 14;
@@ -286,7 +284,7 @@ equation
    margin: 15px 15px 15px 20px;
    font-weight: bold;
   }
-  
+
   h3.legal {
    background: url('./DocumentationFiles/dingbat3.png') no-repeat 0 0;
    font-family: arial;
@@ -296,14 +294,14 @@ equation
    padding-left: 12px;
    font-weight: bold;
   }
-  
+
   ul.legal {
    font-size: 10px;
    font-family: arial;
    color: #555555;
    margin-left: 28px;
   }
-  
+
   ul.legal li {
    margin-left: 0px;
    margin-top: 4px;
@@ -318,38 +316,38 @@ equation
    padding-left: 30px;
    list-style-type: none;
   }
-  
+
   p.legallarge {
    font-size: 12px;
    margin-left: 38px;
   }
-  
+
   p.legalsmall {
    font-size: 11px;
    margin-left: 38px;
    padding-left: 12px;
   }
-  
+
   .legalend {
    height: 10px;
   }
-  
+
   .variablename {
    font-family: Courier New, Courier;
   }
-  
+
   .dialogelement {
    font-weight: bold;
   }
-  
+
   .menuitem {
    font-weight: bold;
   }
-  
+
   .mr {
    font-family: Courier New, Courier;
   }
-  
+
   .ttable {
         border-collapse: collapse;
     width: 100%;
@@ -364,13 +362,13 @@ equation
         .ttable tr:nth-child(even) {
                 background-color: #dddddd;
         }
-  
+
    </style>
    </head>
    <body>
-   
+
   <div class=\"headerlinkdiv\">
-  
+
    <span class=\"headerspan\" style=\"background: url(DocumentationFiles/examples.png) no-repeat 0 0;
    padding-left: 24px;
    \"
@@ -382,7 +380,7 @@ equation
            this.style.color = 'gray';
            this.style.background = 'url(DocumentationFiles/examples.png) no-repeat 0 0';
    \"><a href=\"https://www.wolfram.com/system-modeler/examples/\" class=\"headera\">More Examples</a></span>
-  
+
    <span class=\"headerspan\" style=\"background: url(DocumentationFiles/video.png) no-repeat 0 0;
    padding-left: 29px;
    \"
@@ -394,7 +392,7 @@ equation
            this.style.color = 'gray';
            this.style.background = 'url(DocumentationFiles/video.png) no-repeat 0 0';
    \"><a href=\"http://www.wolfram.com/system-modeler/resources/get-started/\" class=\"headera\">Introductory Videos</a></span>
-  
+
    <span class=\"headerspan\" style=\"background: url(DocumentationFiles/docs.png) no-repeat 0 0;
    padding-left: 20px;
    \"
@@ -406,7 +404,7 @@ equation
            this.style.color = 'gray';
            this.style.background = 'url(DocumentationFiles/docs.png) no-repeat 0 0';
    \"><a href=\"http://reference.wolfram.com/system-modeler\" class=\"headera\">Documentation</a></span>
-  
+
    <span class=\"headerspan\" style=\"background: url(DocumentationFiles/contact.png) no-repeat 0 0;
    padding-left: 24px;
    \"
@@ -469,6 +467,6 @@ The full legal code can be found at:<br>
         <a href=\"http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode\">http://creativecommons.org/licenses/by-nc-sa/3.0/legalcode</a>
 </p></span></span><div class=\"legalend\">&nbsp;</div>
    </body>
-   <!--WSMINSERTIONTAGEND gyroModel --></html>", revisions = ""), Diagram(coordinateSystem(extent = {{-160, -120}, {160, 117.912}}, preserveAspectRatio = true, initialScale = 0.1, grid = {5, 5})),
+   <!--WSMINSERTIONTAGEND gyroModel --></html>", revisions = ""), Diagram(coordinateSystem(extent = {{-160, -120}, {160, 117.912}}, preserveAspectRatio = true, grid = {5, 5})),
     __Dymola_Commands(file="../animate_gyroscope.mos" "animate_gyroscope"));
 end GyroModel;

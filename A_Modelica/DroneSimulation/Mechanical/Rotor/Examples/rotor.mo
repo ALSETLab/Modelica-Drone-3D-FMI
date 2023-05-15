@@ -10,7 +10,7 @@ model rotor
     annotation (Placement(transformation(extent={{30,74},{50,94}})));
   Modelica.Mechanics.MultiBody.Forces.Torque torque( animation=false)
     annotation (Placement(transformation(extent={{10,-74},{30,-54}})));
-  Modelica.Blocks.Math.Gain gain(k=-1)     annotation (Placement(
+  Modelica.Blocks.Math.Gain gain(k=-1) annotation (Placement(
         transformation(
         extent={{-6,-6},{6,6}},
         rotation=270,
@@ -32,14 +32,12 @@ model rotor
   Blocks.Routing.RealExtend realExtend1 annotation (Placement(
         transformation(
         extent={{-6,-6},{6,6}},
-        rotation=0,
         origin={-40,-80})));
   Modelica.Mechanics.MultiBody.Forces.WorldForce force1
     annotation (Placement(transformation(extent={{-22,-90},{-2,-70}})));
-  Modelica.Blocks.Math.Gain gain1(k=k)     annotation (Placement(
+  Modelica.Blocks.Math.Gain gain1(k=k) annotation (Placement(
         transformation(
         extent={{-6,-6},{6,6}},
-        rotation=0,
         origin={-62,-80})));
   parameter Real k=-1 "Gain value multiplied with input signal";
 equation
@@ -102,6 +100,5 @@ equation
           Text(
           extent={{-72,22},{76,-20}},
           lineColor={28,108,200},
-          textString="Rotor")}),      Diagram(coordinateSystem(
-          preserveAspectRatio=false)));
+          textString="Rotor")}));
 end rotor;

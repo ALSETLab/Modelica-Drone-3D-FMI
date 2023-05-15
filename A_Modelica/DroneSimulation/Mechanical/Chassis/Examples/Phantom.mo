@@ -5,16 +5,14 @@ model Phantom
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape1(r={0.2,0,0})
                       annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={-26,16})));
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape2(r={0,-0.2,0})
     annotation (Placement(transformation(extent={{-22,-24},{-2,-4}})));
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape3(r={-0.2,0,0})
                        annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={-12,-48})));
-  Modelica.Mechanics.MultiBody.Parts.BodyBox      bodyBox(
+  Modelica.Mechanics.MultiBody.Parts.BodyBox bodyBox(
     width=0.11,
     height=0.05,
     density=0,
@@ -89,6 +87,5 @@ equation
           Text(
           extent={{-68,26},{70,-26}},
           lineColor={28,108,200},
-          textString="droneChassis")}), Diagram(coordinateSystem(
-          preserveAspectRatio=false)));
+          textString="droneChassis")}));
 end Phantom;

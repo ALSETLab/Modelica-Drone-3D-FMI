@@ -29,13 +29,13 @@ model ModuleTest_SimVis2
     filename=Visualization.Utilities.RootDir + "/Extras/Bitmaps/Skymap/skymap2/skymap2_negx.png")
     annotation (Placement(transformation(extent={{-76,38},{-56,58}})));
 
-  Visualization.Cameras.FreeCamera     camera1(windowMode=Visualization.Cameras.Internal.Types.WindowMode.Window,
+  Visualization.Cameras.FreeCamera camera1(windowMode=Visualization.Cameras.Internal.Types.WindowMode.Window,
       startDistanceToCenter={0,-3,0})
     annotation (Placement(transformation(extent={{-2,-36},{18,-16}})));
   replaceable Inputs.Keyboard.KeyboardInputs_SimVis inputDevice_SimVis
    constrainedby Interfaces.InputDevice_SimVis
     annotation (Placement(transformation(extent={{-28,8},{-8,28}})));
-  Visualization.Cameras.FreeCamera     camera2(windowMode=Visualization.Cameras.Internal.Types.WindowMode.OpenVR_seated,
+  Visualization.Cameras.FreeCamera camera2(windowMode=Visualization.Cameras.Internal.Types.WindowMode.OpenVR_seated,
       startDistanceToCenter={0,-3,0})
     annotation (Placement(transformation(extent={{-2,-52},{18,-32}})));
   Examples.DroneWithIdealPower.Drone_Visualization droneTest_FMU_VISUALIZATON
