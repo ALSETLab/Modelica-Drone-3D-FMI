@@ -1,5 +1,5 @@
 within DroneSimulation.Examples;
-model Drone_Template
+partial model Drone_Template
   Modelica.Blocks.Interfaces.RealInput xcoord
     annotation (Placement(transformation(extent={{-140,60},{-100,100}})));
   Modelica.Blocks.Interfaces.RealInput zcoord
