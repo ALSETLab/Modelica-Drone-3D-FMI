@@ -19,7 +19,7 @@ partial model Propeller_Power
     annotation (Placement(transformation(extent={{-110,20},{-90,40}})));
 equation
   connect(DCMotor.position, position)
-    annotation (Line(points={{-84,0},{-122,0}},   color={0,0,127}));
+    annotation (Line(points={{-84,0},{-122,0}}, color={0,0,127}));
   connect(rotor1.Airframe, Airframe) annotation (Line(
       points={{26.42,-10.4},{102,-10.4},{102,-10}},
       color={95,95,95},
@@ -43,7 +43,7 @@ equation
   connect(DCMotor.p1, p1) annotation (Line(points={{-80,8},{-88,8},{-88,16},{-86,
           16},{-86,30},{-100,30}}, color={0,0,255}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
-            -100,-40},{100,60}})),                               Diagram(
+            -100,-40},{100,60}})), Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-40},{100,
             60}})));
 end Propeller_Power;

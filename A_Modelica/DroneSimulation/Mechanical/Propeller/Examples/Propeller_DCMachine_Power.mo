@@ -47,9 +47,9 @@ equation
       color={95,95,95},
       thickness=0.5));
   connect(dCMotor_DCMachine_Power.position, position) annotation (Line(points={{-74.4,0},
-          {-90,0},{-90,-20},{-120,-20}},               color={0,0,127}));
+          {-90,0},{-90,-20},{-120,-20}}, color={0,0,127}));
   connect(dCMotor_DCMachine_Power.p1, p1) annotation (Line(points={{-70,8},{-86,
-          8},{-86,40},{-104,40}},      color={0,0,255}));
+          8},{-86,40},{-104,40}}, color={0,0,255}));
   connect(dCMotor_DCMachine_Power.torque_1, rotor3_1.torque_2) annotation (Line(
       points={{-26,0},{-16.42,0}},
       color={95,95,95},
@@ -59,6 +59,6 @@ equation
       color={95,95,95},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -40},{100,60}})),                                    Diagram(
+            -40},{100,60}})), Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-40},{100,60}})));
 end Propeller_DCMachine_Power;

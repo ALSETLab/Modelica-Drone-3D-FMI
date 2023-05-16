@@ -3,7 +3,6 @@ model DroneTest
   Modelica.Blocks.Sources.Ramp ramp(duration=5, height=5,
     startTime=0)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={-70,0})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-56,36},{-36,56}})));
@@ -16,7 +15,7 @@ model DroneTest
     annotation (Placement(transformation(extent={{-48,-18},{-38,-8}})));
    inner Modelica.Blocks.Noise.GlobalSeed globalSeed
      annotation (Placement(transformation(extent={{-36,-36},{-26,-26}})));
-  DroneTest_FMU_Constant_Voltage    drone(V=11.1, animation=false)
+  DroneTest_FMU_Constant_Voltage drone(V=11.1, animation=false)
     annotation (Placement(transformation(extent={{-2,22},{18,42}})));
   Modelica.Blocks.Sources.Constant const1(k=0.25)
     annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
@@ -36,7 +35,6 @@ model DroneTest
     widthDirection(displayUnit="1") = {0,1,0})
                                    annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={0,-58})));
   Modelica.Mechanics.MultiBody.Parts.Fixed fixed(animation=true)
     annotation (Placement(transformation(extent={{-48,-70},{-28,-50}})));
@@ -59,7 +57,7 @@ equation
   connect(drone.ycoord, const1.y) annotation (Line(points={{-4,32},{-36,32},{
           -36,30},{-59,30}}, color={0,0,127}));
   connect(drone.xcoord, const.y) annotation (Line(points={{-4,40},{-24,40},{-24,
-          46},{-35,46}},     color={0,0,127}));
+          46},{-35,46}}, color={0,0,127}));
   connect(contact.Port2, rectangularPlaneContactSurface.contact_a) annotation (
       Line(points={{14,-35.1},{14,-58},{9.3,-58}}, color={255,128,0}));
   connect(rectangularPlaneContactSurface.frame_a, fixed.frame_b) annotation (

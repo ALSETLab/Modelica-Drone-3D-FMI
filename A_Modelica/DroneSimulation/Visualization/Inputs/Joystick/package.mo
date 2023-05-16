@@ -70,7 +70,7 @@ package Joystick
      annotation (Line(points={{-9,5.83333},{0,5.83333},{0,-40},{7.5,-40}},
          color={0,0,127}));
    annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-60,
-             -60},{60,60}}), graphics={    Bitmap(extent={{-74,-58},{76,60}},
+             -60},{60,60}}), graphics={ Bitmap(extent={{-74,-58},{76,60}},
               fileName="modelica://Modelica_DeviceDrivers/Resources/Images/Icons/joystick.png")}),
                                                                   Diagram(
          coordinateSystem(preserveAspectRatio=false, extent={{-60,-60},{60,
@@ -113,7 +113,7 @@ package Joystick
     parameter Real YGain=0.5 "Gain value multiplied with input signal";
     parameter Real ZGain=1 "Gain value multiplied with input signal";
   equation
-    connect(joystickInput.axes[3],JoyStick_Z.JoyStickInput)  annotation (Line(
+    connect(joystickInput.axes[3],JoyStick_Z.JoyStickInput) annotation (Line(
           points={{-9,5.83333},{-2,5.83333},{-2,-40},{7.5,-40}},
                                                                color={0,0,127}));
     connect(JoyStick_X.Output, X)
@@ -130,7 +130,7 @@ package Joystick
                                                              color={0,
            0,127}));
    annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-60,
-             -60},{60,60}}), graphics={    Bitmap(extent={{-74,-58},{
+             -60},{60,60}}), graphics={ Bitmap(extent={{-74,-58},{
                76,60}},
               fileName="modelica://Modelica_DeviceDrivers/Resources/Images/Icons/joystick.png")}),
                                                                   Diagram(

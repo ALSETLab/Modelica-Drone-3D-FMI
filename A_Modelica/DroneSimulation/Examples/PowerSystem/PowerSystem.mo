@@ -3,7 +3,6 @@ model PowerSystem
   Modelica.Electrical.PowerConverters.DCDC.ChopperStepUp dcdc annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={-50,0})));
   Modelica.Electrical.PowerConverters.DCAC.SinglePhase2Level inverter(
       constantEnable=false)
@@ -18,9 +17,9 @@ model PowerSystem
     annotation (Placement(transformation(extent={{26,-42},{46,-22}})));
   Modelica.Electrical.Analog.Basic.Inductor inductor1(L=1e-6)
     annotation (Placement(transformation(extent={{-24,-16},{-4,4}})));
-  Electrical.Sources.FuelCell.SimplifiedFuelCell         simplifiedFuelCell(R=100, L=
+  Electrical.Sources.FuelCell.SimplifiedFuelCell simplifiedFuelCell(R=100, L=
         0.001,
-    V=V)       annotation (Placement(transformation(extent={{-86,-6},{-74,6}})));
+    V=V) annotation (Placement(transformation(extent={{-86,-6},{-74,6}})));
   Modelica.Electrical.Analog.Interfaces.PositivePin ac1
                                                        "AC output" annotation (
       Placement(transformation(extent={{-10,90},{10,110}}), iconTransformation(
@@ -38,7 +37,7 @@ equation
   connect(inductor1.n, inverter.dc_n)
     annotation (Line(points={{-4,-6},{26,-6}}, color={0,0,255}));
   connect(pwm1.fire, inverter.fire_p)
-    annotation (Line(points={{30,-21},{30,-12}},          color={255,0,255}));
+    annotation (Line(points={{30,-21},{30,-12}}, color={255,0,255}));
   connect(pwm1.notFire, inverter.fire_n)
     annotation (Line(points={{42,-21},{42,-12}}, color={255,0,255}));
   connect(simplifiedFuelCell.pin_p, dcdc.dc_p1) annotation (Line(points={{-73,4},
@@ -98,7 +97,7 @@ equation
           points={{60,-58},{60,22}},
           color={95,95,95},
           smooth=Smooth.None)}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+
     Documentation(info="<html>
 <p>The architecture of the CHEETA electrical system is shown below:</p>
 <p><br><img src=\"modelica://CHEETA/Images/Electrical/CHEETASystem.PNG\"/></p>

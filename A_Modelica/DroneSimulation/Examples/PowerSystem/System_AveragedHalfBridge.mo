@@ -6,12 +6,10 @@ model System_AveragedHalfBridge
     L=1e3,
     V=500) annotation (Placement(transformation(
         extent={{-6,-6},{6,6}},
-        rotation=0,
         origin={-122,0})));
   Modelica.Electrical.PowerConverters.DCDC.ChopperStepUp dcdc annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={-82,0})));
   Modelica.Electrical.Analog.Basic.Inductor inductor(L=1e-6)
     annotation (Placement(transformation(extent={{-58,-4},{-38,16}})));
@@ -28,7 +26,7 @@ model System_AveragedHalfBridge
     annotation (Placement(transformation(extent={{-26,-44},{-6,-24}})));
   Modelica.Electrical.Analog.Sensors.CurrentSensor currentSensor
     annotation (Placement(transformation(extent={{58,6},{70,-6}})));
-  Modelica.Blocks.Sources.Constant const(k=500)        annotation (Placement(
+  Modelica.Blocks.Sources.Constant const(k=500) annotation (Placement(
         transformation(
         extent={{-7,-7},{7,7}},
         rotation=90,
@@ -50,7 +48,7 @@ equation
   connect(inductor1.p, dcdc.dc_n2)
     annotation (Line(points={{-58,-6},{-72,-6}}, color={0,0,255}));
   connect(pwm1.dutyCycle, modulatedSignalController.y) annotation (Line(points={{24,-34},
-          {-5,-34}},                             color={0,0,127}));
+          {-5,-34}}, color={0,0,127}));
   connect(modulatedSignalController.Vdc2, const.y) annotation (Line(points={{
           -16,-45.2},{-16,-53.3},{-17,-53.3}}, color={0,0,127}));
   connect(modulatedSignalController.Reference, sine.y)

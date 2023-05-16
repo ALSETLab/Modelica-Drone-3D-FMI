@@ -4,8 +4,7 @@ model Snubber_Rectifier
   Modelica.Electrical.Polyphase.Basic.Star star(m=3) annotation (Placement(
         transformation(
         origin={-24,66},
-        extent={{-10,10},{10,-10}},
-        rotation=0)));
+        extent={{-10,10},{10,-10}})));
   Switches.Diode_Snubber diode_Snubber(
     Rcond=Rcond,
     Vt=Vt,
@@ -34,8 +33,7 @@ model Snubber_Rectifier
   Modelica.Electrical.Polyphase.Basic.Star star1(m=3) annotation (Placement(
         transformation(
         origin={-16,-6},
-        extent={{-10,10},{10,-10}},
-        rotation=0)));
+        extent={{-10,10},{10,-10}})));
   Modelica.Electrical.Polyphase.Interfaces.PositivePlug positivePlug
     annotation (Placement(transformation(extent={{-120,10},{-100,30}}),
         iconTransformation(extent={{-120,10},{-100,30}})));
@@ -96,7 +94,7 @@ equation
           color={0,0,255}),
         Line(
           points={{-10,40},{-10,-8}},
-          color={0,0,255})}),                                    Diagram(
+          color={0,0,255})}), Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-40},{40,80}})),
     experiment(StopTime=0.1, __Dymola_NumberOfIntervals=5000),
     Documentation(info="<html>

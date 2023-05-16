@@ -78,8 +78,7 @@ equation
           lineColor={0,0,0},
           fillColor={28,108,200},
           fillPattern=FillPattern.None,
-          textString="PID")}),                                   Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+          textString="PID")}),
     Documentation(info="<html>
 <p>This is a discrete PID block to create the discrete controller.</p>
 </html>"));

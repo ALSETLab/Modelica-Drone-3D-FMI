@@ -41,7 +41,6 @@ model controlModule_Synchronous
   Blocks.Routing.RealExtract realExtract3(index=2) annotation (Placement(
         transformation(
         extent={{-4,-4},{4,4}},
-        rotation=0,
         origin={14,-72})));
   Blocks.Routing.RealExtract realExtract4(index=2)
     annotation (Placement(transformation(extent={{-52,-68},{-44,-60}})));
@@ -57,7 +56,6 @@ model controlModule_Synchronous
   Blocks.Routing.RealExtract realExtract7(index=1) annotation (Placement(
         transformation(
         extent={{-4,-4},{4,4}},
-        rotation=0,
         origin={14,-60})));
   Blocks.Routing.RealExtract realExtract8(index=3) annotation (Placement(
         transformation(
@@ -165,7 +163,7 @@ equation
   connect(position, realExtract1.u)
     annotation (Line(points={{-120,0},{-80,0}}, color={0,0,127}));
   connect(position, realExtract2.u) annotation (Line(points={{-120,0},{-90,0},
-          {-90,-30},{-80,-30}},    color={0,0,127}));
+          {-90,-30},{-80,-30}}, color={0,0,127}));
   connect(GPS, realExtract4.u) annotation (Line(points={{-60,-100},{-60,-64},
           {-52,-64}}, color={0,0,127}));
   connect(GPS, realExtract5.u) annotation (Line(points={{-60,-100},{-60,-72},
@@ -182,27 +180,27 @@ equation
   connect(limiter2.u, discreteTF1.y) annotation (Line(points={{-4,80},{-15,80}},
                                       color={0,0,127}));
   connect(discreteTF1.u1, realExtract8.y) annotation (Line(points={{-26,70},{
-          -26,64.4}},                 color={0,0,127}));
+          -26,64.4}}, color={0,0,127}));
   connect(discreteTF1.u, yaw) annotation (Line(points={{-36,80},{-120,80}},
                                color={0,0,127}));
   connect(discreteTF2.u, realExtract.y) annotation (Line(points={{-44,30},{-59,
-          30}},                            color={0,0,127}));
+          30}}, color={0,0,127}));
   connect(discreteTF2.y, limiter.u) annotation (Line(points={{-23,30},{-2,30}},
                                      color={0,0,127}));
   connect(discreteTF3.y, gain.u) annotation (Line(points={{-23,0},{-16.4,0}},
                                     color={0,0,127}));
   connect(realExtract1.y, discreteTF3.u) annotation (Line(points={{-59,0},{-44,
-          0}},                           color={0,0,127}));
+          0}}, color={0,0,127}));
   connect(discreteTF4.u, realExtract2.y) annotation (Line(points={{-42,-30},{
-          -59,-30}},                           color={0,0,127}));
+          -59,-30}}, color={0,0,127}));
   connect(discreteTF4.u1, realExtract5.y) annotation (Line(points={{-32,-40},{
-          -32,-72},{-35.6,-72}},                 color={0,0,127}));
+          -32,-72},{-35.6,-72}}, color={0,0,127}));
   connect(limiter.y, discreteTF5.u) annotation (Line(points={{21,30},{34,30}},
                                    color={0,0,127}));
   connect(limiter1.y, discreteTF6.u) annotation (Line(points={{21,-4},{26,-4}},
                                     color={0,0,127}));
   connect(discreteTF6.u1, realExtract7.y) annotation (Line(points={{36,-14},{36,
-          -60},{18.4,-60}},          color={0,0,127}));
+          -60},{18.4,-60}}, color={0,0,127}));
   connect(realExpression.y,add3_1. u2)
     annotation (Line(points={{81,60},{94.8,60}}, color={0,0,127}));
   connect(add3_1.u1,realExpression1. y) annotation (Line(points={{94.8,64.8},{
@@ -250,7 +248,7 @@ equation
   connect(add3_3.y, y2)
     annotation (Line(points={{108.6,-20},{130,-20}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -100},{120,100}}),                                  graphics={Text(
+            -100},{120,100}}), graphics={Text(
           extent={{-54,30},{76,-32}},
           lineColor={0,0,0},
           fillColor={0,0,0},

@@ -8,12 +8,10 @@ model SimplifiedFuelCell
   Modelica.Electrical.Analog.Basic.Resistor resistor(R=R) annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={2,20})));
   Modelica.Electrical.Analog.Basic.Inductor inductor(L=L) annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={40,20})));
   Modelica.Electrical.Analog.Interfaces.PositivePin pin_p annotation (Placement(
         transformation(extent={{60,30},{80,50}}), iconTransformation(extent={{
@@ -27,13 +25,11 @@ model SimplifiedFuelCell
                                                           annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={2,-40})));
   Modelica.Electrical.Analog.Basic.Inductor inductor1(L=L)
                                                           annotation (Placement(
         transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={40,-40})));
   Modelica.Electrical.Analog.Interfaces.PositivePin pin_p1
                                                           annotation (Placement(

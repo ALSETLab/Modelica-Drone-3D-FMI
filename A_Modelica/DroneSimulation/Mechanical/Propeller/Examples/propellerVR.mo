@@ -117,13 +117,13 @@ equation
   connect(gain1.y, realExtend1.u)
     annotation (Line(points={{-9,-68},{36,-68}}, color={0,0,127}));
   connect(dCmotor.force, gain1.u) annotation (Line(points={{-51,-4},{-44,-4},
-          {-44,-68},{-32,-68}},      color={0,0,127}));
+          {-44,-68},{-32,-68}}, color={0,0,127}));
   connect(realExtend1.y, torque.torque) annotation (Line(points={{59,-68},{
           80,-68},{80,72},{8,72},{8,34}}, color={0,0,127}));
   connect(realExtend.y, force.force) annotation (Line(points={{-17.5,-37},{
           -14,-37},{-14,-22}}, color={0,0,127}));
   connect(dCmotor.torque, realExtend.u) annotation (Line(points={{-51,4},{
-          -40,4},{-40,-37},{-29,-37}},    color={0,0,127}));
+          -40,4},{-40,-37},{-29,-37}}, color={0,0,127}));
   connect(dCmotor.current, limiter.y)
     annotation (Line(points={{-74,0},{-85.6,0}}, color={0,0,127}));
   connect(position, limiter.u)
@@ -133,6 +133,5 @@ equation
           Text(
           extent={{-72,22},{76,-20}},
           lineColor={28,108,200},
-          textString="propellerR")}), Diagram(coordinateSystem(
-          preserveAspectRatio=false)));
+          textString="propellerR")}));
 end propellerVR;

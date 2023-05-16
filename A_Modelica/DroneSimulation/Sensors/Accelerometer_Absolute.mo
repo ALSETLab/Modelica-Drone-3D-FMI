@@ -27,6 +27,5 @@ equation
           fillColor={28,108,200},
           fillPattern=FillPattern.None,
           textString="Accelerometer
-")}),
-Diagram(coordinateSystem(preserveAspectRatio=false)));
+")}));
 end Accelerometer_Absolute;

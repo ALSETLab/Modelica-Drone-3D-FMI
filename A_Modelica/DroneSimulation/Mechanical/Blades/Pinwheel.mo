@@ -12,7 +12,6 @@ model Pinwheel
     T_min=0,
     T_max=2) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={88,42})));
   Modelica.Mechanics.MultiBody.Joints.GearConstraint
                         gearConstraint(
@@ -68,7 +67,6 @@ model Pinwheel
     T_min=0,
     T_max=2) annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={86,6})));
   Modelica.Mechanics.MultiBody.Parts.BodyCylinder
                      cyl2(
@@ -113,12 +111,12 @@ equation
       color={95,95,95},
       thickness=0.5));
   connect(vectorInput.y,torque1. torque) annotation (Line(points={{-56,80},{-50,
-          80},{-50,54}},      color={0,0,127}));
+          80},{-50,54}}, color={0,0,127}));
   connect(vectorInput.u,realExpression. y)
-    annotation (Line(points={{-78,80},{-85,80}},  color={0,0,127}));
+    annotation (Line(points={{-78,80},{-85,80}}, color={0,0,127}));
   connect(torque2.tau,realExpression1. y)
     annotation (Line(points={{0,-34},{-23,-34}}, color={0,0,127}));
-connect(inertia.flange_a,flange_a1)  annotation (Line(points={{-76,-18},{-92,
+connect(inertia.flange_a,flange_a1) annotation (Line(points={{-76,-18},{-92,
           -18},{-92,-14},{-100,-14},{-100,0}},
                                              color={0,0,0}));
 connect(gearConstraint.frame_b,cyl2. frame_a) annotation (Line(
@@ -140,7 +138,7 @@ connect(cyl3.frame_a,cyl2. frame_a) annotation (Line(
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false), graphics={Rectangle(
           extent={{-100,100},{100,-100}}, lineColor={28,108,200})}),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+
     Documentation(info="<html>
 <p>This model aims to simulate the animation of a pinwheel connected to a DC motor.</p>
 </html>"));

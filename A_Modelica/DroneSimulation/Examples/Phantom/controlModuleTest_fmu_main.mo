@@ -2,7 +2,6 @@ within DroneSimulation.Examples.Phantom;
 model controlModuleTest_fmu_main
   Modelica.Blocks.Sources.Ramp ramp(duration=5, height=5)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={-70,0})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-66,18},{-46,38}})));

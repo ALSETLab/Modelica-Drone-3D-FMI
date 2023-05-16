@@ -78,6 +78,6 @@ equation
           fillColor={197,197,197},
           fillPattern=FillPattern.Solid,
           textString="DC",
-          lineThickness=0.5)}),                                        Diagram(
+          lineThickness=0.5)}), Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-80,-80},{80,80}})));
 end Simulink_Averaged_Rectifier;

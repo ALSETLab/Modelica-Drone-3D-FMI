@@ -64,7 +64,7 @@ equation
   connect(add1.u2, ramp.y) annotation (Line(points={{22,-68},{10,-68},{10,
           -80},{-125,-80}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
-            -160,-100},{140,100}})),                             Diagram(
+            -160,-100},{140,100}})), Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-160,-100},{
             140,100}})));
 end noiseTest;

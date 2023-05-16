@@ -7,7 +7,7 @@ model DCMachine
         extent={{-4,4},{4,-4}},
         rotation=180,
         origin={-44,0})));
-  replaceable Electrification.Machines.Examples.DCMachine   machine(
+  replaceable Electrification.Machines.Examples.DCMachine machine(
       internal_ground=true) constrainedby
     Electrification.Machines.Interfaces.DCMachine(
       internal_ground=true)
@@ -503,7 +503,7 @@ public
         extent={{-4,4},{4,-4}},
         rotation=180,
         origin={-44,-56})));
-  replaceable Electrification.Machines.Examples.DCMachine   machine1(
+  replaceable Electrification.Machines.Examples.DCMachine machine1(
       internal_ground=true) constrainedby
     Electrification.Machines.Examples.DCMachine(
       internal_ground=true)
@@ -1886,7 +1886,7 @@ public
         extent={{-4,4},{4,-4}},
         rotation=180,
         origin={-44,-126})));
-  replaceable Electrification.Machines.Examples.DCMachine   machine2(
+  replaceable Electrification.Machines.Examples.DCMachine machine2(
       internal_ground=true) constrainedby
     Electrification.Machines.Examples.DCMachine(
       internal_ground=true)
@@ -1909,7 +1909,7 @@ public
         extent={{-4,4},{4,-4}},
         rotation=180,
         origin={-44,-200})));
-  replaceable Electrification.Machines.Examples.DCMachine   machine3(
+  replaceable Electrification.Machines.Examples.DCMachine machine3(
       internal_ground=true) constrainedby
     Electrification.Machines.Examples.DCMachine(
       internal_ground=true)
@@ -1954,7 +1954,7 @@ public
     annotation (Placement(transformation(extent={{30,-34},{50,-14}})));
 equation
   connect(torqueCommand.tau_ref, trq_cmd.y)
-    annotation (Line(points={{-40,30},{-59,30}},        color={0,0,127}));
+    annotation (Line(points={{-40,30},{-59,30}}, color={0,0,127}));
   connect(ambient.heat, ambientTemperature.port)
     annotation (Line(points={{28,80},{48,80}}, color={191,0,0}));
   connect(ambient.machine, machine.thermalPort) annotation (Line(points={{20,80},
@@ -1966,7 +1966,7 @@ equation
   connect(converterCoolingHeat.port, converterLumped.heat)
     annotation (Line(points={{48,50},{28,50}}, color={191,0,0}));
   connect(converterLumped.machine, machine.thermalPort) annotation (Line(points={{20,50},
-          {10,50},{10,20},{0,20},{0,10}},         color={191,0,0}));
+          {10,50},{10,20},{0,20},{0,10}}, color={191,0,0}));
   connect(dcSensor.plug_a, splitterHVDC.plug_a) annotation (Line(
       points={{-32,0},{-40,0}},
       color={255,128,0},
@@ -2071,5 +2071,5 @@ equation
     Diagram(coordinateSystem(preserveAspectRatio=false, extent={{-160,-240},{
             140,100}})),
     experiment(StopTime=3),
-    __Dymola_experimentSetupOutput,Documentation(revisions="<html><hr><p><font class=\"copyright_bold\">Copyright &copy; 2004-2019, MODELON AB</font> <font class=\"copyright_base\">The use of this software component is regulated by the licensing conditions for the Electrification Library. This copyright notice must, unaltered, accompany all components that are derived from, copied from, or by other means have their origin from the Electrification Library. </font></p></html>"));
+Documentation(revisions="<html><hr><p><font class=\"copyright_bold\">Copyright &copy; 2004-2019, MODELON AB</font> <font class=\"copyright_base\">The use of this software component is regulated by the licensing conditions for the Electrification Library. This copyright notice must, unaltered, accompany all components that are derived from, copied from, or by other means have their origin from the Electrification Library. </font></p></html>"));
 end DCMachine;

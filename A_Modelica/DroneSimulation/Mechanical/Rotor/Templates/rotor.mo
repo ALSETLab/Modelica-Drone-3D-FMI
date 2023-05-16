@@ -24,6 +24,5 @@ Modelica.Mechanics.MultiBody.Interfaces.Frame_b torque_2
           Text(
           extent={{-72,22},{76,-20}},
           lineColor={28,108,200},
-          textString="Rotor")}),      Diagram(coordinateSystem(
-          preserveAspectRatio=false)));
+          textString="Rotor")}));
 end rotor;

@@ -7,7 +7,6 @@ model DCMotor
     resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={36,0})));
 
   Electrical.Machines.SimpleDCmotor dCmotor
@@ -32,11 +31,11 @@ equation
   connect(gain1.y, realExtend1.u)
     annotation (Line(points={{-9,-68},{14,-68}}, color={0,0,127}));
   connect(dCmotor.force, gain1.u) annotation (Line(points={{-49,-8},{-44,-8},
-          {-44,-68},{-32,-68}},      color={0,0,127}));
+          {-44,-68},{-32,-68}}, color={0,0,127}));
   connect(realExtend.y, force.force) annotation (Line(points={{-1.6,0},{24,0}},
                                color={0,0,127}));
   connect(dCmotor.torque, realExtend.u) annotation (Line(points={{-49,0},{
-          -10.8,0}},                      color={0,0,127}));
+          -10.8,0}}, color={0,0,127}));
   connect(dCmotor.current, limiter.y)
     annotation (Line(points={{-72,-4},{-80,-4},{-80,0},{-85.6,0}},
                                                  color={0,0,127}));
@@ -57,11 +56,10 @@ equation
       color={95,95,95},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
-            -100,-100},{100,100}}),                             graphics={
+            -100,-100},{100,100}}), graphics={
           Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
           Text(
           extent={{-72,22},{76,-20}},
           lineColor={28,108,200},
-          textString="Motor")}),      Diagram(coordinateSystem(
-          preserveAspectRatio=false, extent={{-100,-100},{100,100}})));
+          textString="Motor")}));
 end DCMotor;

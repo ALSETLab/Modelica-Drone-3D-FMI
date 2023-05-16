@@ -28,13 +28,13 @@ model discreteControlTest
      kp=1.5,
      samplePeriod=0.01)
      annotation (Placement(transformation(extent={{-86,8},{-66,28}})));
-  Mechanical.Propeller                 propellerRev(PropellerGain=1)
+  Mechanical.Propeller propellerRev(PropellerGain=1)
      annotation (Placement(transformation(extent={{-20,34},{0,54}})));
-  Mechanical.Propeller                 propellerRev1
+  Mechanical.Propeller propellerRev1
      annotation (Placement(transformation(extent={{-20,10},{0,30}})));
-  Mechanical.Propeller                 propellerRev3
+  Mechanical.Propeller propellerRev3
      annotation (Placement(transformation(extent={{-20,-16},{0,4}})));
-  Mechanical.Propeller                 propellerRev2
+  Mechanical.Propeller propellerRev2
      annotation (Placement(transformation(extent={{-20,-40},{0,-20}})));
 equation
   connect(relativePosition.frame_b, droneChassis1.frame_a3) annotation (
@@ -47,11 +47,11 @@ equation
       color={95,95,95},
       thickness=0.5));
   connect(relativePosition.r_rel, realExtract.u) annotation (Line(points={{38,3},{
-          66,3},{66,-72},{-76,-72},{-76,-30}},            color={0,0,127}));
+          66,3},{66,-72},{-76,-72},{-76,-30}}, color={0,0,127}));
   connect(ramp.y, discretePID.u)
     annotation (Line(points={{-109,18},{-86,18}}, color={0,0,127}));
   connect(realExtract.y, discretePID.u1)
-    annotation (Line(points={{-76,-9},{-76,8}},    color={0,0,127}));
+    annotation (Line(points={{-76,-9},{-76,8}}, color={0,0,127}));
    connect(propellerRev.Airframe, droneChassis1.frame_a1) annotation (Line(
        points={{0.2,43.6},{14,43.6},{14,26},{30,26}},
        color={95,95,95},
@@ -77,7 +77,7 @@ equation
    connect(propellerRev3.position, propellerRev2.position) annotation (Line(
          points={{-22.2,-6},{-32,-6},{-32,-30},{-22.2,-30}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
-            -140,-100},{100,100}})),                             Diagram(
+            -140,-100},{100,100}})), Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-140,-100},{
             100,100}})));
 end discreteControlTest;

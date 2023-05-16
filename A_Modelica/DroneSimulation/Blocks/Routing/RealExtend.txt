@@ -7,7 +7,7 @@ model RealExtend
         iconTransformation(extent={{-140,-20},{-100,20}})));
   Modelica.Blocks.Interfaces.RealOutput y[3]
     annotation (Placement(transformation(extent={{100,-10},{120,10}})));
-equation 
+equation
   y = {0,0,u};
   annotation (Icon(coordinateSystem(preserveAspectRatio=true, extent={{-100,
             -100},{100,100}}), graphics={Line(points={{-100,0},{100,0}},
@@ -20,7 +20,7 @@ equation
               108,200})}),
                     Documentation(info="<html>
 <p>
-Passes a Real signal through without modification. 
+Passes a Real signal through without modification.
 This enables a single input to enter the system, then translates the signal into an array.
 </p>
 </html>"));

@@ -35,18 +35,16 @@ model circlePath
     y_start=0,
     initType=Modelica.Blocks.Types.Init.InitialOutput)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={40,-40})));
   Modelica.Blocks.Continuous.FirstOrder firstOrder4(
     T=0.2,
     y_start=0,
     initType=Modelica.Blocks.Types.Init.InitialOutput)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={80,40})));
 equation
   connect(ramp5.y,add2. u2) annotation (Line(points={{-19,-64},{-12,-64},{
-          -12,-46},{-4,-46}},     color={0,0,127}));
+          -12,-46},{-4,-46}}, color={0,0,127}));
   connect(cosine.y, product.u1) annotation (Line(points={{-23,52},{-18,52},
           {-18,40},{-14,40}}, color={0,0,127}));
   connect(ramp4.y, product.u2) annotation (Line(points={{-21,10},{-18,10},{

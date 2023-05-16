@@ -3,7 +3,6 @@ model Accelerometer
   Modelica.Mechanics.MultiBody.Sensors.RelativeAngles relativeAngles
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={10,40})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a frame_a
     annotation (Placement(transformation(extent={{84,-16},{116,16}})));
@@ -36,6 +35,5 @@ equation
           fillColor={28,108,200},
           fillPattern=FillPattern.None,
           textString="Accelerometer
-")}),
-Diagram(coordinateSystem(preserveAspectRatio=false)));
+")}));
 end Accelerometer;

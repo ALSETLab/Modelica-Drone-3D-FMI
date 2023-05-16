@@ -11,7 +11,7 @@ model controlModuleTest2
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple
     annotation (Placement(transformation(extent={{-58,8},{-38,28}})));
-  Modelica.Blocks.Sources.Ramp ramp(          duration=0.5, height=5)
+  Modelica.Blocks.Sources.Ramp ramp( duration=0.5, height=5)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={-80,-50})));
@@ -42,25 +42,25 @@ model controlModuleTest2
     annotation (Placement(transformation(extent={{8,4},{28,12}})));
 equation
   connect(propellerRev.position, controlModule.y1) annotation (Line(points={{5.8,
-           37.2},{-2,37.2},{-2,24},{-9,24}},  color={0,0,127}));
+           37.2},{-2,37.2},{-2,24},{-9,24}}, color={0,0,127}));
   connect(controlModule.position, realExtendMultiple.y) annotation (Line(
-        points={{-32,18},{-37,18}},                   color={0,0,127}));
+        points={{-32,18},{-37,18}}, color={0,0,127}));
   connect(gPS.frame_a, droneChassis1.frame_a3) annotation (Line(
       points={{28,-40},{36,-40},{36,10},{44,10}},
       color={95,95,95},
       thickness=0.5));
   connect(gPS.y, controlModule.GPS) annotation (Line(points={{7,-40},{-26,-40},
-          {-26,6}},       color={0,0,127}));
+          {-26,6}}, color={0,0,127}));
   connect(accelerometer.frame_a, droneChassis1.frame_a3) annotation (Line(
       points={{28,-66},{36,-66},{36,10},{44,10}},
       color={95,95,95},
       thickness=0.5));
   connect(accelerometer.y, controlModule.Gyero) annotation (Line(points={{7,-66},
-          {-20,-66},{-20,6}},       color={0,0,127}));
+          {-20,-66},{-20,6}}, color={0,0,127}));
   connect(ramp.y, firstOrder1.u)
-    annotation (Line(points={{-80,-39},{-80,-32}},   color={0,0,127}));
+    annotation (Line(points={{-80,-39},{-80,-32}}, color={0,0,127}));
   connect(controlModule.yaw, const.y) annotation (Line(points={{-32,26},{-36,
-          26},{-36,46},{-71,46}},      color={0,0,127}));
+          26},{-36,46},{-71,46}}, color={0,0,127}));
   connect(firstOrder1.y, realExtendMultiple.u2) annotation (Line(points={{
           -80,-9},{-80,2},{-64,2},{-64,12},{-58,12}}, color={0,0,127}));
   connect(circlePath.y, realExtendMultiple.u)
@@ -92,8 +92,7 @@ equation
        thickness=0.5));
    connect(propellerRev3.position, controlModule.y3)
      annotation (Line(points={{5.8,7.2},{-9,7.2},{-9,12}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+  annotation (
     __Dymola_Commands(file="drone_animation_setup.mos"
         "drone_animation_setup"),
     experiment(StopTime=10));

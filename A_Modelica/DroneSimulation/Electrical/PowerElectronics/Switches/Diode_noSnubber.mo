@@ -19,7 +19,7 @@ model Diode_noSnubber
         origin={10,72})));
 equation
   connect(diode1.plug_p, positivePlug) annotation (Line(points={{10,82},
-          {10,142}},         color={0,0,255}));
+          {10,142}}, color={0,0,255}));
   connect(negativePlug, diode1.plug_n) annotation (Line(points={{12,-20},
           {12,32},{10,32},{10,62}}, color={0,0,255}));
   annotation (Diagram(coordinateSystem(extent={{-80,-20},{100,140}})), Icon(

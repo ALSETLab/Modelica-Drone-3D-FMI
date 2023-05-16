@@ -70,7 +70,7 @@ equation
   connect(division.y, product.u1) annotation (Line(points={{-34.6,4},{-36,4},
           {-36,-12.4},{-38.8,-12.4}}, color={0,0,127}));
   connect(current, product.u2) annotation (Line(points={{70,-50},{12,-50},{12,
-          -19.6},{-38.8,-19.6}},    color={0,0,127}));
+          -19.6},{-38.8,-19.6}}, color={0,0,127}));
   connect(product.y, signalCurrent.i)
     annotation (Line(points={{-52.6,-16},{-60,-16}}, color={0,0,127}));
   connect(signalCurrent.n, resistor.p)

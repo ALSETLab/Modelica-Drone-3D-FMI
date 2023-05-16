@@ -6,7 +6,7 @@ model Propeller
     annotation (Placement(transformation(extent={{-80,-20},{-40,20}})));
   Modelica.Blocks.Interfaces.RealInput position
     annotation (Placement(transformation(extent={{-142,-20},{-102,20}})));
-  Rotor.Examples.rotor  rotor3_1(k=PropellerGain)
+  Rotor.Examples.rotor rotor3_1(k=PropellerGain)
     annotation (Placement(transformation(extent={{-16,20},{26,-20}})));
   Modelica.Mechanics.MultiBody.Interfaces.Frame_a Airframe
     annotation (Placement(transformation(extent={{86,-26},{118,6}})));
@@ -39,7 +39,7 @@ equation
       color={95,95,95},
       thickness=0.5));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
-            -100,-40},{100,60}})),                               Diagram(
+            -100,-40},{100,60}})), Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-40},{100,
             60}})));
 end Propeller;

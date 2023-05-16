@@ -5,7 +5,6 @@ extends DroneSimulation.Mechanical.Motor.Templates.DCMotor;
       resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
     annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
-        rotation=0,
         origin={36,0})));
 
   Blocks.Routing.RealExtend realExtend1
@@ -68,11 +67,10 @@ equation
   connect(position, limiter.u) annotation (Line(points={{-122,0},{-110,0},{-110,
           0},{-94.8,0}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
-            -100,-100},{100,100}}),                             graphics={
+            -100,-100},{100,100}}), graphics={
           Rectangle(extent={{-100,100},{100,-100}}, lineColor={28,108,200}),
           Text(
           extent={{-72,22},{76,-20}},
           lineColor={28,108,200},
-          textString="Motor")}),      Diagram(coordinateSystem(
-          preserveAspectRatio=false, extent={{-100,-100},{100,100}})));
+          textString="Motor")}));
 end DCMotor_EMF;

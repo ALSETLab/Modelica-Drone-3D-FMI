@@ -21,6 +21,5 @@ equation
     annotation (Line(points={{-43,0},{-38,0}}, color={0,0,127}));
   connect(discretePID.u, zeroOrderHold.y)
     annotation (Line(points={{-10,0},{-15,0}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+
 end discretePIDTest;

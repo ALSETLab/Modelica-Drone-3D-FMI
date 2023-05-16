@@ -30,15 +30,14 @@ equation
           lineColor={28,108,200},
           textString="Lift
 
-"),     Text(
+"), Text(
           extent={{64,-34},{96,-50}},
           lineColor={28,108,200},
           textString="T"),
         Text(
           extent={{-62,28},{74,-20}},
           lineColor={28,108,200},
-          textString="motor")}),                                 Diagram(
-        coordinateSystem(preserveAspectRatio=false)),
+          textString="motor")}),
     Documentation(info="<html>
 <p>This is a simple representation of a motor that is only dependent on current. All losses are neglected from the motor.</p>
 </html>"));

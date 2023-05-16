@@ -12,8 +12,6 @@ model Propeller_DCMachine_Power_ElectricPower
   Modelica.Blocks.Interfaces.RealInput position
     annotation (Placement(transformation(extent={{-140,-10},{-100,30}})));
 
-
-
   Motor.DCMotor_Averaged_Machine dCMotor_DCMachine2_1(k=PropellerGain, V=V)
     annotation (Placement(transformation(extent={{-68,-20},{-24,20}})));
   parameter Modelica.Units.SI.Voltage V "Battery voltage";
@@ -42,8 +40,8 @@ equation
       color={95,95,95},
       thickness=0.5));
   connect(dCMotor_DCMachine2_1.position, position) annotation (Line(points={{-72.4,0},
-          {-90,0},{-90,10},{-120,10}},          color={0,0,127}));
+          {-90,0},{-90,10},{-120,10}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
-            -40},{100,60}})),                                    Diagram(
+            -40},{100,60}})), Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-40},{100,60}})));
 end Propeller_DCMachine_Power_ElectricPower;
