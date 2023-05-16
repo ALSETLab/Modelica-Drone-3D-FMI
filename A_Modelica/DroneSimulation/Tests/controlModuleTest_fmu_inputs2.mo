@@ -19,7 +19,8 @@ model controlModuleTest_fmu_inputs2
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
    Mechanical.Chassis.Examples.droneChassis droneChassis1(length=0.25, m=0.5)
      annotation (Placement(transformation(extent={{44,-12},{94,8}})));
-  Mechanical.Propeller propellerRev(PropellerGain=1)
+  Mechanical.Propeller.Examples.Propeller
+                       propellerRev(PropellerGain=1)
     annotation (Placement(transformation(extent={{10,12},{30,20}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple
     annotation (Placement(transformation(extent={{-74,-10},{-54,10}})));
@@ -29,13 +30,14 @@ model controlModuleTest_fmu_inputs2
         origin={20,-50})));
   Sensors.Accelerometer accelerometer
     annotation (Placement(transformation(extent={{10,-80},{30,-60}})));
-  Modelica.Blocks.Sources.Constant const1(k=0)
-    annotation (Placement(transformation(extent={{2,-42},{-10,-30}})));
-  Mechanical.Propeller propellerRev1
+  Mechanical.Propeller.Examples.Propeller
+                       propellerRev1
     annotation (Placement(transformation(extent={{10,2},{30,10}})));
-  Mechanical.Propeller propellerRev2(PropellerGain=1)
+  Mechanical.Propeller.Examples.Propeller
+                       propellerRev2(PropellerGain=1)
     annotation (Placement(transformation(extent={{10,-8},{30,0}})));
-  Mechanical.Propeller propellerRev3
+  Mechanical.Propeller.Examples.Propeller
+                       propellerRev3
     annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-4,-4},{4,4}},
@@ -45,26 +47,27 @@ equation
   gPS.y[2] = ygps;
   gPS.y[3] = zgps;
   connect(propellerRev.position,controlModule. y1) annotation (Line(points={{7.8,
-           15.2},{-2,15.2},{-2,6},{-9,6}}, color={0,0,127}));
+          15.2},{-2,15.2},{-2,6},{-9.16667,6}},
+                                           color={0,0,127}));
   connect(controlModule.position,realExtendMultiple. y) annotation (Line(
         points={{-31.6667,0},{-53,0}}, color={0,0,127}));
   connect(gPS.frame_a,droneChassis1. frame_a3) annotation (Line(
       points={{30,-50},{36,-50},{36,-8},{44,-8}},
       color={95,95,95},
       thickness=0.5));
-  connect(gPS.y,controlModule. GPS) annotation (Line(points={{9,-50},{-26.6667,-50},{-26.6667,-12}},
+  connect(gPS.y,controlModule. GPS) annotation (Line(points={{9,-50},{-26.6667,
+          -50},{-26.6667,-12}},
                           color={0,0,127}));
   connect(accelerometer.frame_a,droneChassis1. frame_a3) annotation (Line(
       points={{30,-70},{36,-70},{36,-8},{44,-8}},
       color={95,95,95},
       thickness=0.5));
-  connect(accelerometer.y,controlModule. Gyero) annotation (Line(points={{9,-70},{-21.6667,-70},{-21.6667,-12}},
+  connect(accelerometer.y,controlModule. Gyero) annotation (Line(points={{9,-70},
+          {-21.6667,-70},{-21.6667,-12}},
                                     color={0,0,127}));
-  connect(controlModule.Height,const1. y) annotation (Line(points={{-14,-12},{
-           -14,-36},{-10.6,-36}},
-                                color={0,0,127}));
    connect(propellerRev1.position,controlModule. y) annotation (Line(points={{7.8,5.2},
-           {-0.1,5.2},{-0.1,2},{-9,2}}, color={0,0,127}));
+          {-0.1,5.2},{-0.1,2},{-9.16667,2}},
+                                        color={0,0,127}));
    connect(propellerRev.Airframe,droneChassis1. frame_a1) annotation (Line(
        points={{30.2,14.4},{37.1,14.4},{37.1,4},{44,4}},
        color={95,95,95},
@@ -78,13 +81,14 @@ equation
        color={95,95,95},
        thickness=0.5));
    connect(propellerRev2.position,controlModule. y2) annotation (Line(points={{7.8,
-           -4.8},{-9,-4.8},{-9,-2}}, color={0,0,127}));
+          -4.8},{-9.16667,-4.8},{-9.16667,-2}},
+                                     color={0,0,127}));
    connect(propellerRev3.Airframe,droneChassis1. frame_a3) annotation (Line(
        points={{30.2,-15.6},{36,-15.6},{36,-8},{44,-8}},
        color={95,95,95},
        thickness=0.5));
    connect(propellerRev3.position,controlModule. y3)
-     annotation (Line(points={{7.8,-14.8},{-9,-14.8},{-9,-6}},
+     annotation (Line(points={{7.8,-14.8},{-9.16667,-14.8},{-9.16667,-6}},
                                                            color={0,0,127}));
    connect(controlModule.yaw, const.y)
      annotation (Line(points={{-31.6667,8},{-39.6,8}},
@@ -101,6 +105,5 @@ equation
           lineColor={215,215,215},
           lineThickness=1), Bitmap(
           extent={{-98,-98},{98,98}}, fileName="modelica://DroneSimulation/Resources/Images/dronepic.jpg")}),
-
     __Dymola_Commands(file="drone_animation_setup.mos" "drone_animation_setup"));
 end controlModuleTest_fmu_inputs2;

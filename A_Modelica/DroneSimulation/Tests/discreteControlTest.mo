@@ -28,13 +28,17 @@ model discreteControlTest
      kp=1.5,
      samplePeriod=0.01)
      annotation (Placement(transformation(extent={{-86,8},{-66,28}})));
-  Mechanical.Propeller propellerRev(PropellerGain=1)
+  Mechanical.Propeller.Examples.Propeller
+                       propellerRev(PropellerGain=1)
      annotation (Placement(transformation(extent={{-20,34},{0,54}})));
-  Mechanical.Propeller propellerRev1
+  Mechanical.Propeller.Examples.Propeller
+                       propellerRev1
      annotation (Placement(transformation(extent={{-20,10},{0,30}})));
-  Mechanical.Propeller propellerRev3
+  Mechanical.Propeller.Examples.Propeller
+                       propellerRev3
      annotation (Placement(transformation(extent={{-20,-16},{0,4}})));
-  Mechanical.Propeller propellerRev2
+  Mechanical.Propeller.Examples.Propeller
+                       propellerRev2
      annotation (Placement(transformation(extent={{-20,-40},{0,-20}})));
 equation
   connect(relativePosition.frame_b, droneChassis1.frame_a3) annotation (
@@ -53,29 +57,29 @@ equation
   connect(realExtract.y, discretePID.u1)
     annotation (Line(points={{-76,-9},{-76,8}}, color={0,0,127}));
    connect(propellerRev.Airframe, droneChassis1.frame_a1) annotation (Line(
-       points={{0.2,43.6},{14,43.6},{14,26},{30,26}},
+       points={{0.2,40},{14,40},{14,26},{30,26}},
        color={95,95,95},
        thickness=0.5));
    connect(droneChassis1.frame_a, propellerRev1.Airframe) annotation (Line(
-       points={{30,22},{16,22},{16,19.6},{0.2,19.6}},
+       points={{30,22},{16,22},{16,16},{0.2,16}},
        color={95,95,95},
        thickness=0.5));
    connect(droneChassis1.frame_a2, propellerRev3.Airframe) annotation (Line(
-       points={{30,18},{14,18},{14,-6.4},{0.2,-6.4}},
+       points={{30,18},{14,18},{14,-10},{0.2,-10}},
        color={95,95,95},
        thickness=0.5));
    connect(propellerRev2.Airframe, droneChassis1.frame_a3) annotation (Line(
-       points={{0.2,-30.4},{20,-30.4},{20,14},{30,14}},
+       points={{0.2,-34},{20,-34},{20,14},{30,14}},
        color={95,95,95},
        thickness=0.5));
    connect(propellerRev.position, propellerRev2.position) annotation (Line(
-         points={{-22.2,44},{-32,44},{-32,-30},{-22.2,-30}}, color={0,0,127}));
-   connect(discretePID.y, propellerRev2.position) annotation (Line(points={{
-           -65,18},{-32,18},{-32,-30},{-22.2,-30}}, color={0,0,127}));
+         points={{-22.2,42},{-32,42},{-32,-32},{-22.2,-32}}, color={0,0,127}));
+   connect(discretePID.y, propellerRev2.position) annotation (Line(points={{-65,18},
+          {-32,18},{-32,-32},{-22.2,-32}},          color={0,0,127}));
    connect(propellerRev1.position, propellerRev2.position) annotation (Line(
-         points={{-22.2,20},{-32,20},{-32,-30},{-22.2,-30}}, color={0,0,127}));
+         points={{-22.2,18},{-32,18},{-32,-32},{-22.2,-32}}, color={0,0,127}));
    connect(propellerRev3.position, propellerRev2.position) annotation (Line(
-         points={{-22.2,-6},{-32,-6},{-32,-30},{-22.2,-30}}, color={0,0,127}));
+         points={{-22.2,-8},{-32,-8},{-32,-32},{-22.2,-32}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
             -140,-100},{100,100}})), Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-140,-100},{

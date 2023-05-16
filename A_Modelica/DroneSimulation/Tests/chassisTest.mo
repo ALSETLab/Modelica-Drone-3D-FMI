@@ -1,6 +1,7 @@
 within DroneSimulation.Tests;
 model chassisTest
-  Mechanical.Propeller propellerRev(PropellerGain=1)
+  Mechanical.Propeller.Examples.Propeller
+                       propellerRev(PropellerGain=1)
      annotation (Placement(transformation(extent={{-20,40},{0,60}})));
    Mechanical.Chassis.Examples.droneChassis droneChassis1
      annotation (Placement(transformation(extent={{30,-10},{80,10}})));
@@ -13,7 +14,8 @@ model chassisTest
   inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
       -1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
-  Mechanical.Propeller propellerRev1
+  Mechanical.Propeller.Examples.Propeller
+                       propellerRev1
      annotation (Placement(transformation(extent={{-20,10},{0,30}})));
   Modelica.Mechanics.MultiBody.Parts.Fixed fixed annotation (Placement(
         transformation(
@@ -28,9 +30,11 @@ model chassisTest
         origin={44,-36})));
   Modelica.Blocks.Math.Gain gain(k=5)
     annotation (Placement(transformation(extent={{-50,4},{-42,12}})));
-  Mechanical.Propeller propellerRev3
+  Mechanical.Propeller.Examples.Propeller
+                       propellerRev3
      annotation (Placement(transformation(extent={{-20,-16},{0,4}})));
-  Mechanical.Propeller propellerRev2
+  Mechanical.Propeller.Examples.Propeller
+                       propellerRev2
      annotation (Placement(transformation(extent={{-20,-40},{0,-20}})));
 equation
   connect(step.y, feedback.u1)
