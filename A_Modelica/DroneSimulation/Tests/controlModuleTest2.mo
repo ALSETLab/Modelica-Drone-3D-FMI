@@ -99,7 +99,7 @@ equation
      annotation (Line(points={{5.8,7.2},{-9.16667,7.2},{-9.16667,12}},
                                                            color={0,0,127}));
   annotation (
-    __Dymola_Commands(file="drone_animation_setup.mos"
+    __Dymola_Commands(file="modelica://DroneSimulation/Resources/Scripts/drone_animation_setup.mos"
         "drone_animation_setup"),
     experiment(StopTime=10));
 end controlModuleTest2;

@@ -105,5 +105,5 @@ equation
           lineColor={215,215,215},
           lineThickness=1), Bitmap(
           extent={{-98,-98},{98,98}}, fileName="modelica://DroneSimulation/Resources/Images/dronepic.jpg")}),
-    __Dymola_Commands(file="drone_animation_setup.mos" "drone_animation_setup"));
+    __Dymola_Commands(file="modelica://DroneSimulation/Resources/Scripts/drone_animation_setup.mos" "drone_animation_setup"));
 end controlModuleTest_fmu_inputs2;

@@ -103,7 +103,7 @@ package Phantom
       color={95,95,95},
       thickness=0.5));
     annotation (
-      __Dymola_Commands(file="drone_animation_setup.mos"
+      __Dymola_Commands(file="modelica://DroneSimulation/Resources/Scripts/drone_animation_setup.mos"
           "drone_animation_setup"),
       experiment(StopTime=10, __Dymola_Algorithm="Dassl"));
   end controlModuleTest;

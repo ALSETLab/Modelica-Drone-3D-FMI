@@ -2,7 +2,7 @@
 
 # Modelica Drone
 ## Scope & Goals
-What started as a course project for drone control modeling, has become a larger project on multi-domain modeling for drones. 
+What started as a course project for drone control modeling, has become a larger project on multi-domain modeling for drones.
 ### Scope
 We are hoping to continue to develop it as a Drone library, with the ability of modeling multiple domains (e.g. electrical power supply and management, thermal management, VR-based visualization, control modeling with different approaches - continious, discrete, synchronous - etc.).
 ### Goals
@@ -14,7 +14,7 @@ We are hoping to continue to develop it as a Drone library, with the ability of 
 If you use these resources, please cite the repository via the DOI: [![DOI](https://zenodo.org/badge/176610570.svg)](https://zenodo.org/badge/latestdoi/176610570)
 
 We have received acceptance of an abstract discussing this model and we are preparing paper, which we would welcome you to cite as:
-> M. Podlaski, L. Vanfretti, H. Nademi and H. Chang, “UAV Dynamic System Modeling and Visualization using Modelica and FMI,” The Vertical Flight Society's 76th Annual Forum & Technology Display, Virginia Beach Convention Center on Oct. 6-8, 2020. 
+> M. Podlaski, L. Vanfretti, H. Nademi and H. Chang, “UAV Dynamic System Modeling and Visualization using Modelica and FMI,” The Vertical Flight Society's 76th Annual Forum & Technology Display, Virginia Beach Convention Center on Oct. 6-8, 2020.
 
 We will share an open access version of the paper when it is accepted.
 
@@ -25,7 +25,7 @@ Today, the development is coordinated by Meaghan Podlaski, and we have received 
 
 ![Alt text](/D_Pics/main.png "Drone Model")
 
-### Acknowledgement 
+### Acknowledgement
 This work was funded in whole or part by by the National Aeronautics and Space Administration through the University Leadership Initiative award for the Center for Cryogenic High-Efficiency Electrical Technologies for Aircraft (CHEETA). The first author was supported by Rensselaer Polytechnic Institute through the Rensselaer Graduate Fellowship
 2019-2020.
 
@@ -52,7 +52,7 @@ How to simulate it?
 5. This simulation should result with the z-coordinate approaching 5 meters, and the other coordinates (x,y) should be around zero. To verify, plot the variables ``.xgps``, ``.ygps`` and ``.zgps`` of the model by running the Modelica script ``drone_simulation_setup.mos``. You should obtain the result below.
 ![Alt text](/D_Pics/sim.png "Simulation Results")
 
-6. Within Dymola, run the script ``drone_anymation_setup.mos``, and then click on the ``Play`` button to see the animation. The red arrows indicate the force of the propellers.
+6. Within Dymola, run the script ``drone_animation_setup.mos``, and then click on the ``Play`` button to see the animation. The red arrows indicate the force of the propellers.
 
 ![Alt text](/D_Pics/anim.gif "Animation")
 
@@ -100,7 +100,7 @@ Alternatively, issue the following command under the ``Commands`` window of Dymo
 To take advantage of this feature you need the [DLR Visualization](https://visualization.ltx.de/)
 1. Open the models for visualization under ``DroneSimulation.Examples.Visualization.ModuleTest_SimVis`` and select it as ``Simulation model``.
 2. Go to simulation tab of your tool and change the simulation time to 100s then click simulate button.
-3. A window for the DLR SimVis application will open with the drone flying in a desert terrain. The drone can be controlled by the keyboard by default, but it can be reconfigured to control the drone with a joystick. 
+3. A window for the DLR SimVis application will open with the drone flying in a desert terrain. The drone can be controlled by the keyboard by default, but it can be reconfigured to control the drone with a joystick.
 
 ## Contributing
 - Via pull requests.
