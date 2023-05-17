@@ -5,7 +5,7 @@ model Blades_Animation
     annotation (Placement(transformation(extent={{-120,-16},{-88,16}}),
         iconTransformation(extent={{-120,-16},{-88,16}})));
   Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(
-    shapeType="modelica://DroneSimulation/Images/8.stl",
+    shapeType="modelica://DroneSimulation/Resources/Images/8.stl",
     r_shape={-0.0085,-0.1,0},
     lengthDirection(displayUnit="1") = {0,0,-1},
     length=1e-3,

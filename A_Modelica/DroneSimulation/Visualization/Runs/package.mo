@@ -16,7 +16,7 @@ package Runs
      axis(displayUnit="1") = {1,0,0},
      angle=-90,
     filename=ModelicaServices.ExternalReferences.loadResource(
-        "modelica://DroneSimulation/Images/1_DroneModel.stl"),
+        "modelica://DroneSimulation/Resources/Images/1_DroneModel.stl"),
      scaleFactor={0.01,0.01,0.01},
      reflectsLight=true,
      overwriteColor=false,

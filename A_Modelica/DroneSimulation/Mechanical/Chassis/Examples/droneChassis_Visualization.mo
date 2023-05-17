@@ -33,7 +33,7 @@ model droneChassis_Visualization
   Visualization.Shapes.FileShape shape(
     r_shape={0,0,0},
     lengthDirection(displayUnit="1") = {1,0,0},
-    filename="modelica://DroneSimulation/Images/9.stl",
+    filename="modelica://DroneSimulation/Resources/Images/9.stl",
     scaleFactor={1.025e-3,1.025e-3,1.025e-3})
              annotation (Placement(transformation(extent={{88,-68},{108,-48}})));
   Modelica.Mechanics.MultiBody.Parts.FixedRotation fixedRotation2(

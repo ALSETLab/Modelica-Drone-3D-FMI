@@ -28,7 +28,7 @@ model Blades_Visualization
     r_shape={-0.0085,-0.1,0},
     lengthDirection(displayUnit="1") = {0,0,-1},
     widthDirection(displayUnit="1"),
-    filename="modelica://DroneSimulation/Images/8.stl",
+    filename="modelica://DroneSimulation/Resources/Images/8.stl",
     scaleFactor={1e-3,1e-3,1e-3},
     wireframe=false,
     transparency=0,

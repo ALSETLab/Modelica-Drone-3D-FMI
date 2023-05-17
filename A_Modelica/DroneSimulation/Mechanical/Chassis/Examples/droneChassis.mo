@@ -4,7 +4,7 @@ model droneChassis
 
   Modelica.Mechanics.MultiBody.Visualizers.FixedShape fixedShape(
     animation=animation,
-    shapeType="modelica://DroneSimulation/Images/9.stl",
+    shapeType="modelica://DroneSimulation/Resources/Images/9.stl",
     r_shape={0,0,0},
     lengthDirection(displayUnit="1") = {1,0,0},
     length=1.025e-3,
