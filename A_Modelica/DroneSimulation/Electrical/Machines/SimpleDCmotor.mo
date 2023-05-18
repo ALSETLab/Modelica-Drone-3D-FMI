@@ -3,8 +3,8 @@ model SimpleDCmotor
 
   parameter Modelica.Units.SI.Inertia Jp=0.002 "Propeller inertia";
   parameter Modelica.Units.SI.ElectricalTorqueConstant Kt = 2 "Motor current to torque constant";
-  parameter Modelica.Units.SI.Impulse bp = 2e-2 "Propeller friction force";
-  parameter Modelica.Units.SI.AngularImpulse Ke= 0.0015 "Propeller constant";
+  parameter Real bp = 2e-2 "Drag constant";
+  parameter Real Ke= 0.0015 "Lift constant";
 
   Modelica.Units.SI.Torque tout "Output torque";
   Modelica.Units.SI.Force fout "Output force";
