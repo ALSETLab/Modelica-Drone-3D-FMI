@@ -138,7 +138,6 @@ connect(cyl3.frame_a,cyl2. frame_a) annotation (Line(
   annotation (
     Icon(coordinateSystem(preserveAspectRatio=false), graphics={Rectangle(
           extent={{-100,100},{100,-100}}, lineColor={28,108,200})}),
-
     Documentation(info="<html>
 <p>This model aims to simulate the animation of a pinwheel connected to a DC motor.</p>
 </html>"));

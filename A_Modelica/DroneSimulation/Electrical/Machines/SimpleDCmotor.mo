@@ -30,8 +30,7 @@ equation
           lineColor={28,108,200},
           textString="Lift
 
-"), Text(
-          extent={{64,-34},{96,-50}},
+"), Text( extent={{64,-34},{96,-50}},
           lineColor={28,108,200},
           textString="T"),
         Text(

@@ -92,7 +92,6 @@ equation
           points={{60,-58},{60,22}},
           color={95,95,95},
           smooth=Smooth.None)}),
-
     Documentation(info="<html>
 </html>"),
     experiment(StopTime=0.5));

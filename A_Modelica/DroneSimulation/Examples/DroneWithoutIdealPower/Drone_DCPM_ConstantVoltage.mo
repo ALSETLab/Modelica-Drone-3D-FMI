@@ -150,6 +150,5 @@ equation
           lineColor={215,215,215},
           lineThickness=1), Bitmap(
           extent={{-98,-98},{98,98}}, fileName="modelica://DroneSimulation/Resources/Images/Otus.jpg")}),
-
     __Dymola_Commands(file="modelica://DroneSimulation/Resources/Scripts/drone_animation_setup.mos" "drone_animation_setup"));
 end Drone_DCPM_ConstantVoltage;

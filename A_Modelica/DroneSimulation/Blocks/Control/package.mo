@@ -108,6 +108,7 @@ package Control
 <p>This is a discrete PID block to create the discrete controller using the Modelica synchronous library.</p>
 </html>"));
   end discreteTF;
+
  annotation (Icon(graphics={
         Rectangle(
           lineColor={200,200,200},
