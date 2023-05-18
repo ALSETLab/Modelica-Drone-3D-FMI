@@ -55,8 +55,8 @@ equation
       points={{30,-50},{36,-50},{36,-6},{44,-6}},
       color={95,95,95},
       thickness=0.5));
-  connect(gPS.y, controlModule_Synchronous.GPS) annotation (Line(points={{9,-50},{-26.3636,-50},{-26.3636,-12}},
-                                          color={0,0,127}));
+  connect(gPS.y, controlModule_Synchronous.GPS) annotation (Line(points={{9,-50},
+          {-26.3636,-50},{-26.3636,-12}}, color={0,0,127}));
   connect(accelerometer.frame_a,droneChassis1. frame_a3) annotation (Line(
       points={{30,-70},{36,-70},{36,-6},{44,-6}},
       color={95,95,95},

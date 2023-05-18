@@ -44,10 +44,10 @@ equation
   gPS.y[1] = xgps;
   gPS.y[2] = ygps;
   gPS.y[3] = zgps;
-  connect(gPS.y,controlModule_Synchronous2_1. GPS) annotation (Line(points={{-13,-54},{-54.3636,-54},{-54.3636,-12}},
-                                                   color={0,0,127}));
-  connect(const2.y,controlModule_Synchronous2_1. yaw) annotation (Line(points={{-71.4,22},{-64,22},{-64,8},{-59.8182,8}},
-                                                     color={0,0,127}));
+  connect(gPS.y,controlModule_Synchronous2_1. GPS) annotation (Line(points={{-13,-54},
+          {-54.3636,-54},{-54.3636,-12}},          color={0,0,127}));
+  connect(const2.y,controlModule_Synchronous2_1. yaw) annotation (Line(points={{-71.4,
+          22},{-64,22},{-64,8},{-59.8182,8}},        color={0,0,127}));
   connect(droneChassis2.frame_a1,propeller_DCMachine_Power. Airframe)
     annotation (Line(
       points={{48,4},{40,4},{40,17},{12.2,17}},

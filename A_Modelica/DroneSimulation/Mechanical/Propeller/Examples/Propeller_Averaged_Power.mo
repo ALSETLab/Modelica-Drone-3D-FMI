@@ -19,13 +19,12 @@ model Propeller_Averaged_Power
     "Nominal armature current (>0..Motor, <0..Generator) for motor"
     annotation (Dialog(group="Motor Parameters"));
 
-  Motor.DCMotor_Averaged_Machine dCMotor_DCMachine_SeriesExcited(
-    k=PropellerGain,
-    V=V) annotation (Placement(transformation(extent={{-68,-20},{-24,20}})));
   parameter Modelica.Units.SI.Voltage V "Battery voltage";
   parameter Modelica.Units.SI.Resistance R=100
     "Resistance at temperature T_ref";
   parameter Boolean animation=true "= true, if animation shall be enabled";
+  Motor.DCMotor_DCMachine dCMotor_DCMachine
+    annotation (Placement(transformation(extent={{-66,-20},{-26,20}})));
 equation
   connect(rotor1.Airframe, Airframe) annotation (Line(
       points={{26.42,-10.4},{102,-10.4},{102,-10}},
@@ -35,23 +34,20 @@ equation
       points={{26.42,8},{36,8},{36,26},{49.16,26}},
       color={95,95,95},
       thickness=0.5));
-  connect(dCMotor_DCMachine_SeriesExcited.force_out, rotor1.force) annotation (
-      Line(
-      points={{-24,12.4},{-20,12.4},{-20,12.4},{-16.42,12.4}},
+  connect(dCMotor_DCMachine.position, position) annotation (Line(points={{-70.4,
+          0},{-94,0},{-94,-20},{-120,-20}}, color={0,0,127}));
+  connect(rotor1.force, dCMotor_DCMachine.force_out) annotation (Line(
+      points={{-16.42,12.4},{-26,12.4}},
       color={95,95,95},
       thickness=0.5));
-  connect(rotor1.torque_2, dCMotor_DCMachine_SeriesExcited.torque_1)
-    annotation (Line(
-      points={{-16.42,0},{-24,0}},
+  connect(dCMotor_DCMachine.torque_1, rotor1.torque_2) annotation (Line(
+      points={{-26,0},{-16.42,0}},
       color={95,95,95},
       thickness=0.5));
-  connect(dCMotor_DCMachine_SeriesExcited.torque_2, rotor1.torque_1)
-    annotation (Line(
-      points={{-24,-12},{-16.42,-12}},
+  connect(rotor1.torque_1, dCMotor_DCMachine.torque_2) annotation (Line(
+      points={{-16.42,-12},{-26,-12}},
       color={95,95,95},
       thickness=0.5));
-  connect(dCMotor_DCMachine_SeriesExcited.position, position) annotation (Line(
-        points={{-72.4,0},{-90,0},{-90,-20},{-120,-20}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -40},{100,60}})), Diagram(
         coordinateSystem(preserveAspectRatio=false, extent={{-100,-40},{100,60}})));
