@@ -91,8 +91,8 @@ equation
   gPS_collision.y[1] = xgps;
   gPS_collision.y[2] = ygps;
   gPS_collision.y[3] = zgps;
-  connect(gPS_collision.y, controlModule_Power.GPS) annotation (Line(points={{-9,-40},{-54.6667,-40},{-54.6667,-12}},
-                                                  color={0,0,127}));
+  connect(gPS_collision.y, controlModule_Power.GPS) annotation (Line(points={{-9,-40},
+          {-54.6667,-40},{-54.6667,-12}},         color={0,0,127}));
   connect(propeller_DCMachine_Power1.p1,propeller_DCMachine_Power. p1)
     annotation (Line(points={{-8.4,8},{-16,8},{-16,22},{-8.4,22}}, color={0,0,
           255}));
@@ -108,8 +108,8 @@ equation
   connect(propeller_DCMachine_Power2.p1,propeller_DCMachine_Power. p1)
     annotation (Line(points={{-8.4,-4},{-16,-4},{-16,22},{-8.4,22}},
                      color={0,0,255}));
-  connect(const2.y, controlModule_Power.yaw) annotation (Line(points={{-71.4,22},{-64,22},{-64,8},{-59.6667,8}},
-                                          color={0,0,127}));
+  connect(const2.y, controlModule_Power.yaw) annotation (Line(points={{-71.4,22},
+          {-64,22},{-64,8},{-59.6667,8}}, color={0,0,127}));
   connect(droneChassis2.frame_a1,propeller_DCMachine_Power. Airframe)
     annotation (Line(
       points={{48,4},{40,4},{40,17},{12.2,17}},
@@ -138,8 +138,8 @@ equation
       points={{12,-60},{72,-60},{72,-40},{12,-40}},
       color={95,95,95},
       thickness=0.5));
-  connect(accelerometer.y, controlModule_Power.Gyero) annotation (Line(points={{-9,-60},{-49.6667,-60},{-49.6667,-12}},
-                                                   color={0,0,127}));
+  connect(accelerometer.y, controlModule_Power.Gyero) annotation (Line(points={{-9,-60},
+          {-49.6667,-60},{-49.6667,-12}},          color={0,0,127}));
   connect(controlModule_Power.position, realExtendMultiple.y)
     annotation (Line(points={{-59.6667,0},{-67,0}}, color={0,0,127}));
   connect(realExtendMultiple.u1, ycoord)
@@ -152,8 +152,8 @@ equation
     annotation (Line(points={{-50,-92},{-50,-101}}, color={255,0,255}));
   connect(dcdc.dc_n2, ground.p)
     annotation (Line(points={{-34,-86},{-6,-86},{-6,-100}}, color={0,0,255}));
-  connect(dcdc.dc_p2, controlModule_Power.pin) annotation (Line(points={{-34,-74},{-26,-74},{-26,-68},{-62,-68},{-62,-6.6},{-58.1667,-6.6}},
-                                                                          color=
+  connect(dcdc.dc_p2, controlModule_Power.pin) annotation (Line(points={{-34,-74},
+          {-26,-74},{-26,-68},{-62,-68},{-62,-6.6},{-58.1667,-6.6}},      color=
          {0,0,255}));
   connect(controlModule_Power.y1, propeller_DCMachine_Power.position)
     annotation (Line(points={{-37.1667,6},{-23.5833,6},{-23.5833,16},{-10,16}},
