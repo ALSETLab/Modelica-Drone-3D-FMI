@@ -1,10 +1,15 @@
 within DroneSimulation.Electrical.Machines;
 model SimpleDCmotor
-
+  type drag = Real (
+    final unit="N.m.s2");
+  type thrust = Real (
+    final unit="N.s2");
   parameter Modelica.Units.SI.Inertia Jp=0.002 "Propeller inertia";
   parameter Modelica.Units.SI.ElectricalTorqueConstant Kt = 2 "Motor current to torque constant";
-  parameter Real bp = 2e-2 "Drag constant";
-  parameter Real Ke= 0.0015 "Lift constant";
+  parameter drag bp = 2e-2 "Drag constant";
+  parameter Modelica.Units.SI.Area A=1 "Cross section of vehicle";
+  parameter Modelica.Units.SI.Density rho=1 "Density of air";
+  parameter thrust Ke= 0.0015 "Lift constant";
 
   Modelica.Units.SI.Torque tout "Output torque";
   Modelica.Units.SI.Force fout "Output force";
