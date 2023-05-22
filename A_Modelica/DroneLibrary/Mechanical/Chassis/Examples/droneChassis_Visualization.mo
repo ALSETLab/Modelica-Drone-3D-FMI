@@ -1,6 +1,5 @@
 within DroneLibrary.Mechanical.Chassis.Examples;
 model droneChassis_Visualization
-  import Visualization;
   extends DroneLibrary.Mechanical.Chassis.Templates.droneChassis;
   Modelica.Mechanics.MultiBody.Parts.BodyCylinder bodyCylinder(
     animation=false,

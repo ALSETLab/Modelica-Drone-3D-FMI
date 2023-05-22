@@ -1,8 +1,6 @@
 within DroneLibrary.Visualization.Inputs.Joystick;
 model JoyStickInputs_Dymola
   extends DroneLibrary.Visualization.Interfaces.InputDevice_Dymola;
-  import DroneLibrary =
-         DroneLibrary;
   Modelica_DeviceDrivers.Blocks.OperatingSystem.SynchronizeRealtime
                                       synchronizeRealtime
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));

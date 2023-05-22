@@ -1,6 +1,5 @@
 within DroneLibrary.Visualization.Runs;
 model ModuleTest_SimVis
- import Visualization;
   DroneForVR
     controlModuleTest_fmu_inputs1
     annotation (Placement(transformation(extent={{12,-10},{32,10}})));

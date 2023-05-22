@@ -1,6 +1,5 @@
 within DroneLibrary.Examples.Visualization_VR;
 model ModuleTest_SimVis
- import Visualization;
   Examples.DroneWithIdealPower.DroneTest_FMU_Synchronous_chassis
     controlModuleTest_fmu_inputs1
     annotation (Placement(transformation(extent={{14,-10},{34,10}})));

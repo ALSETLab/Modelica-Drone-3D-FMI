@@ -1,6 +1,5 @@
 within DroneLibrary.Mechanical.Blades.Examples;
 model Blades_Visualization
-  import Visualization;
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape5(
     animation=false,
     m=0.010,

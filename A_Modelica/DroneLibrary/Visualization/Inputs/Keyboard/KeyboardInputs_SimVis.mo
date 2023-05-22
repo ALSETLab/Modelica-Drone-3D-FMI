@@ -1,8 +1,6 @@
 within DroneLibrary.Visualization.Inputs.Keyboard;
 model KeyboardInputs_SimVis
   extends DroneLibrary.Visualization.Interfaces.InputDevice_SimVis;
-  import DroneLibrary =
-         DroneLibrary;
   Modelica_DeviceDrivers.Blocks.OperatingSystem.SynchronizeRealtime
                                       synchronizeRealtime
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
