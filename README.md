@@ -33,11 +33,11 @@ This work was funded in whole or part by by the National Aeronautics and Space A
 
 ## A. Modelica Model
 
-All sub-systems and simulation cases are contained within the `./DroneSimulation` package. Each model is saved individually as its own file. The [Modelon](http://https://www.modelon.com/products-services/modelon-library-suite-modelica-libraries/ "Modelon") Libraries are required to run models with non-ideal power systems using batteries and certain DC motor configurations. The full version of the [DLR Visualization](https://visualization.ltx.de/) library is required to run any of the models using VR in the `DroneSimulation.Visualization` package.
+All sub-systems and simulation cases are contained within the `./A_Modelica/DroneLibrary` package. Each model is saved individually as its own file. The [Modelon](http://https://www.modelon.com/products-services/modelon-library-suite-modelica-libraries/ "Modelon") Libraries are required to run models with non-ideal power systems using batteries and certain DC motor configurations. The full version of the [DLR Visualization](https://visualization.ltx.de/) library is required to run any of the models using VR in the `DroneLibrary.Visualization` package.
 
 How to simulate it?
 
-1. Open `./A_Modelica/package.mo`
+1. Open `./A_Modelica/DroneLibrary/package.mo`
 2. The package structure is set up with the following sub-packages:
 	- Examples
 	- Blocks
@@ -65,8 +65,8 @@ Note that this model requires a Dymola license to execute in your local machine 
 It is possible to generate an FMU from the Modelica model to provide inputs to x, y and z coordinate changes.
 Under the 'Test' sub-package, the `controlModuleTest_fmu_inputs` model can be used. To generate the FMU using Dymola 2019 FD01 (64-bit) under Windows 10, follow the next steps:
 
-1. Open `./A_Modelica/DroneSimulation/package.mo`
-2. Set as `Simulation model` the model under `DroneSimulation.Examples.DroneWithIdealPowerSystem.DroneTests_FMU`
+1. Open `./A_Modelica/DroneLibrary/package.mo`
+2. Set as `Simulation model` the model under `DroneLibrary.Examples.DroneWithIdealPowerSystem.DroneTests_FMU`
 
 	![Alt text](/D_Pics/fmiexport/02_setmodel.png "Set model")
 
@@ -84,8 +84,8 @@ Under the 'Test' sub-package, the `controlModuleTest_fmu_inputs` model can be us
 Alternatively, issue the following command under the `Commands` window of Dymola:
 
 ``
-translateModelFMU("DroneSimulation.Tests.controlModuleTest_fmu_inputs", false, "", "2", "all", false, 1);
- = "DroneSimulation_Tests_controlModuleTest_0fmu_0inputs"
+translateModelFMU("DroneLibrary.Tests.controlModuleTest_fmu_inputs", false, "", "2", "all", false, 1);
+ = "DroneLibrary_Tests_controlModuleTest_0fmu_0inputs"
 ``
 
 ## C. Running the in Simulink using FMIKIT
@@ -100,7 +100,7 @@ translateModelFMU("DroneSimulation.Tests.controlModuleTest_fmu_inputs", false, "
 
 ## D. Model Visualization and VR
 To take advantage of this feature you need the [DLR Visualization](https://visualization.ltx.de/)
-1. Open the models for visualization under `DroneSimulation.Examples.Visualization.ModuleTest_SimVis` and select it as `Simulation model`.
+1. Open the models for visualization under `DroneLibrary.Examples.Visualization.ModuleTest_SimVis` and select it as `Simulation model`.
 2. Go to simulation tab of your tool and change the simulation time to 100s then click simulate button.
 3. A window for the DLR SimVis application will open with the drone flying in a desert terrain. The drone can be controlled by the keyboard by default, but it can be reconfigured to control the drone with a joystick.
 
