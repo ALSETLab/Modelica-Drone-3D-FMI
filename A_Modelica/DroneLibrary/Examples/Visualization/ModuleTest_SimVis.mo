@@ -12,7 +12,7 @@ model ModuleTest_SimVis
     rotationType=Visualization.Internal.Types.RotationTypes.RotationAxis,
     axis(displayUnit="1") = {1,0,0},
     angle=-90,
-    filename=ModelicaServices.ExternalReferences.loadResource("modelica://DroneLibrary/Resources/Images/1_DroneModel.stl"),
+    filename=Modelica.Utilities.Files.loadResource("modelica://DroneLibrary/Resources/Images/1_DroneModel.stl"),
     scaleFactor={0.01,0.01,0.01},
     reflectsLight=true,
     overwriteColor=false,
