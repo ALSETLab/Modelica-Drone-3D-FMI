@@ -14,7 +14,7 @@ Mechanical.Propeller.Examples.MavicAir propeller_1_2
   annotation (Placement(transformation(extent={{8,20},{28,30}})));
 Mechanical.Propeller.Examples.MavicAir propeller_1_4
   annotation (Placement(transformation(extent={{8,-8},{28,2}})));
-  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
+  inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple

@@ -25,8 +25,8 @@ model Blades_Visualization
         iconTransformation(extent={{-120,-16},{-88,16}})));
   Visualization.Shapes.FileShape shape(
     r_shape={-0.0085,-0.1,0},
-    lengthDirection(displayUnit="1") = {0,0,-1},
-    widthDirection(displayUnit="1"),
+    lengthDirection = {0,0,-1},
+    widthDirection,
     filename="modelica://DroneLibrary/Resources/Images/8.stl",
     scaleFactor={1e-3,1e-3,1e-3},
     wireframe=false,

@@ -7,7 +7,7 @@ model controlModuleTest2
   Mechanical.Propeller.Examples.Propeller
                        propellerRev(PropellerGain=1)
     annotation (Placement(transformation(extent={{8,34},{28,42}})));
-  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
+  inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple

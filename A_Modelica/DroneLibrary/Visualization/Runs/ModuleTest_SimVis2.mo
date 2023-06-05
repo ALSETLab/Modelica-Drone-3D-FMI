@@ -1,6 +1,6 @@
 within DroneLibrary.Visualization.Runs;
 model ModuleTest_SimVis2
-  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,-1,0})
+  inner Modelica.Mechanics.MultiBody.World world(n = {0,-1,0})
     annotation (Placement(transformation(extent={{-72,-60},{-52,-40}})));
   inner Visualization.UpdateVisualization updateVisualization(
       displayMultiBodyStructure=false) annotation (Placement(

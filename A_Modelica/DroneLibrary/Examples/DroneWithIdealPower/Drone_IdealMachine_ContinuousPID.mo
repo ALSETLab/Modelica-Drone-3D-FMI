@@ -3,7 +3,7 @@ model Drone_IdealMachine_ContinuousPID
   "Drone with ideal machine controlled by a PID controller with continuous sampling"
   extends DroneLibrary.Examples.Drone_Template;
 
-  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
+  inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
   Mechanical.Chassis.Examples.droneChassis droneChassis1(length=0.25, m=0.5,

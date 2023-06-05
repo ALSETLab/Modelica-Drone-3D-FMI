@@ -1,6 +1,6 @@
 within DroneLibrary.Tests;
 model controlModuleTest_fmu_inputs2
-  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
+  inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
   Modelica.Blocks.Interfaces.RealInput xcoord

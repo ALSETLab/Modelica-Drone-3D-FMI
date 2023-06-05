@@ -9,7 +9,7 @@ model propellerTest
     r={0,0.25,0},
     r_CM={0,0.175,0})
     annotation (Placement(transformation(extent={{-10,46},{10,66}})));
-  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,-1})
+  inner Modelica.Mechanics.MultiBody.World world(n = {0,0,-1})
     annotation (Placement(transformation(extent={{-78,-84},{-58,-64}})));
    Modelica.Mechanics.MultiBody.Forces.WorldForce force1(color={244,0,4},
        resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)

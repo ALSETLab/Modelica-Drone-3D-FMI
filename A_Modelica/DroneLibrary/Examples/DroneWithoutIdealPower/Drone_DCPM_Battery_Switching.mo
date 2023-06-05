@@ -60,7 +60,7 @@ model Drone_DCPM_Battery_Switching
   Mechanical.Chassis.Examples.droneChassis droneChassis2(length=0.25, m=0.5,
     animation=animation)
     annotation (Placement(transformation(extent={{48,-12},{98,8}})));
-  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,-1})
+  inner Modelica.Mechanics.MultiBody.World world(n = {0,0,-1})
     annotation (Placement(transformation(extent={{62,52},{82,72}})));
   Sensors.Accelerometer accelerometer
     annotation (Placement(transformation(extent={{-8,-70},{12,-50}})));

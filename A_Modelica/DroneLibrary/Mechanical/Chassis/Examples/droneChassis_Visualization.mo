@@ -31,7 +31,7 @@ model droneChassis_Visualization
   parameter Modelica.Units.SI.Mass m=1 "Mass of rigid body";
   Visualization.Shapes.FileShape shape(
     r_shape={0,0,0},
-    lengthDirection(displayUnit="1") = {1,0,0},
+    lengthDirection = {1,0,0},
     filename="modelica://DroneLibrary/Resources/Images/9.stl",
     scaleFactor={1.025e-3,1.025e-3,1.025e-3})
              annotation (Placement(transformation(extent={{88,-68},{108,-48}})));
@@ -41,7 +41,7 @@ model droneChassis_Visualization
     angle=90) annotation (Placement(transformation(extent={{30,-68},{50,-48}})));
   Modelica.Mechanics.MultiBody.Parts.FixedRotation fixedRotation3(
     animation=false,
-    n(displayUnit="1") = {0,1,0},
+    n = {0,1,0},
     angle=45) annotation (Placement(transformation(extent={{58,-68},{78,-48}})));
 equation
   connect(pointMass.frame_a, bodyCylinder.frame_b) annotation (Line(

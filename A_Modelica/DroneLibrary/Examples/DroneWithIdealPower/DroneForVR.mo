@@ -15,7 +15,7 @@ model DroneForVR " Drone system model to be used in virtual reality environments
     annotation (Placement(transformation(extent={{8,-2},{28,18}})));
   Mechanical.Propeller.Examples.propellerVR propellerRev2(k=-1)
     annotation (Placement(transformation(extent={{8,-42},{28,-22}})));
-  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
+  inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple

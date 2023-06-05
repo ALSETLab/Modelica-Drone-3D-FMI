@@ -1,7 +1,7 @@
 within DroneLibrary.Tests;
 model discreteControlTest
    DroneLibrary.Mechanical.Chassis.Examples.droneChassis droneChassis1 annotation (Placement(transformation(extent={{30,10},{80,30}})));
-  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
+  inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})
     annotation (Placement(transformation(extent={{-100,-80},{-80,-60}})));
   Modelica.Mechanics.MultiBody.Parts.Fixed fixed annotation (Placement(

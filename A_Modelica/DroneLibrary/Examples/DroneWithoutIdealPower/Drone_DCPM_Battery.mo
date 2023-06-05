@@ -62,7 +62,7 @@ model Drone_DCPM_Battery
     m=0.5,
     animation=animation)
     annotation (Placement(transformation(extent={{48,-12},{98,8}})));
-  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,-1})
+  inner Modelica.Mechanics.MultiBody.World world(n = {0,0,-1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
   Sensors.Accelerometer accelerometer
     annotation (Placement(transformation(extent={{-12,-96},{8,-76}})));

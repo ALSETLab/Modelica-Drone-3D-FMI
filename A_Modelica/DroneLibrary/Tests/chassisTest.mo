@@ -11,7 +11,7 @@ model chassisTest
     annotation (Placement(transformation(extent={{-72,0},{-56,16}})));
   Modelica.Blocks.Sources.Step step1(height=1, startTime=0.5)
     annotation (Placement(transformation(extent={{-100,-38},{-80,-18}})));
-  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
+  inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
   Mechanical.Propeller.Examples.Propeller

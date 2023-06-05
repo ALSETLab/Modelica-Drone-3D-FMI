@@ -3,14 +3,14 @@ model ModuleTest_SimVis
   DroneWithIdealPower.Drone_DCPM_Chassis controlModuleTest_fmu_inputs1
     annotation (Placement(transformation(extent={{14,-10},{34,10}})));
 
-  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,-1,0})
+  inner Modelica.Mechanics.MultiBody.World world(n = {0,-1,0})
     annotation (Placement(transformation(extent={{-72,-60},{-52,-40}})));
   inner Visualization.UpdateVisualization updateVisualization(
       displayMultiBodyStructure=false)
     annotation (Placement(transformation(extent={{60,42},{80,62}})));
   Visualization.Shapes.FileShape shape(
     rotationType=Visualization.Internal.Types.RotationTypes.RotationAxis,
-    axis(displayUnit="1") = {1,0,0},
+    axis = {1,0,0},
     angle=-90,
     filename=Modelica.Utilities.Files.loadResource("modelica://DroneLibrary/Resources/Images/1_DroneModel.stl"),
     scaleFactor={0.01,0.01,0.01},

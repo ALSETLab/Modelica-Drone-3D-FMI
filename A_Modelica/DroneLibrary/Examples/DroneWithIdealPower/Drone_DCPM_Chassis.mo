@@ -3,7 +3,7 @@ model Drone_DCPM_Chassis
   "Drone with external chassis connection to add external loads. Drone has DC permanent magnent machines in drivetrain."
   extends DroneLibrary.Examples.Drone_Template;
 
-  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
+  inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
   Electrical.controlModule_Synchronous

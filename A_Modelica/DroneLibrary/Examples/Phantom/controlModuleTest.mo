@@ -8,7 +8,7 @@ Mechanical.Chassis.Examples.Phantom droneChassis_1_1(length=0.35, m=0.65)
   annotation (Placement(transformation(extent={{42,6},{92,26}})));
 Mechanical.Propeller.Examples.Phantom propeller_1_1
   annotation (Placement(transformation(extent={{8,30},{28,36}})));
-  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,0,
+  inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple

@@ -6,7 +6,7 @@ model droneChassis
     animation=animation,
     shapeType="modelica://DroneLibrary/Resources/Images/9.stl",
     r_shape={0,0,0},
-    lengthDirection(displayUnit="1") = {1,0,0},
+    lengthDirection = {1,0,0},
     length=1.025e-3,
     width=1.025e-3,
     height=1.025e-3,
@@ -17,7 +17,7 @@ model droneChassis
     angle=90) annotation (Placement(transformation(extent={{30,20},{50,40}})));
   Modelica.Mechanics.MultiBody.Parts.FixedRotation fixedRotation1(
     animation=false,
-    n(displayUnit="1") = {0,1,0},
+    n = {0,1,0},
     angle=45) annotation (Placement(transformation(extent={{58,20},{78,40}})));
   parameter Boolean animation=true "= true, if animation shall be enabled";
 equation

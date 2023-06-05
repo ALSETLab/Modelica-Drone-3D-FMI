@@ -4,14 +4,14 @@ model ModuleTest_SimVis
     controlModuleTest_fmu_inputs1
     annotation (Placement(transformation(extent={{12,-10},{32,10}})));
 
-  inner Modelica.Mechanics.MultiBody.World world(n(displayUnit="1") = {0,-1,0})
+  inner Modelica.Mechanics.MultiBody.World world(n = {0,-1,0})
     annotation (Placement(transformation(extent={{-72,-46},{-52,-26}})));
   inner Visualization.UpdateVisualization updateVisualization(
       displayMultiBodyStructure=false) annotation (Placement(
         transformation(extent={{16,24},{36,44}})));
   Visualization.Shapes.FileShape shape(
     rotationType=Visualization.Internal.Types.RotationTypes.RotationAxis,
-    axis(displayUnit="1") = {1,0,0},
+    axis = {1,0,0},
     angle=-90,
    filename=Modelica.Utilities.Files.loadResource("modelica://DroneLibrary/Resources/Images/1_DroneModel.stl"),
     scaleFactor={0.01,0.01,0.01},
