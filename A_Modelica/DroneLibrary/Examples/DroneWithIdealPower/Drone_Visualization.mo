@@ -9,12 +9,8 @@ model Drone_Visualization "Model to use for animation and visualization."
                            controlModule_Synchronous(
                                          maxTilt=0.05, samplePeriod=0.001)
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
-  Mechanical.Chassis.Examples.droneChassis_Visualization
-    droneChassis_Visualization(length=0.25, m=0.5)
-    annotation (Placement(transformation(extent={{44,-12},{94,8}})));
-  Mechanical.Propeller.Examples.DCMachine_Visualization
-    propeller_DCMachine_Visualization(PropellerGain=1)
-    annotation (Placement(transformation(extent={{10,12},{30,20}})));
+  Mechanical.Chassis.Variants.droneChassis_Visualization droneChassis_Visualization(length=0.25, m=0.5) annotation (Placement(transformation(extent={{44,-12},{94,8}})));
+  Mechanical.Propeller.Variants.DCMachine_Visualization propeller_DCMachine_Visualization(PropellerGain=1) annotation (Placement(transformation(extent={{10,12},{30,20}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple
     annotation (Placement(transformation(extent={{-74,-10},{-54,10}})));
   Sensors.GPS gPS annotation (Placement(transformation(
@@ -25,15 +21,9 @@ model Drone_Visualization "Model to use for animation and visualization."
     annotation (Placement(transformation(extent={{10,-80},{30,-60}})));
   Modelica.Blocks.Sources.Constant const1(k=0)
     annotation (Placement(transformation(extent={{2,-42},{-10,-30}})));
-  Mechanical.Propeller.Examples.DCMachine_Visualization
-    propeller_DCMachine_Visualization2
-    annotation (Placement(transformation(extent={{10,2},{30,10}})));
-  Mechanical.Propeller.Examples.DCMachine_Visualization
-    propeller_DCMachine_Visualization3(PropellerGain=1)
-    annotation (Placement(transformation(extent={{10,-8},{30,0}})));
-  Mechanical.Propeller.Examples.DCMachine_Visualization
-    propeller_DCMachine_Visualization1
-    annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
+  Mechanical.Propeller.Variants.DCMachine_Visualization propeller_DCMachine_Visualization2 annotation (Placement(transformation(extent={{10,2},{30,10}})));
+  Mechanical.Propeller.Variants.DCMachine_Visualization propeller_DCMachine_Visualization3(PropellerGain=1) annotation (Placement(transformation(extent={{10,-8},{30,0}})));
+  Mechanical.Propeller.Variants.DCMachine_Visualization propeller_DCMachine_Visualization1 annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-4,-4},{4,4}},
         origin={-44,8})));

@@ -18,14 +18,12 @@ model Drone_DCPM_Battery
         iconTransformation(extent={{100,-90},{120,-70}})));
 
   parameter Modelica.Units.SI.Voltage V "Battery voltage";
-  Mechanical.Propeller.Examples.Propeller_DCMachine_Power
-    propeller_DCMachine_Power(
+  Mechanical.Propeller.Variants.Propeller_DCMachine_Power propeller_DCMachine_Power(
     PropellerGain=1,
     VaNominal=15,
     IaNominal=50,
     V=V,
-    animation=animation)
-         annotation (Placement(transformation(extent={{-8,14},{12,24}})));
+    animation=animation) annotation (Placement(transformation(extent={{-8,14},{12,24}})));
   Modelica.Electrical.Analog.Basic.Ground ground
     annotation (Placement(transformation(extent={{20,24},{40,44}})));
   Sensors.GPS gPS annotation (Placement(transformation(
@@ -38,30 +36,26 @@ model Drone_DCPM_Battery
     annotation (Placement(transformation(extent={{-58,-10},{-38,10}})));
   Modelica.Blocks.Sources.Constant const2(k=0)
     annotation (Placement(transformation(extent={{-84,16},{-72,28}})));
-  Mechanical.Propeller.Examples.Propeller_DCMachine_Power
-    propeller_DCMachine_Power1(
+  Mechanical.Propeller.Variants.Propeller_DCMachine_Power propeller_DCMachine_Power1(
     VaNominal=15,
-    IaNominal=50, V=V,
-    animation=animation)
-    annotation (Placement(transformation(extent={{-8,0},{12,10}})));
-  Mechanical.Propeller.Examples.Propeller_DCMachine_Power
-    propeller_DCMachine_Power2(
+    IaNominal=50,
+    V=V,
+    animation=animation) annotation (Placement(transformation(extent={{-8,0},{12,10}})));
+  Mechanical.Propeller.Variants.Propeller_DCMachine_Power propeller_DCMachine_Power2(
     PropellerGain=1,
     VaNominal=15,
     IaNominal=50,
     V=V,
-    animation=animation)
-         annotation (Placement(transformation(extent={{-8,-12},{12,-2}})));
-  Mechanical.Propeller.Examples.Propeller_DCMachine_Power
-    propeller_DCMachine_Power3(
+    animation=animation) annotation (Placement(transformation(extent={{-8,-12},{12,-2}})));
+  Mechanical.Propeller.Variants.Propeller_DCMachine_Power propeller_DCMachine_Power3(
     VaNominal=15,
-    IaNominal=50, V=V,
-    animation=animation)
-    annotation (Placement(transformation(extent={{-8,-26},{12,-16}})));
-  Mechanical.Chassis.Examples.droneChassis droneChassis2(length=0.25,
+    IaNominal=50,
+    V=V,
+    animation=animation) annotation (Placement(transformation(extent={{-8,-26},{12,-16}})));
+  Mechanical.Chassis.Variants.droneChassis droneChassis2(
+    length=0.25,
     m=0.5,
-    animation=animation)
-    annotation (Placement(transformation(extent={{48,-12},{98,8}})));
+    animation=animation) annotation (Placement(transformation(extent={{48,-12},{98,8}})));
   inner Modelica.Mechanics.MultiBody.World world(n = {0,0,-1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
   Sensors.Accelerometer accelerometer

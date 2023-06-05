@@ -2,17 +2,11 @@ within DroneLibrary.Examples.Visualization;
 model DroneForVR
   Electrical.controlModule controlModule(maxTilt=0.05, samplePeriod=0.01)
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
-  Mechanical.Chassis.Examples.droneChassis
-                          droneChassis1(length=0.25, m=0.5)
-    annotation (Placement(transformation(extent={{44,-12},{94,8}})));
-  Mechanical.Propeller.Examples.propellerVR propellerRev(k=1)
-    annotation (Placement(transformation(extent={{8,18},{28,38}})));
-  Mechanical.Propeller.Examples.propellerVR propellerRev3(k=1)
-    annotation (Placement(transformation(extent={{8,-22},{28,-2}})));
-  Mechanical.Propeller.Examples.propellerVR propellerRev1(k=-1)
-    annotation (Placement(transformation(extent={{8,-2},{28,18}})));
-  Mechanical.Propeller.Examples.propellerVR propellerRev2(k=-1)
-    annotation (Placement(transformation(extent={{8,-42},{28,-22}})));
+  Mechanical.Chassis.Variants.droneChassis droneChassis1(length=0.25, m=0.5) annotation (Placement(transformation(extent={{44,-12},{94,8}})));
+  Mechanical.Propeller.Variants.propellerVR propellerRev(k=1) annotation (Placement(transformation(extent={{8,18},{28,38}})));
+  Mechanical.Propeller.Variants.propellerVR propellerRev3(k=1) annotation (Placement(transformation(extent={{8,-22},{28,-2}})));
+  Mechanical.Propeller.Variants.propellerVR propellerRev1(k=-1) annotation (Placement(transformation(extent={{8,-2},{28,18}})));
+  Mechanical.Propeller.Variants.propellerVR propellerRev2(k=-1) annotation (Placement(transformation(extent={{8,-42},{28,-22}})));
   inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));

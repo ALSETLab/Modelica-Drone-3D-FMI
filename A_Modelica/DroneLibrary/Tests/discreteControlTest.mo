@@ -1,6 +1,6 @@
 within DroneLibrary.Tests;
 model discreteControlTest
-   DroneLibrary.Mechanical.Chassis.Examples.droneChassis droneChassis1 annotation (Placement(transformation(extent={{30,10},{80,30}})));
+  DroneLibrary.Mechanical.Chassis.Variants.droneChassis droneChassis1 annotation (Placement(transformation(extent={{30,10},{80,30}})));
   inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})
     annotation (Placement(transformation(extent={{-100,-80},{-80,-60}})));
@@ -25,18 +25,10 @@ model discreteControlTest
     kd=0.8,
     kp=1.5,
     samplePeriod=0.01) annotation (Placement(transformation(extent={{-86,8},{-66,28}})));
-  Mechanical.Propeller.Examples.Propeller
-                       propellerRev(PropellerGain=1)
-     annotation (Placement(transformation(extent={{-20,34},{0,54}})));
-  Mechanical.Propeller.Examples.Propeller
-                       propellerRev1
-     annotation (Placement(transformation(extent={{-20,10},{0,30}})));
-  Mechanical.Propeller.Examples.Propeller
-                       propellerRev3
-     annotation (Placement(transformation(extent={{-20,-16},{0,4}})));
-  Mechanical.Propeller.Examples.Propeller
-                       propellerRev2
-     annotation (Placement(transformation(extent={{-20,-40},{0,-20}})));
+  Mechanical.Propeller.Variants.Propeller propellerRev(PropellerGain=1) annotation (Placement(transformation(extent={{-20,34},{0,54}})));
+  Mechanical.Propeller.Variants.Propeller propellerRev1 annotation (Placement(transformation(extent={{-20,10},{0,30}})));
+  Mechanical.Propeller.Variants.Propeller propellerRev3 annotation (Placement(transformation(extent={{-20,-16},{0,4}})));
+  Mechanical.Propeller.Variants.Propeller propellerRev2 annotation (Placement(transformation(extent={{-20,-40},{0,-20}})));
 equation
   connect(relativePosition.frame_b, droneChassis1.frame_a3) annotation (
       Line(

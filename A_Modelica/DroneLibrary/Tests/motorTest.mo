@@ -12,17 +12,13 @@ model motorTest
     annotation (Placement(transformation(extent={{-58,-2},{-38,18}})));
   Modelica.Blocks.Sources.Step step1(startTime=2)
     annotation (Placement(transformation(extent={{-76,-46},{-56,-26}})));
-  Mechanical.Propeller.Examples.Propeller
-                       propellerRev1
-     annotation (Placement(transformation(extent={{-10,-76},{10,-56}})));
+  Mechanical.Propeller.Variants.Propeller propellerRev1 annotation (Placement(transformation(extent={{-10,-76},{10,-56}})));
   Modelica.Mechanics.MultiBody.Parts.Fixed fixed1(r={0.5,0,0}) annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
         origin={54,-66})));
-  Mechanical.Propeller.Examples.Propeller
-                       propellerRev2
-     annotation (Placement(transformation(extent={{-10,-44},{10,-24}})));
+  Mechanical.Propeller.Variants.Propeller propellerRev2 annotation (Placement(transformation(extent={{-10,-44},{10,-24}})));
 equation
   connect(step.y, feedback.u1)
     annotation (Line(points={{-65,8},{-56,8}}, color={0,0,127}));

@@ -5,9 +5,7 @@ model Drone_IdealMachine_SynchronousPID
   extends DroneLibrary.Examples.Drone_Template;
 
   parameter Boolean animation=true "= true, if animation shall be enabled";
-  Mechanical.Propeller.Examples.Propeller
-    propeller_DCMachine_Power(animation=animation, PropellerGain=1)
-         annotation (Placement(transformation(extent={{-8,14},{12,24}})));
+  Mechanical.Propeller.Variants.Propeller propeller_DCMachine_Power(animation=animation, PropellerGain=1) annotation (Placement(transformation(extent={{-8,14},{12,24}})));
   Sensors.GPS gPS annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=180,
@@ -18,20 +16,13 @@ model Drone_IdealMachine_SynchronousPID
     annotation (Placement(transformation(extent={{-58,-10},{-38,10}})));
   Modelica.Blocks.Sources.Constant const2(k=0)
     annotation (Placement(transformation(extent={{-84,16},{-72,28}})));
-  Mechanical.Propeller.Examples.Propeller
-    propeller_DCMachine_Power1(animation=animation)
-    annotation (Placement(transformation(extent={{-8,2},{12,12}})));
-  Mechanical.Propeller.Examples.Propeller
-    propeller_DCMachine_Power2(animation=animation, PropellerGain=1)
-         annotation (Placement(transformation(extent={{-8,-12},{12,-2}})));
-  Mechanical.Propeller.Examples.Propeller
-    propeller_DCMachine_Power3(animation=animation)
-    annotation (Placement(transformation(extent={{-8,-26},{12,-16}})));
-  Mechanical.Chassis.Examples.droneChassis droneChassis2(
+  Mechanical.Propeller.Variants.Propeller propeller_DCMachine_Power1(animation=animation) annotation (Placement(transformation(extent={{-8,2},{12,12}})));
+  Mechanical.Propeller.Variants.Propeller propeller_DCMachine_Power2(animation=animation, PropellerGain=1) annotation (Placement(transformation(extent={{-8,-12},{12,-2}})));
+  Mechanical.Propeller.Variants.Propeller propeller_DCMachine_Power3(animation=animation) annotation (Placement(transformation(extent={{-8,-26},{12,-16}})));
+  Mechanical.Chassis.Variants.droneChassis droneChassis2(
     animation=animation,
     length=0.25,
-    m=0.5)
-    annotation (Placement(transformation(extent={{48,-12},{98,8}})));
+    m=0.5) annotation (Placement(transformation(extent={{48,-12},{98,8}})));
   inner Modelica.Mechanics.MultiBody.World world(n = {0,0,-1})
     annotation (Placement(transformation(extent={{62,52},{82,72}})));
   Sensors.Accelerometer accelerometer

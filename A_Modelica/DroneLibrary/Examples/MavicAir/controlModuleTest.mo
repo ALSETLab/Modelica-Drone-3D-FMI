@@ -4,16 +4,11 @@ model controlModuleTest
                            controlModuleSpeed(maxTilt=0.15,
                                                        samplePeriod=0.01)
     annotation (Placement(transformation(extent={{-30,8},{-10,28}})));
-Mechanical.Chassis.Examples.MavicAir droneChassis_1_1(length=0.25, m=0.5)
-  annotation (Placement(transformation(extent={{42,6},{92,26}})));
-Mechanical.Propeller.Examples.MavicAir propeller_1_1
-  annotation (Placement(transformation(extent={{8,32},{28,42}})));
-Mechanical.Propeller.Examples.MavicAir propeller_1_3
-  annotation (Placement(transformation(extent={{8,6},{28,16}})));
-Mechanical.Propeller.Examples.MavicAir propeller_1_2
-  annotation (Placement(transformation(extent={{8,20},{28,30}})));
-Mechanical.Propeller.Examples.MavicAir propeller_1_4
-  annotation (Placement(transformation(extent={{8,-8},{28,2}})));
+  Mechanical.Chassis.Variants.MavicAir droneChassis_1_1(length=0.25, m=0.5) annotation (Placement(transformation(extent={{42,6},{92,26}})));
+  Mechanical.Propeller.Variants.MavicAir propeller_1_1 annotation (Placement(transformation(extent={{8,32},{28,42}})));
+  Mechanical.Propeller.Variants.MavicAir propeller_1_3 annotation (Placement(transformation(extent={{8,6},{28,16}})));
+  Mechanical.Propeller.Variants.MavicAir propeller_1_2 annotation (Placement(transformation(extent={{8,20},{28,30}})));
+  Mechanical.Propeller.Variants.MavicAir propeller_1_4 annotation (Placement(transformation(extent={{8,-8},{28,2}})));
   inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
@@ -62,8 +57,7 @@ equation
        points={{28,-40},{36,-40},{36,10},{42,10}},
        color={95,95,95},
        thickness=0.5));
-   connect(gPS.y, controlModuleSpeed.GPS) annotation (Line(points={{7,-40},{
-        -26.3636,-40},{-26.3636,6}},
+   connect(gPS.y, controlModuleSpeed.GPS) annotation (Line(points={{7,-40},{-26.3636,-40},{-26.3636,6}},
                                color={0,0,127}));
    connect(accelerometer.frame_a, droneChassis_1_1.frame_a3) annotation (
        Line(
@@ -75,8 +69,7 @@ equation
                                              color={0,0,127}));
   connect(ramp.y, firstOrder1.u)
     annotation (Line(points={{-80,-39},{-80,-32}}, color={0,0,127}));
-   connect(controlModuleSpeed.yaw, const.y) annotation (Line(points={{
-        -31.8182,26},{-36,26},{-36,46},{-71,46}},
+   connect(controlModuleSpeed.yaw, const.y) annotation (Line(points={{-31.8182,26},{-36,26},{-36,46},{-71,46}},
                                             color={0,0,127}));
   connect(firstOrder1.y, realExtendMultiple.u2) annotation (Line(points={{
           -80,-9},{-80,2},{-64,2},{-64,12},{-58,12}}, color={0,0,127}));

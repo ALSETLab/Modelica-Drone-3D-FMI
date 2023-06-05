@@ -10,12 +10,11 @@ model Drone_DCPM_Chassis
                            controlModule_Synchronous(
                                          maxTilt=0.05, samplePeriod=0.001)
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));
-  Mechanical.Chassis.Examples.droneChassis droneChassis1(
-    animation=animation, length=0.25, m=0.5)
-    annotation (Placement(transformation(extent={{44,-10},{94,10}})));
-  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine(animation=
-        animation, PropellerGain=1)
-    annotation (Placement(transformation(extent={{10,14},{30,22}})));
+  Mechanical.Chassis.Variants.droneChassis droneChassis1(
+    animation=animation,
+    length=0.25,
+    m=0.5) annotation (Placement(transformation(extent={{44,-10},{94,10}})));
+  Mechanical.Propeller.Variants.DCMachine propeller_DCMachine(animation=animation, PropellerGain=1) annotation (Placement(transformation(extent={{10,14},{30,22}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple
     annotation (Placement(transformation(extent={{-74,-10},{-54,10}})));
   Sensors.GPS gPS annotation (Placement(transformation(
@@ -24,15 +23,9 @@ model Drone_DCPM_Chassis
         origin={20,-50})));
   Sensors.Accelerometer accelerometer
     annotation (Placement(transformation(extent={{10,-80},{30,-60}})));
-  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine1(animation=
-        animation)
-    annotation (Placement(transformation(extent={{10,4},{30,12}})));
-  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine2(animation=
-        animation, PropellerGain=1)
-    annotation (Placement(transformation(extent={{10,-6},{30,2}})));
-  Mechanical.Propeller.Examples.DCMachine propeller_DCMachine3(animation=
-        animation)
-    annotation (Placement(transformation(extent={{10,-16},{30,-8}})));
+  Mechanical.Propeller.Variants.DCMachine propeller_DCMachine1(animation=animation) annotation (Placement(transformation(extent={{10,4},{30,12}})));
+  Mechanical.Propeller.Variants.DCMachine propeller_DCMachine2(animation=animation, PropellerGain=1) annotation (Placement(transformation(extent={{10,-6},{30,2}})));
+  Mechanical.Propeller.Variants.DCMachine propeller_DCMachine3(animation=animation) annotation (Placement(transformation(extent={{10,-16},{30,-8}})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-4,-4},{4,4}},
         origin={-44,8})));

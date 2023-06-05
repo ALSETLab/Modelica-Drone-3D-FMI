@@ -6,12 +6,11 @@ model Drone_IdealMachine_ContinuousPID
   inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
-  Mechanical.Chassis.Examples.droneChassis droneChassis1(length=0.25, m=0.5,
-    animation=animation)
-    annotation (Placement(transformation(extent={{44,-12},{94,8}})));
-  Mechanical.Propeller.Examples.Propeller propeller( PropellerGain=1,
-      animation=animation)
-    annotation (Placement(transformation(extent={{10,14},{30,22}})));
+  Mechanical.Chassis.Variants.droneChassis droneChassis1(
+    length=0.25,
+    m=0.5,
+    animation=animation) annotation (Placement(transformation(extent={{44,-12},{94,8}})));
+  Mechanical.Propeller.Variants.Propeller propeller(PropellerGain=1, animation=animation) annotation (Placement(transformation(extent={{10,14},{30,22}})));
   Blocks.Routing.RealExtendMultiple realExtendMultiple
     annotation (Placement(transformation(extent={{-74,-10},{-54,10}})));
   Sensors.GPS gPS annotation (Placement(transformation(
@@ -20,13 +19,9 @@ model Drone_IdealMachine_ContinuousPID
         origin={20,-62})));
   Sensors.Accelerometer accelerometer
     annotation (Placement(transformation(extent={{10,-92},{30,-72}})));
-  Mechanical.Propeller.Examples.Propeller propeller2(animation=animation)
-    annotation (Placement(transformation(extent={{10,2},{30,10}})));
-  Mechanical.Propeller.Examples.Propeller propeller3( PropellerGain=1,
-      animation=animation)
-    annotation (Placement(transformation(extent={{10,-8},{30,0}})));
-  Mechanical.Propeller.Examples.Propeller propeller1(animation=animation)
-    annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
+  Mechanical.Propeller.Variants.Propeller propeller2(animation=animation) annotation (Placement(transformation(extent={{10,2},{30,10}})));
+  Mechanical.Propeller.Variants.Propeller propeller3(PropellerGain=1, animation=animation) annotation (Placement(transformation(extent={{10,-8},{30,0}})));
+  Mechanical.Propeller.Variants.Propeller propeller1(animation=animation) annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
   Modelica.Blocks.Sources.Constant const(k=0)
     annotation (Placement(transformation(extent={{-4,-4},{4,4}},
         origin={-44,8})));
