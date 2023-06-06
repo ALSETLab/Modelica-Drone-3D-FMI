@@ -29,8 +29,6 @@ model DroneTest_FMU_Synchronous
         origin={20,-50})));
   Sensors.Accelerometer accelerometer
     annotation (Placement(transformation(extent={{10,-80},{30,-60}})));
-  Modelica.Blocks.Sources.Constant const1(k=0)
-    annotation (Placement(transformation(extent={{2,-42},{-10,-30}})));
   Mechanical.Propeller.Variants.MavicAir mavicAir_propeller1(PropellerGain=1) annotation (Placement(transformation(extent={{10,2},{30,10}})));
   Mechanical.Propeller.Variants.MavicAir mavicAir_propeller2 annotation (Placement(transformation(extent={{10,-8},{30,0}})));
   Mechanical.Propeller.Variants.MavicAir mavicAir_propeller3(PropellerGain=1) annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
@@ -50,8 +48,6 @@ equation
                                           color={0,0,127}));
   connect(accelerometer.y, controlModule_Synchronous.Gyero) annotation (Line(
         points={{9,-70},{-20.9091,-70},{-20.9091,-12}}, color={0,0,127}));
-  connect(controlModule_Synchronous.Height, const1.y) annotation (Line(points={{
-          -16.6667,-12},{-16.6667,-36},{-10.6,-36}}, color={0,0,127}));
   connect(mavicAir_propeller1.position, controlModule_Synchronous.y)
     annotation (Line(points={{7.8,5.2},{-0.1,5.2},{-0.1,2},{-9.09091,2}}, color=
          {0,0,127}));

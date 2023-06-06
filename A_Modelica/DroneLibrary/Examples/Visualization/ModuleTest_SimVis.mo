@@ -1,5 +1,6 @@
 within DroneLibrary.Examples.Visualization;
 model ModuleTest_SimVis
+  extends Modelica.Icons.Example;
   DroneWithIdealPower.Drone_DCPM_Chassis controlModuleTest_fmu_inputs1
     annotation (Placement(transformation(extent={{14,-10},{34,10}})));
 
@@ -80,9 +81,7 @@ equation
      points={{18,-44},{30,-44},{30,-26},{18,-26}},
      color={95,95,95},
      thickness=0.5));
-  annotation (Icon( graphics={
-                            Bitmap(
-          extent={{-98,-98},{98,98}}, fileName="modelica://DroneLibrary/Resources/Images/dronepic.jpg")}),
+  annotation (
     experiment(
       StopTime=50,
       __Dymola_fixedstepsize=0.01,
@@ -90,5 +89,13 @@ equation
     __Dymola_experimentFlags(Advanced(
         InlineMethod=1,
         InlineOrder=2,
-        InlineFixedStep=0.01)));
+        InlineFixedStep=0.01)),
+    Documentation(info="<html>
+<br>
+This example requires a Professional Edition license for DLR's Visualization Library.
+<br>
+When using the Community Edition version of the library, one of the cameras in the model would need to be removed.
+<br>
+To obtain a license, see: <a href=\"https://visualization.ltx.de/\"> https://visualization.ltx.de/ </a>  
+</html>"));
 end ModuleTest_SimVis;
