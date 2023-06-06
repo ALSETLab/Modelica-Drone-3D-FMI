@@ -14,5 +14,5 @@ equation
  connect(inputDevice.Z, controlModuleTest_fmu_inputs1.zcoord)
    annotation (Line(points={{-7,-5},{-4,-5},{-4,-8},{10,-8}},
                    color={0,0,127}));
-  annotation (experiment(StopTime=360, __Dymola_Algorithm="Dassl"));
+  annotation (experiment(StopTime=360));
 end ModuleTest_Dymola;

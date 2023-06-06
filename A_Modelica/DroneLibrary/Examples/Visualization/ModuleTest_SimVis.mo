@@ -91,11 +91,14 @@ equation
         InlineOrder=2,
         InlineFixedStep=0.01)),
     Documentation(info="<html>
-<br>
+<p>
 This example requires a Professional Edition license for DLR's Visualization Library.
-<br>
+</p>
+<p>
 When using the Community Edition version of the library, one of the cameras in the model would need to be removed.
-<br>
+</p>
+<p>
 To obtain a license, see: <a href=\"https://visualization.ltx.de/\"> https://visualization.ltx.de/ </a>  
+</p>
 </html>"));
 end ModuleTest_SimVis;
