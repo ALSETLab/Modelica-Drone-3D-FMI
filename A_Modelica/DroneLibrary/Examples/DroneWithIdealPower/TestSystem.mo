@@ -1,37 +1,21 @@
 within DroneLibrary.Examples.DroneWithIdealPower;
 model TestSystem
   extends Modelica.Icons.Example;
-  Modelica.Blocks.Sources.Ramp ramp(duration=5, height=5,
-    startTime=0)
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}},
-        origin={-70,-30})));
-  Modelica.Blocks.Sources.Constant const(k=0.25)
-    annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
-  Modelica.Blocks.Noise.UniformNoise uniformNoise(
-    samplePeriod=0.1,
-    y_min=0,
-    y_max=0)
-    annotation (Placement(transformation(extent={{-80,-70},{-60,-50}})));
-  Modelica.Blocks.Math.Add add
-    annotation (Placement(transformation(extent={{-30,-60},{-10,-40}})));
-   inner Modelica.Blocks.Noise.GlobalSeed globalSeed
-     annotation (Placement(transformation(extent={{0,-60},{20,-40}})));
+  Modelica.Blocks.Sources.Ramp zcoord_ramp(
+    duration=5,
+    height=5,
+    startTime=0) annotation (Placement(transformation(extent={{-10,-10},{10,10}}, origin={-68,-52})));
+  Modelica.Blocks.Sources.Constant xcoord(k=0.25) annotation (Placement(transformation(extent={{-80,40},{-60,60}})));
   replaceable Drone_IdealMachine drone
     constrainedby DroneLibrary.Examples.Drone_Template
-    annotation (Placement(transformation(extent={{-10,-10},{10,10}})));
-  Modelica.Blocks.Sources.Constant const1(k=0)
+    annotation (Placement(transformation(extent={{-30,-28},{28,30}})));
+  Modelica.Blocks.Sources.Constant ycoord(k=0)
     annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));
 equation
-  connect(ramp.y, add.u1) annotation (Line(points={{-59,-30},{-40,-30},{-40,-44},{-32,-44}},
-                      color={0,0,127}));
-  connect(add.u2, uniformNoise.y) annotation (Line(points={{-32,-56},{-40,-56},{-40,-60},{-59,-60}},
-                           color={0,0,127}));
-  connect(drone.ycoord, const1.y) annotation (Line(points={{-12,0},{-59,0}},
+  connect(drone.ycoord,ycoord. y) annotation (Line(points={{-35.8,1},{-35.8,0},{-59,0}},
                          color={0,0,127}));
-  connect(drone.xcoord, const.y) annotation (Line(points={{-12,8},{-20,8},{-20,30},{-59,30}},
-                             color={0,0,127}));
-  connect(drone.zcoord, ramp.y) annotation (Line(points={{-12,-8},{-20,-8},{-20,-30},{-59,-30}},
-                    color={0,0,127}));
+  connect(drone.xcoord, xcoord.y) annotation (Line(points={{-35.8,24.2},{-54,24.2},{-54,50},{-59,50}}, color={0,0,127}));
+  connect(drone.zcoord, zcoord_ramp.y) annotation (Line(points={{-35.8,-22.2},{-52,-22.2},{-52,-52},{-57,-52}}, color={0,0,127}));
   annotation (experiment(StopTime=10),
     __Dymola_Commands(executeCall(ensureSimulated=true) = {createPlot(
         id=1,
