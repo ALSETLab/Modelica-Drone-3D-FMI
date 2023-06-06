@@ -1,5 +1,6 @@
 within DroneLibrary.Examples.MavicAir;
 model controlModuleTest_fmu_main
+  extends Modelica.Icons.Example;
   Modelica.Blocks.Sources.Ramp ramp(duration=5, height=5)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         origin={-70,0})));
@@ -28,8 +29,5 @@ equation
           -30},{-59,-30}}, color={0,0,127}));
   connect(droneTest_FMU_Synchronous.zcoord, add.u1) annotation (Line(points={{-23,
           -11},{-56,0},{-54,0},{-54,-10},{-49,-10}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-80,
-            -40},{40,60}})), Diagram(coordinateSystem(preserveAspectRatio=
-            false, extent={{-80,-40},{40,60}})),
-    experiment(StopTime=10, Tolerance=0.01));
+  annotation (experiment(StopTime=10, Tolerance=0.01));
 end controlModuleTest_fmu_main;

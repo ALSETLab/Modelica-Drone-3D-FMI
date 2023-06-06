@@ -1,5 +1,6 @@
 within DroneLibrary.Examples.DroneWithoutIdealPower;
 model TestSystem
+  extends Modelica.Icons.Example;
   Modelica.Blocks.Sources.Ramp ramp(duration=5, height=5);
   Modelica.Blocks.Sources.Ramp ramp1(
     duration=5,
@@ -39,9 +40,9 @@ equation
           {-25.75,-29.4},{-11.2,-29.4}}, color={0,0,127}));
   annotation (experiment(
       StopTime=30,
-      __Dymola_NumberOfIntervals=5000,
-      Tolerance=0.001,
-      __Dymola_Algorithm="Dassl"), __Dymola_Commands(executeCall(
+      Interval=0.006,
+      Tolerance=0.001),
+      __Dymola_Commands(executeCall(
           ensureSimulated=true) = {createPlot(
         id=1,
         position={15,10,584,420},

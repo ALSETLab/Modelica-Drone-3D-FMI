@@ -1,5 +1,6 @@
 within DroneLibrary.Tests;
 model motorTest
+  extends Modelica.Icons.Example;
    DroneLibrary.Electrical.Machines.SimpleDCmotor dCmotor annotation (Placement(transformation(extent={{-10,-2},{10,18}})));
   Modelica.Blocks.Sources.Step step(startTime=1)
     annotation (Placement(transformation(extent={{-86,-2},{-66,18}})));
@@ -39,4 +40,5 @@ equation
       points={{44,-66},{16,-66},{16,-70},{10.2,-70}},
       color={95,95,95},
       thickness=0.5));
+  annotation (experiment(StopTime=15));
 end motorTest;

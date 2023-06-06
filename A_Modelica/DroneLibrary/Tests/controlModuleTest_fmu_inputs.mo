@@ -53,18 +53,16 @@ equation
       points={{28,-58},{36,-58},{36,-8},{44,-8}},
       color={95,95,95},
       thickness=0.5));
-  connect(gPS.y, controlModule.GPS) annotation (Line(points={{7,-58},{-26.6667,
-          -58},{-26.6667,-12}},
+  connect(gPS.y, controlModule.GPS) annotation (Line(points={{7,-58},{-26.6667,-58},{-26.6667,-12}},
                           color={0,0,127}));
   connect(accelerometer.frame_a, droneChassis1.frame_a3) annotation (Line(
       points={{28,-84},{36,-84},{36,-8},{44,-8}},
       color={95,95,95},
       thickness=0.5));
-  connect(accelerometer.y, controlModule.Gyero) annotation (Line(points={{7,-84},
-          {-21.6667,-84},{-21.6667,-12}},
+  connect(accelerometer.y, controlModule.Gyero) annotation (Line(points={{7,-84},{-21.6667,-84},{-21.6667,-12}},
                                     color={0,0,127}));
-  connect(controlModule.yaw, const.y) annotation (Line(points={{-31.6667,8},{
-          -36,8},{-36,15},{-36,15}},   color={0,0,127}));
+  connect(controlModule.yaw, const.y) annotation (Line(points={{-31.6667,8},{-36,8},{-36,15},{-36,15}},
+                                       color={0,0,127}));
   connect(xcoord, realExtendMultiple.u) annotation (Line(points={{-120,80},{-78,
           80},{-78,6},{-58,6}}, color={0,0,127}));
   connect(ycoord, realExtendMultiple.u1)

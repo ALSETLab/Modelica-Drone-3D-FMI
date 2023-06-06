@@ -1,5 +1,6 @@
 within DroneLibrary.Tests;
 model chassisTest
+  extends Modelica.Icons.Example;
   Mechanical.Propeller.Variants.Propeller propellerRev(PropellerGain=1) annotation (Placement(transformation(extent={{-20,40},{0,60}})));
   Mechanical.Chassis.Variants.droneChassis droneChassis1 annotation (Placement(transformation(extent={{30,-10},{80,10}})));
   Modelica.Blocks.Sources.Step step(startTime=0, height=1)
@@ -66,5 +67,5 @@ equation
        points={{34,-36},{18,-36},{18,-6},{30,-6}},
        color={95,95,95},
        thickness=0.5));
-
+  annotation (experiment(StopTime=15));
 end chassisTest;

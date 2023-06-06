@@ -1,5 +1,6 @@
 within DroneLibrary.Tests;
 model discreteControlTest
+  extends Modelica.Icons.Example;
   DroneLibrary.Mechanical.Chassis.Variants.droneChassis droneChassis1 annotation (Placement(transformation(extent={{30,10},{80,30}})));
   inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})
@@ -69,8 +70,4 @@ equation
          points={{-22.2,18},{-32,18},{-32,-32},{-22.2,-32}}, color={0,0,127}));
    connect(propellerRev3.position, propellerRev2.position) annotation (Line(
          points={{-22.2,-8},{-32,-8},{-32,-32},{-22.2,-32}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
-            -140,-100},{100,100}})), Diagram(
-        coordinateSystem(preserveAspectRatio=false, extent={{-140,-100},{
-            100,100}})));
 end discreteControlTest;

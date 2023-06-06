@@ -1,5 +1,6 @@
 within DroneLibrary.Tests;
 model propellerTest
+  extends Modelica.Icons.Example;
    Modelica.Mechanics.MultiBody.Forces.WorldForce force(color={244,0,4},
        resolveInFrame=Modelica.Mechanics.MultiBody.Types.ResolveInFrameB.frame_b)
      annotation (Placement(transformation(extent={{-44,46},{-24,66}})));
@@ -246,8 +247,6 @@ equation
           -72},{-112,-22},{-88,-22}}, color={0,0,127}));
   connect(realDer.u, feedback.y) annotation (Line(points={{-146,-40},{-156,
           -40},{-156,48},{-157,48}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
-            -220,-260},{280,120}})), Diagram(
-        coordinateSystem(preserveAspectRatio=false, extent={{-220,-260},{
-            280,120}})));
+  annotation (Diagram(coordinateSystem(extent={{-220,-260},{280,120}})),
+              experiment(StopTime=15));
 end propellerTest;

@@ -1,5 +1,6 @@
 within DroneLibrary.Examples.MavicAir;
 model controlModuleTest
+  extends Modelica.Icons.Example;
   Electrical.controlModule_Synchronous
                            controlModuleSpeed(maxTilt=0.15,
                                                        samplePeriod=0.01)

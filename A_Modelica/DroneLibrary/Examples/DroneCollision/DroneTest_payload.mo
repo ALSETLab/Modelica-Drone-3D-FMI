@@ -1,5 +1,6 @@
 within DroneLibrary.Examples.DroneCollision;
 model DroneTest_payload
+  extends Modelica.Icons.Example;
   Modelica.Blocks.Sources.Ramp ramp(duration=5, height=5)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         origin={-70,0})));
@@ -39,10 +40,7 @@ equation
       points={{38,-2},{38,21.8},{15,21.8}},
       color={95,95,95},
       thickness=0.5));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-80,
-            -40},{40,60}})), Diagram(coordinateSystem(preserveAspectRatio=
-            false, extent={{-80,-40},{40,60}})),
-    experiment(StopTime=10, __Dymola_Algorithm="Dassl"),
+  annotation (experiment(StopTime=10),
     __Dymola_Commands(executeCall(ensureSimulated=true) = {createPlot(
         id=1,
         position={15,10,584,420},

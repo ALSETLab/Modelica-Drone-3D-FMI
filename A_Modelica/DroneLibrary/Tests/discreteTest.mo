@@ -1,5 +1,6 @@
 within DroneLibrary.Tests;
 model discreteTest
+  extends Modelica.Icons.Example;
   Modelica.Blocks.Sources.Ramp ramp(duration=0.013)
     annotation (Placement(transformation(extent={{-62,-10},{-42,10}})));
   Modelica.Blocks.Discrete.Sampler sampler(samplePeriod=0.01)

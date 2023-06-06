@@ -1,5 +1,6 @@
 within DroneLibrary.Tests;
 model discretePIDTest
+  extends Modelica.Icons.Example;
   DroneLibrary.Blocks.Control.discretePID discretePID(
     kd=0,
     ki=0,

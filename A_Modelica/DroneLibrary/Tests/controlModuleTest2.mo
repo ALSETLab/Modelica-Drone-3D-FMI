@@ -1,5 +1,6 @@
 within DroneLibrary.Tests;
 model controlModuleTest2
+  extends Modelica.Icons.Example;
   Electrical.controlModule controlModule(maxTilt=0.05, samplePeriod=0.01)
     annotation (Placement(transformation(extent={{-30,8},{-10,28}})));
   Mechanical.Chassis.Variants.droneChassis droneChassis1(length=0.25, m=0.5) annotation (Placement(transformation(extent={{44,6},{94,26}})));
@@ -44,20 +45,17 @@ equation
       points={{28,-40},{36,-40},{36,10},{44,10}},
       color={95,95,95},
       thickness=0.5));
-  connect(gPS.y, controlModule.GPS) annotation (Line(points={{7,-40},{-26.6667,
-          -40},{-26.6667,6}},
+  connect(gPS.y, controlModule.GPS) annotation (Line(points={{7,-40},{-26.6667,-40},{-26.6667,6}},
                     color={0,0,127}));
   connect(accelerometer.frame_a, droneChassis1.frame_a3) annotation (Line(
       points={{28,-66},{36,-66},{36,10},{44,10}},
       color={95,95,95},
       thickness=0.5));
-  connect(accelerometer.y, controlModule.Gyero) annotation (Line(points={{7,-66},
-          {-21.6667,-66},{-21.6667,6}},
+  connect(accelerometer.y, controlModule.Gyero) annotation (Line(points={{7,-66},{-21.6667,-66},{-21.6667,6}},
                               color={0,0,127}));
   connect(ramp.y, firstOrder1.u)
     annotation (Line(points={{-80,-39},{-80,-32}}, color={0,0,127}));
-  connect(controlModule.yaw, const.y) annotation (Line(points={{-31.6667,26},{
-          -36,26},{-36,46},{-71,46}},
+  connect(controlModule.yaw, const.y) annotation (Line(points={{-31.6667,26},{-36,26},{-36,46},{-71,46}},
                                   color={0,0,127}));
   connect(firstOrder1.y, realExtendMultiple.u2) annotation (Line(points={{
           -80,-9},{-80,2},{-64,2},{-64,12},{-58,12}}, color={0,0,127}));

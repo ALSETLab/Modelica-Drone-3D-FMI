@@ -1,5 +1,6 @@
 within DroneLibrary.Tests;
 model simpleHoverTest
+  extends Modelica.Icons.Example;
   DroneLibrary.Mechanical.Chassis.Variants.droneChassis droneChassis1(m=10) annotation (Placement(transformation(extent={{30,-10},{80,10}})));
   inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})
@@ -74,8 +75,5 @@ equation
          points={{-22.2,-32},{-30,-32},{-30,-8},{-22.2,-8}}, color={0,0,127}));
    connect(propellerRev1.position, propellerRev3.position) annotation (Line(
          points={{-22.2,18},{-30,18},{-30,-8},{-22.2,-8}}, color={0,0,127}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{
-            -120,-100},{100,100}})), Diagram(
-        coordinateSystem(preserveAspectRatio=false, extent={{-120,-100},{
-            100,100}})));
+   annotation (experiment(StopTime=15));
 end simpleHoverTest;
