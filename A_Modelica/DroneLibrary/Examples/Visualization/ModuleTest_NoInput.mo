@@ -1,5 +1,6 @@
 within DroneLibrary.Examples.Visualization;
 model ModuleTest_NoInput
+  extends Modelica.Icons.Example;
   Modelica.Blocks.Sources.Ramp ramp(
     height=2,
     duration=4,
@@ -18,8 +19,7 @@ equation
           127}));
   connect(ramp.y, controlModuleTest_fmu_inputs1.ycoord) annotation (
       Line(points={{-45,28},{-36,28},{-36,9},{-23,9}}, color={0,0,127}));
-  annotation (Icon(graphics={
-                            Bitmap(extent={{-98,-98},{98,98}}, fileName="modelica://DroneLibrary/Resources/Images/dronepic.jpg")}),
+  annotation (
     experiment(
       StopTime=10,
       __Dymola_fixedstepsize=0.01,
