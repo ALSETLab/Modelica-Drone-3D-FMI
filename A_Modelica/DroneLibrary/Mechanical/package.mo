@@ -42,11 +42,11 @@ package Mechanical
     Documentation(info="<html>
 <p>The models for the drone&apos;s motors and power sources are located in the <b>Mechanical</b> package. This package contains models for the following:</p>
 <ul>
-<li><a href=\"modelica://DroneLibrary.Mechanical.Blades\">Blades</a></li>
-<li><a href=\"modelica://DroneLibrary.Mechanical.Propeller\">Propeller</a></li>
-<li><a href=\"modelica://DroneLibrary.Mechanical.Chassis\">Chassis</a></li>
-<li><a href=\"modelica://DroneLibrary.Mechanical.Rotor\">Rotor</a></li>
-<li><a href=\"modelica://DroneLibrary.Mechanical.Motor\">Motor</a></li>
+<li><a href=\"modelica://DroneLibrary.Mechanical.Blades\">Blades:</a> the mechanical models for the quadcopter&apos;s blades.</li>
+<li><a href=\"modelica://DroneLibrary.Mechanical.Propeller\">Propeller:</a> the top-level package of the propeller containing the models for the motor, rotor, and blades connected in different variations.</li>
+<li><a href=\"modelica://DroneLibrary.Mechanical.Chassis\">Chassis: </a>models of the quadcopter body.</li>
+<li><a href=\"modelica://DroneLibrary.Mechanical.Rotor\">Rotor:</a> the models of the rotor connecting the motor to the blades.</li>
+<li><a href=\"modelica://DroneLibrary.Mechanical.Motor\">Motor</a>: motor models to drive the blades to provied lift to the aircraft.</li>
 </ul>
 </html>"));
 end Mechanical;
