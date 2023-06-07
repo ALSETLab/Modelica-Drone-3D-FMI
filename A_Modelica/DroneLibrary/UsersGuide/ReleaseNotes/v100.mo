@@ -3,7 +3,7 @@ class v100 "Version 1.0.0 (2023-06-09)"
    extends Modelica.Icons.ReleaseNotes;
   annotation (Documentation(info="<html>
 <h4>What&apos;s Changed</h4>
-<p>This version of <b><span style=\"font-family: Courier New;\">DroneLibrary</span></b> is the intial release.  </p>
+<p>This version of <code>DroneLibrary</code> is the intial release.  </p>
 <h5>Highlights</h5>
 <ul>
 <li>Multi-domain library with components to construct a quadcopter model.</li>
@@ -11,7 +11,6 @@ class v100 "Version 1.0.0 (2023-06-09)"
 <li>Example cases to simulate the model using visualization and virtual reality tools.</li>
 </ul>
 <h5>Full Changelog</h5>
-<p>(Dietmar adds link here:) </p>
-<p><span style=\"font-family: Courier New;\"><a href=\"https://github.com/xxxx/compare/v2.0.0...v2.0.1\">v2.0.0...v2.0.1</a></span></p>
+<p><code><a href=\"https://github.com/ALSETLab/Modelica-Drone-3D-FMI/compare/start...v1.0.0\">...v1.0.0</a></code></p>
 </html>"));
 end v100;
