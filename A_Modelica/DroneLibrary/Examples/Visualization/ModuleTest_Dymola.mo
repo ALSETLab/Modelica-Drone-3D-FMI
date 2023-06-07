@@ -1,7 +1,8 @@
 within DroneLibrary.Examples.Visualization;
 model ModuleTest_Dymola
   extends Modelica.Icons.Example;
- replaceable DroneLibrary.Visualization.Inputs.Keyboard.KeyboardInputs_SimVis inputDevice constrainedby Interfaces.InputDevice_Dymola annotation (Placement(transformation(extent={{-28,-10},{-8,10}})));
+ replaceable DroneLibrary.Visualization.Inputs.Keyboard.KeyboardInputs_SimVis inputDevice constrainedby
+    Interfaces.InputDevice_Dymola                                                                                                     annotation (Placement(transformation(extent={{-28,-10},{-8,10}})));
   DroneWithIdealPower.Drone_IdealMachine_SynchronousPID
     controlModuleTest_fmu_inputs1
     annotation (Placement(transformation(extent={{12,-10},{32,10}})));

@@ -38,5 +38,15 @@ package Mechanical
         extent={{4.0,-60.0},{14.0,-50.0}}),
       Line(
         origin={9.0,46.0},
-        points={{-10.0,-26.0},{72.0,-26.0},{72.0,-86.0},{-10.0,-86.0}})}));
+        points={{-10.0,-26.0},{72.0,-26.0},{72.0,-86.0},{-10.0,-86.0}})}),
+    Documentation(info="<html>
+<p>The models for the drone&apos;s motors and power sources are located in the <b>Mechanical</b> package. This package contains models for the following:</p>
+<ul>
+<li><a href=\"modelica://DroneLibrary.Mechanical.Blades\">Blades</a></li>
+<li><a href=\"modelica://DroneLibrary.Mechanical.Propeller\">Propeller</a></li>
+<li><a href=\"modelica://DroneLibrary.Mechanical.Chassis\">Chassis</a></li>
+<li><a href=\"modelica://DroneLibrary.Mechanical.Rotor\">Rotor</a></li>
+<li><a href=\"modelica://DroneLibrary.Mechanical.Motor\">Motor</a></li>
+</ul>
+</html>"));
 end Mechanical;

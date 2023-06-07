@@ -46,7 +46,8 @@ model ModuleTest_SimVis
   Visualization.Cameras.FreeCamera camera1(windowMode=Visualization.Cameras.Internal.Types.WindowMode.Window,
       startDistanceToCenter={0,-3,0})
     annotation (Placement(transformation(extent={{-2,-36},{18,-16}})));
-  replaceable DroneLibrary.Visualization.Inputs.Keyboard.KeyboardInputs_SimVis inputDevice_SimVis constrainedby Interfaces.InputDevice_SimVis annotation (Placement(transformation(extent={{-32,-10},{-12,10}})));
+  replaceable DroneLibrary.Visualization.Inputs.Keyboard.KeyboardInputs_SimVis inputDevice_SimVis constrainedby
+    Interfaces.InputDevice_SimVis                                                                                                             annotation (Placement(transformation(extent={{-32,-10},{-12,10}})));
   Visualization.Cameras.FreeCamera camera2(windowMode=Visualization.Cameras.Internal.Types.WindowMode.OpenVR_seated,
       startDistanceToCenter={0,-3,0})
     annotation (Placement(transformation(extent={{-2,-54},{18,-34}})));
