@@ -49,13 +49,14 @@ How to simulate it?
 	- Tests
 3. Under the Examples/DroneWithIdealPowerSystem package, open the model `TestSystem.mo` and select it as `Simulation model`. This has inputs that act as change in x, y, z coordinates of the drone and outputs x, y, z from the pseudo-GPS modeled within.
 4. Go to simulation tab of your tool and change the simulation time to 10s then click simulate button.
-5. This simulation should result with the z-coordinate approaching 5 meters, and the other coordinates (x,y) should be around zero. To verify, plot the variables `.xgps`, `.ygps` and `.zgps` of the model by running the Modelica script `drone_simulation_setup.mos`. You should obtain the result below.
+5. This simulation should result with the z-coordinate approaching 5 meters, and the other coordinates (x,y) should be around zero. To verify, plot the variables `.xgps`, `.ygps` and `.zgps` of the model by running the Modelica script `drone_simulation_setup.mos`. You should obtain the result below.<br>
 ![Simulation Results image](/A_Modelica/DroneLibrary/Resources/Images/UserGuide/AnimationPlot_Dashed.png "Simulation Results")
 
-6. Within Dymola, run the script `drone_animation_setup.mos`, and then click on the `Play` button to see the animation. The red arrows indicate the force of the propellers.
+6. Within Dymola, run the script `drone_animation_setup.mos`, and then click on the `Play` button to see the animation. The red arrows indicate the force of the propellers.<br>
 ![Animation image](/D_Pics/anim.gif "Animation")
 
 To switch between different model variants, they can be changed by using the 'change class' method by following the steps in the figure below:
+
 ![Modelvariants](/A_Modelica/DroneLibrary/Resources/Images/UserGuide/droneLib_Example1.png "Change model variants")
 ## B. FMU
 ### Using the distributed FMU
@@ -77,17 +78,12 @@ Under the 'Test' sub-package, the `controlModuleTest_fmu_inputs` model can be us
 
 	![Compiler settings](/D_Pics/fmiexport/03_compiler.png "Compiler Settings")
 
-4. Under the `Simulation` mode, go to the menu `Simulation>Translate>FMU`, and provide the following settings on the `Export FMU` window:
-
-  ![Alt text](/D_Pics/fmiexport/04_fmuconfig.png "Export FMU Settings")
-
-
-Alternatively, issue the following command under the `Commands` window of Dymola:
-
-``
+4. Under the `Simulation` mode, go to the menu `Simulation>Translate>FMU`, and provide the following settings on the `Export FMU` window:<br>
+  ![Alt text](/D_Pics/fmiexport/04_fmuconfig.png "Export FMU Settings")<br>
+  Alternatively, issue the following command under the `Commands` window of Dymola:
+```
 translateModelFMU("DroneLibrary.Tests.controlModuleTest_fmu_inputs", false, "", "2", "all", false, 1);
- = "DroneLibrary_Tests_controlModuleTest_0fmu_0inputs"
-``
+```
 
 ## D. Model Visualization and VR
 To take advantage of this feature you need the [DLR Visualization](https://visualization.ltx.de/)
