@@ -68,7 +68,7 @@ extends DroneLibrary.Mechanical.Motor.Templates.DCMotor_Power;
   Modelica.Blocks.Sources.RealExpression thrust(y=0.0015*omega.y^2)
     annotation (Placement(transformation(extent={{-32,-10},{-12,10}})));
   Modelica.Blocks.Sources.RealExpression omega(y=
-        DymolaModels.Functions.Math.divNoZero(powerControl.power, multiSensor.tau))
+        DroneLibrary.Blocks.divNoZero(powerControl.power, multiSensor.tau))
     annotation (Placement(transformation(extent={{-32,14},{-12,34}})));
 equation
 

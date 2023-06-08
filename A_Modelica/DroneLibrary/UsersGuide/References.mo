@@ -6,39 +6,39 @@ model References "References"
 
 <tr>
 <td>[Borer20xx]</td>
-<td>	Borer, Nicholas K. et al. (n.d.). &ldquo;
-	Design and Performance of the NASA SCEPTOR Distributed Electric Propulsion Flight Demonstrator&rdquo;. In: 16th AIAA Aviation Technology, Integration, and Operations Conference. DOI: 10.2514/6.2016-3920.
+<td>        Borer, Nicholas K. et al. (n.d.). &ldquo;
+        Design and Performance of the NASA SCEPTOR Distributed Electric Propulsion Flight Demonstrator&rdquo;. In: 16th AIAA Aviation Technology, Integration, and Operations Conference. DOI: 10.2514/6.2016-3920.
 </td>
 </tr>
 <tr>
 <td>[Bresciani2008]</td>
-<td>	Bresciani, Tommaso (2008-10). 
-	&ldquo;Modelling, Identification and Control of a Quadrotor Helicopter&rdquo;. MSc Thesis. Lund, Sweden: Department of Automatic Control, Lund University.
+<td>        Bresciani, Tommaso (2008-10). 
+        &ldquo;Modelling, Identification and Control of a Quadrotor Helicopter&rdquo;. MSc Thesis. Lund, Sweden: Department of Automatic Control, Lund University.
 </td>
 </tr>
 <tr>
 <td>[Co&iuml;c2022]</td>
 <td> Co&iuml;c, Cl&eacute;ment, Marc Budinger, and Scott Delbecq (2022). 
-	ldquo;Multirotor drone sizing and trajectory optimization within Modelon Impact&rdquo;. In: Proc. American Modelica Conference 2022. doi: 10.3384/ECP2118656, pp. 56&ndash;63.
+        ldquo;Multirotor drone sizing and trajectory optimization within Modelon Impact&rdquo;. In: Proc. American Modelica Conference 2022. doi: 10.3384/ECP2118656, pp. 56&ndash;63.
 </td>
 </tr>
 <tr>
 <td>[Doo2021]</td>
-<td>	Doo, Johnny T. et al. (2021). 
-	NASA Electrical Vertical Takeoff and Landing (eVTOL) Aircraft Technology for Public Services - A white Paper. 
-	NASA Transformative Vertical FlightWork ing Group 4 (TVF4). White Paper NASA Document Number 20205000636. NASA. URL: https://www.sti.nasa.gov/.
+<td>        Doo, Johnny T. et al. (2021). 
+        NASA Electrical Vertical Takeoff and Landing (eVTOL) Aircraft Technology for Public Services - A white Paper. 
+        NASA Transformative Vertical FlightWork ing Group 4 (TVF4). White Paper NASA Document Number 20205000636. NASA. URL: https://www.sti.nasa.gov/.
 </td>
 </tr>
 <tr>
 <td>[Hellerer2014]</td>
 <td> Hellerer, Matthias, Tobias Bellmann, and Florian Schlegel (2014-03). 
-	&ldquo;The DLR Visualization Library - Recent development and applications&rdquo;. In: Proc. 10th Int. Modelica Conf. doi: 10.3384/ecp14096899, pp. 899&ndash;911.
+        &ldquo;The DLR Visualization Library - Recent development and applications&rdquo;. In: Proc. 10th Int. Modelica Conf. doi: 10.3384/ecp14096899, pp. 899&ndash;911.
 </td>
 </tr>
 <tr>
 <td>[Kuric2017]</td>
 <td>Kuric, Muhamed, Nedim Osmic, and Adnan Tahirovic (2017-07). 
-	&ldquo;Multirotor Aerial Vehicle modeling in Modelica&rdquo;. In:Proc. 12th Int. Modelica Conf. doi: 10.3384/ecp17132373, pp. 373&ndash;380.
+        &ldquo;Multirotor Aerial Vehicle modeling in Modelica&rdquo;. In:Proc. 12th Int. Modelica Conf. doi: 10.3384/ecp17132373, pp. 373&ndash;380.
 </td>
 </tr>
 <tr>
@@ -50,7 +50,7 @@ model References "References"
 <tr>
 <td>[Ma2016]</td>
 <td>Ma, X., Z. Li, and C. Nae (2016). 
-	&ldquo;Multi-domain modeling and Simulation of a Quad-rotor aircraft based on Modelica&rdquo;. In: Proc. Intl. Conf. Modeling, Simulation and Visualization Methods (MSV), pp. 120&ndash;124.
+        &ldquo;Multi-domain modeling and Simulation of a Quad-rotor aircraft based on Modelica&rdquo;. In: Proc. Intl. Conf. Modeling, Simulation and Visualization Methods (MSV), pp. 120&ndash;124.
 </td>
 </tr>
 <tr>
@@ -61,7 +61,7 @@ model References "References"
 <tr>
 <td>[Otter2003]</td>
 <td> Otter, Martin, Hilding Elmqvist, and Sven Erik Mattsson (2003-11). 
-	&ldquo;The New Modelica MultiBody Library&rdquo;. In: Proc. 3rd Int. Modelica Conf. Pp. 311&ndash;330.
+        &ldquo;The New Modelica MultiBody Library&rdquo;. In: Proc. 3rd Int. Modelica Conf. Pp. 311&ndash;330.
 </td>
 </tr>
 
