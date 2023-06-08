@@ -19,8 +19,6 @@ model Drone_Visualize "Model to use for animation and visualization."
         origin={20,-50})));
   Sensors.Accelerometer accelerometer
     annotation (Placement(transformation(extent={{10,-80},{30,-60}})));
-  Modelica.Blocks.Sources.Constant const1(k=0)
-    annotation (Placement(transformation(extent={{2,-42},{-10,-30}})));
   Mechanical.Propeller.Variants.DCMachine_Visualize propeller_DCMachine_Visualization2 annotation (Placement(transformation(extent={{10,2},{30,10}})));
   Mechanical.Propeller.Variants.DCMachine_Visualize propeller_DCMachine_Visualization3(PropellerGain=1) annotation (Placement(transformation(extent={{10,-8},{30,0}})));
   Mechanical.Propeller.Variants.DCMachine_Visualize propeller_DCMachine_Visualization1 annotation (Placement(transformation(extent={{10,-18},{30,-10}})));
@@ -54,8 +52,6 @@ equation
       thickness=0.5));
   connect(accelerometer.y, controlModule_Synchronous.Gyero) annotation (Line(
         points={{9,-70},{-20.9091,-70},{-20.9091,-12}}, color={0,0,127}));
-  connect(controlModule_Synchronous.Height, const1.y) annotation (Line(points={{-14,-12},
-          {-14,-36},{-10.6,-36}}, color={0,0,127}));
   connect(propeller_DCMachine_Visualization2.position,
     controlModule_Synchronous.y) annotation (Line(points={{8,5.2},{-0.1,5.2},{-0.1,
           2},{-9.09091,2}}, color={0,0,127}));
