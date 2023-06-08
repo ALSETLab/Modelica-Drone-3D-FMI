@@ -67,9 +67,7 @@ extends DroneLibrary.Mechanical.Motor.Templates.DCMotor_Power;
     annotation (Placement(transformation(extent={{-48,-90},{-28,-70}})));
   Modelica.Blocks.Sources.RealExpression thrust(y=0.0015*omega.y^2)
     annotation (Placement(transformation(extent={{-32,-10},{-12,10}})));
-  Modelica.Blocks.Sources.RealExpression omega(y=
-        DroneLibrary.Blocks.divNoZero(powerControl.power, multiSensor.tau))
-    annotation (Placement(transformation(extent={{-32,14},{-12,34}})));
+  Modelica.Blocks.Sources.RealExpression omega(y=DroneLibrary.Blocks.div0protect(powerControl.power, multiSensor.tau)) annotation (Placement(transformation(extent={{-32,14},{-12,34}})));
 equation
 
   connect(ground.p, dcpm.pin_an)
