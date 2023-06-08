@@ -149,8 +149,6 @@ model controlModule_Synchronous
     annotation (Placement(transformation(extent={{60,-56},{80,-46}})));
   Modelica.Blocks.Sources.RealExpression realExpression11(y=discreteTF5.y)
     annotation (Placement(transformation(extent={{60,-76},{80,-62}})));
-  Modelica.Blocks.Sources.RealExpression realExpression12(y=Gyero[3])
-    annotation (Placement(transformation(extent={{-56,44},{-36,54}})));
   Modelica.Blocks.Sources.RealExpression realExpression13(y=realExtract6.y)
     annotation (Placement(transformation(extent={{-62,10},{-42,20}})));
   Modelica.Blocks.Sources.RealExpression realExpression14(y=realExtract4.y)
@@ -231,8 +229,6 @@ equation
           {88,-55.2},{88,-51},{81,-51}}, color={0,0,127}));
   connect(add3_4.u3, realExpression11.y) annotation (Line(points={{94.8,-64.8},
           {88,-64.8},{88,-69},{81,-69}}, color={0,0,127}));
-  connect(realExtract8.u[3], realExpression12.y) annotation (Line(points={{
-          -26.5333,56},{-26,56},{-26,49},{-35,49}}, color={0,0,127}));
   connect(add3_4.y, y3)
     annotation (Line(points={{108.6,-60},{130,-60}}, color={0,0,127}));
   connect(add3_1.y, y1)
@@ -247,6 +243,7 @@ equation
     annotation (Line(points={{108.6,20},{130,20}}, color={0,0,127}));
   connect(add3_3.y, y2)
     annotation (Line(points={{108.6,-20},{130,-20}}, color={0,0,127}));
+  connect(realExtract8.u, Gyero) annotation (Line(points={{-26,56},{-26,48},{-12,48},{-12,-72},{0,-72},{0,-100}}, color={0,0,127}));
   annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-100,
             -100},{120,100}}), graphics={Text(
           extent={{-54,30},{76,-32}},
