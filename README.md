@@ -33,12 +33,13 @@ This work was funded in whole or part by by the National Aeronautics and Space A
 
 ## A. Modelica Model
 
-All sub-systems and simulation cases are contained within the `./A_Modelica/DroneLibrary` package. Each model is saved individually as its own file. The full version of the [DLR Visualization](https://visualization.ltx.de/) library is required to run any of the models using VR in the `DroneLibrary.Visualization` package. The library 
+All sub-systems and simulation cases are contained within the `./A_Modelica/DroneLibrary` package. Each model is saved individually as its own file. The full version of the [DLR Visualization](https://visualization.ltx.de/) library is required to run any of the models using VR in the `DroneLibrary.Visualization` package.
 
 How to simulate it?
 
 1. Open `./A_Modelica/DroneLibrary/package.mo`
 2. The package structure is set up with the following sub-packages:
+    - User's Guide
 	- Examples
 	- Blocks
 	- Electrical
@@ -51,8 +52,7 @@ How to simulate it?
 5. This simulation should result with the z-coordinate approaching 5 meters, and the other coordinates (x,y) should be around zero. To verify, plot the variables `.xgps`, `.ygps` and `.zgps` of the model by running the Modelica script `drone_simulation_setup.mos`. You should obtain the result below.
 ![Simulation Results image](/A_Modelica/DroneLibrary/Resources/Images/UserGuide/AnimationPlot_Dashed.png "Simulation Results")
 
-1. Within Dymola, run the script `drone_animation_setup.mos`, and then click on the `Play` button to see the animation. The red arrows indicate the force of the propellers.
-
+6. Within Dymola, run the script `drone_animation_setup.mos`, and then click on the `Play` button to see the animation. The red arrows indicate the force of the propellers.
 ![Animation image](/D_Pics/anim.gif "Animation")
 
 To switch between different model variants, they can be changed by using the 'change class' method by following the steps in the figure below:
@@ -79,7 +79,7 @@ Under the 'Test' sub-package, the `controlModuleTest_fmu_inputs` model can be us
 
 4. Under the `Simulation` mode, go to the menu `Simulation>Translate>FMU`, and provide the following settings on the `Export FMU` window:
 
-![Alt text](/D_Pics/fmiexport/04_fmuconfig.png "Export FMU Settings")
+  ![Alt text](/D_Pics/fmiexport/04_fmuconfig.png "Export FMU Settings")
 
 
 Alternatively, issue the following command under the `Commands` window of Dymola:
@@ -99,6 +99,6 @@ To take advantage of this feature you need the [DLR Visualization](https://visua
 - Via pull requests.
 
 ## Copyright
-(c) Meaghan Podlaski, Hao Chang and Luigi Vanfretti, Rensselaer Polytechnic Institute, Troy, NY. Dietmar Winkler, University of South-Eastern Norway, Porsgrunn, Norway.
+&copy; Meaghan Podlaski, Hao Chang and Luigi Vanfretti, Rensselaer Polytechnic Institute, Troy, NY. Dietmar Winkler, University of South-Eastern Norway, Porsgrunn, Norway.
 
 Licensed under the BSD 3-Clause License.
