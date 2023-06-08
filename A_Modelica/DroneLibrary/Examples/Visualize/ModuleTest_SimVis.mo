@@ -1,7 +1,7 @@
 within DroneLibrary.Examples.Visualize;
 model ModuleTest_SimVis "Requires DLR's Visualization Library."
   extends Modelica.Icons.Example;
-  DroneWithIdealPower.Drone_DCPM_Chassis controlModuleTest_fmu_inputs1 annotation (Placement(transformation(extent={{14,-10},{34,10}})));
+  DroneWithIdealPower.Drone_Visualize    controlModuleTest_fmu_inputs1 annotation (Placement(transformation(extent={{14,-10},{34,10}})));
 
   inner Modelica.Mechanics.MultiBody.World world(n = {0,-1,0})
     annotation (Placement(transformation(extent={{-72,-60},{-52,-40}})));
@@ -75,13 +75,7 @@ equation
   connect(keyboardInputs_SimVis.Z, controlModuleTest_fmu_inputs1.zcoord) annotation (Line(points={{-3,-5},{4,-5},{4,-8},{12,-8}}, color={0,0,127}));
   annotation (
     experiment(
-      StopTime=50,
-      __Dymola_fixedstepsize=0.01,
-      __Dymola_Algorithm="Euler"),
-    __Dymola_experimentFlags(Advanced(
-        InlineMethod=1,
-        InlineOrder=2,
-        InlineFixedStep=0.01)),
+      StopTime=50),
     Documentation(info="<html>
 <p>
 This example requires a Professional Edition license for DLR's Visualization Library.
