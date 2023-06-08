@@ -1,4 +1,4 @@
-within DroneLibrary.Examples.DroneCollision;
+within DroneLibrary.Examples.DronePayload;
 model DroneTest_payload
   extends Modelica.Icons.Example;
   Modelica.Blocks.Sources.Ramp ramp(duration=5, height=5)
@@ -54,5 +54,5 @@ equation
         bottomTitle="Time (s)",
         colors={{28,108,200},{238,46,47},{0,140,72}},
         patterns={LinePattern.Solid,LinePattern.Dash,LinePattern.Dot},
-        thicknesses={1.0,1.0,1.0})}));
+        thicknesses={1.0,1.0,1.0})} "PlotXYZpostion"));
 end DroneTest_payload;

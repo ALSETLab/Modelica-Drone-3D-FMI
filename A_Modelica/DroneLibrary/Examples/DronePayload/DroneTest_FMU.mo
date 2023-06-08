@@ -1,4 +1,4 @@
-within DroneLibrary.Examples.DroneCollision;
+within DroneLibrary.Examples.DronePayload;
 model DroneTest_FMU
   inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})
