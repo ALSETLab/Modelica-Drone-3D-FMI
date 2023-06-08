@@ -1,6 +1,7 @@
 within DroneLibrary.Blocks;
 function divNoZero
   "Division avoiding 0 by replacing b with eps if requried"
+  extends Modelica.Icons.Function;
 
   // Public variables
   input Real a "Dividend";
@@ -28,7 +29,7 @@ algorithm
         with <code>a</code>/<code>eps</code> or <code>a</code>/<code>-eps</code> if <code>-eps</code> &LT; <code>b</code>
         &LT; <code>eps</code>.
       </p>
-      <p>The block <a href=\"modelica://DymolaModels.Blocks.Math.DivNoZero\">DivNoZero</a> offers similar functionality for graphical
-          modelling.</p>
+      <p>The block <a href=\"modelica://DymolaModels.Blocks.Math.DivNoZero\">DivNoZero</a> from the <code>DymolaModels</code>
+      library offers similar functionality for graphical modelling.</p>
       </html>"));
 end divNoZero;
