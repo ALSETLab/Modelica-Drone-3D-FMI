@@ -46,10 +46,10 @@ model ModuleTest_SimVis
   Visualization.Cameras.FreeCamera camera1(windowMode=Visualization.Cameras.Internal.Types.WindowMode.Window,
       startDistanceToCenter={0,-3,0})
     annotation (Placement(transformation(extent={{-2,-36},{18,-16}})));
-  replaceable DroneLibrary.Visualization.Inputs.Keyboard.KeyboardInputs_SimVis inputDevice_SimVis constrainedby Interfaces.InputDevice_SimVis annotation (Placement(transformation(extent={{-32,-10},{-12,10}})));
   Visualization.Cameras.FreeCamera camera2(windowMode=Visualization.Cameras.Internal.Types.WindowMode.OpenVR_seated,
       startDistanceToCenter={0,-3,0})
     annotation (Placement(transformation(extent={{-2,-54},{18,-34}})));
+  DroneLibrary.Visualization.Inputs.Keyboard.KeyboardInputs_SimVis keyboardInputs_SimVis annotation (Placement(transformation(extent={{-24,-10},{-4,10}})));
 equation
   connect(world.frame_b, shape1.frame_a) annotation (Line(
       points={{-52,-50},{-42,-50}},
@@ -64,14 +64,6 @@ equation
       points={{38,-26},{18,-26}},
       color={95,95,95},
       thickness=0.5));
-  connect(inputDevice_SimVis.X, controlModuleTest_fmu_inputs1.xcoord)
-    annotation (Line(points={{-11,5},{-0.16665,5},{-0.16665,8},{12,8}},
-                   color={0,0,127}));
-  connect(inputDevice_SimVis.Y, controlModuleTest_fmu_inputs1.ycoord)
-    annotation (Line(points={{-11,0},{12,0}}, color={0,0,127}));
-  connect(inputDevice_SimVis.Z, controlModuleTest_fmu_inputs1.zcoord)
-    annotation (Line(points={{-11,-5},{-0.16665,-5},{-0.16665,-8},{12,
-          -8}}, color={0,0,127}));
  connect(controlModuleTest_fmu_inputs1.frame_a1, camera1.frame_b) annotation (
      Line(
      points={{31,-10.2},{31,-26},{18,-26}},
@@ -81,6 +73,9 @@ equation
      points={{18,-44},{30,-44},{30,-26},{18,-26}},
      color={95,95,95},
      thickness=0.5));
+  connect(keyboardInputs_SimVis.X, controlModuleTest_fmu_inputs1.xcoord) annotation (Line(points={{-3,5},{-2,8},{12,8}}, color={0,0,127}));
+  connect(keyboardInputs_SimVis.Y, controlModuleTest_fmu_inputs1.ycoord) annotation (Line(points={{-3,0},{12,0}}, color={0,0,127}));
+  connect(keyboardInputs_SimVis.Z, controlModuleTest_fmu_inputs1.zcoord) annotation (Line(points={{-3,-5},{4,-5},{4,-8},{12,-8}}, color={0,0,127}));
   annotation (
     experiment(
       StopTime=50,

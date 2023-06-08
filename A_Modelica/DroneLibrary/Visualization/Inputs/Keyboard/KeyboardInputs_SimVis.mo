@@ -1,8 +1,8 @@
 within DroneLibrary.Visualization.Inputs.Keyboard;
 model KeyboardInputs_SimVis
   extends DroneLibrary.Visualization.Interfaces.InputDevice_SimVis;
-  Modelica_DeviceDrivers.Blocks.OperatingSystem.SynchronizeRealtime
-                                      synchronizeRealtime
+  Modelica_DeviceDrivers.Blocks.OperatingSystem.RealtimeSynchronize
+                                      realtimeSynchronize
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
  DroneLibrary.Visualization.Inputs.Keyboard.Keyboard_Conversion
    y(InputGain=3)
