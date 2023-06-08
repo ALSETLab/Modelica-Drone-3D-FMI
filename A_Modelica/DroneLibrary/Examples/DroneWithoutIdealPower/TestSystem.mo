@@ -42,8 +42,7 @@ equation
       StopTime=30,
       Interval=0.006,
       Tolerance=0.001),
-      __Dymola_Commands(executeCall(
-          ensureSimulated=true) = {createPlot(
+      __Dymola_Commands(executeCall(ensureSimulated=true) = {createPlot(
         id=1,
         position={15,10,584,420},
         y={"drone.xgps","drone.ygps","drone.zgps"},
@@ -56,7 +55,5 @@ equation
         bottomTitle="Time (s)",
         colors={{28,108,200},{238,46,47},{0,140,72}},
         patterns={LinePattern.Solid,LinePattern.Dash,LinePattern.Dot},
-        thicknesses={1.0,1.0,1.0})},
-      file="PlotThrust.mos" "PlotThrust",
-      file="PlotPowerConsumption.mos" "PlotPowerConsumption"));
+        thicknesses={1.0,1.0,1.0})} "PlotXYZposition"));
 end TestSystem;
