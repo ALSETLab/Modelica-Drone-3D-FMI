@@ -1,14 +1,12 @@
 within DroneLibrary.Examples.Visualize;
-model ModuleTest_NoInput
+model ModuleTest_NoInput "Reference model to understand how keyboard input is configured."
   extends Modelica.Icons.Example;
   Modelica.Blocks.Sources.Ramp ramp(
     height=2,
     duration=4,
     startTime=0)
     annotation (Placement(transformation(extent={{-66,18},{-46,38}})));
-  DroneWithIdealPower.Drone_IdealMachine_SynchronousPID
-    controlModuleTest_fmu_inputs1
-    annotation (Placement(transformation(extent={{-18,-16},{32,34}})));
+  DroneForVR controlModuleTest_fmu_inputs1 annotation (Placement(transformation(extent={{-18,-16},{32,34}})));
   Modelica.Blocks.Sources.Constant const1(k=0)
     annotation (Placement(transformation(extent={{-68,-22},{-46,0}})));
 equation

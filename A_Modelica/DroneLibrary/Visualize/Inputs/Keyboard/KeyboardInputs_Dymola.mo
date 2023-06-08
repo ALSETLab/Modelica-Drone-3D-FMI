@@ -1,8 +1,8 @@
 within DroneLibrary.Visualize.Inputs.Keyboard;
 model KeyboardInputs_Dymola
   extends DroneLibrary.Visualize.Interfaces.InputDevice_Dymola;
-  Modelica_DeviceDrivers.Blocks.OperatingSystem.SynchronizeRealtime
-                                      synchronizeRealtime
+  Modelica_DeviceDrivers.Blocks.OperatingSystem.RealtimeSynchronize
+                                      realtimeSynchronize
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
  DroneLibrary.Visualize.Inputs.Keyboard.Keyboard_Conversion y(InputGain=3) annotation (Placement(transformation(extent={{12,20},{30,40}})));
  DroneLibrary.Visualize.Inputs.Keyboard.Keyboard_Conversion x(InputGain=3) annotation (Placement(transformation(extent={{12,-10},{30,10}})));

@@ -1,8 +1,8 @@
 within DroneLibrary.Visualize.Inputs.Joystick;
 model JoyStickInputs_SimVis
   extends DroneLibrary.Visualize.Interfaces.InputDevice_SimVis;
-  Modelica_DeviceDrivers.Blocks.OperatingSystem.SynchronizeRealtime
-                                      synchronizeRealtime
+  Modelica_DeviceDrivers.Blocks.OperatingSystem.RealtimeSynchronize
+                                      realtimeSynchronize
     annotation (Placement(transformation(extent={{-60,-10},{-40,10}})));
  Modelica.Blocks.Interfaces.RealOutput Y
    annotation (Placement(transformation(extent={{60,-10},{80,10}})));
@@ -23,13 +23,13 @@ equation
   connect(JoyStick_Z.Output, Z)
     annotation (Line(points={{32.5,-40},{70,-40}}, color={0,0,127}));
   connect(joystickInput.axes[1], JoyStick_X.JoyStickInput) annotation (Line(
-        points={{-9,5.16667},{0,5.16667},{0,40},{7.5,40}},
+        points={{-9,5.58333},{0,5.58333},{0,40},{7.5,40}},
                                                          color={0,0,127}));
   connect(joystickInput.axes[2], JoyStick_Y.JoyStickInput)
-    annotation (Line(points={{-9,5.5},{0,5.5},{0,0},{7.5,0}},
+    annotation (Line(points={{-9,5.75},{0,5.75},{0,0},{7.5,0}},
                                                             color={0,0,127}));
  connect(joystickInput.axes[3], JoyStick_Z.JoyStickInput)
-   annotation (Line(points={{-9,5.83333},{0,5.83333},{0,-40},{7.5,-40}},
+   annotation (Line(points={{-9,5.91667},{0,5.91667},{0,-40},{7.5,-40}},
        color={0,0,127}));
  annotation (Icon(coordinateSystem(preserveAspectRatio=false, extent={{-60,
            -60},{60,60}}), graphics={ Bitmap(extent={{-74,-58},{76,60}},
