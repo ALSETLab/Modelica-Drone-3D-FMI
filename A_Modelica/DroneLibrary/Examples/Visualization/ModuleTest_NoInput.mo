@@ -21,11 +21,5 @@ equation
       Line(points={{-45,28},{-36,28},{-36,9},{-23,9}}, color={0,0,127}));
   annotation (
     experiment(
-      StopTime=10,
-      __Dymola_fixedstepsize=0.01,
-      __Dymola_Algorithm="Euler"),
-    __Dymola_experimentFlags(Advanced(
-        InlineMethod=1,
-        InlineOrder=2,
-        InlineFixedStep=0.01)));
+      StopTime=10));
 end ModuleTest_NoInput;
