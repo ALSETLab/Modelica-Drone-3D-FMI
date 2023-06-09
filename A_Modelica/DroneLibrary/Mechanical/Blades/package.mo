@@ -1,4 +1,4 @@
 within DroneLibrary.Mechanical;
-package Blades
+package Blades "Mechanical models for the quadcopter's blades"
 
 end Blades;

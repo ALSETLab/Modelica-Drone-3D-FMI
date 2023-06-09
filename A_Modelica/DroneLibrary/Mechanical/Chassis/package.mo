@@ -1,4 +1,4 @@
 within DroneLibrary.Mechanical;
-package Chassis
+package Chassis "Models of the quadcopter body"
 
 end Chassis;

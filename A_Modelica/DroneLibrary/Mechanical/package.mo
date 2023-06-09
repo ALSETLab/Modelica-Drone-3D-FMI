@@ -39,14 +39,5 @@ package Mechanical
       Line(
         origin={9.0,46.0},
         points={{-10.0,-26.0},{72.0,-26.0},{72.0,-86.0},{-10.0,-86.0}})}),
-    Documentation(info="<html>
-<p>The models for the drone&apos;s motors and power sources are located in the <strong>Mechanical</strong> package. This package contains models for the following:</p>
-<ul>
-<li><a href=\"modelica://DroneLibrary.Mechanical.Blades\">Blades:</a> the mechanical models for the quadcopter&apos;s blades.</li>
-<li><a href=\"modelica://DroneLibrary.Mechanical.Propeller\">Propeller:</a> the top-level package of the propeller containing the models for the motor, rotor, and blades connected in different variations.</li>
-<li><a href=\"modelica://DroneLibrary.Mechanical.Chassis\">Chassis: </a>models of the quadcopter body.</li>
-<li><a href=\"modelica://DroneLibrary.Mechanical.Rotor\">Rotor:</a> the models of the rotor connecting the motor to the blades.</li>
-<li><a href=\"modelica://DroneLibrary.Mechanical.Motor\">Motor</a>: motor models to drive the blades to provied lift to the aircraft.</li>
-</ul>
-</html>"));
+    Documentation(info=""));
 end Mechanical;
