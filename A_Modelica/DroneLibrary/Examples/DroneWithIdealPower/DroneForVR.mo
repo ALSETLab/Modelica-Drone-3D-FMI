@@ -1,6 +1,6 @@
 within DroneLibrary.Examples.DroneWithIdealPower;
 model DroneForVR " Drone system model to be used in virtual reality environments."
-  extends DroneLibrary.Examples.Drone_Template;
+  extends DroneWithIdealPower_Template;
 
   Electrical.controlModule controlModule(maxTilt=0.05, samplePeriod=0.01)
     annotation (Placement(transformation(extent={{-30,-10},{-10,10}})));

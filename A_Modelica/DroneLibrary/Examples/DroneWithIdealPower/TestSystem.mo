@@ -7,7 +7,7 @@ model TestSystem
     startTime=0) annotation (Placement(transformation(extent={{-10,-10},{10,10}}, origin={-68,-52})));
   Modelica.Blocks.Sources.Constant xcoord(k=0.25) annotation (Placement(transformation(extent={{-80,40},{-60,60}})));
   replaceable Drone_IdealMachine drone
-    constrainedby DroneLibrary.Examples.Drone_Template
+    constrainedby DroneLibrary.Examples.DroneWithIdealPower.DroneWithIdealPower_Template
     annotation (Placement(transformation(extent={{-30,-28},{28,30}})));
   Modelica.Blocks.Sources.Constant ycoord(k=0)
     annotation (Placement(transformation(extent={{-80,-10},{-60,10}})));

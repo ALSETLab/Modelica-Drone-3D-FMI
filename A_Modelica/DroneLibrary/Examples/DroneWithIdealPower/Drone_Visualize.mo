@@ -1,6 +1,6 @@
 within DroneLibrary.Examples.DroneWithIdealPower;
 model Drone_Visualize "Model to use for animation and visualization."
-  extends DroneLibrary.Examples.Drone_Template;
+  extends DroneWithIdealPower_Template;
 
   inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})

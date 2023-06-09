@@ -2,3 +2,4 @@ TestSystem
 Drone_DCPM_ConstantVoltage
 Drone_DCPM_Battery
 Drone_DCPM_Battery_Switching
+DroneWithoutIdealPower_Template
