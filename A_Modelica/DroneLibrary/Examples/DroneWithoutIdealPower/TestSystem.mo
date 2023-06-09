@@ -13,9 +13,6 @@ model TestSystem
     annotation (Placement(transformation(extent={{-80,20},{-60,40}})));
   Modelica.Blocks.Math.Add add
     annotation (Placement(transformation(extent={{-48,-20},{-38,-10}})));
-  Drone_DCPM_ConstantVoltage
-                      drone(V=12.1, animation=true)
-    annotation (Placement(transformation(extent={{-2,-38},{90,48}})));
   Modelica.Blocks.Sources.Ramp ramp2(
     duration=5,
     height=0,
@@ -26,6 +23,9 @@ model TestSystem
     annotation (Placement(transformation(extent={{-80,60},{-60,80}})));
 equation
 
+public
+  replaceable Drone_DCPM_ConstantVoltage drone(V=12.1, animation=true) constrainedby DroneWithoutIdealPower_Template annotation (Placement(transformation(extent={{-2,-38},{90,48}})));
+equation
   connect(ramp1.y, add.u1) annotation (Line(points={{-59,0},{-54,0},{-54,-12},{
           -49,-12}},
                  color={0,0,127}));

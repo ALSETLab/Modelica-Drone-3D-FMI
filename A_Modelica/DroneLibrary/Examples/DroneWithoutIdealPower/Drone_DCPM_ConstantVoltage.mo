@@ -1,17 +1,6 @@
 within DroneLibrary.Examples.DroneWithoutIdealPower;
 model Drone_DCPM_ConstantVoltage
-  Modelica.Blocks.Interfaces.RealInput xcoord
-    annotation (Placement(transformation(extent={{-140,60},{-100,100}})));
-  Modelica.Blocks.Interfaces.RealInput zcoord
-    annotation (Placement(transformation(extent={{-140,-100},{-100,-60}})));
-  Modelica.Blocks.Interfaces.RealInput ycoord
-    annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
-  Modelica.Blocks.Interfaces.RealOutput xgps
-    annotation (Placement(transformation(extent={{100,70},{120,90}})));
-  Modelica.Blocks.Interfaces.RealOutput ygps
-    annotation (Placement(transformation(extent={{100,-10},{120,10}})));
-  Modelica.Blocks.Interfaces.RealOutput zgps
-    annotation (Placement(transformation(extent={{100,-90},{120,-70}})));
+  extends DroneWithoutIdealPower_Template;
 
   parameter Modelica.Units.SI.Voltage V "Battery voltage";
   Mechanical.Propeller.Variants.Propeller_DCMachine_Power propeller_DCMachine_Power(
@@ -61,7 +50,6 @@ model Drone_DCPM_ConstantVoltage
   Blocks.Routing.RealExtendMultiple realExtendMultiple
     annotation (Placement(transformation(extent={{-88,-10},{-68,10}})));
 
-  parameter Boolean animation=true "= true, if animation shall be enabled";
   Modelica.Blocks.Sources.Ramp ramp(height=2.5, duration=0)
     annotation (Placement(transformation(extent={{-60,40},{-40,60}})));
 equation

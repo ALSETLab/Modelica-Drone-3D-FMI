@@ -1,6 +1,6 @@
 within DroneLibrary.Examples.DroneWithIdealPower;
-model Drone_IdealMachine
-  extends DroneLibrary.Examples.Drone_Template;
+model Drone_IdealMachine "Drone with ideal machine"
+  extends DroneWithIdealPower_Template;
 
   inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})

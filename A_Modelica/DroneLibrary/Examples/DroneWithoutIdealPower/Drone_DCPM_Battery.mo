@@ -1,23 +1,7 @@
 within DroneLibrary.Examples.DroneWithoutIdealPower;
-model Drone_DCPM_Battery
-  "Drone with DC permanent magnet machines powered by a battery."
-  Modelica.Blocks.Interfaces.RealInput xcoord
-    annotation (Placement(transformation(extent={{-140,60},{-100,100}})));
-  Modelica.Blocks.Interfaces.RealInput zcoord
-    annotation (Placement(transformation(extent={{-140,-100},{-100,-60}})));
-  Modelica.Blocks.Interfaces.RealInput ycoord
-    annotation (Placement(transformation(extent={{-140,-20},{-100,20}})));
-  Modelica.Blocks.Interfaces.RealOutput xgps
-    annotation (Placement(transformation(extent={{100,70},{120,90}}),
-        iconTransformation(extent={{100,70},{120,90}})));
-  Modelica.Blocks.Interfaces.RealOutput ygps
-    annotation (Placement(transformation(extent={{100,-10},{120,10}}),
-        iconTransformation(extent={{100,-10},{120,10}})));
-  Modelica.Blocks.Interfaces.RealOutput zgps
-    annotation (Placement(transformation(extent={{100,-90},{120,-70}}),
-        iconTransformation(extent={{100,-90},{120,-70}})));
-
-  parameter Modelica.Units.SI.Voltage V "Battery voltage";
+model Drone_DCPM_Battery "Drone with DC permanent magnet machines powered by a battery."
+  extends DroneWithoutIdealPower_Template;
+   parameter Modelica.Units.SI.Voltage V "Battery voltage";
   Mechanical.Propeller.Variants.Propeller_DCMachine_Power propeller_DCMachine_Power(
     PropellerGain=1,
     VaNominal=15,
@@ -63,8 +47,7 @@ model Drone_DCPM_Battery
   Blocks.Routing.RealExtendMultiple realExtendMultiple
     annotation (Placement(transformation(extent={{-88,-10},{-68,10}})));
 
-  parameter Boolean animation=true "= true, if animation shall be enabled";
-  Modelica.Blocks.Sources.TimeTable timeTable(table=[0,0; 0.005,0; 0.005,
+   Modelica.Blocks.Sources.TimeTable timeTable(table=[0,0; 0.005,0; 0.005,
         317.85132; 0.01,317.85132; 0.01,-296.11323; 0.015,-296.11323; 0.015,
         2.6019486; 0.02,2.6019486; 0.02,2.58601338; 0.025,2.58601338; 0.025,
         2.85675771; 0.03,2.85675771; 0.03,3.03444; 0.035,3.03444; 0.035,

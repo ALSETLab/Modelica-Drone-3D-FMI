@@ -1,8 +1,7 @@
 within DroneLibrary.Examples.DroneWithIdealPower;
 model Drone_IdealMachine_ContinuousPID
   "Drone with ideal machine controlled by a PID controller with continuous sampling"
-  extends DroneLibrary.Examples.Drone_Template;
-
+  extends DroneWithIdealPower_Template;
   inner Modelica.Mechanics.MultiBody.World world(n = {0,0,
       -1})
     annotation (Placement(transformation(extent={{60,60},{80,80}})));
