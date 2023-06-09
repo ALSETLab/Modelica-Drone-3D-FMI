@@ -1,7 +1,6 @@
 within DroneLibrary.UsersGuide;
 model Overview
   annotation (
-
     Documentation(info="<html>
 <p>The Drone Library has six packages: Examples, Blocks, Electrical, Mechanical, Sensors, Visualization and Tests. They are briefly described below: </p>
 <ul>
@@ -14,4 +13,5 @@ model Overview
 <li><a href=\"modelica://DroneLibrary.Tests\">Tests</a>: Contains tests examples for different functionalities of the quadcopter subsystems.</li>
 </ul>
 </html>"));
+
 end Overview;

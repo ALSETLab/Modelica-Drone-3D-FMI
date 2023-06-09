@@ -1,7 +1,6 @@
 within DroneLibrary.UsersGuide;
 model GettingStarted
   annotation (
-
     Documentation(info="<html>
 <p>The Drone Library was developed to model and simulate a quadcopter in multiple domains.
 To start, navigate to
@@ -32,4 +31,5 @@ To set up the animation, run the
 the drone and can be used for any of the tests in the <a href=\"modelica://DroneLibrary.Examples\">Examples</a> package.
  The DroneLibrary/Resources/Scripts/drone_simulation_setup.mos configures the animation of the drone and plot windows for any of the example cases. </p>
 </html>"));
+
 end GettingStarted;
