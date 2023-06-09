@@ -40,6 +40,8 @@ The following summarizes how the examples should be run:
 The image below shows a running simulation of the model <code>ModuleTest_Dymola</code>.
 The blue line shows the command issued from the keyboard, while the red line the model's response.
 </p>
+<p>
 <img alt=\"Screenshot of Plot for simulation synced with real-time\" src=\"modelica://DroneLibrary/Resources/Images/realtime-sim.png\">
+</p>
 </html>"));
 end HowToRun;
