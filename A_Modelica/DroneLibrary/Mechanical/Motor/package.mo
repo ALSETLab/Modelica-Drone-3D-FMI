@@ -1,4 +1,4 @@
 within DroneLibrary.Mechanical;
-package Motor
+package Motor "Motor models to drive the blades"
 
 end Motor;

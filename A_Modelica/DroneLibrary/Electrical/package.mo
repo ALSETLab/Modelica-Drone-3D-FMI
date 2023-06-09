@@ -1,5 +1,5 @@
 within DroneLibrary;
-package Electrical
+package Electrical "Electrical models for the drone's motors and power sources"
 
   annotation (Icon(graphics={
         Rectangle(
@@ -17,5 +17,5 @@ package Electrical
         Line(
           points={{-12,60},{-12,-60}}),
         Line(points={{-80,0},{-12,0}}),
-        Line(points={{12,0},{80,0}})}));
+        Line(points={{12,0},{80,0}})}), Documentation(info=""));
 end Electrical;

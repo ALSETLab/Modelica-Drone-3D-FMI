@@ -30,5 +30,5 @@ equation
         bottomTitle="Time (s)",
         colors={{28,108,200},{238,46,47},{0,140,72}},
         patterns={LinePattern.Solid,LinePattern.Dash,LinePattern.Dot},
-        thicknesses={1.0,1.0,1.0})}));
+        thicknesses={1.0,1.0,1.0})} "PlotXYZposition"));
 end TestSystem;
