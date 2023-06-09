@@ -17,7 +17,5 @@ equation
           127}));
   connect(ramp.y, controlModuleTest_fmu_inputs1.ycoord) annotation (
       Line(points={{-45,28},{-36,28},{-36,9},{-23,9}}, color={0,0,127}));
-  annotation (
-    experiment(
-      StopTime=10));
+  annotation (experiment(StopTime=10));
 end ModuleTest_NoInput;

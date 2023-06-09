@@ -28,9 +28,9 @@ equation
   connect(step1.y, feedback.u2) annotation (Line(points={{-55,-36},{-48,-36},
           {-48,0}}, color={0,0,127}));
   connect(propellerRev1.position, dCmotor.current) annotation (Line(points={{-12.2,
-          -68},{-24,-68},{-24,8},{-12,8}},  color={0,0,127}));
+          -68},{-24,-68},{-24,8},{-12,8}}, color={0,0,127}));
   connect(propellerRev2.position, dCmotor.current) annotation (Line(points={{-12.2,
-          -36},{-24,-36},{-24,8},{-12,8}},  color={0,0,127}));
+          -36},{-24,-36},{-24,8},{-12,8}}, color={0,0,127}));
 
   connect(fixed.frame_b, propellerRev2.Airframe) annotation (Line(
       points={{44,-34},{16,-34},{16,-38},{10.2,-38}},

@@ -1,8 +1,7 @@
 within DroneLibrary.UsersGuide;
 model Overview
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=false)),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+
     Documentation(info="<html>
 <p>The Drone Library has six packages: Examples, Blocks, Electrical, Mechanical, Sensors, Visualization and Tests. They are briefly described below: </p>
 <ul>

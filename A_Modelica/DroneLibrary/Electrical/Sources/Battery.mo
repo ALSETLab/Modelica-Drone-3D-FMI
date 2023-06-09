@@ -1,6 +1,6 @@
 within DroneLibrary.Electrical.Sources;
 model Battery
-  PowerElectronics.Converters.DCDC.BuckConverter         dcdc annotation (
+  PowerElectronics.Converters.DCDC.BuckConverter dcdc annotation (
       Placement(transformation(
         extent={{-10,-10},{10,10}},
         origin={4,2})));
@@ -34,15 +34,14 @@ model Battery
     annotation (Placement(transformation(extent={{32,14},{52,34}})));
 equation
   connect(dcdc.fire_p,pwm. fire)
-    annotation (Line(points={{-2,-10},{-2,-19}},    color={255,0,255}));
+    annotation (Line(points={{-2,-10},{-2,-19}}, color={255,0,255}));
   connect(battery2.p,dcdc. dc_p1)
-    annotation (Line(points={{-20,8},{-6,8}},      color={0,0,255}));
+    annotation (Line(points={{-20,8},{-6,8}}, color={0,0,255}));
   connect(battery2.n,dcdc. dc_n1) annotation (Line(points={{-40,8},{-44,8},{-44,
-          -4},{-6,-4}},         color={0,0,255}));
+          -4},{-6,-4}}, color={0,0,255}));
   connect(dcdc.dc_p2, dc_p1)
     annotation (Line(points={{14,8},{28,8},{28,24}}, color={0,0,255}));
   connect(dcdc.dc_n2, dc_n1)
     annotation (Line(points={{14,-4},{42,-4},{42,24}}, color={0,0,255}));
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false)), Diagram(
-        coordinateSystem(preserveAspectRatio=false)));
+
 end Battery;

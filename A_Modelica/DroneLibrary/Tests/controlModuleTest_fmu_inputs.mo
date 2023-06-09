@@ -42,11 +42,11 @@ equation
           {-2,26},{-2,6},{-9.16667,6}},
                                   color={0,0,127}));
   connect(propellerRev1.position, controlModule.y) annotation (Line(points={{5.8,6},
-          {0,6},{0,2},{-9.16667,2}},    color={0,0,127}));
+          {0,6},{0,2},{-9.16667,2}}, color={0,0,127}));
   connect(propellerRev3.position, controlModule.y2) annotation (Line(points={{5.8,-14},
-          {0,-14},{0,-2},{-9.16667,-2}},     color={0,0,127}));
+          {0,-14},{0,-2},{-9.16667,-2}}, color={0,0,127}));
   connect(propellerRev2.position, controlModule.y3) annotation (Line(points={{5.8,-34},
-          {-2,-34},{-2,-6},{-9.16667,-6}},     color={0,0,127}));
+          {-2,-34},{-2,-6},{-9.16667,-6}}, color={0,0,127}));
   connect(controlModule.position, realExtendMultiple.y) annotation (Line(
         points={{-31.6667,0},{-37,0}}, color={0,0,127}));
   connect(gPS.frame_a, droneChassis1.frame_a3) annotation (Line(

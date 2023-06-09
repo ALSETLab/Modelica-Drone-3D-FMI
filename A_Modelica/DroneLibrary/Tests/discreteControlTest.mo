@@ -65,7 +65,7 @@ equation
    connect(propellerRev.position, propellerRev2.position) annotation (Line(
          points={{-22.2,42},{-32,42},{-32,-32},{-22.2,-32}}, color={0,0,127}));
    connect(discretePID.y, propellerRev2.position) annotation (Line(points={{-65,18},
-          {-32,18},{-32,-32},{-22.2,-32}},          color={0,0,127}));
+          {-32,18},{-32,-32},{-22.2,-32}}, color={0,0,127}));
    connect(propellerRev1.position, propellerRev2.position) annotation (Line(
          points={{-22.2,18},{-32,18},{-32,-32},{-22.2,-32}}, color={0,0,127}));
    connect(propellerRev3.position, propellerRev2.position) annotation (Line(

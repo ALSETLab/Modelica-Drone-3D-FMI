@@ -13,8 +13,8 @@ algorithm
 
   annotation (
     Documentation(info="<html>
-<p>This function computes <code>c=a/b</code>. It avoids divisions by zero by replacing 
-<code>a/b</code>  with <code>a/eps</code> or <code>a/b</code> whichever of the divisors is larger.
+<p>This function computes <code>c=a/b</code>. It avoids divisions by zero by replacing
+<code>a/b</code> with <code>a/eps</code> or <code>a/b</code> whichever of the divisors is larger.
 </p>
 </html>"));
 end div0protect;

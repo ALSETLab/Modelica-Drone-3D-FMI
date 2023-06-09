@@ -3,6 +3,6 @@
 removePlots(false);
 Advanced.FilenameInLegend = true;
 Advanced.FilesToKeep = 10;
-createPlot(id=1, position={56, 52, 1308, 828}, y={"controlModuleTest_fmu_inputs1.xgps", "controlModuleTest_fmu_inputs1.ygps", 
+createPlot(id=1, position={56, 52, 1308, 828}, y={"controlModuleTest_fmu_inputs1.xgps", "controlModuleTest_fmu_inputs1.ygps",
 "controlModuleTest_fmu_inputs1.zgps"}, range={0.0, 10.0, -1.0, 6.0}, grid=true, filename="controlModuleTest_fmu_main.mat", legendLocation=4, legendHorizontal=false, colors={{28,108,200}, {238,46,47}, {0,140,72}});
 

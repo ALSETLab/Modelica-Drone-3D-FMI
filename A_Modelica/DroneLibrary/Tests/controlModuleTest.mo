@@ -39,11 +39,11 @@ equation
           {-2,46},{-2,24},{-9.16667,24}},
                                      color={0,0,127}));
   connect(propellerRev1.position, controlModule.y) annotation (Line(points={{5.8,24},
-          {0,24},{0,20},{-9.16667,20}},     color={0,0,127}));
+          {0,24},{0,20},{-9.16667,20}}, color={0,0,127}));
   connect(propellerRev3.position, controlModule.y2) annotation (Line(points={{5.8,4},
-          {0,4},{0,16},{-9.16667,16}},   color={0,0,127}));
+          {0,4},{0,16},{-9.16667,16}}, color={0,0,127}));
   connect(propellerRev2.position, controlModule.y3) annotation (Line(points={{5.8,-16},
-          {-2,-16},{-2,12},{-9.16667,12}},     color={0,0,127}));
+          {-2,-16},{-2,12},{-9.16667,12}}, color={0,0,127}));
   connect(controlModule.position, realExtendMultiple.y) annotation (Line(
         points={{-31.6667,18},{-37,18}},
                                     color={0,0,127}));

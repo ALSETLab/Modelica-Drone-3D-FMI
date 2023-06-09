@@ -70,7 +70,7 @@ equation
        color={95,95,95},
        thickness=0.5));
    connect(PID.y, propellerRev3.position) annotation (Line(points={{-45.4,0},{
-          -30,0},{-30,-8},{-22.2,-8}},  color={0,0,127}));
+          -30,0},{-30,-8},{-22.2,-8}}, color={0,0,127}));
    connect(propellerRev2.position, propellerRev3.position) annotation (Line(
          points={{-22.2,-32},{-30,-32},{-30,-8},{-22.2,-8}}, color={0,0,127}));
    connect(propellerRev1.position, propellerRev3.position) annotation (Line(

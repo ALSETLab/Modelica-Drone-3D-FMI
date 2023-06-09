@@ -53,7 +53,7 @@ equation
   connect(add1.y, filter2.u)
     annotation (Line(points={{21,-20},{30,-20}}, color={0,0,127}));
   connect(add.y, filter3.u)
-    annotation (Line(points={{21,20},{28,20}},   color={0,0,127}));
+    annotation (Line(points={{21,20},{28,20}}, color={0,0,127}));
   connect(filter3.y, add2.u1) annotation (Line(points={{51,20},{60,20},{60,6},{70,6}},
                               color={0,0,127}));
   connect(filter2.y, add2.u2) annotation (Line(points={{53,-20},{60,-20},{60,-6},{70,-6}},

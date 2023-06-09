@@ -1,8 +1,7 @@
 within DroneLibrary.UsersGuide;
 model GettingStarted
   annotation (
-    Icon(coordinateSystem(preserveAspectRatio=false)),
-    Diagram(coordinateSystem(preserveAspectRatio=false)),
+
     Documentation(info="<html>
 <p>The Drone Library was developed to model and simulate a quadcopter in multiple domains.
 To start, navigate to
@@ -31,6 +30,6 @@ To set up the animation, run the
 <p><img src=\"modelica://DroneLibrary/Resources/Images/UserGuide/AnimationSetup.png\"/></p>
 <p>The DroneLibrary/Resources/Scripts/plotOutput.mos script will plot the XYZ position of
 the drone and can be used for any of the tests in the <a href=\"modelica://DroneLibrary.Examples\">Examples</a> package.
- The  DroneLibrary/Resources/Scripts/drone_simulation_setup.mos configures the animation of the drone and plot windows for any of the example cases. </p>
+ The DroneLibrary/Resources/Scripts/drone_simulation_setup.mos configures the animation of the drone and plot windows for any of the example cases. </p>
 </html>"));
 end GettingStarted;

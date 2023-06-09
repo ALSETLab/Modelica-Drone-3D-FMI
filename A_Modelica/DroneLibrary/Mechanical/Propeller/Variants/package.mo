@@ -1,4 +1,4 @@
 within DroneLibrary.Mechanical.Propeller;
-package Variants 
+package Variants
   extends Modelica.Icons.VariantsPackage;
 end Variants;

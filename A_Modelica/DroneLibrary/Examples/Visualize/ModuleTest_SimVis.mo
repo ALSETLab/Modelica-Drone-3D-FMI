@@ -1,7 +1,7 @@
 within DroneLibrary.Examples.Visualize;
 model ModuleTest_SimVis "Requires DLR's Visualization Library."
   extends Modelica.Icons.Example;
-  DroneWithIdealPower.Drone_Visualize    controlModuleTest_fmu_inputs1 annotation (Placement(transformation(extent={{14,-10},{34,10}})));
+  DroneWithIdealPower.Drone_Visualize controlModuleTest_fmu_inputs1 annotation (Placement(transformation(extent={{14,-10},{34,10}})));
 
   inner Modelica.Mechanics.MultiBody.World world(n = {0,-1,0})
     annotation (Placement(transformation(extent={{-72,-60},{-52,-40}})));
@@ -46,7 +46,7 @@ model ModuleTest_SimVis "Requires DLR's Visualization Library."
   Visualization.Cameras.FreeCamera camera2(windowMode=Visualization.Cameras.Internal.Types.WindowMode.OpenVR_seated,
       startDistanceToCenter={0,-3,0})
     annotation (Placement(transformation(extent={{-2,-54},{18,-34}})));
-  DroneLibrary.Visualize.Inputs.Keyboard.KeyboardInputs_SimVis             keyboardInputs_SimVis annotation (Placement(transformation(extent={{-24,-10},{-4,10}})));
+  DroneLibrary.Visualize.Inputs.Keyboard.KeyboardInputs_SimVis keyboardInputs_SimVis annotation (Placement(transformation(extent={{-24,-10},{-4,10}})));
 equation
   connect(world.frame_b, shape1.frame_a) annotation (Line(
       points={{-52,-50},{-42,-50}},
@@ -84,7 +84,7 @@ This example requires a Professional Edition license for DLR's Visualization Lib
 When using the Community Edition version of the library, one of the cameras in the model would need to be removed.
 </p>
 <p>
-To obtain a license, see: <a href=\"https://visualization.ltx.de/\"> https://visualization.ltx.de/ </a>  
+To obtain a license, see: <a href=\"https://visualization.ltx.de/\"> https://visualization.ltx.de/ </a>
 </p>
 </html>"));
 end ModuleTest_SimVis;

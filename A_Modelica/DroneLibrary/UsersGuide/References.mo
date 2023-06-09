@@ -44,7 +44,7 @@ Independent research project in applied mathematics. Espoo, Finland: School of S
 In: Proc. Intl. Conf. Modeling, Simulation and Visualization Methods (MSV), pp. 120-124.
 </dd>
 <dt>[ModelicaAssociation2014]</dt>
-<dd>Modelica Association (2014-07). 
+<dd>Modelica Association (2014-07).
 &ldquo;Functional Mock-up Interface for Model Exchange and Co-Simulation Version 2.0&rdquo;.
 Tech. rep. Link&ouml;ping: Modelica Association. URL: https://fmi-standard.org.
 </dd>
