@@ -41,7 +41,7 @@ equation
       points={{26.42,8},{36,8},{36,26},{49.16,26}},
       color={95,95,95},
       thickness=0.5));
-  connect(dCMotor_DCMachine_Power.thrust_out, rotor3_1.force) annotation (Line(
+  connect(dCMotor_DCMachine_Power.force_out, rotor3_1.force) annotation (Line(
       points={{-26,12.4},{-20,12.4},{-20,12.4},{-16.42,12.4}},
       color={95,95,95},
       thickness=0.5));
