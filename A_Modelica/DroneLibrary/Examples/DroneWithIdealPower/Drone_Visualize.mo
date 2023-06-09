@@ -103,7 +103,8 @@ equation
           extent={{-100,100},{100,-100}},
           lineColor={215,215,215},
           lineThickness=1), Bitmap(
-          extent={{-98,-98},{98,98}}, fileName="modelica://DroneLibrary/Resources/Images/Otus.jpg")}),
+          extent={{-98,-98},{98,98}}, fileName="modelica://DroneLibrary/Resources/Images/Otus.jpg"),
+                          Bitmap(extent={{-60,0},{60,100}},  fileName="modelica://DroneLibrary/Resources/Images/shapes.png")}),
     __Dymola_Commands(file="modelica://DroneLibrary/Resources/Scripts/drone_animation_setup.mos" "drone_animation_setup"),
      experiment(StopTime=10));
 end Drone_Visualize;
