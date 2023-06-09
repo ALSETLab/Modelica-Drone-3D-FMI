@@ -36,8 +36,6 @@ model controlModuleTest
     annotation (Placement(transformation(extent={{-92,36},{-72,56}})));
   Blocks.Sources.circlePath circlePath
     annotation (Placement(transformation(extent={{-92,10},{-72,30}})));
-  Modelica.Blocks.Sources.Constant const1(k=0)
-    annotation (Placement(transformation(extent={{40,-98},{20,-78}})));
 equation
    connect(propeller_1_1.position, controlModuleSpeed.y1) annotation (Line(
          points={{5.8,36},{-2,36},{-2,24},{-9.09091,24}},
@@ -78,9 +76,6 @@ equation
     annotation (Line(points={{-71,24},{-58,24}}, color={0,0,127}));
   connect(circlePath.y1, realExtendMultiple.u1) annotation (Line(points={{
           -71,16},{-66,16},{-66,18},{-58,18}}, color={0,0,127}));
-   connect(controlModuleSpeed.Height, const1.y) annotation (Line(points={{
-        -16.6667,6},{-16.6667,-88},{19,-88}},
-                                       color={0,0,127}));
 connect(propeller_1_1.Airframe, droneChassis_1_1.frame_a) annotation (Line(
     points={{28.2,35},{28.2,35.5},{42,35.5},{42,18}},
     color={95,95,95},
