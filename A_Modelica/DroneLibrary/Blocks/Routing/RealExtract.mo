@@ -1,7 +1,7 @@
 within DroneLibrary.Blocks.Routing;
 model RealExtract
   "Pass a Real signal through without modification"
-  parameter Integer index= 3 "output which variable in the array";
+  parameter Integer index= 3 "Output which variable in the array";
 
   Modelica.Blocks.Interfaces.RealInput u[3]
     annotation (Placement(transformation(extent={{-120,-20},{-80,20}})));

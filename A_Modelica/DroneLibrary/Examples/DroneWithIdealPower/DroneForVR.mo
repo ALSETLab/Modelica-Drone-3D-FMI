@@ -1,5 +1,5 @@
 within DroneLibrary.Examples.DroneWithIdealPower;
-model DroneForVR " Drone system model to be used in virtual reality environments."
+model DroneForVR "Drone system model to be used in virtual reality environments."
   extends DroneWithIdealPower_Template;
 
   Electrical.controlModule controlModule(maxTilt=0.05, samplePeriod=0.01)
