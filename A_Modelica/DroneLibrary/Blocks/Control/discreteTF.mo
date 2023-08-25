@@ -22,7 +22,7 @@ Modelica.Clocked.RealSignals.Periodic.TransferFunction transferFunction1(
   b={(kp + ki*samplePeriod/2 + kd/samplePeriod),(-kp + ki*samplePeriod/2 - 2*
       kd/samplePeriod),kd/samplePeriod},
   a={1,-1,0},
-  x(fixed=true))
+  x(each fixed=true))
   annotation (Placement(transformation(extent={{-14,-10},{6,10}})));
 Modelica.Clocked.ClockSignals.Clocks.PeriodicRealClock periodicClock(period=
       period)

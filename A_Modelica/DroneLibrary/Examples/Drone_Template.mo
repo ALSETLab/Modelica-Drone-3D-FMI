@@ -26,6 +26,5 @@ equation
           lineColor={215,215,215},
           lineThickness=1), Bitmap(
           extent={{-98,-98},{98,98}}, fileName="modelica://DroneLibrary/Resources/Images/Otus.jpg")}),
-    __Dymola_Commands(file="modelica://DroneLibrary/Resources/Scripts/drone_animation_setup.mos" "drone_animation_setup"),
-     experiment(StopTime=10));
+    __Dymola_Commands(file="modelica://DroneLibrary/Resources/Scripts/drone_animation_setup.mos" "drone_animation_setup"));
 end Drone_Template;

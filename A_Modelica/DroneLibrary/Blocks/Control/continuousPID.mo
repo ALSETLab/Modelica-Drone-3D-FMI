@@ -22,7 +22,7 @@ model continuousPID
 Modelica.Blocks.Continuous.TransferFunction transferFunction1(
     b={(kp + ki*2 + kd),(-kp + ki*2 - 2*kd),kd},
     a={1,-1,0},
-    x(fixed=true))
+    x(each fixed=true))
   annotation (Placement(transformation(extent={{4,-10},{24,10}})));
 equation
 
