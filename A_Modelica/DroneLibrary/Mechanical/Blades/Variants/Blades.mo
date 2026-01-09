@@ -6,7 +6,7 @@ model Blades
     m=0.010,
     r={-0.154,0,0},
     I_33=0.001,
-    useQuaternions=false)
+    useQuaternions=true)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=270,
         origin={66,-10})));
@@ -17,7 +17,7 @@ model Blades
     r={0.154,0,0},
     I_33=0.001,
     shapeType="cylinder",
-    useQuaternions=false)
+    useQuaternions=true)
     annotation (Placement(transformation(extent={{-10,-10},{10,10}},
         rotation=90,
         origin={66,10})));

@@ -6,14 +6,14 @@ model droneChassis_NoAnimation
     r={0,0.25,0},
     r_CM={0,0.175,0},
     m=m,
-  useQuaternions=false)
+  useQuaternions=true)
     annotation (Placement(transformation(extent={{-22,36},{-2,56}})));
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape1(
     animation=true,
     r={0.25,0,0},
     r_CM={0.175,0,0},
     m=m,
-  useQuaternions=false)
+  useQuaternions=true)
                       annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         origin={-12,14})));
@@ -22,14 +22,14 @@ model droneChassis_NoAnimation
     m=m,
     r={0,-0.25,0},
     r_CM={0,-0.175,0},
-  useQuaternions=false)
+  useQuaternions=true)
     annotation (Placement(transformation(extent={{-22,-24},{-2,-4}})));
   Modelica.Mechanics.MultiBody.Parts.BodyShape bodyShape3(
     animation=true,
     m=m,
     r={-0.25,0,0},
     r_CM={-0.175,0,0},
-  useQuaternions=false)
+  useQuaternions=true)
                        annotation (Placement(transformation(
         extent={{-10,-10},{10,10}},
         origin={-12,-48})));
@@ -40,7 +40,7 @@ model droneChassis_NoAnimation
     diameter=0.01,
     r={0,0,-length},
     length=length,
-  useQuaternions=false)
+  useQuaternions=true)
     annotation (Placement(transformation(extent={{32,-10},{52,10}})));
   Modelica.Mechanics.MultiBody.Parts.PointMass pointMass(
     animation=true,

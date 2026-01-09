@@ -8,7 +8,7 @@ model droneChassis_Visualize
     diameter=0.01,
     r={0,0,-length},
     length=length,
-  useQuaternions=false)
+  useQuaternions=true)
     annotation (Placement(transformation(extent={{32,-10},{52,10}})));
   Modelica.Mechanics.MultiBody.Parts.PointMass pointMass(
     animation=false,
